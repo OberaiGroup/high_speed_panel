@@ -1,0 +1,9 @@
+# Ignore the following...
+
+# Vim's swap files
+*.sw*
+
+# LaTeX log, aux, and pdf
+**/write_up/*.log
+**/write_up/*.aux
+**/write_up/*.pdf
