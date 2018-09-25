@@ -1,6 +1,6 @@
-cmake_minum_required(VERSION 3.0.0)
+cmake_minimum_required(VERSION 3.0.0)
 
-project(INCREASE_SMB_ORDER)A
+project(INCREASE_SMB_ORDER)
 
 set(CMAKE_BUILD_TYPE debug)
 
