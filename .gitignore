@@ -10,3 +10,7 @@
 
 # Any build directory
 **/build
+
+# The meshes in tet_convergence
+tet_convergence/linear
+tet_convergence/quadratic
