@@ -14,7 +14,7 @@ void print_usage( char** argv)
   {
     std::cout <<
     "Usage: " << std::endl <<
-    argv[1] << " <model.dmg> <mesh.smb>" << std::endl;
+    argv[0] << " <model.dmg> <mesh.smb>" << std::endl;
   }
   return;
 }
@@ -35,6 +35,7 @@ void check_args( int argc, char** argv)
   if( argc != 3)
   {
     print_usage( argv);
+    MPI_Finalize();
     std::abort();
   }
   print_args( argv);
@@ -47,7 +48,8 @@ void change_to_quads( apf::Mesh2* mesh, char* mesh_file)
   int quadratic_order = 2;
   if( mesh->getShape()->getOrder() != quadratic_order)
   {
-    mesh->changeShape( apf::getLagrange( quadratic_order), false);
+    mesh->changeShape( apf::getLagrange( quadratic_order), true);
+    mesh->verify();
     mesh->writeNative( mesh_file);
   }
   else if( !PCU_Comm_Self() )
