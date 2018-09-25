@@ -1,0 +1,44 @@
+
+
+despmtr L   0.1397 # meters
+         # parallel-to-stream length of panel
+despmtr Wp  0.09177 # meters
+         # perpendicular-to-stream width of panel
+despmtr Tp  1.588E-3 # meters
+         # thickness of panel
+despmtr Ts  0.8128E-3 # meters
+         # thickness of stiffener
+despmtr Ds  25.4E-3 # meters
+         # depth of stiffener
+despmtr Ws  59.842E-3 # meters
+         # width of stiffener
+
+
+set     Hs  (Wp-Ws-2.0*Ts)/2.0
+
+# Upper plate, acutal skin of panel
+skbeg 0 0 0 1
+  linseg Wp 0  0 
+  linseg Wp Tp 0 
+  linseg 0  Tp 0
+  linseg 0  0  0
+skend
+extrude 0 0 L
+
+# Hat stiffener (approximated as c-channel)
+skbeg 0 0 0 1
+  linseg Hs+Ts     0  0
+  linseg Hs+Ts    -Ds 0
+  linseg Hs+Ts+Ws -Ds 0
+  linseg Hs+Ts+Ws  0  0
+  linseg Hs+Ts+Ws+Ts+Hs 0 0
+  linseg Hs+Ts+Ws+Ts+Hs -Ts 0
+  linseg Hs+Ts+Ws+Ts  -Ts  0
+  linseg Hs+Ts+Ws+Ts  -Ds-Ts 0
+  linseg Hs     -Ds-Ts 0
+  linseg Hs     -Ts 0
+  linseg 0     -Ts  0
+  linseg 0 0 0 
+
+skend
+extrude 0 0 L
