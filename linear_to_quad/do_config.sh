@@ -1,5 +1,5 @@
-export BUILD_DIR=/home/jlclough/research/high_speed_panel/increase_smb_order/build
-export SRC_DIR=/home/jlclough/research/high_speed_panel/increase_smb_order/src
+export BUILD_DIR=/home/jlclough/research/high_speed_panel/linear_to_quad/build
+export SRC_DIR=/home/jlclough/research/high_speed_panel/linear_to_quad/src
 export SCOREC=/usr/local/
 export CXX=/usr/local/bin/mpicxx
 
