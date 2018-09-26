@@ -4,7 +4,7 @@ ANONYMOUS:
   ElementBlocks:
     elem_block:
       material: mat
-      # Use Composite Tet 10: true
+       Use Composite Tet 10: true
   Materials:
     mat:
       Material Model:

@@ -1,0 +1,24 @@
+element block elem_block 1
+3 0
+node set origin 1
+0 0
+node set xVertex 1
+0 1
+node set yVertex 1
+0 2
+node set zVertex 1
+0 4
+node set nsXmin 1
+2 2
+node set nsXmax 1
+2 3
+node set nsYmin 1
+2 1
+node set nsYmax 1
+2 4
+node set nsZmin 1
+2 0
+node set nsZmax 1
+2 5
+side set ymax 1
+2 4

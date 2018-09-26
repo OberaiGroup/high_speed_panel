@@ -22,9 +22,9 @@ LCM:
       Response 0: Solution Average
   Discretization:
     Method: PUMI
-    PUMI Input File Name: mesh_2_.smb
-    Mesh Model Input File Name: model_2.dmg
-    PUMI Output File Name: results_2.vtk
+    PUMI Input File Name: test.smb
+    Mesh Model Input File Name: test.dmg
+    PUMI Output File Name: results/results_1.vtk
     Model Associations File Name: assoc.txt
   Regression Results:
     Number of Comparisons: 1
