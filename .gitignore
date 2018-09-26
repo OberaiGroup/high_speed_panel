@@ -11,6 +11,5 @@
 # Any build directory
 **/build
 
-# The meshes in tet_convergence
-tet_convergence/linear
-tet_convergence/quadratic
+# The testing in tet_convergence
+tet_convergence/testing
