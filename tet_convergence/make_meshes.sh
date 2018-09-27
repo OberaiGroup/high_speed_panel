@@ -1,32 +1,25 @@
+#!/bin/bash
 
 export CONVERGENCE_DIR=/home/jlclough/research/high_speed_panel/tet_convergence
-export LINEAR_DIR=$CONVERGENCE_DIR/linear
-export QUADRATIC_DIR=$CONVERGENCE_DIR/quadratic
+export TESTING_DIR=$CONVERGENCE_DIR/testing
+export LINEAR_DIR=$TESTING_DIR/linear
+export QUADRATIC_DIR=$TESTING_DIR/quadratic
 export LIN2QUAD_EXEC=/home/jlclough/research/high_speed_panel/linear_to_quad/build/src/linear_to_quad
 
 # First make basic linear meshes for composite tets
 cd $LINEAR_DIR
-box \
-  10 10 1 \
-  1  1  0.01 \
-  1 model_1.dmg mesh_1_.smb 
 
-box \
-  10 20 2 \
-  1  1  0.01 \
-  1 model_2.dmg mesh_2_.smb 
-box \
-  10 40 4 \
-  1  1  0.01 \
-  1 model_4.dmg mesh_4_.smb 
-box \
-  10 80 8 \
-  1  1  0.01 \
-  1 model_8.dmg mesh_8_.smb 
-box \
-  10 160 16 \
-  1  1  0.01 \
-  1 model_16.dmg mesh_16_.smb 
+VALUE=1
+V10=0
+for i in {0..2}
+do
+  mpirun -n 4 box \
+    10 $V10 $VALUE \
+    1  1    0.01 \
+    1 model_$VALUE_.dmg mesh_$VALUE_.smb 
+  (( VALUE*=2 ))
+  (( V10=VALUE*10 ))
+done
 
 # Move to quadratic Direcotry, copy linear meshes
 cd $QUADRATIC_DIR
