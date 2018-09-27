@@ -13,3 +13,6 @@
 
 # The testing in tet_convergence
 tet_convergence/testing
+
+# The fenics results
+fenics_benchmarking/beam
