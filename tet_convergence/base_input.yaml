@@ -2,14 +2,19 @@
 ---
 LCM:
   Problem:
+    Debug Output:
+      Write Jacobian to MatrixMarket: -1
+      Compute Jacobian Condition Number: -1
+      #Write Residual to MatrixMarket: 0
+      #Write Solution to MatrixMarket: false
     Name: Mechanics 3D
     Solution Method: Steady
     Dirichlet BCs:
-      DBC on NS nsYmin for DOF X: 0.00000000e+00
-      DBC on NS nsYmin for DOF Y: 0.00000000e+00
-      DBC on NS nsYmin for DOF Z: 0.00000000e+00
+      SDBC on NS nsYmin for DOF X: 0.00000000e+00
+      SDBC on NS nsYmin for DOF Y: 0.00000000e+00
+      SDBC on NS nsYmin for DOF Z: 0.00000000e+00
     Neumann BCs:
-      'NBC on SS ymax for DOF all set (t_x, t_y, t_z)': [0.0, 0.0, -1.0]
+      'NBC on SS ymax for DOF all set (t_x, t_y, t_z)': [0.0, 0.0, -0.01]
     MaterialDB Filename: 'material.yaml'
     Parameters:
       Number: 4
@@ -26,12 +31,6 @@ LCM:
     Mesh Model Input File Name: test.dmg
     PUMI Output File Name: results/results_1.vtk
     Model Associations File Name: assoc.txt
-  Regression Results:
-    Number of Comparisons: 1
-    Test Values: [0.08333333]
-    Relative Tolerance: 1.00000000e-07
-    Number of Sensitivity Comparisons: 1
-    Sensitivity Test Values 0: [0.33333333, 0.33333333, 0.33333333, 0.08333333]
   Piro:
     LOCA:
       Bifurcation: { }
@@ -63,6 +62,8 @@ LCM:
                     Max Iterations: 200
                     Tolerance: 1.00000000e-05
                 Belos:
+                  VerboseObject:
+                    Verbosity Level: high
                   Solver Type: Block GMRES
                   Solver Types:
                     Block GMRES:
@@ -74,8 +75,13 @@ LCM:
                       Block Size: 1
                       Num Blocks: 200
                       Flexible Gmres: false
-              Preconditioner Type: Ifpack2
+              Preconditioner Type: MueLu
               Preconditioner Types:
+                MueLu:
+                  multigrid algorithm: sa
+                  'smoother: pre or post': both
+                  'coarse: type': Amesos-KLU
+                  max levels: 1
                 Ifpack2:
                   Overlap: 2
                   Prec Type: ILUT
@@ -86,7 +92,7 @@ LCM:
       Line Search:
         Full Step:
           Full Step: 1.00000000
-        Method: Full Step
+        Method: Backtrack
       Nonlinear Solver: Line Search Based
       Printing:
         Output Information:
@@ -95,7 +101,7 @@ LCM:
           Outer Iteration: true
           Parameters: true
           Details: false
-          Linear Solver Details: false
+          Linear Solver Details: true
           Stepper Iteration: true
           Stepper Details: true
           Stepper Parameters: true
