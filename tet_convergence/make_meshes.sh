@@ -6,17 +6,21 @@ export LINEAR_DIR=$TESTING_DIR/linear
 export QUADRATIC_DIR=$TESTING_DIR/quadratic
 export LIN2QUAD_EXEC=/home/jlclough/research/high_speed_panel/linear_to_quad/build/src/linear_to_quad
 
+NUM_MESHES=2
+NUM_PROCS=4
+
 # First make basic linear meshes for composite tets
 cd $LINEAR_DIR
 
 VALUE=1
-V10=0
-for i in {0..2}
+V10=10
+for (( i=0; i<$NUM_MESHES; i++))
 do
-  mpirun -n 4 box \
+  mpirun -n $NUM_PROCS \
+    box \
     10 $V10 $VALUE \
     1  1    0.01 \
-    1 model_$VALUE_.dmg mesh_$VALUE_.smb 
+    1 model_${VALUE}_.dmg mesh_${VALUE}_.smb 
   (( VALUE*=2 ))
   (( V10=VALUE*10 ))
 done
@@ -26,8 +30,11 @@ cd $QUADRATIC_DIR
 cp $LINEAR_DIR/*  $QUADRATIC_DIR
 
 # Convert meshes to use quadratic shape functions
-${LIN2QUAD_EXEC} model_1.dmg mesh_1_.smb
-${LIN2QUAD_EXEC} model_2.dmg mesh_2_.smb
-${LIN2QUAD_EXEC} model_4.dmg mesh_4_.smb
-${LIN2QUAD_EXEC} model_8.dmg mesh_8_.smb
-${LIN2QUAD_EXEC} model_16.dmg mesh_16_.smb
+VALUE=1
+for (( i=0; i<$NUM_MESHES; i++))
+do
+  mpirun -n $NUM_PROCS \
+    ${LIN2QUAD_EXEC} \
+    model_${VALUE}_.dmg mesh_${VALUE}_.smb
+  (( VALUE*=2 ))
+done
