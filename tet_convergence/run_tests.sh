@@ -1,12 +1,12 @@
 #!/bin/bash
 
-if [ $MESHES_PREPED]
-  CONVERGENCE_DIR=/home/jlclough/research/high_speed_panel/tet_convergence
-  TESTING_DIR=$CONVERGENCE_DIR/testing
-  LINEAR_DIR=$TESTING_DIR/linear
-  QUADRATIC_DIR=$TESTING_DIR/quadratic
-  RESULTS_DIR=$TESTING_DIR/results
+CONVERGENCE_DIR=/home/jlclough/research/high_speed_panel/tet_convergence
+TESTING_DIR=$CONVERGENCE_DIR/testing
+LINEAR_DIR=$TESTING_DIR/linear
+QUADRATIC_DIR=$TESTING_DIR/quadratic
+RESULTS_DIR=$TESTING_DIR/results
 
+if [ $MESHES_PREPED]
   # Move to results direcotry
   cd $RESULTS_DIR
 
