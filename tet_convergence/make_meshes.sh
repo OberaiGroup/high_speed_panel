@@ -25,7 +25,7 @@ do
   (( V10=VALUE*10 ))
 done
 
-# Move to quadratic Direcotry, copy linear meshes
+# Move to quadratic Directory, copy linear meshes
 cd $QUADRATIC_DIR
 cp $LINEAR_DIR/*  $QUADRATIC_DIR
 
