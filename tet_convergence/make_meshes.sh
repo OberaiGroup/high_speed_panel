@@ -1,10 +1,10 @@
 #!/bin/bash
 
-export CONVERGENCE_DIR=/home/jlclough/research/high_speed_panel/tet_convergence
-export TESTING_DIR=$CONVERGENCE_DIR/testing
-export LINEAR_DIR=$TESTING_DIR/linear
-export QUADRATIC_DIR=$TESTING_DIR/quadratic
-export LIN2QUAD_EXEC=/home/jlclough/research/high_speed_panel/linear_to_quad/build/src/linear_to_quad
+CONVERGENCE_DIR=/home/jlclough/research/high_speed_panel/tet_convergence
+TESTING_DIR=$CONVERGENCE_DIR/testing
+LINEAR_DIR=$TESTING_DIR/linear
+QUADRATIC_DIR=$TESTING_DIR/quadratic
+LIN2QUAD_EXEC=/home/jlclough/research/high_speed_panel/linear_to_quad/build/src/linear_to_quad
 
 NUM_MESHES=2
 NUM_PROCS=4
