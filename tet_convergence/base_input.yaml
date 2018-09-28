@@ -2,11 +2,11 @@
 ---
 LCM:
   Problem:
-    Debug Output:
-      Write Jacobian to MatrixMarket: -1
-      Compute Jacobian Condition Number: -1
-      #Write Residual to MatrixMarket: 0
-      #Write Solution to MatrixMarket: false
+#    Debug Output:
+#      Write Jacobian to MatrixMarket: -1
+#      Compute Jacobian Condition Number: -1
+#      #Write Residual to MatrixMarket: 0
+#      #Write Solution to MatrixMarket: false
     Name: Mechanics 3D
     Solution Method: Steady
     Dirichlet BCs:
@@ -18,9 +18,9 @@ LCM:
     MaterialDB Filename: 'material.yaml'
     Parameters:
       Number: 4
-      Parameter 0: DBC on NS nsYmin for DOF X
-      Parameter 1: DBC on NS nsYmin for DOF Y
-      Parameter 2: DBC on NS nsYmin for DOF Z
+      Parameter 0: SDBC on NS nsYmin for DOF X
+      Parameter 1: SDBC on NS nsYmin for DOF Y
+      Parameter 2: SDBC on NS nsYmin for DOF Z
       Parameter 3: 'NBC on SS ymax for DOF all set (t_x, t_y, t_z)[0]'
     Response Functions:
       Number: 1
@@ -29,8 +29,8 @@ LCM:
     Method: PUMI
     PUMI Input File Name: test.smb
     Mesh Model Input File Name: test.dmg
-    PUMI Output File Name: results/results_1.vtk
-    Model Associations File Name: assoc.txt
+    PUMI Output File Name: results.vtk
+    Model Associations File Name: base_assoc.txt
   Piro:
     LOCA:
       Bifurcation: { }
@@ -67,7 +67,7 @@ LCM:
                   Solver Type: Block GMRES
                   Solver Types:
                     Block GMRES:
-                      Convergence Tolerance: 1.00000000e-10
+                      Convergence Tolerance: 1.00000000e-6
                       Output Frequency: 10
                       Output Style: 1
                       Verbosity: 33
