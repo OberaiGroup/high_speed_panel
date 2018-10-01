@@ -16,13 +16,21 @@ VALUE=1
 V10=10
 for (( i=0; i<$NUM_MESHES; i++))
 do
+  # Create the model and mesh with the box scorec core tool
   mpirun -n $NUM_PROCS \
     box \
-    10 $V10 $VALUE \
-    1  1    0.01 \
-    1 model_${VALUE}_.dmg mesh_${VALUE}_.smb 
+    10   $V10 $VALUE \
+    0.01 1    0.01 \
+    1 beam_model_${VALUE}_.dmg beam_mesh_${VALUE}_.smb 
   (( VALUE*=2 ))
   (( V10=VALUE*10 ))
+
+  # Repartition to the full number of processors,
+  # Overwrite the smb file with the repartitioned mesh
+  mpirun -n $NUM_PROCS \
+    repartition $NUM_PROCS \
+      beam_model_${VALUE}_.dmg beam_mesh_${VALUE}_.smb  \
+      beam_mesh_${VALUE}_.smb 
 done
 
 # Move to quadratic Directory, copy linear meshes
@@ -33,10 +41,19 @@ cp $LINEAR_DIR/*  $QUADRATIC_DIR
 VALUE=1
 for (( i=0; i<$NUM_MESHES; i++))
 do
+  # Convert the  meshes to use 2nd order shape functions
   mpirun -n $NUM_PROCS \
     ${LIN2QUAD_EXEC} \
-    model_${VALUE}_.dmg mesh_${VALUE}_.smb
+    beam_model_${VALUE}_.dmg beam_mesh_${VALUE}_.smb
   (( VALUE*=2 ))
+
+  # Repartition to the full number of processors,
+  # Overwrite the smb file with the repartitioned mesh.
+  # May be redundant but best to be safe
+  mpirun -n $NUM_PROCS \
+    repartition $NUM_PROCS \
+      beam_model_${VALUE}_.dmg beam_mesh_${VALUE}_.smb  \
+      beam_mesh_${VALUE}_.smb 
 done
 
 cd $CONVERGENCE_DIR
