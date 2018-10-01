@@ -21,16 +21,16 @@ then
   for (( i=0; i<$NUM_MESHES; i++))
   do
     # First run Linear-Composite Tets
-    sed -e "s/test.smb/..\/linear\/mesh_${NUM}_.smb/"  \
-        -e "s/test.dmg/..\/linear\/model_${NUM}_.dmg/" \
+    sed -e "s/test.smb/..\/linear\/beam_mesh_${NUM}_.smb/"  \
+        -e "s/test.dmg/..\/linear\/beam_model_${NUM}_.dmg/" \
         -e "s/material.yaml/comp_material.yaml/"       \
         -e "s/results.vtk/results_comp_${NUM}.vtk/"    \
         < base_input.yaml                              \
         > input_comp_${NUM}.yaml
 
     # Second run Quadratic Tets
-    sed -e "s/test.smb/..\/quadratic\/mesh_${NUM}_.smb/"  \
-        -e "s/test.dmg/..\/quadratic\/model_${NUM}_.dmg/" \
+    sed -e "s/test.smb/..\/quadratic\/beam_mesh_${NUM}_.smb/"  \
+        -e "s/test.dmg/..\/quadratic\/beam_model_${NUM}_.dmg/" \
         -e "s/material.yaml/base_material.yaml/"       \
         -e "s/results.vtk/results_quad_${NUM}.vtk/"    \
         < base_input.yaml                              \
@@ -44,10 +44,14 @@ then
   for (( i=0; i<$NUM_MESHES; i++))
   do
     mpirun -n $NUM_PROCS  \
-      ${ALBANY_EXEC} input_comp_${NUM}.yaml
+      ${ALBANY_EXEC} input_comp_${NUM}.yaml \
+      >> output_comp_${NUM}.txt 2>&1
+    wait 
 
-    mpirun -n $NUM_PROCS  \
-      ${ALBANY_EXEC} input_quad_${NUM}.yaml
+#    mpirun -n $NUM_PROCS  \
+#      ${ALBANY_EXEC} input_quad_${NUM}.yaml \
+#      >> output_quad_${NUM}.txt 2>&1
+#    wait 
 
     (( NUM*=2 ))
   done
