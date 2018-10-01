@@ -20,7 +20,7 @@ then
   NUM=1
   for (( i=0; i<$NUM_MESHES; i++))
   do
-    # First run Linear-Composite Tets
+    # First create Linear-Composite Tets input file
     sed -e "s/test.smb/..\/linear\/beam_mesh_${NUM}_.smb/"  \
         -e "s/test.dmg/..\/linear\/beam_model_${NUM}_.dmg/" \
         -e "s/material.yaml/comp_material.yaml/"       \
@@ -28,7 +28,7 @@ then
         < base_input.yaml                              \
         > input_comp_${NUM}.yaml
 
-    # Second run Quadratic Tets
+    # Second create Quadratic Tets input file
     sed -e "s/test.smb/..\/quadratic\/beam_mesh_${NUM}_.smb/"  \
         -e "s/test.dmg/..\/quadratic\/beam_model_${NUM}_.dmg/" \
         -e "s/material.yaml/base_material.yaml/"       \
