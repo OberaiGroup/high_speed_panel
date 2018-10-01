@@ -34,5 +34,20 @@
 \begin{document}
 \maketitle
 
+\begin{figure}[H]
+  \centering
+    \begin{tikzpicture}
+      \begin{axis}[
+        title=Title Text,
+        xlabel=Elements Through Thickness,
+        ylabel=Tip Deflection]
+        \addplot table {composite_data_beam.txt};
+        \addplot table {quadratic_data_beam.txt};
+      \end{axis}
+    \end{tikzpicture}
+  \caption{This is the caption text!}
+  \label{fig:label}
+\end{figure}
+
 
 \end{document}
