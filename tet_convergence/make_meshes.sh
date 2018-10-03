@@ -13,12 +13,13 @@ export NUM_PROCS=4
 cd $LINEAR_DIR
 
 VALUE=1
+V10=10
 for (( i=0; i<$NUM_MESHES; i++))
 do
   # Create the model and mesh with the box scorec core tool
   mpirun -n $NUM_PROCS \
     box \
-    5    $VALUE $VALUE \
+    5    $V10 $VALUE \
     0.01 1    0.01 \
     1 beam_model_${VALUE}_.dmg beam_mesh_${VALUE}_.smb 
 
