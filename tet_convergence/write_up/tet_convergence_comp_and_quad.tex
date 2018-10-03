@@ -27,6 +27,7 @@
 \usepackage{tikz}
 \usetikzlibrary{calc,patterns,decorations.pathmorphing,decorations.markings,positioning,automata}
 \usepackage{pgfplots}
+\pgfplotsset{compat=1.5}
 \usepackage{pgfplotstable}
 \usepackage{makecell}
 \usepackage{verbatim}
@@ -38,14 +39,24 @@
   \centering
     \begin{tikzpicture}
       \begin{axis}[
-        title=Title Text,
+        legend pos=outer north east,
+        grid=both,
+        grid style={line width=.1pt, draw=gray!10},
+        major grid style={line width=.2pt,draw=gray!50},
+        xtick={},
+        ytick={},
+        minor tick num=5,
+        title=Convergence of Tip Deflection,
         xlabel=Elements Through Thickness,
         ylabel=Tip Deflection]
         \addplot table {composite_data_beam.txt};
+          \addlegendentry{Composite}
         \addplot table {quadratic_data_beam.txt};
+          \addlegendentry{Quadratic}
       \end{axis}
     \end{tikzpicture}
-  \caption{This is the caption text!}
+  \caption{Tip deflection for beam geometry with composite and quadratic elements.
+           Analytical solution is 0.1.}
   \label{fig:label}
 \end{figure}
 
