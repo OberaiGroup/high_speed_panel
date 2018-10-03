@@ -15,8 +15,9 @@ function J = read_mm_file( filename)
       meta_data = str2num( line_txt);
       rows = meta_data( 1);
       cols = meta_data( 2);
+      nnz  = meta_data( 3);
 
-      J = zeros( rows, cols);
+      J = spalloc( rows, cols, nnz);
     end
 
     % skip first two lines, then read data
