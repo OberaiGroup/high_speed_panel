@@ -1,12 +1,12 @@
 %YAML 1.1
 ---
 LCM:
+  Debug Output:
+    Write Jacobian to MatrixMarket: 0
+    Compute Jacobian Condition Number: 0
+    Write Residual to MatrixMarket: 0
+    Write Solution to MatrixMarket: false
   Problem:
-#    Debug Output:
-#      Write Jacobian to MatrixMarket: -1
-#      Compute Jacobian Condition Number: -1
-#      #Write Residual to MatrixMarket: 0
-#      #Write Solution to MatrixMarket: false
     Name: Mechanics 3D
     Solution Method: Steady
     Dirichlet BCs:
@@ -52,15 +52,6 @@ LCM:
             Stratimikos:
               Linear Solver Type: Belos
               Linear Solver Types:
-                AztecOO:
-                  Forward Solve:
-                    AztecOO Settings:
-                      Aztec Solver: GMRES
-                      Convergence Test: r0
-                      Size of Krylov Subspace: 200
-                      Output Frequency: 10
-                    Max Iterations: 200
-                    Tolerance: 1.00000000e-05
                 Belos:
                   VerboseObject:
                     Verbosity Level: high
@@ -79,7 +70,17 @@ LCM:
               Preconditioner Types:
                 MueLu:
                   multigrid algorithm: sa
-                  'smoother: pre or post': both
+#                  cycle type: V
+#                  max levels: 4
+#                  'repartition: enable': true
+#                  'repartition: min rows per proc': 1000
+#                  'smoother: type': CHEBYSHEV
+#                  'smoother: params':
+#                    'chebyshev: degree': 3
+#                    'chebyshev: ratio eigenvalue': 30.0
+#                  'smoother: pre or post': both
+#                  'coarse: max size': 1500
+#                  number of equations: 3
                   'coarse: type': Amesos-KLU
                   max levels: 1
                 Ifpack2:
@@ -100,7 +101,7 @@ LCM:
           Warning: true
           Outer Iteration: true
           Parameters: true
-          Details: false
+          Details: true
           Linear Solver Details: true
           Stepper Iteration: true
           Stepper Details: true
