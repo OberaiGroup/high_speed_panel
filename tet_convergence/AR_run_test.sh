@@ -36,7 +36,7 @@ then
   do
     mpirun -n $NUM_PROCS  \
       ${ALBANY_EXEC} input_ar_${NUM}.yaml \
-      # >> output_ar_${NUM}.txt 2>&1
+       >> output_ar_${NUM}.txt 2>&1
     wait 
 
     (( NUM++ ))
