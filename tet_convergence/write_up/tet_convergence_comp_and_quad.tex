@@ -39,8 +39,39 @@
 Is this the abstract text? yep.
 \end{abstract}
 
+Intro statement here.
 
+The problem geometry was a beam with a square cross-section.
+The cross-section was 0.01 m $ \times $ 0.01 m; 
+the beam was 1 m long in the $Y$ direction.
+The other edges of the beam were aligned with the $X$ and $Z$ axes.
 
+A linear elastic material model was used. 
+Young's Modulus was 4000 Pa.
+Poisson's ratio was 0.25.
+
+The square face with normal in the negative $Y$ direction had 
+all degrees of freedom fixed to act as a cantilever support. 
+The face on the other end of the beam received a 
+traction of 0.01 $\frac{N}{m^2}$ in the $Z$ direction.
+From Euler-Bernoulli beam theory, the tip deflection
+is modeled as:
+
+\begin{equation}
+  \delta = \frac{F L^3}{3 E I}
+  \label{eq:EB_deflection}
+\end{equation}
+
+\noindent
+where 
+$F$ is the total force acting at the tip of the beam, 
+$L$ is the length of the beam,
+$E$ is Young's Modulus for the beam's material,
+and
+$I$ is the second moment of the cross-sectional area.
+Evaluating Equation (\ref{eq:EB_deflection}) for the
+given parameters of the problem, 
+the theoretical tip deflection is 0.1 m.
 
 \begin{figure}[H]
   \centering
@@ -55,7 +86,7 @@ Is this the abstract text? yep.
         minor tick num=5,
         title=Convergence of Tip Deflection,
         xlabel=Elements Through Thickness,
-        ylabel=Tip Deflection]
+        ylabel={Tip Deflection [m]} ]
         \addplot table {composite_data_beam.txt};
           \addlegendentry{Composite}
         \addplot table {quadratic_data_beam.txt};
@@ -63,13 +94,13 @@ Is this the abstract text? yep.
       \end{axis}
     \end{tikzpicture}
   \caption{Tip deflection for beam geometry with composite and quadratic elements.
-           Analytical solution is 0.1.}
+           Analytical solution is 0.1 m.}
   \label{fig:label}
 \end{figure}
 
+more text here!
+
 \newpage
-
-
 \begin{thebibliography}{99}
 
 \bibitem{bib:composite_tet}
