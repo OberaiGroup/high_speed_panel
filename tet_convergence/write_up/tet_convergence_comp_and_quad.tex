@@ -2,7 +2,7 @@
 \author{Justin L. Clough, 
         Irina K. Tezaur,
         Assad A. Oberai}
-\title{Convergence Study for Tetrahedrons with Composite and Quadratic Shape Functions in Bending}
+\title{Convergence Study for Tetrahedrons with Composite, Quadratic, and Linear Shape Functions in Bending}
 \usepackage[margin=1in]{geometry}
 \usepackage{float}
 \usepackage{subfigure}
@@ -40,7 +40,8 @@
 
 \begin{abstract}
 The convergence of tetrahedral elements with
-\nth{2} order shape functions are compared to those with composite shape functions
+\nth{2} order shape functions are compared to those with composite
+and linear shape functions
 in a beam bending problem.
 A linear elastic material model was used
 and no time components were considered.
@@ -48,7 +49,7 @@ The geometry was a beam with a square cross-section and
 aspect ratio of 100.
 The beam was cantilevered on one end and received a 
 shearing traction at the other. 
-The tip deflection of the finite element solution was
+The tip deflection of the finite element solutions were
 compared to that from Euler-Bernoulli beam theory. 
 Tetrahedrons with \nth{2} order shape functions under-predicted
 the theoretical solution by 5\% with 4 elements 
@@ -57,15 +58,17 @@ elements with composite shape functions under-predicted
 the theoretical solution by 68\% with 32 elements through the thickness.
 \end{abstract}
 
-The performance of tetrahedron element with \nth{2} order shape functions
-was compared to that of elements with composite shape functions 
+\section{Introduction}
+The performance of tetrahedron elements with \nth{2} order shape functions
+was compared to that of elements with composite
 (discussed in \cite{bib:composite_tet})
-in a beam-bending problem.
+and linear shape functions in a beam-bending problem.
 The mesh was refined such that the aspect ratio of the elements
 stayed at 10 as the number of elements through the thickness was increased.
 The theoretical deflection from Euler-Bernoulli beam theory was used to
 compared the finite element results.
 
+\section{Methods}
 The problem geometry was a beam with a square cross-section.
 The cross-section was 0.01 m $ \times $ 0.01 m; 
 the beam was 1 m long in the $Y$ direction.
@@ -103,18 +106,27 @@ the theoretical tip deflection is 0.1 m.
 A mesh was constructed to approximate the beam geometry
 and used only tetrahedral elements.
 The convergence of 
-tetrahedrons with \nth{2} order shape functions (quadratic tet10 elements)
-and separately with composite shape functions 
-were measured.
+tetrahedrons with \nth{2} order (quadratic tet10 elements),
+composite, and linear shape functions
+were separately measured.
 An aspect ratio of 10 was used for all meshes
 and the number of elements through the thickness of the beam was increased.
 A direct linear algebra solver was used to solve the system.
+
+\section{Results}
+The tip deflections from the finite element solutions
+are shown with respect to the number of degrees of freedom 
+in Figure \ref{fig:convergence}.
+Five meshes were constructed with 1, 2, 4, 8, or 16 elements
+through the thickness.
+
 
 \begin{figure}[H]
   \centering
     \begin{tikzpicture}
       \begin{axis}[
         legend pos=outer north east,
+        legend cell align={left},
         grid=both,
         grid style={line width=.1pt, draw=gray!10},
         major grid style={line width=.2pt,draw=gray!50},
@@ -122,17 +134,20 @@ A direct linear algebra solver was used to solve the system.
         ytick={},
         minor tick num=5,
         title=Convergence of Tip Deflection,
-        xlabel=Elements Through Thickness,
+        xlabel=Degrees of Freedom,
         ylabel={Tip Deflection [m]} ]
         \addplot table {quadratic_data_beam.txt};
           \addlegendentry{Quadratic}
         \addplot table {composite_data_beam.txt};
           \addlegendentry{Composite}
+        \addplot table {linear_data_beam.txt};
+          \addlegendentry{Linear}
       \end{axis}
     \end{tikzpicture}
-  \caption{Tip deflection for beam geometry with composite and quadratic elements.
+  \caption{Tip deflection for beam geometry with composite, quadratic, and linear elements.
+           The number of elements through the thickness was 1, 2, 4, 8, and 16.
            Analytical solution is 0.1 m.}
-  \label{fig:label}
+  \label{fig:convergence}
 \end{figure}
 
 The quadratic tet10 elements underestimated the tip deflection 
@@ -141,6 +156,9 @@ the thickness.
 This increased to 0.1\% with 16 elements through the thickness.
 The composite tet10 underestimated the analytical tip deflection
 by 68\% with 32 elements through the thickness.
+The linear elements underestimated 
+the analytical solution by more than 99\% in all cases.
+
 
 \newpage
 \begin{thebibliography}{99}
