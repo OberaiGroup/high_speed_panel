@@ -31,15 +31,38 @@
 \usepackage{pgfplotstable}
 \usepackage{makecell}
 \usepackage{verbatim}
+\usepackage[super]{nth}
 
 \begin{document}
 \maketitle
 
 \begin{abstract}
-Is this the abstract text? yep.
+The convergence of tetrahedral elements with
+\nth{2} order shape functions are compared to those with composite shape functions
+in a beam bending problem.
+A linear elastic material model was used
+and no time components were considered.
+The geometry was a beam with a square cross-section and 
+aspect ratio of 100.
+The beam was cantilevered on one end and received a 
+shearing traction at the other. 
+The tip deflection of the finite element solution was
+compared to that from Euler-Bernoulli beam theory. 
+Tetrahedrons with \nth{2} order shape functions under-predicted
+the theoretical solution by 5\% with 4 elements 
+through the thickness of the beam;
+elements with composite shape functions under-predicted 
+the theoretical solution by 68\% with 32 elements through the thickness.
 \end{abstract}
 
-Intro statement here.
+The performance of tetrahedron element with \nth{2} order shape functions
+was compared to that of elements with composite shape functions 
+(discussed in \cite{bib:composite_tet})
+in a beam-bending problem.
+The mesh was refined such that the aspect ratio of the elements
+stayed at 10 as the number of elements through the thickness was increased.
+The theoretical deflection from Euler-Bernoulli beam theory was used to
+compared the finite element results.
 
 The problem geometry was a beam with a square cross-section.
 The cross-section was 0.01 m $ \times $ 0.01 m; 
@@ -47,8 +70,10 @@ the beam was 1 m long in the $Y$ direction.
 The other edges of the beam were aligned with the $X$ and $Z$ axes.
 
 A linear elastic material model was used. 
-Young's Modulus was 4000 Pa.
+Young's Modulus was 4000 Pa;
 Poisson's ratio was 0.25.
+No time components were considered
+and only the static solution was calculated.
 
 The square face with normal in the negative $Y$ direction had 
 all degrees of freedom fixed to act as a cantilever support. 
@@ -73,6 +98,16 @@ Evaluating Equation (\ref{eq:EB_deflection}) for the
 given parameters of the problem, 
 the theoretical tip deflection is 0.1 m.
 
+A mesh was constructed to approximate the beam geometry
+and used only tetrahedral elements.
+The convergence of 
+tetrahedrons with \nth{2} order shape functions (quadratic tet10 elements)
+and separately with composite shape functions 
+were measured.
+An aspect ratio of 10 was used for all meshes
+and the number of elements through the thickness of the beam was increased.
+A direct linear algebra solver was used to solve the system.
+
 \begin{figure}[H]
   \centering
     \begin{tikzpicture}
@@ -87,10 +122,10 @@ the theoretical tip deflection is 0.1 m.
         title=Convergence of Tip Deflection,
         xlabel=Elements Through Thickness,
         ylabel={Tip Deflection [m]} ]
-        \addplot table {composite_data_beam.txt};
-          \addlegendentry{Composite}
         \addplot table {quadratic_data_beam.txt};
           \addlegendentry{Quadratic}
+        \addplot table {composite_data_beam.txt};
+          \addlegendentry{Composite}
       \end{axis}
     \end{tikzpicture}
   \caption{Tip deflection for beam geometry with composite and quadratic elements.
@@ -98,7 +133,12 @@ the theoretical tip deflection is 0.1 m.
   \label{fig:label}
 \end{figure}
 
-more text here!
+The quadratic tet10 elements underestimated the tip deflection 
+within 5\% of the analytical solution with 4 elements through
+the thickness. 
+This increased to 0.1\% with 16 elements through the thickness.
+The composite tet10 underestimated the analytical tip deflection
+by 68\% with 32 elements through the thickness.
 
 \newpage
 \begin{thebibliography}{99}
