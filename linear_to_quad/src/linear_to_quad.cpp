@@ -14,7 +14,7 @@ void print_usage( char** argv)
   {
     std::cout <<
     "Usage: " << std::endl <<
-    argv[0] << " <model.dmg> <mesh.smb>" << std::endl;
+    argv[0] << " <model.dmg> <mesh_in.smb> <mesh_out.smb>" << std::endl;
   }
   return;
 }
@@ -25,14 +25,15 @@ void print_args( char** argv)
   {
     std::cout <<
     "Loading model named " << argv[1] << std::endl <<
-    "Loading mesh named " << argv[2] << std::endl;
+    "Loading mesh named " << argv[2] << std::endl <<
+    "Writng mesh named " << argv[3] << std::endl;
   }
   return;
 }
 
 void check_args( int argc, char** argv)
 {
-  if( argc != 3)
+  if( argc != 4)
   {
     print_usage( argv);
     MPI_Finalize();
@@ -43,14 +44,14 @@ void check_args( int argc, char** argv)
   return;
 }
 
-void change_to_quads( apf::Mesh2* mesh, char* mesh_file)
+void change_to_quads( apf::Mesh2* mesh, char* mesh_file, char* out_mesh)
 {
   int quadratic_order = 2;
   if( mesh->getShape()->getOrder() != quadratic_order)
   {
     mesh->changeShape( apf::getLagrange( quadratic_order), true);
     mesh->verify();
-    mesh->writeNative( mesh_file);
+    mesh->writeNative( out_mesh);
   }
   else if( !PCU_Comm_Self() )
   {
@@ -69,11 +70,12 @@ int main(int argc, char** argv)
 
   char* model_file = argv[1];
   char* mesh_file  = argv[2];
+  char* out_mesh   = argv[3];
 
   gmi_register_mesh();
   apf::Mesh2* mesh = apf::loadMdsMesh( model_file, mesh_file);
 
-  change_to_quads( mesh, mesh_file);
+  change_to_quads( mesh, mesh_file, out_mesh);
 
   mesh->destroyNative();
   apf::destroyMesh( mesh);
