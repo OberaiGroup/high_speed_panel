@@ -4,9 +4,9 @@
 *.sw*
 
 # LaTeX log, aux, and pdf
-**/write_up/*.log
-**/write_up/*.aux
-**/write_up/*.pdf
+**/*write_up/*.log
+**/*write_up/*.aux
+**/*write_up/*.pdf
 
 # Any build directory
 **/build
