@@ -37,6 +37,14 @@
 \begin{document}
 \maketitle
 
+The interaction between a deformable 3D body and
+a flow field is given below.
+The flow field is modeled as interacting with the surface 
+of the body through \nth{2} order piston theory.
+The relation between stress and displacement in the body
+is left generic so any model can be accommodated.
+
+
 From \nth{2} order piston theory, the pressure acting
 on a deformable surface in a flow is 
 given by:
@@ -51,6 +59,7 @@ P = \frac{2q}{M_\infty}
       \right)^2
   \right]
   + P_\infty
+  \label{eq_strong_piston}
 \end{equation}
 
 \noindent
@@ -65,5 +74,56 @@ $t$ is time,
 $\theta$ is the angle of the deflection along the flow,
 and
 $P_\infty$ is the far-field pressure of the fluid.
+The dynamic pressure is:
+
+\begin{equation}
+q = \frac{ \rho_f V^2}{2}
+\end{equation}
+
+\noindent
+where 
+$\rho_f$ is the density of the fluid.
+Expanding Eq. (\ref{eq_strong_piston}),
+letting $\pdv{w}{t}=w,_t$,
+and replacing constants with $a_i$ gives:
+
+\begin{align}
+P& 
+  = \frac{2q}{M_\infty V} w,_t
+  + \frac{2q}{M_\infty} \theta
+  + \frac{(\gamma +1)q}{2V^2} (w,_t)^2
+  + \frac{(\gamma+1)q}{V} w,_t \theta 
+  + \frac{(\gamma+1)q}{2} \theta^2
+  + P_\infty \\
+P& 
+  = a_1 w,_t
+  + a_2 \theta
+  + a_3 (w,_t)^2
+  + a_4 w,_t \theta 
+  + a_5 \theta^2
+  + a_6
+\end{align}
+
+\noindent
+It is assumed that the values of $a_i$ are given 
+or can be calculated from given information about the flow.
+
+The deformable body is a 3D region $\Omega$ with boundaries
+$\Gamma_g$, $\Gamma_p$, and $\Gamma_h$.
+The boundaries have an outward unit normal vector $n$.
+Note that $\Gamma_g \cup \Gamma_p \cup \Gamma_t = \partial \Omega$
+and the boundaries do not intersect.
+The displacement of a point is given by $u$.
+The PDE governing the displacement of the structure is:
+
+\begin{align}
+\rho \pdv[2]{u}{t} - \nabla \cdot \sigma(u) &= f \text{ in $\Omega$} \\
+u &= g \text{ on $\Gamma_g$} \\
+\sigma n &= h \text{ on $\Gamma_h$} \\
+\end{align}
+
+\noindent
+It is assumed that the stress displacement relations, $\sigma (u)$, is know 
+as well as the 
 
 \end{document}
