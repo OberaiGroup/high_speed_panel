@@ -32,10 +32,38 @@
 \usepackage{makecell}
 \usepackage{verbatim}
 \usepackage[super]{nth}
+\usepackage{physics}
 
 \begin{document}
 \maketitle
 
-this is the text
+From \nth{2} order piston theory, the pressure acting
+on a deformable surface in a flow is 
+given by:
+
+\begin{equation}
+P = \frac{2q}{M_\infty} 
+  \left[
+    \frac{1}{V} \pdv{w}{t} + \theta 
+    + \frac{ (\gamma+1) M_\infty}{4} 
+      \left(
+        \frac{1}{V} \pdv{w}{t} + \theta
+      \right)^2
+  \right]
+  + P_\infty
+\end{equation}
+
+\noindent
+where 
+$P$ is the absolute pressure acting on a surface,
+$q$ is the dynamic pressure of the flow, 
+$M_\infty$ is the Mach number of the flow,
+$V$ is the speed of the flow,
+$\gamma$ is the ratio of specific heats for the fluid,
+$w$ is the deflection of the surface into the flow,
+$t$ is time, 
+$\theta$ is the angle of the deflection along the flow,
+and
+$P_\infty$ is the far-field pressure of the fluid.
 
 \end{document}
