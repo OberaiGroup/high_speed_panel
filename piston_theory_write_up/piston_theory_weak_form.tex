@@ -52,10 +52,10 @@ given by:
 \begin{equation}
 P = \frac{2q}{M_\infty} 
   \left[
-    \frac{1}{V} \pdv{w}{t} + \theta 
+    \frac{1}{\Vert V\Vert_{L_2}} \pdv{w}{t} + \theta 
     + \frac{ (\gamma+1) M_\infty}{4} 
       \left(
-        \frac{1}{V} \pdv{w}{t} + \theta
+        \frac{1}{\Vert V\Vert_{L_2}} \pdv{w}{t} + \theta
       \right)^2
   \right]
   + P_\infty
@@ -67,38 +67,38 @@ where
 $P$ is the absolute pressure acting on a surface,
 $q$ is the dynamic pressure of the flow, 
 $M_\infty$ is the Mach number of the flow,
-$V$ is the speed of the flow,
+$V$ is the velocity of the flow,
 $\gamma$ is the ratio of specific heats for the fluid,
 $w$ is the deflection of the surface into the flow,
 $t$ is time, 
-$\theta$ is the angle of the deflection along the flow,
+$\theta$ is the angle of the deflection along the flows path,
 and
 $P_\infty$ is the far-field pressure of the fluid.
 The dynamic pressure is:
 
 \begin{equation}
-q = \frac{ \rho_f V^2}{2}
+q = \frac{ \rho_f \Vert V\Vert_{L_2}^2}{2}
 \end{equation}
 
 \noindent
 where 
 $\rho_f$ is the density of the fluid.
-Expanding Eq. (\ref{eq_strong_piston}),
+Expanding Equation \eqref{eq_strong_piston},
 letting $\pdv{w}{t}=w,_t$,
 and replacing constants with $a_i$ gives:
 
 \begin{align}
 P& 
-  = \frac{2q}{M_\infty V} w,_t
+  = \frac{2q}{M_\infty \Vert V\Vert_{L_2}} w,_t
   + \frac{2q}{M_\infty} \theta
-  + \frac{(\gamma +1)q}{2V^2} (w,_t)^2
-  + \frac{(\gamma+1)q}{V} w,_t \theta 
+  + \frac{(\gamma +1)q}{2\Vert V\Vert_{L_2}^2} (w,_t)^2
+  + \frac{(\gamma+1)q}{\Vert V\Vert^2_{L_2}} w,_t \theta 
   + \frac{(\gamma+1)q}{2} \theta^2
   + P_\infty \\
 P& 
   = a_1 w,_t
   + a_2 \theta
-  + a_3 (w,_t)^2
+  + a_3 w,_t^2
   + a_4 w,_t \theta 
   + a_5 \theta^2
   + a_6
@@ -109,21 +109,63 @@ It is assumed that the values of $a_i$ are given
 or can be calculated from given information about the flow.
 
 The deformable body is a 3D region $\Omega$ with boundaries
-$\Gamma_g$, $\Gamma_p$, and $\Gamma_h$.
+$\Gamma_g$ and $\Gamma_h$.
 The boundaries have an outward unit normal vector $n$.
-Note that $\Gamma_g \cup \Gamma_p \cup \Gamma_t = \partial \Omega$
+Note that $\Gamma_g \cup \Gamma_h = \partial \Omega$
 and the boundaries do not intersect.
-The displacement of a point is given by $u$.
-The PDE governing the displacement of the structure is:
+The displacement of a point is the vector $u$.
+The PDE and boundary conditions governing the displacement of the structure are:
 
 \begin{align}
-\rho \pdv[2]{u}{t} - \nabla \cdot \sigma(u) &= f \text{ in $\Omega$} \\
+\nabla \cdot \sigma(u) &= f \text{ in $\Omega$} \\
 u &= g \text{ on $\Gamma_g$} \\
-\sigma n &= h \text{ on $\Gamma_h$} \\
+\sigma n &= h \text{ on $\Gamma_h$}  \label{eq_nuemann}
 \end{align}
 
 \noindent
-It is assumed that the stress displacement relations, $\sigma (u)$, is know 
-as well as the 
+It is assumed that the stress-displacement relations, $\sigma (u)$, is known
+as well as the values of the vectors $f$, $g$, and the material density $\rho$.
+A boundary $\Gamma_p \subset \Gamma_h$ is treated as the 
+surface interacting with the flow. 
+The remaining surface is $\Gamma_{h-p} = \Gamma_h \setminus \Gamma_p$.
+It is also assumed that boundary data $h$ is given on $\Gamma_{h-p}$
+which represents all other prescribed surface tractions.
+For the flow surface, the boundary condition in Equation \eqref{eq_nuemann}
+is then recognized as $\sigma n = P n$.
+
+The typical steps are then taken to construct a weak form
+of the structure problem
+by integrating over the domain after taking the 
+dot product with a test function $v$.
+
+\begin{equation}
+\int_\Omega (v \cdot \nabla \cdot \sigma) d\Omega = \int_\Omega v \cdot  f d\Omega
+\end{equation}
+
+Integrating by parts, separating the boundary integral over $\Gamma_h$
+into $\Gamma_p$ and $\Gamma_{h-p}$, and using Einstein notation give
+
+\begin{equation}
+\int  v_i,_j \sigma_{ij} d\Omega = \int_\Omega v_i f_i d\Omega
+  +\int_{\Gamma_{h-p}} v_i h_i d\Gamma
+  +\int_{\Gamma_p} v_i n_i P d\Gamma
+\end{equation}
+
+The right most term represents the pressure.
+A stream direction, $s$, tangent to the surface 
+is then defined as the unit vector of the flow velocity:
+\begin{equation}
+s = \frac{V}{\Vert V\Vert_{L_2}}
+\end{equation}
+
+\noindent 
+The slope of deflection into the flow and along the stream direction,
+$\theta$ in Equation \eqref{eq_strong_piston}, can then be 
+defined as:
+
+\begin{equation}
+\theta = \left\Vert\pdv{w}{s}\right\Vert_{L_2}
+\end{equation}
+
 
 \end{document}
