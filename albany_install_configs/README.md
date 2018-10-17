@@ -2,7 +2,7 @@ Configure files to help
 make installing Albany easier on 
 other machines.
 
-This includes files for:
+This includes files for some of the libraries:
 1. Albany
 1. BLAS-3.8.0
 1. boost_1_68
@@ -22,3 +22,8 @@ This includes files for:
 1. Trilinos
 1. yaml-cpp
 1. zlib-1.2.11
+
+
+If a library does not have a file listed, 
+then the default configure options are
+acceptable.
