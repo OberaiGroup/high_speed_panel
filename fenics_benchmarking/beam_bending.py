@@ -19,7 +19,7 @@ class Left(SubDomain):
 class Right(SubDomain):
     def inside(self, x, on_boundary):
         return near(x[0], 1.0)
-#
+
 # Initialize sub-domain instances
 left = Left()
 right = Right()
@@ -48,7 +48,6 @@ boundaries.set_all(0)
 left.mark(boundaries, 1)
 right.mark(boundaries, 2)
 
-
 # Define Dirichlet boundary (x = 0)
 b0 = Constant((0.0, 0.0, 0.0))
 t = Expression(("scale*0.0",
@@ -56,14 +55,11 @@ t = Expression(("scale*0.0",
                 "scale*0.0"),
                 scale = 0.01, degree=2)
 
-
 bcl = DirichletBC(V, b0, boundaries, 1)
 bcs = [bcl]
 
-
-dx = Measure('dx', domain=mesh, subdomain_data=domains)
-
 # Define new measures associated with  the boundaries 
+dx = Measure('dx', domain=mesh, subdomain_data=domains)
 ds = Measure('ds', domain=mesh, subdomain_data=boundaries)
 
 # Define functions
@@ -84,7 +80,6 @@ lmbda = Constant( E * nu / ( (1.0 + nu)*(1.0 - 2.0 * nu) ))
 # Cauchy Stress (compressible neo-Hookean model)
 sig = 2*mu*epsilon+lmbda*tr(epsilon)*I
 
-#petsc test begin
 a = inner( grad(v),sig )*dx
 L = dot(t,v)*ds(2)
 b = assemble(L)
@@ -104,7 +99,8 @@ PETScOptions.set("mg_coarse_ksp_type", "preonly")
 PETScOptions.set("mg_coarse_pc_type", "svd")
 
 # Set the solver tolerance
-PETScOptions.set("ksp_rtol", 1.0e-8)
+PETScOptions.set("ksp_rtol", 1.0e-7)
+PETScOptions.set("ksp_atol", 1.0e-6)
 
 # Print PETSc solver configuration
 PETScOptions.set("ksp_view")
@@ -120,10 +116,6 @@ solver.set_from_options()
 u = Function( V)
 solver.solve( u.vector(), b)
 
-
-#petsc test end 
-
 # Save solution in VTK format
 file = File("beam/displacement.pvd");
 file << u;
-
