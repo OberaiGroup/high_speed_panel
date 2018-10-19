@@ -1,6 +1,14 @@
 import matplotlib.pyplot as plt
 from dolfin import *
 
+if not has_linear_algebra_backend("PETSc"):
+    print("DOLFIN has not been configured with PETSc. Exiting.")
+    exit()
+
+if not has_slepc():
+    print("DOLFIN has not been configured with SLEPc. Exiting.")
+    exit()
+
 parameters["form_compiler"]["cpp_optimize"] = True
 parameters["form_compiler"]["representation"] = "uflacs"
 
@@ -42,14 +50,14 @@ right.mark(boundaries, 2)
 
 
 # Define Dirichlet boundary (x = 0)
-b = Constant((0.0, 0.0, 0.0))
+b0 = Constant((0.0, 0.0, 0.0))
 t = Expression(("scale*0.0",
                 "-scale*1.0",
                 "scale*0.0"),
                 scale = 0.01, degree=2)
 
 
-bcl = DirichletBC(V, b, boundaries, 1)
+bcl = DirichletBC(V, b0, boundaries, 1)
 bcs = [bcl]
 
 
@@ -60,8 +68,7 @@ ds = Measure('ds', domain=mesh, subdomain_data=boundaries)
 
 # Define functions
 v  = TestFunction(V)             # Test function
-u  = Function(V)                 # Displacement from previous iteration
-B  = Constant((0.0, 0.0, 0.0))  # Body force per unit volume
+u  = TrialFunction(V)                 # Displacement from previous iteration
 
 # Kinematics
 d = len(u)
@@ -79,18 +86,12 @@ sig = 2*mu*epsilon+lmbda*tr(epsilon)*I
 
 #petsc test begin
 a = inner( grad(v),sig )*dx
-print( "a's type:")
-print( type( a))
-print( " ")
 L = dot(t,v)*ds(2)
+b = assemble(L)
 
 # Assemble system
+A = PETScMatrix()
 assemble(a, tensor=A)
-print( "A's Type")
-print( type( A) )
-print( A)
-as_backend_type( A, subclass="PETScMatrix")
-b = assemble(L)
 
 # Set PETSc solve type (conjugate gradient) and preconditioner
 # (algebraic multigrid)
@@ -116,6 +117,7 @@ solver.set_operator(A)
 # Set PETSc options on the solver
 solver.set_from_options()
 # Solve
+u = Function( V)
 solver.solve( u.vector(), b)
 
 
