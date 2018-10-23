@@ -1,6 +1,7 @@
 Configure files to help
 make installing Albany easier on 
 other machines.
+Installation instructions [here](https://github.com/gahansen/Albany/wiki/Debian-GCC-7.1).
 
 This includes files for some of the libraries:
 1. Albany
