@@ -18,14 +18,14 @@ for (( i=0; i<$NUM_MESHES; i++))
 do
   # Create the model and mesh with the box scorec core tool
     box \
-    5    $V10 $VALUE \
-    0.01 1    0.01 \
+    $VALUE $V10 $VALUE \
+    0.01   1    0.01 \
     1 beam_model_${VALUE}_.dmg beam_mesh_${VALUE}_.smb 
 
   # Repartition to the full number of processors,
   # Overwrite the smb file with the repartitioned mesh
   mpirun -n $NUM_PROCS \
-    repartition beam_model_${VALUE}_.dmg $NUM_PROCS \
+    repartition beam_model_${VALUE}_.dmg 1 \
       beam_mesh_${VALUE}_.smb   \
       beam_mesh_${VALUE}_.smb 
 
@@ -45,10 +45,15 @@ cp $LINEAR_DIR/*  $QUADRATIC_DIR
 VALUE=1
 for (( i=0; i<$NUM_MESHES; i++))
 do
+  for (( j=0; j<$NUM_PROCS; j++))
+  do
+    mv beam_mesh_${VALUE}_${j}.smb beam_line_${VALUE}_${j}.smb
+  done
+
   # Convert the  meshes to use 2nd order shape functions
   mpirun -n $NUM_PROCS \
     ${LIN2QUAD_EXEC} \
-    beam_model_${VALUE}_.dmg beam_mesh_${VALUE}_.smb
+    beam_model_${VALUE}_.dmg beam_line_${VALUE}_.smb beam_mesh_${VALUE}_.smb
 
   # Repartition to the full number of processors,
   # Overwrite the smb file with the repartitioned mesh.
@@ -57,6 +62,11 @@ do
     repartition beam_model_${VALUE}_.dmg $NUM_PROCS \
       beam_mesh_${VALUE}_.smb   \
       beam_mesh_${VALUE}_.smb 
+
+  for (( k=0; k<$NUM_PROCS; k++))
+  do
+    rm beam_line_${VALUE}_${k}.smb
+  done
 
   (( VALUE*=2 ))
 done
