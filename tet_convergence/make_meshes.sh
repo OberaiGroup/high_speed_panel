@@ -17,7 +17,6 @@ V10=10
 for (( i=0; i<$NUM_MESHES; i++))
 do
   # Create the model and mesh with the box scorec core tool
-  mpirun -n $NUM_PROCS \
     box \
     5    $V10 $VALUE \
     0.01 1    0.01 \
