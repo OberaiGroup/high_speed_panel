@@ -6,7 +6,7 @@ LINEAR_DIR=$TESTING_DIR/linear
 QUADRATIC_DIR=$TESTING_DIR/quadratic
 LIN2QUAD_EXEC=/home/jlclough/research/high_speed_panel/linear_to_quad/build/src/linear_to_quad
 
-export NUM_MESHES=5
+export NUM_MESHES=4
 export NUM_PROCS=4
 
 # First make basic linear meshes for composite tets
