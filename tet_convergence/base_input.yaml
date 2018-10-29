@@ -62,27 +62,26 @@ LCM:
                       Output Frequency: 10
                       Output Style: 1
                       Verbosity: 33
-                      Maximum Iterations: 200
+                      Maximum Iterations: 250
                       Block Size: 1
-                      Num Blocks: 200
+                      Num Blocks: 250
                       Flexible Gmres: false
               Preconditioner Type: MueLu
               Preconditioner Types:
                 MueLu:
                   multigrid algorithm: sa
-#                  cycle type: V
-#                  max levels: 4
-#                  'repartition: enable': true
-#                  'repartition: min rows per proc': 1000
-#                  'smoother: type': CHEBYSHEV
-#                  'smoother: params':
-#                    'chebyshev: degree': 3
-#                    'chebyshev: ratio eigenvalue': 30.0
-#                  'smoother: pre or post': both
-#                  'coarse: max size': 1500
-#                  number of equations: 3
-                  'coarse: type': Amesos-KLU
-                  max levels: 1
+                  cycle type: V
+                  max levels: 4
+                  'repartition: enable': true
+                  'repartition: min rows per proc': 1000
+                  'smoother: type': CHEBYSHEV
+                  'smoother: params':
+                    'chebyshev: degree': 3
+                    'chebyshev: ratio eigenvalue': 30.0
+                  'smoother: pre or post': both
+                  'coarse: max size': 1500
+                  number of equations: 3
+                  'coarse: type': Superlu
                 Ifpack2:
                   Overlap: 2
                   Prec Type: ILUT
@@ -94,6 +93,17 @@ LCM:
         Full Step:
           Full Step: 1.00000000
         Method: Backtrack
+      Status Tests:
+        Test Type: Combo
+        Combo Type: OR
+        Number of Tests: 2
+        Test 0:
+          Test Type: NormF
+          Norm Type: Two Norm
+          Tolerance: 1.0e-08
+        Test 1:
+          Test Type: MaxIters
+          Maximum Iterations: 20
       Nonlinear Solver: Line Search Based
       Printing:
         Output Information:
