@@ -4,6 +4,7 @@ CONVERGENCE_DIR=/home/jlclough/research/high_speed_panel/tet_convergence
 TESTING_DIR=$CONVERGENCE_DIR/testing
 LINEAR_DIR=$TESTING_DIR/linear
 QUADRATIC_DIR=$TESTING_DIR/quadratic
+COMP_DIR=$TESTING_DIR/cubit_comp
 RESULTS_DIR=$TESTING_DIR/results
 ALBANY_EXEC='/home/pogo/Albany/build/src/AlbanyT'
 
@@ -20,13 +21,13 @@ then
   NUM=1
   for (( i=0; i<$NUM_MESHES; i++))
   do
-    # First create Linear-Composite Tets input file
-    sed -e "s/test.smb/..\/linear\/beam_mesh_${NUM}_.smb/"  \
-        -e "s/test.dmg/..\/linear\/beam_model_${NUM}_.dmg/" \
-        -e "s/material.yaml/comp_material.yaml/"       \
-        -e "s/results.vtk/results_comp_${NUM}.vtk/"    \
-        < base_input.yaml                              \
-        > input_comp_${NUM}.yaml
+#    # First create Linear-Composite Tets input file
+#    sed -e "s/test.smb/..\/linear\/beam_mesh_${NUM}_.smb/"  \
+#        -e "s/test.dmg/..\/linear\/beam_model_${NUM}_.dmg/" \
+#        -e "s/material.yaml/comp_material.yaml/"       \
+#        -e "s/results.vtk/results_comp_${NUM}.vtk/"    \
+#        < base_input.yaml                              \
+#        > input_comp_${NUM}.yaml
 
     # Second create Quadratic Tets input file
     sed -e "s/test.smb/..\/quadratic\/beam_mesh_${NUM}_.smb/"  \
@@ -43,15 +44,15 @@ then
   NUM=1
   for (( i=0; i<$NUM_MESHES; i++))
   do
-    mpirun -n $NUM_PROCS  \
-      ${ALBANY_EXEC} input_comp_${NUM}.yaml \
-      >> output_comp_${NUM}.txt 2>&1
-    wait 
-
 #    mpirun -n $NUM_PROCS  \
-#      ${ALBANY_EXEC} input_quad_${NUM}.yaml \
-#      >> output_quad_${NUM}.txt 2>&1
+#      ${ALBANY_EXEC} input_comp_${NUM}.yaml \
+#      >> output_comp_${NUM}.txt 2>&1
 #    wait 
+
+    mpirun -n $NUM_PROCS  \
+      ${ALBANY_EXEC} input_quad_${NUM}.yaml \
+      >> output_quad_${NUM}.txt 2>&1
+    wait 
 
     (( NUM*=2 ))
   done
