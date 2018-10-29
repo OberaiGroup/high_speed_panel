@@ -1,0 +1,70 @@
+\documentclass[a4paper, 12pt]{article}
+\author{Justin L. Clough, 
+        Irina K. Tezaur,
+        Assad A. Oberai}
+\title{Convergence Study for Tetrahedrons with Composite, Quadratic, and Linear Shape Functions in Bending}
+\usepackage[margin=1in]{geometry}
+\usepackage{float}
+\usepackage{subfigure}
+\usepackage[justification=centering]{caption}
+\usepackage{enumerate}
+\usepackage{multirow}
+\usepackage{listings}
+\lstset{
+    escapechar=`,
+    language=C++,
+    numbers=left,
+    tabsize=2,
+    prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+    frame=single,
+    breaklines=true,
+}
+\usepackage{graphicx}
+\graphicspath{ {./} }
+\usepackage{nameref}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage[linesnumbered,ruled]{algorithm2e}
+\usepackage{tikz}
+\usetikzlibrary{calc,patterns,decorations.pathmorphing,decorations.markings,positioning,automata}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.5}
+\usepackage{pgfplotstable}
+\usepackage{makecell}
+\usepackage{verbatim}
+\usepackage[super]{nth}
+
+\begin{document}
+\begin{figure}[H]
+  \centering
+    \begin{tikzpicture}
+      \begin{axis}[
+        legend pos=outer north east,
+        legend cell align={left},
+        grid=both,
+        grid style={line width=.1pt, draw=gray!10},
+        major grid style={line width=.2pt,draw=gray!50},
+        xtick={},
+        ytick={},
+        minor tick num=5,
+        title=Convergence of Tip Deflection,
+        xlabel=Degrees of Freedom,
+        yticklabel style={/pgf/number format/.cd,fixed,fixed zerofill,precision=4},
+        ylabel={Tip Deflection [m]} ]
+        \addplot table {quadratic_data_beam.txt};
+          \addlegendentry{Quadratic}
+        \addplot table {composite_data_beam.txt};
+          \addlegendentry{Composite}
+        \addplot table {linear_data_beam.txt};
+          \addlegendentry{Linear}
+      \end{axis}
+    \end{tikzpicture}
+  \caption{Tip deflection for beam geometry with composite, quadratic, and linear elements.
+           The number of elements through the thickness was 1, 2, 4, and 8 for all element types.
+           An addition mesh with 16 elements through the thickness was made with the linear elements.
+           Analytical solution is 0.1 m.}
+  \label{fig:convergence}
+\end{figure}
+
+\end{document}
