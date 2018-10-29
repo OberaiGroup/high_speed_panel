@@ -91,12 +91,7 @@ assemble(a, tensor=A)
 # Set PETSc solve type (conjugate gradient) and preconditioner
 # (algebraic multigrid)
 PETScOptions.set("ksp_type", "cg")
-PETScOptions.set("pc_type", "gamg")
-
-# Since we have a singular problem, use SVD solver on the multigrid
-# 'coarse grid'
-PETScOptions.set("mg_coarse_ksp_type", "preonly")
-PETScOptions.set("mg_coarse_pc_type", "svd")
+PETScOptions.set("pc_type", "lu")
 
 # Set the solver tolerance
 PETScOptions.set("ksp_rtol", 1.0e-7)
