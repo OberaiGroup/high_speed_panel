@@ -62,9 +62,9 @@ LCM:
                       Output Frequency: 10
                       Output Style: 1
                       Verbosity: 33
-                      Maximum Iterations: 250
+                      Maximum Iterations: 500
                       Block Size: 1
-                      Num Blocks: 250
+                      Num Blocks: 500
                       Flexible Gmres: false
               Preconditioner Type: MueLu
               Preconditioner Types:
