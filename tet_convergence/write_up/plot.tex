@@ -47,22 +47,20 @@
         major grid style={line width=.2pt,draw=gray!50},
         xtick={},
         ytick={},
+        ymax=0.1,
         minor tick num=5,
         title=Convergence of Tip Deflection,
         xlabel=Degrees of Freedom,
-        yticklabel style={/pgf/number format/.cd,fixed,fixed zerofill,precision=4},
+        yticklabel style={/pgf/number format/.cd,fixed,fixed zerofill,precision=4,/tikz/.cd},
         ylabel={Tip Deflection [m]} ]
         \addplot table {quadratic_data_beam.txt};
           \addlegendentry{Quadratic}
         \addplot table {composite_data_beam.txt};
           \addlegendentry{Composite}
-        \addplot table {linear_data_beam.txt};
-          \addlegendentry{Linear}
       \end{axis}
     \end{tikzpicture}
-  \caption{Tip deflection for beam geometry with composite, quadratic, and linear elements.
-           The number of elements through the thickness was 1, 2, 4, and 8 for all element types.
-           An addition mesh with 16 elements through the thickness was made with the linear elements.
+  \caption{Tip deflection for beam geometry with composite and quadratic elements.
+           The number of elements through the thickness was 1, 2, 4, and 8.
            Analytical solution is 0.1 m.}
   \label{fig:convergence}
 \end{figure}
