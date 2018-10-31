@@ -51,11 +51,11 @@ The beam was cantilevered on one end and received a
 shearing traction at the other. 
 The tip deflection of the finite element solutions were
 compared to that from Euler-Bernoulli beam theory. 
-Tetrahedrons with \nth{2} order shape functions under-predicted
-the theoretical solution by 5\% with 4 elements 
+Tetrahedrons with \nth{2} order and composite shape functions under-predicted
+the theoretical solution by less than 1\% with 2 elements 
 through the thickness of the beam;
-elements with composite shape functions under-predicted 
-the theoretical solution by 68\% with 32 elements through the thickness.
+elements with linear shape functions under-predicted 
+the theoretical solution by 99\% with 16 elements through the thickness.
 \end{abstract}
 
 \section{Introduction}
@@ -117,7 +117,7 @@ A direct linear algebra solver was used to solve the system.
 The tip deflections from the finite element solutions
 are shown with respect to the number of degrees of freedom 
 in Figure \ref{fig:convergence}.
-Five meshes were constructed with 1, 2, 4, 8, or 16 elements
+Four meshes were constructed with 1, 2, 4, and 8 elements
 through the thickness.
 
 \begin{figure}[H]
@@ -131,15 +131,18 @@ through the thickness.
         major grid style={line width=.2pt,draw=gray!50},
         xtick={},
         ytick={},
+        ymax=0.11,
         minor tick num=5,
         title=Convergence of Tip Deflection,
         xlabel=Degrees of Freedom,
-        yticklabel style={/pgf/number format/.cd,fixed,fixed zerofill,precision=4},
+        yticklabel style={/pgf/number format/.cd,fixed,fixed zerofill,precision=4,/tikz/.cd},
         ylabel={Tip Deflection [m]} ]
         \addplot table {quadratic_data_beam.txt};
           \addlegendentry{Quadratic}
         \addplot table {composite_data_beam.txt};
           \addlegendentry{Composite}
+        \addplot table {linear_data_beam.txt};
+          \addlegendentry{Linear}
       \end{axis}
     \end{tikzpicture}
   \caption{Tip deflection for beam geometry with composite and quadratic elements.
@@ -148,12 +151,9 @@ through the thickness.
   \label{fig:convergence}
 \end{figure}
 
-The quadratic tet10 elements underestimated the tip deflection 
-within 5\% of the analytical solution with 4 elements through
+The quadratic and composite tet10 elements underestimated the tip deflection 
+within 2\% of the analytical solution with 4 elements through
 the thickness. 
-This increased to 0.1\% with 16 elements through the thickness.
-The composite tet10 underestimated the analytical tip deflection
-by 68\% with 32 elements through the thickness.
 The linear elements underestimated 
 the analytical solution by more than 99\% in all cases.
 
