@@ -31,6 +31,7 @@ do
 
 
   (( VALUE*=2 ))
+  (( V10=VALUE*10 ))
 done
 
 echo 
