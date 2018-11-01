@@ -52,10 +52,17 @@ shearing traction at the other.
 The tip deflection of the finite element solutions were
 compared to that from Euler-Bernoulli beam theory. 
 Tetrahedrons with \nth{2} order and composite shape functions under-predicted
-the theoretical solution by less than 1\% with 2 elements 
+the theoretical tip displacement by less than 1\% with 2 elements 
 through the thickness of the beam;
 elements with linear shape functions under-predicted 
-the theoretical solution by 99\% with 16 elements through the thickness.
+the theoretical tip displacement by 99\% with 16 elements through the thickness.
+Tetrahedrons with \nth{2} order shape functions under-predicted 
+the peak bending stress by 4\% in tension and 7\% in compression
+with 8 elements through the thickness.
+Tetrahedrons with composite shape functions under-predicted 
+the peak bending stress by 10\% in tension and 0.4\% in compression
+with 8 elements through the thickness.
+
 \end{abstract}
 
 \section{Introduction}
@@ -102,6 +109,18 @@ $I$ is the second moment of the cross-sectional area.
 Evaluating Equation (\ref{eq:EB_deflection}) for the
 given parameters of the problem, 
 the theoretical tip deflection is 0.1 m.
+The peak bending stress, $\sigma_b$, was modeled as:
+
+\begin{equation}
+\sigma_b = \frac{M c}{I}
+\end{equation}
+
+\noindent
+where $M$ is the bending moment, 
+$c$ is the maximum distance from the bending axis to a point on the beam.
+With the parameters of the problem, $\sigma_b = \pm 6$ 
+with ``+'' taken as tension.
+
 
 A mesh was constructed to approximate the beam geometry
 and used only tetrahedral elements.
@@ -109,14 +128,16 @@ The convergence of
 tetrahedrons with \nth{2} order (quadratic tet10 elements),
 composite, and linear shape functions
 were separately measured.
-An aspect ratio of 10 was used for all meshes
+An element aspect ratio of 10 was used for all meshes
 and the number of elements through the thickness of the beam was increased.
-A direct linear algebra solver was used to solve the system.
+All systems were solved with iterative solvers.
 
 \section{Results}
 The tip deflections from the finite element solutions
 are shown with respect to the number of degrees of freedom 
-in Figure \ref{fig:convergence}.
+in Figure \ref{fig:convergence};
+a focused view of just the composite and quadratic 
+elements is shown in Figure \ref{fig:quad_comp_foucs}.
 Four meshes were constructed with 1, 2, 4, and 8 elements
 through the thickness.
 
@@ -145,17 +166,91 @@ through the thickness.
           \addlegendentry{Linear}
       \end{axis}
     \end{tikzpicture}
-  \caption{Tip deflection for beam geometry with composite and quadratic elements.
+  \caption{Tip deflection for beam geometry with composite, quadratic, and linear elements.
            The number of elements through the thickness was 1, 2, 4, and 8.
+           An additional mesh with 16 elements through the thickness was made with the linear elements.
            Analytical solution is 0.1 m.}
   \label{fig:convergence}
 \end{figure}
 
+\begin{figure}[H]
+  \centering
+    \begin{tikzpicture}
+      \begin{axis}[
+        legend pos=outer north east,
+        legend cell align={left},
+        grid=both,
+        grid style={line width=.1pt, draw=gray!10},
+        major grid style={line width=.2pt,draw=gray!50},
+        xtick={},
+        ytick={},
+        minor tick num=5,
+        title=Convergence of Tip Deflection,
+        xlabel=Degrees of Freedom,
+        yticklabel style={/pgf/number format/.cd,fixed,fixed zerofill,precision=4,/tikz/.cd},
+        ylabel={Tip Deflection [m]} ]
+        \addplot table {quadratic_data_beam.txt};
+          \addlegendentry{Quadratic}
+        \addplot table {composite_data_beam.txt};
+          \addlegendentry{Composite}
+      \end{axis}
+    \end{tikzpicture}
+  \caption{Tip deflection for beam geometry with composite and quadratic elements.
+           The number of elements through the thickness was 1, 2, 4, and 8.
+           Analytical solution is 0.1 m.}
+  \label{fig:quad_comp_foucs}
+\end{figure}
+
 The quadratic and composite tet10 elements underestimated the tip deflection 
-within 2\% of the analytical solution with 4 elements through
+by 2\% of the analytical solution with 4 elements through
 the thickness. 
 The linear elements underestimated 
 the analytical solution by more than 99\% in all cases.
+The peak compression and bending stresses for
+the composite and quadratic elements are shown in 
+Figure \ref{fig:stresses}.
+
+\begin{figure}[H]
+  \centering
+    \begin{tikzpicture}
+      \begin{axis}[
+        legend pos=outer north east,
+        legend cell align={left},
+        grid=both,
+        grid style={line width=.1pt, draw=gray!10},
+        major grid style={line width=.2pt,draw=gray!50},
+        xtick={},
+        ytick={},
+        ymax=7,
+        ymin=-7,
+        minor tick num=5,
+        title=Convergence of Bending Stress,
+        xlabel=Degrees of Freedom,
+        yticklabel style={/pgf/number format/.cd,fixed,fixed zerofill,precision=4,/tikz/.cd},
+        ylabel={Stress at Beam Root [Pa]} ]
+        \addplot table {quad_tension_data.txt};
+          \addlegendentry{Quadratic-Tension}
+        \addplot table {composite_tension_data.txt};
+          \addlegendentry{Composite-Tension}
+        \addplot table {quad_compression_data.txt};
+          \addlegendentry{Quadratic-Compression}
+        \addplot table {composite_compression_data.txt};
+          \addlegendentry{Composite-Compression}
+      \end{axis}
+    \end{tikzpicture}
+  \caption{Bending stress for beam with composite and quadratic elements.
+           The number of elements through the thickness was 1, 2, 4, and 8.
+           Analytical solution is $\pm$ 6 Pa.}
+  \label{fig:stresses}
+\end{figure}
+
+The quadratic elements underestimated
+the peak bending stress by 4\% in tension and 7\% in compression
+with 8 elements through the thickness.
+The composite elements underestimated
+the peak bending stress by 10\% in tension and 0.4\% in compression
+with 8 elements through the thickness.
+
 
 
 \newpage
