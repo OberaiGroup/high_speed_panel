@@ -62,6 +62,8 @@ with 8 elements through the thickness.
 Tetrahedrons with composite shape functions under-predicted 
 the peak bending stress by 10\% in tension and 0.4\% in compression
 with 8 elements through the thickness.
+Performance of iterative solvers for both the 
+quadratic and composite element types are discussed.
 
 \end{abstract}
 
@@ -250,7 +252,39 @@ with 8 elements through the thickness.
 The composite elements underestimated
 the peak bending stress by 10\% in tension and 0.4\% in compression
 with 8 elements through the thickness.
+A \texttt{Block GMRES} method was used to solve the linear systems;
+a relative tolerance of $10^{-6}$ was used for all solutions.
+More details of the solver and preconditioner are shown in 
+the sample input file in Appendix \ref{app_input_file}.
+The number of steps to solve each system is shown in 
+Figure \ref{fig:iterations}.
 
+
+\begin{figure}[H]
+  \centering
+    \begin{tikzpicture}
+      \begin{axis}[
+        legend pos=outer north east,
+        legend cell align={left},
+        grid=both,
+        grid style={line width=.1pt, draw=gray!10},
+        major grid style={line width=.2pt,draw=gray!50},
+        xtick={},
+        ytick={},
+        minor tick num=5,
+        title=Iterations to Solve Systems,
+        xlabel=Degrees of Freedom,
+        ylabel={Iterations} ]
+        \addplot table {quad_iterations.txt};
+          \addlegendentry{Quadratic}
+        \addplot table {comp_iterations.txt};
+          \addlegendentry{Composite}
+      \end{axis}
+    \end{tikzpicture}
+  \caption{Number of linear solver iterations to achieve the final solution.
+           The number of elements through the thickness was 1, 2, 4, and 8.}
+  \label{fig:iterations}
+\end{figure}
 
 
 \newpage
@@ -266,6 +300,11 @@ International Journal For Numerical Methods in Engineering.
 2016:107:1145-1170. 
 
 \end{thebibliography}
+
+\newpage
+\appendix
+\section{Sample Input File} \label{app_input_file}
+\lstinputlisting{../base_input.yaml}
 
 
 \end{document}
