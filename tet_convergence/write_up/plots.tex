@@ -57,6 +57,8 @@
           \addlegendentry{Quadratic}
         \addplot table {composite_data_beam.txt};
           \addlegendentry{Composite}
+        \addplot table {linear_data_beam.txt};
+          \addlegendentry{Linear}
       \end{axis}
     \end{tikzpicture}
   \caption{Tip deflection for beam geometry with composite and quadratic elements.
@@ -64,5 +66,40 @@
            Analytical solution is 0.1 m.}
   \label{fig:convergence}
 \end{figure}
+
+
+\begin{figure}[H]
+  \centering
+    \begin{tikzpicture}
+      \begin{axis}[
+        legend pos=outer north east,
+        legend cell align={left},
+        grid=both,
+        grid style={line width=.1pt, draw=gray!10},
+        major grid style={line width=.2pt,draw=gray!50},
+        xtick={},
+        ytick={},
+        minor tick num=5,
+        title=Convergence of Bending Stress,
+        xlabel=Degrees of Freedom,
+        yticklabel style={/pgf/number format/.cd,fixed,fixed zerofill,precision=4,/tikz/.cd},
+        ylabel={Stress at Beam Root [Pa]} ]
+        \addplot table {quad_tension_data.txt};
+          \addlegendentry{Quadratic-Tension}
+        \addplot table {composite_tension_data.txt};
+          \addlegendentry{Composite-Tension}
+        \addplot table {quad_compression_data.txt};
+          \addlegendentry{Quadratic-Compression}
+        \addplot table {composite_compression_data.txt};
+          \addlegendentry{Composite-Compression}
+      \end{axis}
+    \end{tikzpicture}
+  \caption{Bending stress for beam geometry with composite and quadratic elements.
+           The number of elements through the thickness was 1, 2, 4, and 8.
+           Analytical solution is $\pm$ 6 Pa.}
+  \label{fig:stresses}
+\end{figure}
+
+
 
 \end{document}
