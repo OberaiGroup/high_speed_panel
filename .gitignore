@@ -15,4 +15,4 @@
 tet_convergence/testing
 
 # The fenics results
-fenics_benchmarking/beam
+fenics_benchmarking/results*
