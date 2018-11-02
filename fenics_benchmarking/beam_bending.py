@@ -95,7 +95,6 @@ PETScOptions.set("pc_type", "lu")
 
 # Set the solver tolerance
 PETScOptions.set("ksp_rtol", 1.0e-7)
-PETScOptions.set("ksp_atol", 1.0e-6)
 
 # Print PETSc solver configuration
 PETScOptions.set("ksp_view")
@@ -112,5 +111,6 @@ u = Function( V)
 solver.solve( u.vector(), b)
 
 # Save solution in VTK format
-file = File("beam/displacement.pvd");
+file = File("results_beam/displacement.pvd");
+u.rename('Displacement', 'label')
 file << u;
