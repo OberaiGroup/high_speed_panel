@@ -92,9 +92,9 @@ a_tol = 1E-10
 
 # Set PETSc solve type (conjugate gradient) and preconditioner
 # (algebraic multigrid)
-PETScOptions.set("ksp_type", "cg")
+PETScOptions.set("ksp_type", "gmres")
 PETScOptions.set("pc_type", "ilu")
-PETScOptions.set("pc_factor_levels", 3)
+PETScOptions.set("pc_factor_levels", 2)
 
 # Set the solver tolerance
 PETScOptions.set("ksp_rtol", tol)
