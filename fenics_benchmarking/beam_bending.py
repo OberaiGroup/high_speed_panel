@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+from time import time
 from dolfin import *
 
 if not has_linear_algebra_backend("PETSc"):
@@ -30,7 +31,7 @@ lx = 1
 lz = 0.01
 ly = 0.01
 # Number of elements in each direction
-N = 2
+N = 8
 Nx = N*10
 Nz = N
 Ny = N
@@ -85,16 +86,19 @@ L = dot(t,v)*ds(2)
 
 # [bc.apply( A, b) for bc in bcs]
 A, b = assemble_system( a, L, bcs)
-tol = 1E-09
+
+tol   = 1E-09
+a_tol = 1E-10
 
 # Set PETSc solve type (conjugate gradient) and preconditioner
 # (algebraic multigrid)
 PETScOptions.set("ksp_type", "cg")
 PETScOptions.set("pc_type", "ilu")
-PETScOptions.set("pc_factor_levels", 0)
+PETScOptions.set("pc_factor_levels", 3)
 
 # Set the solver tolerance
 PETScOptions.set("ksp_rtol", tol)
+PETScOptions.set("ksp_atol", a_tol)
 
 # Print PETSc solver configuration
 PETScOptions.set("ksp_view")
@@ -107,7 +111,13 @@ solver = PETScKrylovSolver()
 solver.set_from_options()
 # Solve
 u_h = Function( V)
+
+start = time()
 solver.solve( A, u_h.vector(), b)
+finish = time()
+
+solve_time = finish - start
+print( "Solution Time: ", solve_time)
 
 # Save solution in VTK format
 file = File("results_beam/displacement.pvd");
