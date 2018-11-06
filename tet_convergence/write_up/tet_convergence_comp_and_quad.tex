@@ -263,7 +263,7 @@ Figure \ref{fig:iterations}.
 \begin{figure}[H]
   \centering
     \begin{tikzpicture}
-      \begin{axis}[
+      \begin{loglogaxis}[
         legend pos=outer north east,
         legend cell align={left},
         grid=both,
@@ -279,7 +279,7 @@ Figure \ref{fig:iterations}.
           \addlegendentry{Quadratic}
         \addplot table {comp_iterations.txt};
           \addlegendentry{Composite}
-      \end{axis}
+      \end{loglogaxis}
     \end{tikzpicture}
   \caption{Number of linear solver iterations to achieve the final solution.
            The number of elements through the thickness was 1, 2, 4, and 8.}
