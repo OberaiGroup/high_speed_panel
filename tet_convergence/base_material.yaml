@@ -10,7 +10,7 @@ ANONYMOUS:
         Model Name: Linear Elastic
       Elastic Modulus:
         Elastic Modulus Type: Constant
-        Value: 4000.0
+        Value: 80000.0
       Poissons Ratio:
         Poissons Ratio Type: Constant
         Value: 0.25000000
