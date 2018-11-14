@@ -20,7 +20,7 @@
     breaklines=true,
 }
 \usepackage{graphicx}
-\graphicspath{ {./} }
+\graphicspath{ {./images/} }
 \usepackage{nameref}
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -52,10 +52,10 @@ shearing traction at the other.
 The tip deflection of the finite element solutions were
 compared to that from Euler-Bernoulli beam theory. 
 Tetrahedrons with \nth{2} order and composite shape functions under-predicted
-the theoretical tip displacement by less than 1\% with 2 elements 
+the theoretical tip displacement by less than 1\% with 2 elements  
 through the thickness of the beam;
 elements with linear shape functions under-predicted 
-the theoretical tip displacement by 99\% with 16 elements through the thickness.
+the theoretical tip displacement by 84\% with 8 elements through the thickness.
 Tetrahedrons with \nth{2} order shape functions under-predicted 
 the peak bending stress by 4\% in tension and 7\% in compression
 with 8 elements through the thickness.
@@ -84,7 +84,7 @@ the beam was 1 m long in the $Y$ direction.
 The other edges of the beam were aligned with the $X$ and $Z$ axes.
 
 A linear elastic material model was used. 
-Young's Modulus was 4000 Pa;
+Young's Modulus was 80,000 Pa;
 Poisson's ratio was 0.25.
 No time components were considered
 and only the static solution was calculated.
@@ -110,7 +110,7 @@ and
 $I$ is the second moment of the cross-sectional area.
 Evaluating Equation (\ref{eq:EB_deflection}) for the
 given parameters of the problem, 
-the theoretical tip deflection is 0.1 m.
+the theoretical tip deflection is 5.0 mm.
 The peak bending stress, $\sigma_b$, was modeled as:
 
 \begin{equation}
@@ -132,7 +132,26 @@ composite, and linear shape functions
 were separately measured.
 An element aspect ratio of 10 was used for all meshes
 and the number of elements through the thickness of the beam was increased.
+Figure \ref{fig_mesh} shows an example mesh with 2 elements through the 
+thickness. 
+Additional images of the other meshes are shown in Appendix \ref{app_mesh_images}
 All systems were solved with iterative solvers.
+
+\begin{figure}[H]
+  \centering
+  \subfigure[Side View.]
+  {
+    \includegraphics[width=1.0\textwidth]
+    {beam_2}
+  }
+  \subfigure[End View.]
+  {
+    \includegraphics
+    {beam_2_end}
+  }
+  \caption{Mesh for beam of size $0.01 \times 0.01\times 1$ with $2\times 2\times 20$ elements.}
+  \label{fig_mesh}
+\end{figure}
 
 \section{Results}
 The tip deflections from the finite element solutions
@@ -154,12 +173,10 @@ through the thickness.
         major grid style={line width=.2pt,draw=gray!50},
         xtick={},
         ytick={},
-        ymax=0.11,
         minor tick num=5,
         title=Convergence of Tip Deflection,
         xlabel=Degrees of Freedom,
-        yticklabel style={/pgf/number format/.cd,fixed,fixed zerofill,precision=4,/tikz/.cd},
-        ylabel={Tip Deflection [m]} ]
+        ylabel={Tip Deflection [mm]} ]
         \addplot table {quadratic_data_beam.txt};
           \addlegendentry{Quadratic}
         \addplot table {composite_data_beam.txt};
@@ -170,8 +187,7 @@ through the thickness.
     \end{tikzpicture}
   \caption{Tip deflection for beam geometry with composite, quadratic, and linear elements.
            The number of elements through the thickness was 1, 2, 4, and 8.
-           An additional mesh with 16 elements through the thickness was made with the linear elements.
-           Analytical solution is 0.1 m.}
+           Analytical solution is 5.0 mm.}
   \label{fig:convergence}
 \end{figure}
 
@@ -189,7 +205,7 @@ through the thickness.
         minor tick num=5,
         title=Convergence of Tip Deflection,
         xlabel=Degrees of Freedom,
-        yticklabel style={/pgf/number format/.cd,fixed,fixed zerofill,precision=4,/tikz/.cd},
+        yticklabel style={/pgf/number format/.cd,fixed,fixed zerofill,precision=2,/tikz/.cd},
         ylabel={Tip Deflection [m]} ]
         \addplot table {quadratic_data_beam.txt};
           \addlegendentry{Quadratic}
@@ -204,10 +220,10 @@ through the thickness.
 \end{figure}
 
 The quadratic and composite tet10 elements underestimated the tip deflection 
-by 2\% of the analytical solution with 4 elements through
+by 0.1\% of the analytical solution with 4 elements through 
 the thickness. 
 The linear elements underestimated 
-the analytical solution by more than 99\% in all cases.
+the analytical solution by more than 83.5\% in all cases.
 The peak compression and bending stresses for
 the composite and quadratic elements are shown in 
 Figure \ref{fig:stresses}.
@@ -222,13 +238,12 @@ Figure \ref{fig:stresses}.
         grid style={line width=.1pt, draw=gray!10},
         major grid style={line width=.2pt,draw=gray!50},
         xtick={},
-        ytick={},
+        ytick={-6,-4,...,6},
         ymax=7,
         ymin=-7,
         minor tick num=5,
         title=Convergence of Bending Stress,
         xlabel=Degrees of Freedom,
-        yticklabel style={/pgf/number format/.cd,fixed,fixed zerofill,precision=4,/tikz/.cd},
         ylabel={Stress at Beam Root [Pa]} ]
         \addplot table {quad_tension_data.txt};
           \addlegendentry{Quadratic-Tension}
@@ -247,7 +262,7 @@ Figure \ref{fig:stresses}.
 \end{figure}
 
 The quadratic elements underestimated
-the peak bending stress by 4\% in tension and 7\% in compression
+the peak bending stress by 4\% in tension and 7\% in compression 
 with 8 elements through the thickness.
 The composite elements underestimated
 the peak bending stress by 10\% in tension and 0.4\% in compression
@@ -286,6 +301,9 @@ Figure \ref{fig:iterations}.
   \label{fig:iterations}
 \end{figure}
 
+The number of linear solver iterations required to solve 
+the system with elements of either \nth{2} order or composite
+shape functions were approximately equal.
 
 \newpage
 \begin{thebibliography}{99}
@@ -303,8 +321,71 @@ International Journal For Numerical Methods in Engineering.
 
 \newpage
 \appendix
+
 \section{Sample Input File} \label{app_input_file}
 \lstinputlisting{../base_input.yaml}
 
+\newpage
+\section{Mesh Images} \label{app_mesh_images}
+\begin{figure}[H]
+  \centering
+  \subfigure[Side View.]
+  {
+    \includegraphics[width=1.0\textwidth]
+    {beam_1}
+  }
+  \subfigure[End View.]
+  {
+    \includegraphics
+    {beam_1_end}
+  }
+  \caption{Mesh for beam of size $0.01 \times 0.01\times 1$ with $1\times 1\times 10$ elements.}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \subfigure[Side View.]
+  {
+    \includegraphics[width=1.0\textwidth]
+    {beam_2}
+  }
+  \subfigure[End View.]
+  {
+    \includegraphics
+    {beam_2_end}
+  }
+  \caption{Mesh for beam of size $0.01 \times 0.01\times 1$ with $2\times 2\times 20$ elements.
+           Duplicated from Figure \ref{fig_mesh}.}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \subfigure[Side View.]
+  {
+    \includegraphics[width=1.0\textwidth]
+    {beam_4}
+  }
+  \subfigure[End View.]
+  {
+    \includegraphics
+    {beam_4_end}
+  }
+  \caption{Mesh for beam of size $0.01 \times 0.01\times 1$ with $4\times 4\times 40$ elements.}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \subfigure[Side View.]
+  {
+    \includegraphics[width=1.0\textwidth]
+    {beam_8}
+  }
+  \subfigure[End View.]
+  {
+    \includegraphics
+    {beam_8_end}
+  }
+  \caption{Mesh for beam of size $0.01 \times 0.01\times 1$ with $8\times 8\times 80$ elements.}
+\end{figure}
 
 \end{document}
