@@ -90,11 +90,10 @@ A, b = assemble_system( a, L, bcs)
 tol   = 1.0E-07
 a_tol = 1.0E-50
 
-# Set PETSc solve type (conjugate gradient) and preconditioner
-# (algebraic multigrid)
+# Set solver options
 PETScOptions.set("ksp_type", "gmres")
 PETScOptions.set("pc_type", "ilu")
-PETScOptions.set("pc_factor_levels", 2)
+PETScOptions.set("pc_factor_levels", 0)
 
 # Set the solver tolerance
 PETScOptions.set("ksp_rtol", tol)
@@ -109,10 +108,10 @@ solver = PETScKrylovSolver()
 
 # Set PETSc options on the solver
 solver.set_from_options()
-# Solve
-u_h = Function( V)
 
+# Solve
 start = time()
+u_h = Function( V)
 solver.solve( A, u_h.vector(), b)
 finish = time()
 
