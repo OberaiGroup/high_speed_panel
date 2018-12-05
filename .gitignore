@@ -16,3 +16,8 @@ tet_convergence/testing
 
 # The fenics results
 fenics_benchmarking/results*
+
+# Hidden files
+.*
+## But not itself!
+!.gitignore

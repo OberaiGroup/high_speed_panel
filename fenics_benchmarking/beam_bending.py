@@ -87,8 +87,8 @@ L = dot(t,v)*ds(2)
 # [bc.apply( A, b) for bc in bcs]
 A, b = assemble_system( a, L, bcs)
 
-tol   = 1E-09
-a_tol = 1E-10
+tol   = 1.0E-07
+a_tol = 1.0E-50
 
 # Set PETSc solve type (conjugate gradient) and preconditioner
 # (algebraic multigrid)
