@@ -37,7 +37,7 @@
 \begin{figure}[H]
   \centering
     \begin{tikzpicture}
-      \begin{axis}[
+      \begin{loglogaxis}[
         legend pos=outer north east,
         legend cell align={left},
         grid=both,
@@ -45,19 +45,18 @@
         major grid style={line width=.2pt,draw=gray!50},
         xtick={},
         ytick={},
-        ymax=0.11,
+        ymin=1000,
         minor tick num=5,
         title=Linear Elastic Beam Bending,
         xlabel=Degrees of Freedom,
-        yticklabel style={/pgf/number format/.cd,fixed,fixed zerofill,precision=4,/tikz/.cd},
         ylabel=Iterations ]
-        \addplot table {quadratic_data_beam.txt};
-          \addlegendentry{Quadratic}
-        \addplot table {composite_data_beam.txt};
-          \addlegendentry{Composite}
-        \addplot table {linear_data_beam.txt};
-          \addlegendentry{Linear}
-      \end{axis}
+        \addplot table {cg_ilu_1_iter.txt};
+          \addlegendentry{Level of Fill = 1}
+        \addplot table {cg_ilu_2_iter.txt};
+          \addlegendentry{Level of Fill = 2}
+        \addplot table {cg_ilu_3_iter.txt};
+          \addlegendentry{Level of Fill = 3}
+      \end{loglogaxis}
     \end{tikzpicture}
   \caption{caption}
   \label{fig:convergence}
@@ -67,7 +66,7 @@
 \begin{figure}[H]
   \centering
     \begin{tikzpicture}
-      \begin{axis}[
+      \begin{loglogaxis}[
         legend pos=outer north east,
         legend cell align={left},
         grid=both,
@@ -75,17 +74,22 @@
         major grid style={line width=.2pt,draw=gray!50},
         xtick={},
         ytick={},
-        ymax=0.11,
+        ymin=1,
         minor tick num=5,
         title=Linear Elastic Beam Bending,
         xlabel=Degrees of Freedom,
-        yticklabel style={/pgf/number format/.cd,fixed,fixed zerofill,precision=4,/tikz/.cd},
-        ylabel=Iterations ]
-      \end{axis}
+        ylabel={CPU Time [s]} ]
+        \addplot table {cg_ilu_1_time.txt};
+          \addlegendentry{Level of Fill = 1}
+        \addplot table {cg_ilu_2_time.txt};
+          \addlegendentry{Level of Fill = 2}
+        \addplot table {cg_ilu_3_time.txt};
+          \addlegendentry{Level of Fill = 3}
+      \end{loglogaxis}
     \end{tikzpicture}
   \caption{caption}
   \label{fig:convergence}
 \end{figure}
 
-
 \end{document}
+
