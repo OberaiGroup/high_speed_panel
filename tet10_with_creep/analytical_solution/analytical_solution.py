@@ -106,7 +106,7 @@ def eq_104( kappa, alpha_hat, beta_hat, mu, delta, beta, T_t, T_0):
 
     return tau
 
-class alpha_hat:
+class linear_growth:
     t_final = 0.0
     t_init  = 0.0
 
@@ -127,6 +127,8 @@ class alpha_hat:
     def get_value(self, time):
         ans = self.rate * time + self.initial
         return ans
+
+
 
 ## Problem parameters
 # Start, final time; seconds
@@ -171,14 +173,15 @@ max_iters = 1E4
 num_t = 1E2
 
 
-a_hat = alpha_hat( t0, tf, alpha_hat_init, alpha_hat_final)
+a_hat       = linear_growth( t0, tf, alpha_hat_init, alpha_hat_final)
+temperature = linear_growth( t0, tf, T0,             Tf)
 
 time = t0
 dt = (tf-t0)/(num_t +1)
 while time < tf:
     time += dt
 
-
+    
 
 
 
