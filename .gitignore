@@ -21,3 +21,6 @@ fenics_benchmarking/results*
 .*
 ## But not itself!
 !.gitignore
+
+# Result exodus files
+*result*.e
