@@ -24,3 +24,6 @@ fenics_benchmarking/results*
 
 # Result exodus files
 *result*.e
+
+# Fenics Benchmarking Plots
+fenics_benchmarking/plots
