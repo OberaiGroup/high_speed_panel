@@ -1,0 +1,24 @@
+## 
+# This script constructs a panel with hat stiffeners
+##
+
+# All measures currently in inches and degrees
+
+
+# First build the plate
+set plate_width    10.25
+set plate_length    7.5
+set plate_thickness 0.0625
+
+set plate_origin_x 0.0
+set plate_origin_y 0.0
+set plate_origin_z 0.0
+
+box plate_origin_x plate_origin_y plate_origin_z plate_width plate_length plate_thickness
+store plate
+
+# Construct the hat stiffeners
+set stiffener_thickness 0.032
+
+skbeg 0 0 0
+skend
