@@ -27,3 +27,6 @@ fenics_benchmarking/results*
 
 # Fenics Benchmarking Plots
 fenics_benchmarking/plots
+
+# ESP's port journals
+port*.jrnl
