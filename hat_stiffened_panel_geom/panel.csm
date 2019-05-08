@@ -18,7 +18,91 @@ box plate_origin_x plate_origin_y plate_origin_z plate_width plate_length plate_
 store plate
 
 # Construct the hat stiffeners
-set stiffener_thickness 0.032
+set stiffener_thickness   0.032
+set stiffener_foot_width  0.640852
+set stiffener_rise_angle 70.0
+set stiffener_depth       1.0
+set stiffener_length      5.5
+set stiffener_base_interior_width 2.356523
 
-skbeg 0 0 0
+set stiffener_origin_x 0.0
+set stiffener_origin_y 0.0
+set stiffener_origin_z 0.0
+
+set stiffener_wall_lean    stiffener_depth/tand(stiffener_rise_angle)
+set stiffener_wall_setback stiffener_thickness/tand(stiffener_rise_angle)
+
+skbeg stiffener_origin_x\
+      stiffener_origin_y\
+      stiffener_origin_z
+  # Going left to right along bottom
+  # 1
+  linseg stiffener_origin_x+stiffener_foot_width\
+         stiffener_origin_y\
+         stiffener_origin_z
+  # 2
+  linseg stiffener_origin_x+stiffener_foot_width+stiffener_wall_lean\
+         stiffener_origin_y+stiffener_depth\
+         stiffener_origin_z
+  # 3
+  linseg stiffener_origin_x+stiffener_foot_width+stiffener_wall_lean+stiffener_base_interior_width\
+         stiffener_origin_y+stiffener_depth\
+         stiffener_origin_z
+  # 4
+  linseg stiffener_origin_x+stiffener_foot_width+2.0*stiffener_wall_lean+stiffener_base_interior_width\
+         stiffener_origin_y\
+         stiffener_origin_z
+  # 5
+  linseg stiffener_origin_x+2.0*stiffener_foot_width+2.0*stiffener_wall_lean+stiffener_base_interior_width\
+         stiffener_origin_y\
+         stiffener_origin_z
+  # Going back; right to left along top
+  # 6
+  linseg stiffener_origin_x+2.0*stiffener_foot_width+2.0*stiffener_wall_lean+stiffener_base_interior_width\
+         stiffener_origin_y+stiffener_thickness\
+         stiffener_origin_z
+  # 7
+  linseg stiffener_origin_x+stiffener_foot_width+2.0*stiffener_wall_lean+stiffener_base_interior_width+stiffener_wall_setback\
+         stiffener_origin_y+stiffener_thickness\
+         stiffener_origin_z
+  # 8
+  linseg stiffener_origin_x+stiffener_foot_width+stiffener_wall_lean+stiffener_base_interior_width+stiffener_wall_setback\
+         stiffener_origin_y+stiffener_depth+stiffener_thickness\
+         stiffener_origin_z
+  # 9
+  linseg stiffener_origin_x+stiffener_foot_width+stiffener_wall_lean-stiffener_wall_setback\
+         stiffener_origin_y+stiffener_depth+stiffener_thickness\
+         stiffener_origin_z
+  # 10
+  linseg stiffener_origin_x+stiffener_foot_width-stiffener_wall_setback\
+         stiffener_origin_y+stiffener_thickness\
+         stiffener_origin_z
+  # 11
+  linseg stiffener_origin_x\
+         stiffener_origin_y+stiffener_thickness\
+         stiffener_origin_z
+  # 12
+  linseg stiffener_origin_x\
+         stiffener_origin_y\
+         stiffener_origin_z
+  
 skend
+extrude   0.0 0.0 stiffener_length 
+rotatex  90.0 0.0 0.0
+translate 0.0 7.5 plate_thickness
+store stiffener
+
+# Place the panel face and stiffeners on it
+set num_stiffeners    2.0
+set stiffener_offset  0.35875
+set stiffener_spacing 0.717
+
+set dx                    stiffener_offset
+set stiffener_total_width 2*stiffener_foot_width+2*stiffener_wall_lean+stiffener_base_interior_width
+patbeg i num_stiffeners
+  restore stiffener
+  translate dx 0.0 0.0
+  set dx dx+stiffener_total_width+stiffener_offset
+patend
+restore plate
+
