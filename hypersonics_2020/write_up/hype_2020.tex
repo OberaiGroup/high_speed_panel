@@ -52,16 +52,50 @@ abstract text
 
 {\renewcommand\arraystretch{1.0}
 \noindent\begin{longtable*}{@{}l @{\quad=\quad} l@{}}
-name & explanation
+Ma & Mach number
 \end{longtable*}}
 
 \section{Introduction}
-intro text
 % Outline:
+% - Overview of hypersonic structures
 % - What is high speed flow? Characteristics
 % - When does and doesn't inertia matter?
 % - When does large strain matter?
 % - What is creep/ Norton creep?
+
+The skin of a high speed vehicle must support both
+the aerodynamic tractions and heating during flight;
+it is typically designed as a thin face plate supported 
+by stiffeners 
+\cite{
+  mcnamara_aeroelastic_and_aerothermoelastic_analysis_in_hypersonic_flow_past_present_and_future, 
+  riley_interaction_between_aerothermally_compliant_structures_and_boudnary_layer_transition_in_hypersonic_flow,
+  spottswood_exploring_the_response_of_a_thin_flexible_panel,
+  thornton_coupled_flow_thermal_and_structural_analysis_of_aerodynamically_heated_panels,
+  savino_aerothermodynamic_study_of_ultrahigh_termperature_cermaic_winglet_for_atmospheric_reentry_test}.
+Some examples of typical panel stiffener geometries are
+shown in Figure \ref{fig_example_stiffener_geoms} from 
+\cite{
+  zuchowski_AVIATR_Predictive_capability_for_hypersonic_structural_response_and_life_prediction_phase_II}.
+
+\begin{figure}[H] 
+  \centering
+    \includegraphics[width=0.95\textwidth, keepaspectratio]
+    {example_stiffener_geoms}
+  \caption{ 
+          Geometry of stiffener options of typical panels for high speed vehicles.
+            Adapted from \cite{
+  zuchowski_AVIATR_Predictive_capability_for_hypersonic_structural_response_and_life_prediction_phase_II}.
+          }
+  \label{fig_example_stiffener_geoms}
+\end{figure}
+
+High speed flow over a vehicle creates a harsh environment.
+For example, the skin of the X-15 regularly saw temperatures
+as high as 1220$^{\circ}$ F
+during its flights up to 6.7 Ma.
+\cite{ kordes_structureal_heating_experiencs_on_the_x15_airplane}.
+
 
 Note to the reviewers: A more extensive review of the 
 state of the art will be included in the 
@@ -70,7 +104,7 @@ final manuscript.
 \section{Methods} \label{sec_methods}
 % outline:
 %  - Panel geometry
-%  - Multi materials
+%  - Multi materials -> Ti6242, Al 7075 (like McNamara)
 %  - Creep + Plasticity
 %  - Loading? Historical temperature?
 The goal of this study is to model the large creep deformation a canonical acreage
