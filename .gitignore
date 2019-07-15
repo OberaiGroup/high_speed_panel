@@ -8,6 +8,9 @@
 **/*write_up/*.aux
 **/*write_up/*.pdf
 
+# The workspace in write_up
+**/write_up/workspace
+
 # Any build directory
 **/build
 
