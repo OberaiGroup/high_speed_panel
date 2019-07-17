@@ -20,6 +20,7 @@
 \usepackage{verbatim}
 \usepackage[version=4]{mhchem}
 \usepackage{siunitx}
+\usepackage[super]{nth}
 \usepackage{pbox}
 \usepackage{longtable,tabularx}
 \setlength\LTleft{0pt} 
@@ -70,35 +71,33 @@ For example, the skin of the X-15 regularly saw temperatures
 as high as 1220$^{\circ}$ F
 during its flights up to 6.7 Ma
 \cite{ kordes_structureal_heating_experiencs_on_the_x15_airplane}.
+This temperature is greater than the solidus 
+temperature of typical aluminum alloys used in aircraft design
+\cite{ SAE_metals_and_alloys_in_the_unified_numbering_system}
+and within the range where creep has been observed for 
+high temperature titanium alloys 
+\cite{evans_effects_of_alpha_case_formation_on_creep_fracture_properties_of_the_high_temperature_titanium_alloy_IMI834}.
+
+
 The skin of a high speed vehicle must support both
 the aerodynamic tractions and heating during flight.
-Recent interest in reusable vehicles now requires
+Recent interest in reusable vehicles requires
 the skin to endure multiple cycles of this loading
 \cite{
-  zuchowski_AVIATR_Predictive_capability_for_hypersonic_structural_response_and_life_prediction_phase_II,
-  lafontaine_effects_of_strain_hardeing_on_response_of_skin_panels_in_hypersonic_flow,
   walker_falcon_htv_3X_a_resuable_hypersonic_test_bed,
-  eason_structures_perspective_on_the_challenges_associated_with_analyzing_reuasble_hypersonic_platform}.
-
+  eason_structures_perspective_on_the_challenges_associated_with_analyzing_reuasble_hypersonic_platform,
+  zuchowski_AVIATR_Predictive_capability_for_hypersonic_structural_response_and_life_prediction_phase_II,
+  lafontaine_effects_of_strain_hardeing_on_response_of_skin_panels_in_hypersonic_flow}.
 The skin panels are typically designed as thin face plates supported 
 by stiffeners 
 \cite{
   mcnamara_aeroelastic_and_aerothermoelastic_analysis_in_hypersonic_flow_past_present_and_future}.
-The face plate of and stiffeners of the panel 
+The face plate and stiffeners of the panel 
 can be made of materials on the order
 of hundredth of inch thick
 \cite{
   plews_a_two_scale_generalized_finite_element_approach_for_modeling_localized_thermoplasticity,
   zuchowski_AVIATR_Predictive_capability_for_hypersonic_structural_response_and_life_prediction_phase_II}.
-
-A study by LaFontaine et al.
-\cite{
-  lafontaine_effects_of_strain_hardeing_on_response_of_skin_panels_in_hypersonic_flow}
-investigated the effects of accumulated 
-plastic strain of a panel in high speed flow.
-
-
-
 The panels are compliant and can exhibit combinations of
 inertia dominate flapping or thermally dominate buckling
 \cite{
@@ -115,6 +114,39 @@ of panels in high speed flow
   lafontaine_effects_of_strain_hardeing_on_response_of_skin_panels_in_hypersonic_flow}.
 
 
+A study by LaFontaine et al.
+\cite{
+  lafontaine_effects_of_strain_hardeing_on_response_of_skin_panels_in_hypersonic_flow}
+investigated the effects of accumulated 
+plastic strain and permanent set of a panel in high speed flow.
+The panel material in this study was modeled with an additive 
+strain decomposition, a Chaboche kinematic hardening model,
+and a $J_2$ flow rule. 
+The panel interaction with the flow was modeled through
+Eckert's reference enthalpy method 
+\cite{
+  eckert_engineering_relations_for_heat_transfer_and_friction_in_high_velocity_laminar_and_turbulent_flow}
+and \nth{3} order piston theory
+\cite{
+meijer_generalized_formulation_and_review_of_piston_theory_for_airfoils}.
+It was found that by including plasticity, 
+the behavior of the panel changed after four loading cycles 
+as compared to an otherwise equivalent linearly elastic panel;
+each cycle represented one ten second flight.
+
+This study investigates the role creep and plasticity play 
+in the permanent deformation of a panel under repeated high speed flight.
+The amount of deformation of a body undergoes due to creep increases 
+with both time and temperature
+\cite{roylance_mechanics_of_materials_text}. 
+Plasticity through a von Mises yield surface is also modeled;
+a multiplicatively decomposed version is used to allow for 
+possible large strains.
+The details of the model and implementation used are
+discussed in 
+\cite{ li_simulation_of_finite_strain_inelastic_phenomena_governed_by_creep_and_plasticity}.
+\newline
+\newline
 Note to the reviewers: A more extensive review of the 
 state of the art will be included in the 
 final manuscript.
