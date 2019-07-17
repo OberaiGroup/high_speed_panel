@@ -25,7 +25,7 @@
 \setlength\LTleft{0pt} 
 
 \title{ Deformation Modeled with  Creep and Multiplicatively-Decomposed Plasticity
-        of a Panel in High Speed Flow}
+        of a Panel in Repeated High Speed Flow}
       
 
 \author{Justin L. Clough%
@@ -58,43 +58,61 @@ Ma & Mach number
 \section{Introduction}
 % Outline:
 % - Overview of hypersonic structures
+%   - Emph: re-usability
 % - What is high speed flow? Characteristics
 % - When does and doesn't inertia matter?
 % - When does large strain matter?
 % - What is creep/ Norton creep?
 
-The skin of a high speed vehicle must support both
-the aerodynamic tractions and heating during flight;
-it is typically designed as a thin face plate supported 
-by stiffeners 
-\cite{
-  mcnamara_aeroelastic_and_aerothermoelastic_analysis_in_hypersonic_flow_past_present_and_future, 
-  riley_interaction_between_aerothermally_compliant_structures_and_boudnary_layer_transition_in_hypersonic_flow,
-  spottswood_exploring_the_response_of_a_thin_flexible_panel,
-  thornton_coupled_flow_thermal_and_structural_analysis_of_aerodynamically_heated_panels,
-  savino_aerothermodynamic_study_of_ultrahigh_termperature_cermaic_winglet_for_atmospheric_reentry_test}.
-Some examples of typical panel stiffener geometries are
-shown in Figure \ref{fig_example_stiffener_geoms} from 
-\cite{
-  zuchowski_AVIATR_Predictive_capability_for_hypersonic_structural_response_and_life_prediction_phase_II}.
-
-\begin{figure}[H] 
-  \centering
-    \includegraphics[width=0.95\textwidth, keepaspectratio]
-    {example_stiffener_geoms}
-  \caption{ 
-          Geometry of stiffener options of typical panels for high speed vehicles.
-            Adapted from \cite{
-  zuchowski_AVIATR_Predictive_capability_for_hypersonic_structural_response_and_life_prediction_phase_II}.
-          }
-  \label{fig_example_stiffener_geoms}
-\end{figure}
-
-High speed flow over a vehicle creates a harsh environment.
+High speed flow over a vehicle creates a harsh environment for 
+the vehicle structure.
 For example, the skin of the X-15 regularly saw temperatures
 as high as 1220$^{\circ}$ F
-during its flights up to 6.7 Ma.
+during its flights up to 6.7 Ma
 \cite{ kordes_structureal_heating_experiencs_on_the_x15_airplane}.
+The skin of a high speed vehicle must support both
+the aerodynamic tractions and heating during flight.
+Recent interest in reusable vehicles now requires
+the skin to endure multiple cycles of this loading
+\cite{
+  zuchowski_AVIATR_Predictive_capability_for_hypersonic_structural_response_and_life_prediction_phase_II,
+  lafontaine_effects_of_strain_hardeing_on_response_of_skin_panels_in_hypersonic_flow,
+  walker_falcon_htv_3X_a_resuable_hypersonic_test_bed,
+  eason_structures_perspective_on_the_challenges_associated_with_analyzing_reuasble_hypersonic_platform}.
+
+The skin panels are typically designed as thin face plates supported 
+by stiffeners 
+\cite{
+  mcnamara_aeroelastic_and_aerothermoelastic_analysis_in_hypersonic_flow_past_present_and_future}.
+The face plate of and stiffeners of the panel 
+can be made of materials on the order
+of hundredth of inch thick
+\cite{
+  plews_a_two_scale_generalized_finite_element_approach_for_modeling_localized_thermoplasticity,
+  zuchowski_AVIATR_Predictive_capability_for_hypersonic_structural_response_and_life_prediction_phase_II}.
+
+A study by LaFontaine et al.
+\cite{
+  lafontaine_effects_of_strain_hardeing_on_response_of_skin_panels_in_hypersonic_flow}
+investigated the effects of accumulated 
+plastic strain of a panel in high speed flow.
+
+
+
+The panels are compliant and can exhibit combinations of
+inertia dominate flapping or thermally dominate buckling
+\cite{
+  thornton_coupled_flow_thermal_and_structural_analysis_of_aerodynamically_heated_panels,
+  mei_review_of_nonlinear_panel_flutter_at_supersonic_and_hypersonic_speeds}.
+Much work has been done to investigate the fluttering 
+of panels in high speed flow
+\cite{
+  mcnamara_aeroelastic_and_aerothermoelastic_analysis_in_hypersonic_flow_past_present_and_future,
+  riley_interaction_between_aerothermally_compliant_structures_and_boudnary_layer_transition_in_hypersonic_flow,
+  spottswood_exploring_the_response_of_a_thin_flexible_panel,
+  savino_aerothermodynamic_study_of_ultrahigh_termperature_cermaic_winglet_for_atmospheric_reentry_test,
+  nydick_hypersonic_panel_flutter_studies_on_cruved_panels,
+  lafontaine_effects_of_strain_hardeing_on_response_of_skin_panels_in_hypersonic_flow}.
 
 
 Note to the reviewers: A more extensive review of the 
@@ -103,31 +121,14 @@ final manuscript.
 
 \section{Methods} \label{sec_methods}
 % outline:
-%  - Panel geometry
-%  - Multi materials -> Ti6242, Al 7075 (like McNamara)
-%  - Creep + Plasticity
-%  - Loading? Historical temperature?
+%  - Panel geometry used
+%  - Explain Creep + Plasticity from Zhen's model
+%  - Loading: Repeated historical temperature
+%  - Compare results to literature
+
 The goal of this study is to model the large creep deformation a canonical acreage
-panel due to the thermal loads experience from a high speed flight.
+panel due to the thermal loads experienced from repeated high speed flight.
 
-
-
-The geometry of the panel considered for this study is borrowed from
-\cite{ 
-  plews_a_two_scale_generalized_finite_element_approach_for_modeling_localized_thermoplasticity}.
-An image of this is shown in Figure \ref{fig_plews_panel_geom}.
-
-\begin{figure}[H] 
-  \centering
-    \includegraphics[width=0.95\textwidth, keepaspectratio]
-    {plews_panel_geom}
-  \caption{ Geometry of the acreage panel of interest. 
-            All dimensions in inches.
-            Adapted from \cite{
-    plews_a_two_scale_generalized_finite_element_approach_for_modeling_localized_thermoplasticity}.
-          }
-  \label{fig_plews_panel_geom}
-\end{figure}
 
 % \section{Discussion and Closing Remarks} \label{sec_closing_remarks}
 % discussion text
