@@ -34,14 +34,28 @@
           PhD Student, 
           justin.clough1@gmail.com,
           Aerospace and Mechanical Engineering Department, 
-          854 Downey Way, RRB 101.}
-        and Assad A. Oberai%
+          854 Downey Way, RRB 101.}}
+\affil{University of Southern California,
+       Los Angeles, CA, 90089}
+
+\author{Jose A. Camberos%
+        \footnote{
+          Team Lead, %TODO: check offical title
+          Air Force Research Laboratory, AFRL/RQ
+          Bldg. 45, 2130 Eighth Street,
+          Wright-Patterson AFB, OH 45433,
+          AIAA MEMBERSHIP LEVEL?.}} % TODO: check membership level
+\affil{AFRL/RQHV, Wright-Patterson AFB,
+       Dayton, OH, 45433}
+
+\author{Assad A. Oberai%
         \footnote{  
           Professor, 
           Aerospace and Mechanical Engineering Department, 
           854 Downey Way, RRB 101.}}
 \affil{University of Southern California,
        Los Angeles, CA, 90089}
+
 \begin{document}
 \maketitle
 
@@ -53,7 +67,25 @@ abstract text
 
 {\renewcommand\arraystretch{1.0}
 \noindent\begin{longtable*}{@{}l @{\quad=\quad} l@{}}
-Ma & Mach number
+$\bar{A}$    & Relaxation rate\\
+$c_1$        & Stress Exponent\\
+$E$          & Young's Modulus \\
+$F$          & Deformation gradient\\
+$J$          & Ratio of volumetric change\\
+Ma           & Mach number\\
+$Q$          & Activation energy\\
+$R$          & Universal gas constant\\
+$t$          & Time\\
+$t_{ss}$     & Steady state time\\
+$\alpha$     & Coefficient of thermal expansion\\
+$\epsilon^T$ & Total strain\\
+$\epsilon^e$ & Elastic strain\\
+$\epsilon^c$ & Creep strain\\
+$\sigma$     & Cauchy stress\\
+$\sigma_0$   & Reference stress\\
+$\tau$       & Kirchoff stress\\
+$\theta$     & Temperature\\
+$\theta_0$   & Initial temperature
 \end{longtable*}}
 
 \section{Introduction}
@@ -68,16 +100,21 @@ Ma & Mach number
 High speed flow over a vehicle creates a harsh environment for 
 the vehicle structure.
 For example, the skin of the X-15 regularly saw temperatures
-as high as 1220$^{\circ}$ F
+as high as 1220 $^{\circ}$F (933 K)
 during its flights up to 6.7 Ma
 \cite{ kordes_structureal_heating_experiencs_on_the_x15_airplane}.
-This temperature is greater than the solidus 
+A recent study by Culler et al. 
+\cite{ culler_impact_of_FTS_coupling_on_response_prediction_hypersonic_skin_panels}
+estimated temperatures exceeding 2500 $^\circ$F (1644 K) 
+on the skin of a conceptual high speed vehicle.
+These temperatures are greater than the solidus 
 temperature of typical aluminum alloys used in aircraft design
 \cite{ SAE_metals_and_alloys_in_the_unified_numbering_system}
 and within the range where creep has been observed for 
 high temperature titanium alloys 
-\cite{evans_effects_of_alpha_case_formation_on_creep_fracture_properties_of_the_high_temperature_titanium_alloy_IMI834}.
-
+\cite{
+  evans_effects_of_alpha_case_formation_on_creep_fracture_properties_of_the_high_temperature_titanium_alloy_IMI834,
+  lavina_creep_behavior_of_Ti6Al4V_from_450C_to_600C}.
 
 The skin of a high speed vehicle must support both
 the aerodynamic tractions and heating during flight.
@@ -158,8 +195,216 @@ final manuscript.
 %  - Loading: Repeated historical temperature
 %  - Compare results to literature
 
-The goal of this study is to model the large creep deformation a canonical acreage
+The goal of this study is to model the large creep deformation of a canonical acreage
 panel due to the thermal loads experienced from repeated high speed flight.
+As an approximation of the expected creep strain,
+a bar that is fixed on both ends is considered as it 
+undergoes a relevant temperature history.
+This bar represents one strip of skin paneling from 
+a high speed vehicle.
+
+The bar starts at temperature $\theta_0$ at a stress free state. 
+A uniform temperature $\theta(t)$ is prescribed everywhere.
+The total strain is:
+
+\begin{equation}
+\epsilon^T = \epsilon^e + \epsilon^c
+\end{equation}
+
+\noindent
+with $\epsilon^T$ as the total strain,
+$\epsilon^e$ as the elastic strain,
+and
+$\epsilon^c$ as the creep strain.
+The total deflection (and strain) of the bar must be zero as it 
+is fixed on both ends:
+
+\begin{align}
+\epsilon^T &= \epsilon^e + \epsilon^c = 0 \\
+\Rightarrow
+  \epsilon^e &= -\epsilon^c 
+\end{align}
+
+The stress from temperature change is approximated by:
+
+\begin{equation}
+\sigma = E \left( \epsilon^e + \alpha (\theta(t) - \theta_0) \right)
+\end{equation}
+
+\noindent
+with $\sigma$ as the Cauchy stress, 
+$\alpha$ as the Coefficient of Thermal Expansion (CTE),
+and 
+$E$ as Young's modulus of the material.
+Substituting for the strain relation gives:
+
+\begin{equation}
+\sigma = E \left( \alpha (\theta(t) - \theta_0) - \epsilon^c) \right) 
+\end{equation}
+
+Next, it is assumed that there is no volume change over time.
+This is consistent with the fixed boundary condition at 
+each end of the bar.
+This allows the Kirchoff stress to be equivalent to the Cauchy stress:
+
+\begin{align}
+\tau &= J \sigma \\
+\Rightarrow
+  \tau &= \sigma
+\end{align}
+
+\noindent
+where $\tau$ is the Kirchoff stress,
+$J=\det(F)$,
+and $F$ is the deformation gradient.
+The creep strain rate, as outlined in 
+\cite{ li_simulation_of_finite_strain_inelastic_phenomena_governed_by_creep_and_plasticity},
+is:
+
+\begin{equation}
+\dot{\epsilon^c} = \bar{A} e^{\frac{-Q}{R \theta}} \left( \frac{\tau}{\sigma_0} \right)^{c_1}
+\end{equation}
+
+\noindent
+with $\bar{A}$ as the relaxation rate,
+$Q$ as the activation energy,
+$R$ is the universal gas constant,
+$\sigma_0$ is a reference stress,
+and
+$c_1$ is the stress exponent.
+Plugging in for the Kirchoff stress:
+
+\begin{equation} \label{eq_creep_ode}
+\dot{\epsilon^c} = \bar{A} e^{\frac{-Q}{R \theta(t)}} 
+    \left( \frac{E ( \alpha (\theta(t) - \theta_0) - \epsilon^c)}{\sigma_0} \right)^{c_1}
+\end{equation}
+
+This is the ODE of the creep strain driven by the temperature change.
+Material properties for titanium alloy Ti6Al4V were then estimated from
+Lavina et al. \cite{ lavina_creep_behavior_of_Ti6Al4V_from_450C_to_600C}
+for creep parameters and from \cite{
+boyer_materials_properties_handbook_titanium_alloys}
+for the Young's modulus and the CTE of the material.
+For this unit set the universal gas constant is 8.3145 J/(Mol$\cdot$K)
+and the relaxation parameter, $\bar{A}$, was taken as 1 with units of per second.
+The material parameters used are shown in Table \ref{tab_material_properties}.
+
+\begin{table}[H]
+  \centering
+  \caption{
+    Material properties used for Ti6Al4V.
+    Data from 
+    \cite{ lavina_creep_behavior_of_Ti6Al4V_from_450C_to_600C,
+      boyer_materials_properties_handbook_titanium_alloys}.}
+  \begin{tabular}{|c|c|c|}
+    \hline
+    Variable & Value & Units  \\
+    \hline
+    $\sigma_0$ & 18.7  & MPa    \\
+    $Q$      & 251     & kJ/Mol \\
+    $c_1$    & 12.5    & 1      \\
+    $E$      & 113.8   & GPa    \\
+    $\alpha$ & 9.7E-6  & 1/K    \\
+    \hline
+  \end{tabular}
+  \label{tab_material_properties}
+\end{table}
+
+
+The initial and prescribed temperatures are borrowed from 
+\cite{ culler_impact_of_FTS_coupling_on_response_prediction_hypersonic_skin_panels}.
+In this study, the transient thermo mechanical response of a panel from the 
+surface of a representative concept vehicle is simulated with a coupled framework.
+The initial temperature is 70 $^{\circ}$F and a steady state temperature 
+of 2750 $^{\circ}$F is achieved after the first 25 seconds of flight.
+Note that the vehicle is assumed to start at its cruising speed of 12 Ma.
+Incorporating into the bar problem (after converting to Kelvin) 
+gives $\theta_0 = 294 K$ and:
+
+\begin{equation}
+\theta(t) = \begin{cases}
+ \theta_0 + (59.65 \text{K/s})t & t < t_{ss} \\
+1783 K                          & t\geq t_{ss}
+\end{cases}
+\end{equation}
+
+\noindent
+with $t_{ss}$ as the steady state time of 25 seconds.
+This equates to a linear increase in temperature from 
+$\theta_0$ at zero seconds to 1783 K at $t_{ss}$.
+This temperature is then held constant.
+For reference, a measure of the ``activation temperature'' 
+$\left(\frac{Q}{R}\right)$ is 3019 K.
+
+The ODE in Eq \ref{eq_creep_ode} was solved over a time period to represent a
+vehicle's total flight time.
+Based on the X-15, flights with an average of 10 minutes each 
+\cite{ kordes_structureal_heating_experiencs_on_the_x15_airplane}
+were considered.
+Only one flight was considered giving a total time of 600 seconds.
+The creep strain during this single flight is shown in Figure
+\ref{fig_creep_strain}.
+A focused view on the first 50 seconds of flight is shown 
+in Figure \ref{fig_focused_creep_strain}.
+Note the estimated thermal strain is 1.4\%.
+
+\begin{figure}[H]
+  \centering
+    \begin{tikzpicture}
+      \begin{axis}[
+        legend pos=outer north east,
+        legend cell align={left},
+        grid=both,
+        grid style={line width=.1pt, draw=gray!10},
+        major grid style={line width=.2pt,draw=gray!50},
+        xtick={},
+        ytick={},
+        minor tick num=5,
+        xlabel=Time (s),
+        title=Creep Strain from One Flight,
+        ylabel={Creep Strain (\%)} 
+        ]
+        \addplot table {data/solution.txt};
+      \end{axis}
+    \end{tikzpicture}
+  \caption{ Creep strain over time.}
+  \label{fig_creep_strain}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+    \begin{tikzpicture}
+      \begin{axis}[
+        legend pos=outer north east,
+        legend cell align={left},
+        grid=both,
+        grid style={line width=.1pt, draw=gray!10},
+        major grid style={line width=.2pt,draw=gray!50},
+        xtick={},
+        ytick={},
+        minor tick num=5,
+        xlabel=Time (s),
+        title=Creep Strain over First 50 Seconds of Flight,
+        ylabel={Creep Strain (\%) } 
+        ]
+        \addplot table {data/focused_solution.txt};
+      \end{axis}
+    \end{tikzpicture}
+  \caption{ Creep strain over time.}
+  \label{fig_focused_creep_strain}
+\end{figure}
+
+As shown in Figures \ref{fig_creep_strain}
+and \ref{fig_focused_creep_strain}, the creep strain in the bar 
+grows to match that from the thermal strain. 
+The creep strain reaches an approximate steady state 
+at 25 seconds into the flight. 
+This matches the time when the temperature also reaches
+its steady state value.
+The value of the creep strain does not start noticeable increasing
+until approximately 7 seconds into the flight.
+This corresponds to a temperature of 714 K.
+
 
 
 % \section{Discussion and Closing Remarks} \label{sec_closing_remarks}
