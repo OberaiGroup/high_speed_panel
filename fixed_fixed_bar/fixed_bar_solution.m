@@ -42,6 +42,6 @@ strain_rate=@(e_c,t) (exp(-Q/(R*temperature(t, T_0, T_f, t_ss, t_flight))) *( st
 t = linspace( t_0, t_f, nt);
 [e_c_sol] = lsode( strain_rate, e_0, t);
 
-solution = [e_c_sol, t'];
+solution = [t', e_c_sol];
 dlmwrite( "data/solution.txt", solution, "delimiter", " ");
 
