@@ -58,6 +58,7 @@ The stress from temperature change is:
 
 \noindent
 with $\sigma$ as the Cauchy stress, 
+$\alpha$ as the Coefficient of Thermal Expansion (CTE),
 and 
 $E$ as Young's modulus of the material.
 Substituting in for the strain relation gives:
@@ -95,9 +96,47 @@ $c_1$ is the stress exponent.
 Plugging in for the Kirchoff stress:
 
 \begin{equation}
-\dot{\epsilon^c} = \bar{A} e^{\frac{-Q}{R \theta(t)}} \left( \frac{E ( \alpha \theta(t) - \epsilon^c)}{\sigma_0} \right)^{c_1}
+\dot{\epsilon^c} = \bar{A} e^{\frac{-Q}{R \theta(t)}} \left( \frac{E ( \alpha (\theta(t) - \theta_0) - \epsilon^c)}{\sigma_0} \right)^{c_1}
 \end{equation}
 
-The is the ODE of the creep strain driven by the temperature change.
+This is the ODE of the creep strain driven by the temperature change.
+
+Material properties for titanium alloy Ti6Al4V are then estimated from
+Lavina et al. \cite{ lavina_creep_behavior_of_Ti6Al4V_from_450C_to_600C}
+for creep parameters and \cite{
+boyer_materials_properties_handbook_titanium_alloys}
+for the Young's modulus and the CTE of the material:
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+Variable & Value & Units & Reference \\
+\hline
+$\sigma_0$ & 18.7  & MPa   & \cite{lavina_creep_behavior_of_Ti6Al4V_from_450C_to_600C} \\
+$Q$      & 251     & kJ/Mol& \cite{lavina_creep_behavior_of_Ti6Al4V_from_450C_to_600C} \\
+$c_1$    & 12.5    & 1     & \cite{lavina_creep_behavior_of_Ti6Al4V_from_450C_to_600C} \\
+$E$      & 113.8   & GPa   & \cite{ boyer_materials_properties_handbook_titanium_alloys} \\
+$\alpha$ & 9.7E-6  & 1/K   & \cite{ boyer_materials_properties_handbook_titanium_alloys} \\
+\hline
+\end{tabular}
+\end{center}
+
+For this unit set the universal gas constant is 8.3145 J/(Mol$\cdot$K)
+and the relaxation parameter, $\bar{A}$ was taken as 1 with units of per second.
+
+The initial and prescribed temperatures are borrowed from 
+\cite{ culler_impact_of_FTS_coupling_on_response_prediction_hypersonic_skin_panels}.
+In this study, the transient thermo mechanical response of a panel from the 
+surface of a representative concept vehicle is simulated with a coupled framework.
+The initial temperature is 70 $^{\circ}$F and a steady state temperature 
+of 2750 $^{\circ}$F is achieved after the first 25 seconds of flight.
+Incorporating into the bar problem (after converting to Kelvin) 
+gives $\theta_0 = 294 K$ and $\theta(t) = 1783 K$.
+For reference, a measure of the ``activation temperature'' 
+$\frac{Q}{R}$ is 3019 K.
+
+\newpage
+\bibliography{monolith.bib}
 
 \end{document}
+
