@@ -95,7 +95,7 @@ and
 $c_1$ is the stress exponent.
 Plugging in for the Kirchoff stress:
 
-\begin{equation}
+\begin{equation} \label{eq_creep_ode}
 \dot{\epsilon^c} = \bar{A} e^{\frac{-Q}{R \theta(t)}} \left( \frac{E ( \alpha (\theta(t) - \theta_0) - \epsilon^c)}{\sigma_0} \right)^{c_1}
 \end{equation}
 
@@ -103,7 +103,7 @@ This is the ODE of the creep strain driven by the temperature change.
 
 Material properties for titanium alloy Ti6Al4V are then estimated from
 Lavina et al. \cite{ lavina_creep_behavior_of_Ti6Al4V_from_450C_to_600C}
-for creep parameters and \cite{
+for creep parameters and from \cite{
 boyer_materials_properties_handbook_titanium_alloys}
 for the Young's modulus and the CTE of the material:
 
@@ -122,7 +122,7 @@ $\alpha$ & 9.7E-6  & 1/K   & \cite{ boyer_materials_properties_handbook_titanium
 \end{center}
 
 For this unit set the universal gas constant is 8.3145 J/(Mol$\cdot$K)
-and the relaxation parameter, $\bar{A}$ was taken as 1 with units of per second.
+and the relaxation parameter, $\bar{A}$, was taken as 1 with units of per second.
 
 The initial and prescribed temperatures are borrowed from 
 \cite{ culler_impact_of_FTS_coupling_on_response_prediction_hypersonic_skin_panels}.
@@ -130,10 +130,91 @@ In this study, the transient thermo mechanical response of a panel from the
 surface of a representative concept vehicle is simulated with a coupled framework.
 The initial temperature is 70 $^{\circ}$F and a steady state temperature 
 of 2750 $^{\circ}$F is achieved after the first 25 seconds of flight.
+Note that the vehicle is assumed to start at its cruising speed of 12 Ma.
 Incorporating into the bar problem (after converting to Kelvin) 
-gives $\theta_0 = 294 K$ and $\theta(t) = 1783 K$.
+gives $\theta_0 = 294 K$ and:
+
+\begin{equation}
+\theta(t) = \begin{cases}
+ \theta_0 + (59.65 \text{K/s})t & t < t_{ss} \\
+1783 K                          & t\geq t_{ss}
+\end{cases}
+\end{equation}
+
+\noindent
+with $t_{ss}$ as the steady state time of 25 seconds.
+This equates to a linear increase in temperature from 
+$\theta_0$ at zero seconds to 1783 K at $t_{ss}$.
+This temperature is then held constant.
 For reference, a measure of the ``activation temperature'' 
-$\frac{Q}{R}$ is 3019 K.
+$\left(\frac{Q}{R}\right)$ is 3019 K.
+
+The ODE in Eq \ref{eq_creep_ode} was solved over a time period to represent a
+vehicle's total flight time.
+Based on the X-15, flights with an average of 10 minutes each 
+\cite{ kordes_structureal_heating_experiencs_on_the_x15_airplane}
+were considered.
+Only one flight was considered giving a total time of 600 seconds.
+The creep strain during this single flight is shown in Figure
+\ref{fig_creep_strain}.
+A focused view on the first 50 seconds of flight is shown 
+in Figure \ref{fig_focused_creep_strain}.
+Note the estimated thermal strain is 1.4\%.
+
+\begin{figure}[H]
+  \centering
+    \begin{tikzpicture}
+      \begin{axis}[
+        legend pos=outer north east,
+        legend cell align={left},
+        grid=both,
+        grid style={line width=.1pt, draw=gray!10},
+        major grid style={line width=.2pt,draw=gray!50},
+        xtick={},
+        ytick={},
+        minor tick num=5,
+        xlabel=Time (s),
+        title=Creep Strain from One Flight,
+        ylabel={Creep Strain (\%)} 
+        ]
+        \addplot table {data/solution.txt};
+      \end{axis}
+    \end{tikzpicture}
+  \caption{ Creep strain over time.}
+  \label{fig_creep_strain}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+    \begin{tikzpicture}
+      \begin{axis}[
+        legend pos=outer north east,
+        legend cell align={left},
+        grid=both,
+        grid style={line width=.1pt, draw=gray!10},
+        major grid style={line width=.2pt,draw=gray!50},
+        xtick={},
+        ytick={},
+        minor tick num=5,
+        xlabel=Time (s),
+        title=Creep Strain over First 50 Seconds of Flight,
+        ylabel={Creep Strain (\%) } 
+        ]
+        \addplot table {data/focused_solution.txt};
+      \end{axis}
+    \end{tikzpicture}
+  \caption{ Creep strain over time.}
+  \label{fig_focused_creep_strain}
+\end{figure}
+
+As shown in Figures \ref{fig_creep_strain}
+and \ref{fig_focused_creep_strain}, the creep strain in the bar 
+grows to match that from the thermal strain. 
+The creep strain reaches an approximate steady state 
+at 25 seconds into the flight. 
+This matches the time when the temperature also reaches
+its stead state value.
+
 
 \newpage
 \bibliography{monolith.bib}
