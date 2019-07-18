@@ -1,0 +1,103 @@
+\documentclass[conf]{new-aiaa}
+
+\usepackage{float}
+\usepackage{subfigure}
+\usepackage[justification=centering]{caption}
+\usepackage{multirow} \usepackage{graphicx}
+\graphicspath{ {./images/} }
+\usepackage{nameref}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage[linesnumbered,ruled]{algorithm2e}
+\usepackage{tikz}
+\usetikzlibrary{calc,patterns,decorations.pathmorphing,decorations.markings,positioning,automata,shapes,arrows}
+\tikzstyle{block} = [rectangle, draw, text width=3.5cm]
+\tikzstyle{line} = [draw, -latex']
+\usepackage{pgfplots}
+\usepgfplotslibrary{colormaps,external}
+\usepackage{ulem}
+\usepackage{verbatim}
+\usepackage[version=4]{mhchem}
+\usepackage{siunitx}
+\usepackage[super]{nth}
+\usepackage{pbox}
+\usepackage{longtable,tabularx}
+\setlength\LTleft{0pt} 
+
+\begin{document}
+
+Consider a bar of length $L$ fixed on both ends.
+It starts at temperature $\theta_0$ at a stress free state. 
+A uniform temperature $\theta(t)$ is prescribed everywhere.
+The total strain is:
+
+\begin{equation}
+\epsilon^T = \epsilon^e + \epsilon^c
+\end{equation}
+
+\noindent
+with $\epsilon^T$ as the total strain,
+$\epsilon^e$ as the elastic strain,
+and
+$\epsilon^c$ as the creep strain.
+The total deflection (and strain) of the bar must be zero as it 
+is fixed on both ends:
+
+\begin{align}
+\epsilon^T &= \epsilon^e + \epsilon^c = 0 \\
+\Rightarrow
+  \epsilon^e &= -\epsilon^c 
+\end{align}
+
+The stress from temperature change is:
+
+\begin{equation}
+\sigma = E \left( \epsilon^e + \alpha (\theta(t) - \theta_0) \right)
+\end{equation}
+
+\noindent
+with $\sigma$ as the Cauchy stress, 
+and 
+$E$ as Young's modulus of the material.
+Substituting in for the strain relation gives:
+
+\begin{equation}
+\sigma = E \left( \alpha (\theta(t) - \theta_0) - \epsilon^c) \right) 
+\end{equation}
+
+Assuming there is no volume change such that:
+
+\begin{align}
+\tau &= J \sigma \\
+\Rightarrow
+  \tau &= \sigma
+\end{align}
+
+\noindent
+where $\tau$ is the Kirchoff stress,
+$J=\det(F)$,
+and $F$ is the deformation gradient.
+
+The creep strain rate is:
+
+\begin{equation}
+\dot{\epsilon^c} = \bar{A} e^{\frac{-Q}{R \theta}} \left( \frac{\tau}{\sigma_0} \right)^{c_1}
+\end{equation}
+
+\noindent
+with $\bar{A}$ as the relaxation rate,
+$Q$ as the activation energy,
+$R$ is the universal gas constant,
+$\sigma_0$ is a reference stress,
+and
+$c_1$ is the stress exponent.
+Plugging in for the Kirchoff stress:
+
+\begin{equation}
+\dot{\epsilon^c} = \bar{A} e^{\frac{-Q}{R \theta(t)}} \left( \frac{E ( \alpha \theta(t) - \epsilon^c)}{\sigma_0} \right)^{c_1}
+\end{equation}
+
+The is the ODE of the creep strain driven by the temperature change.
+
+\end{document}

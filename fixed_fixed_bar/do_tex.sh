@@ -1,0 +1,38 @@
+#!/bin/bash
+
+DIR=${PWD}
+
+ROOT_DIR=${HOME}/research/high_speed_panel/fixed_fixed_bar
+
+MY_PROJ_DIR=${ROOT_DIR}
+
+PROJ_TITLE=bar_writeup
+
+TEX_EXTENSION=.tex
+AUX_EXTENSION=.aux
+PDF_EXTENSION=.pdf
+
+WORKSPACE=${DIR}/workspace
+
+TARGET=${PROJ_TITLE}
+TARGET_DIR=${MY_PROJ_DIR}
+
+cd $WORKSPACE
+rm -r $WORKSPACE/*
+
+cd ${WORKSPACE}
+
+cp ${TARGET_DIR}/${TARGET}${TEX_EXTENSION} ${WORKSPACE}/${TARGET}${TEX_EXTENSION}
+
+LOCAL_TEX=${TARGET}${TEX_EXTENSION}
+LOCAL_AUX=${TARGET}${AUX_EXTENSION}
+LOCAL_PDF=${TARGET}${PDF_EXTENSION}
+
+pdflatex $LOCAL_TEX
+bibtex   $LOCAL_AUX
+pdflatex $LOCAL_TEX
+pdflatex $LOCAL_TEX
+
+gio open ${LOCAL_PDF}
+
+cd ${DIR}
