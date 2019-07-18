@@ -11,6 +11,9 @@
 # The workspace in write_up
 **/write_up/workspace
 
+# Any workspace
+**/workspace
+
 # Any build directory
 **/build
 
