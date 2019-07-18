@@ -3,8 +3,10 @@
 DIR=${PWD}
 
 ROOT_DIR=${HOME}/research/high_speed_panel/fixed_fixed_bar
+BIB_DIR=bib
 
 MY_PROJ_DIR=${ROOT_DIR}
+MY_BIB_DIR=${ROOT_DIR}/${BIB_DIR}
 
 PROJ_TITLE=bar_writeup
 
@@ -20,6 +22,7 @@ TARGET_DIR=${MY_PROJ_DIR}
 cd $WORKSPACE
 rm -r $WORKSPACE/*
 
+cat $MY_BIB_DIR/*          >> ${WORKSPACE}/monolith.bib
 cd ${WORKSPACE}
 
 cp ${TARGET_DIR}/${TARGET}${TEX_EXTENSION} ${WORKSPACE}/${TARGET}${TEX_EXTENSION}
