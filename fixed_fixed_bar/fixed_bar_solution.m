@@ -17,7 +17,7 @@ T_f     = 1783;
 t_0 = 0.0;
 
 % Number of flights
-n_flight = 5;
+n_flight = 1;
 
 % Time to reach stead state temperature
 t_ss = 25.0;
@@ -26,9 +26,10 @@ t_ss = 25.0;
 t_flight = 10* 60;
 
 t_f = t_flight * n_flight;
+t_f_focused = 50;
 
 % Time step
-dt = 1.0;
+dt = 0.25;
 nt = (t_f-t_0)/dt;
 
 % Precompute some values
@@ -42,6 +43,12 @@ strain_rate=@(e_c,t) (exp(-Q/(R*temperature(t, T_0, T_f, t_ss, t_flight))) *( st
 t = linspace( t_0, t_f, nt);
 [e_c_sol] = lsode( strain_rate, e_0, t);
 
-solution = [t', e_c_sol];
+solution = [t', e_c_sol*100];
 dlmwrite( "data/solution.txt", solution, "delimiter", " ");
 
+
+nt = (t_f_focused-t_0)/dt;
+t = linspace( t_0, t_f_focused, nt);
+[e_c_sol] = lsode( strain_rate, e_0, t);
+solution = [t', e_c_sol*100];
+dlmwrite( "data/focused_solution.txt", solution, "delimiter", " ");
