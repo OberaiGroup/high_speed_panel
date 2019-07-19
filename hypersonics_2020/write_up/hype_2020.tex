@@ -77,6 +77,7 @@ $Q$          & Activation energy\\
 $R$          & Universal gas constant\\
 $t$          & Time\\
 $t_{ss}$     & Steady state time\\
+$t_{f}$      & Flight time \\
 $\alpha$     & Coefficient of thermal expansion\\
 $\epsilon^T$ & Total strain\\
 $\epsilon^e$ & Elastic strain\\
@@ -103,7 +104,7 @@ For example, the skin of the X-15 regularly saw temperatures
 as high as 1220 $^{\circ}$F (933 K)
 during its flights up to 6.7 Ma
 \cite{ kordes_structureal_heating_experiencs_on_the_x15_airplane}.
-A recent study by Culler et al. 
+A recent study by Culler et al.
 \cite{ culler_impact_of_FTS_coupling_on_response_prediction_hypersonic_skin_panels}
 estimated temperatures exceeding 2500 $^\circ$F (1644 K) 
 on the skin of a conceptual high speed vehicle.
@@ -354,7 +355,7 @@ A focused view on the first 50 seconds of flight is shown
 in Figure \ref{fig_takeoff_creep_strain}.
 A similar view of 250 seconds centered at the change in flights is 
 shown in Figure \ref{fig_touchdown_creep_strain}.
-The estimated thermal strain is 1.4443\%.
+The estimated thermal strain is 1.44\%.
 The prescribed temperature is shown in Figure \ref{fig_full_temperature}.
 
 \begin{figure}[H]
@@ -395,7 +396,8 @@ The prescribed temperature is shown in Figure \ref{fig_full_temperature}.
         minor tick num=5,
         xlabel=Time (s),
         title=Creep Strain from Repeated Flights,
-        ylabel={Creep Strain (\%)} 
+        ylabel={Creep Strain (\%%
+                )} 
         ]
         \addplot table {data/solution.txt};
       \end{axis}
@@ -419,7 +421,8 @@ The prescribed temperature is shown in Figure \ref{fig_full_temperature}.
         minor tick num=5,
         xlabel=Time (s),
         title=Creep Strain over First 50 Seconds of Flight,
-        ylabel={Creep Strain (\%) } 
+        ylabel={Creep Strain (\%%
+                  ) } 
         ]
         \addplot table {data/takeoff_solution.txt};
       \end{axis}
@@ -443,7 +446,8 @@ The prescribed temperature is shown in Figure \ref{fig_full_temperature}.
         minor tick num=5,
         xlabel=Time (s),
         title=Creep Strain during Cooling and Re-Heating,
-        ylabel={Creep Strain (\%) } 
+        ylabel={Creep Strain (\%%
+                ) } 
         ]
         \addplot table {data/touchdown_solution.txt};
       \end{axis}
@@ -463,6 +467,54 @@ The value of the creep strain does not start noticeable increasing
 until approximately 7 seconds into the flight;
 this corresponds to a temperature of 714 K.
 
+The creep strain stagnates and decreases during the cooling 
+and reheating phases, as shown in Figure \ref{fig_touchdown_creep_strain}.
+Before cooling begins (575 s), the creep strain steadily increases to 
+match that of the thermally induced strain.
+During the cooling phase (575 s to 600 s), the creep strain
+decreases slightly and stagnates. 
+The initial decrease is due to the thermal contraction of the material.
+The later stagnation due to the temperature dropping below the needed 
+threshold to activate creep, essentially ``freezing'' the material.
+The reheating phase (600 s to 625 s) first shows a decrease then rise in 
+the amount of creep stain.
+The decrease during reheating is due to the temperature surpassing the
+needed temperature to activate creep but causing a thermal strain
+lower than the creep strain.
+The later rise of creep strain in the reheating phase is due
+to the temperature being both great enough to activate creep
+and cause a thermal strain greater than the creep strain.
+After the reheating phase (625 s), the material behavior
+returns to show a creep strain slowly approaching the steady 
+thermal strain.
+
+This preliminary work shows that the creep mechanism plays an active role in the deformation 
+of high speed panels in flight.
+Additional work to be completed includes the following items:
+
+\begin{itemize}
+  \item Create a geometric estimation and discreization of a high speed panel.
+        A geometry based on the one used in 
+        \cite{ culler_impact_of_FTS_coupling_on_response_prediction_hypersonic_skin_panels}
+        will also be used in this study.
+  \item Evaluate the panel using the creep and plasticity model and implementaion presented in
+        \cite{ li_simulation_of_finite_strain_inelastic_phenomena_governed_by_creep_and_plasticity}.
+        A temperature history from 
+        \cite{ culler_impact_of_FTS_coupling_on_response_prediction_hypersonic_skin_panels}
+        will be prescribed throughout the panel. 
+        Multiple flight cycles of heating, cruise, and cooling will be used
+        to match historical and conceptual vehicles outlined in
+        \cite{ kordes_structureal_heating_experiencs_on_the_x15_airplane,
+               zuchowski_AVIATR_Predictive_capability_for_hypersonic_structural_response_and_life_prediction_phase_II}.
+  \item Compare the deformation and permanent set of the panel to that 
+        found by \cite{ culler_impact_of_FTS_coupling_on_response_prediction_hypersonic_skin_panels}.
+\end{itemize}
+
+\noindent
+The post-analysis will include plots the maximum creep strain, norms of stress, 
+and deflection throughout the panel and at points of interest over time. 
+Contour plots will also be made showing the total strain, stresses, and deflections
+of the panel at key points in time.
 
 
 % \section{Discussion and Closing Remarks} \label{sec_closing_remarks}
