@@ -33,7 +33,8 @@
           PhD Student, 
           justin.clough1@gmail.com,
           Aerospace and Mechanical Engineering Department, 
-          854 Downey Way, RRB 101.}
+          854 Downey Way, RRB 101,
+          Student Member}
         and Assad A. Oberai%
         \footnote{  
           Professor, 
@@ -42,22 +43,26 @@
 \affil{University of Southern California,
        Los Angeles, CA, 90089}
 
-\author{Jose A. Camberos%
+\author{Jos\'e A. Camberos%
         \footnote{
-          Team Lead, %TODO: check offical title
+          Team Lead of Design of Aerospace Systems for Hypersonics, 
           Air Force Research Laboratory, AFRL/RQ
           Bldg. 45, 2130 Eighth Street,
           Wright-Patterson AFB, OH 45433,
-          Associate Member.
+          Associate Fellow.
           \newline
           \newline
-          DISTRIBUTION STATEMENT TEXT}} % TODO: check membership level
-\affil{AFRL/RQHV, Wright-Patterson AFB,
+          DISTRIBUTION STATEMENT TEXT}} 
+\affil{Air Force Research Laboratory, Wright-Patterson AFB,
        Dayton, OH, 45433}
 
 
 \begin{document}
 \maketitle
+
+%TODO: 
+% - lessen `to be` verbs and friends
+% - Add AIAA paper numbers where possible
 
 \begin{abstract}
 The surface skin panels of high speed vehicles can reach high 
@@ -124,7 +129,7 @@ High speed flow over a vehicle creates a harsh environment for
 the vehicle structure.
 For example, the skin of the X-15 regularly saw temperatures
 as high as 1220 $^{\circ}$F (933 K)
-during its flights up to 6.7 Ma
+during its flights up to Mach 6.7
 \cite{ kordes_structureal_heating_experiencs_on_the_x15_airplane}.
 A recent study by Culler et al.
 \cite{ culler_impact_of_FTS_coupling_on_response_prediction_hypersonic_skin_panels}
@@ -339,7 +344,7 @@ In this study, the transient thermo mechanical response of a panel from the
 surface of a representative concept vehicle is simulated with a coupled framework.
 The initial temperature is 70 $^{\circ}$F (294 K) and a steady state temperature 
 of 2750 $^{\circ}$F (1283 K) is achieved after the first 25 seconds of flight.
-Note that the vehicle is assumed to start at its cruising speed of 12 Ma
+Note that the vehicle is assumed to start at its cruising speed of Mach 12
 as done in \cite{ culler_impact_of_FTS_coupling_on_response_prediction_hypersonic_skin_panels}.
 Incorporating into the bar problem
 gives $\theta_0 = 294 K$ and:
@@ -393,7 +398,7 @@ The prescribed temperature is shown in Figure \ref{fig_full_temperature}.
         ytick={},
         minor tick num=5,
         xlabel=Time (s),
-        title=Temperature Prescribed over One Flight,
+        title=Temperature Prescribed over Two Flights,
         ylabel={Temperature (K)} 
         ]
         \addplot[red,mark=*] table {data/Temperature.txt};
