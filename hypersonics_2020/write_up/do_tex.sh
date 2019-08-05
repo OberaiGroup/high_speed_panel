@@ -44,6 +44,6 @@ bibtex   $LOCAL_AUX
 pdflatex $LOCAL_TEX
 pdflatex $LOCAL_TEX
 
-gio open ${LOCAL_PDF}
+gnome-open ${LOCAL_PDF}
 
 cd ${DIR}
