@@ -44,14 +44,43 @@ px_to_percent = Y_ref/y_dist_px;
 time  = X_px(4:end)*px_to_hr;
 creep = Y_px(4:end)*px_to_percent;
 
-figure 
-plot( time, creep, '+')
+% figure 
+% scatter( time, creep)
+% hold on
+% grid on
+% title( 'Data Directly from Figure 4 in Lavina et al.')
+% xlabel( 'Time [hr]')
+% ylabel( 'Creep Strain (%)')
+
+%% Linear regression
+
+% convert time from hours to seconds
+time = time * 3600;
+
+slope = time\creep;
+
+figure
+plot( time, slope*time)
 hold on
+scatter( time, creep)
 grid on
 title( 'Data Directly from Figure 4 in Lavina et al.')
 xlabel( 'Time [hr]')
 ylabel( 'Creep Strain (%)')
 
-%% Linear regression
 
+%% Estimate sigma_0
+Q       = 251E3;
+n       = 12.5;
+R       = 8.3145;
+T       = 873;
+sigma   = 200E6;
+A_bar   = 1;
+
+
+exponent = exp( -Q/(R*T));
+top      =  A_bar * exponent * sigma^n;
+
+sigma_0 = (top/slope)^(1/n)
+% sigma_0 = 22.73 MPa
 
