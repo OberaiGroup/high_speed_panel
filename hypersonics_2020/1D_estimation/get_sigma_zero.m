@@ -60,13 +60,14 @@ time = time * 3600;
 slope = time\creep;
 
 figure
-plot( time, slope*time)
-hold on
 scatter( time, creep)
+hold on
+plot( time, slope*time)
 grid on
-title( 'Data Directly from Figure 4 in Lavina et al.')
-xlabel( 'Time [hr]')
-ylabel( 'Creep Strain (%)')
+title( 'Creep Strain over Time')
+xlabel( 'Time [s]')
+ylabel( 'Creep Strain [%]')
+legend( 'Experimental Data (Lavina et al.)', 'Linear Regression')
 
 
 %% Estimate sigma_0
