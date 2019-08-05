@@ -1,7 +1,7 @@
 
 
 % Material parameters
-sigma_0 = 18.7E6;
+sigma_0 = 22.73E6;
 Q       = 251E3;
 n       = 12.5;
 E       = 113.8E9;
