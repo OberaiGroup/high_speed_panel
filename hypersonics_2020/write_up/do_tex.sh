@@ -23,8 +23,17 @@ WORKSPACE=${DIR}/workspace
 TARGET=${PROJ_TITLE}
 TARGET_DIR=${MY_PROJ_DIR}
 
+# Create workspace dir, destroy previous one if it exists
+if [ -d "$WORKSPACE" ]; then
+  echo ""
+  rm -vr $WORKSPACE
+  echo ""
+fi
+mkdir $WORKSPACE
+echo "Destroyed old $WORKSPACE, Created new one."
+echo ""
+
 cd $WORKSPACE
-rm -r $WORKSPACE/*
 
 cat $MY_BIB_DIR/*          >> ${WORKSPACE}/monolith.bib
 cp -r ${MY_DATA_DIR}          ${WORKSPACE}/${DATA_DIR}
