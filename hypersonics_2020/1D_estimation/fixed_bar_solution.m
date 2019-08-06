@@ -76,7 +76,7 @@ dlmwrite( "data/solution.txt", solution, "delimiter", " ");
 dlmwrite( "data/temperature.txt", temp_time, "delimiter", " ");
 
 % fudge factor to plot post-steady state results
-ff = 2;
+ff = 1.5;
 ff_td = 5;
 j = 1;
 if n_flight == 2
