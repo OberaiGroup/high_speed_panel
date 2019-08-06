@@ -61,6 +61,7 @@
 
 %TODO: 
 % - lessen `to be` verbs and friends
+% - update results section based on new sigma_0 results
 
 \begin{abstract}
 The surface skin panels of high speed vehicles can reach high 
@@ -157,7 +158,7 @@ by stiffeners
   mcnamara_aeroelastic_and_aerothermoelastic_analysis_in_hypersonic_flow_past_present_and_future}.
 The face plate and stiffeners of the panel 
 can be made of materials on the order
-of hundredth of inch thick
+of hundredth of an inch thick
 \cite{
   plews_a_two_scale_generalized_finite_element_approach_for_modeling_localized_thermoplasticity,
   zuchowski_AVIATR_Predictive_capability_for_hypersonic_structural_response_and_life_prediction_phase_II}.
@@ -191,26 +192,55 @@ Eckert's reference enthalpy method
   eckert_engineering_relations_for_heat_transfer_and_friction_in_high_velocity_laminar_and_turbulent_flow}
 and \nth{3} order piston theory
 \cite{
-meijer_generalized_formulation_and_review_of_piston_theory_for_airfoils}.
-It was found that by including plasticity, 
+  meijer_generalized_formulation_and_review_of_piston_theory_for_airfoils}.
+The study found that by including plasticity, 
 the behavior of the panel changed after four loading cycles 
 as compared to an otherwise equivalent linearly elastic panel;
 each cycle represented one ten second flight.
+Both the elastic and plastic panel originally showed a mix of 
+aeroelastic flutter with periods of thermal buckling. 
+After the third cycle, the plastic panel demonstrated only thermal
+buckling behavior.
 
-This study investigates the role creep and plasticity play 
+This study further investigates the role creep and plasticity play 
 in the permanent deformation of a panel under repeated high speed flight.
 The amount of deformation of a body undergoes due to creep increases 
 with both time and temperature
 \cite{roylance_mechanics_of_materials_text}. 
+Vehicle flight times are typically estimated on the order
+of tens of minutes 
+\cite{ 
+  kordes_structureal_heating_experiencs_on_the_x15_airplane,
+  lafontaine_effects_of_strain_hardeing_on_response_of_skin_panels_in_hypersonic_flow,
+  zuchowski_AVIATR_Predictive_capability_for_hypersonic_structural_response_and_life_prediction_phase_II}
+which is less than the timescale of hours that creep is 
+typically associated with 
+\cite{ 
+  lavina_creep_behavior_of_Ti6Al4V_from_450C_to_600C,
+  evans_effects_of_alpha_case_formation_on_creep_fracture_properties_of_the_high_temperature_titanium_alloy_IMI834,
+  roylance_mechanics_of_materials_text}.
+However, creep effects have been found to be significant on smaller timescales,
+on the order of tens of minutes,
+where large temperature fluctuations and gradients are found.
+An example of this is in flip-chip manufacturing 
+where silicon chips undergo a 150 K temperature change 
+in 15 minutes
+\cite{ 
+  li_simulation_of_finite_strain_inelastic_phenomena_governed_by_creep_and_plasticity}.
 Plasticity through a von Mises yield surface is also modeled;
 a multiplicatively decomposed version is used to allow for 
 possible large strains.
 The details of the model and implementation used are
 discussed in 
 \cite{ li_simulation_of_finite_strain_inelastic_phenomena_governed_by_creep_and_plasticity}.
+This extended abstract considers the creep strain of a one dimensional bar
+representing a strip of vehicle paneling.
+A uniform temperature is prescribed with heating rates and saturation 
+temperature based on recent literature estimates.
 \newline
 \newline
-Note to the reviewers: A more extensive review of the 
+\noindent
+\emph{Note to the reviewers:} A more extensive review of the 
 state of the art will be included in the 
 final manuscript.
 
@@ -265,6 +295,7 @@ Substituting for the strain relation gives:
 
 \begin{equation}
 \sigma = E \left( \alpha (\theta(t) - \theta_0) - \epsilon^c) \right) 
+\label{eq_cauchy_stress_final}
 \end{equation}
 
 Next, it is assumed that there is no volume change over time.
@@ -275,7 +306,7 @@ This allows the Kirchoff stress to be equivalent to the Cauchy stress:
 \begin{align}
 \tau &= J \sigma \\
 \Rightarrow
-  \tau &= \sigma
+  \tau &= \sigma \label{eq_cauchy_to_kirchoff}
 \end{align}
 
 \noindent
@@ -297,7 +328,8 @@ $R$ is the universal gas constant,
 $\sigma_0$ is a reference stress,
 and
 $c_1$ is the stress exponent.
-Plugging in for the Kirchoff stress:
+Evaluating for the Kirchoff stress as shown in Eq. \ref{eq_cauchy_stress_final} and \ref{eq_cauchy_to_kirchoff}
+then yields the following ODE.
 
 \begin{equation} \label{eq_creep_ode}
 \dot{\epsilon^c} = \bar{A} e^{\frac{-Q}{R \theta(t)}} 
@@ -325,7 +357,7 @@ The material parameters used are shown in Table \ref{tab_material_properties}.
     \hline
     Variable & Value & Units  \\
     \hline
-    $\sigma_0$ & 22.73  & MPa    \\
+    $\sigma_0$ & 22.7  & MPa    \\
     $Q$      & 251     & kJ/Mol \\
     $c_1$    & 12.5    & 1      \\
     $E$      & 113.8   & GPa    \\
