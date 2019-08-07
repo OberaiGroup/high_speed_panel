@@ -540,6 +540,7 @@ until approximately 7 seconds into the flight;
 this corresponds to a temperature of 714 K
 and thermal stress of 463.6 MPa.
 
+% TODO: Update this paragraph
 The creep strain stagnates and decreases during the cooling 
 and reheating phases, as shown in Figure \ref{fig_touchdown_creep_strain}.
 Before cooling begins (575 s), the creep strain steadily increases to 
@@ -560,6 +561,31 @@ and cause a thermal strain greater than the creep strain.
 After the reheating phase (625 s), the material behavior
 returns to show a creep strain slowly approaching the steady 
 thermal strain.
+
+% TODO: discuss this plot; comment that yield strength is 1.1 GPa (reached on cool down but not heat up)
+\begin{figure}[H]
+  \centering
+    \begin{tikzpicture}
+      \begin{axis}[
+        legend pos=outer north east,
+        legend cell align={left},
+        grid=both,
+        grid style={line width=.1pt, draw=gray!10},
+        major grid style={line width=.2pt,draw=gray!50},
+        xtick={},
+        ytick={},
+        yticklabel style={/pgf/number format/.cd, zerofill},
+        minor tick num=5,
+        xlabel=Time (s),
+        title=Stress During Two Flights,
+        ylabel={Stress [GPa] } 
+        ]
+        \addplot[black, thick] table {data/sig_ratio.txt};
+      \end{axis}
+    \end{tikzpicture}
+  \caption{ Stress within the bar throughout the two repeated flights.}
+  \label{fig_full_bar_stress}
+\end{figure}
 
 This preliminary work shows that the creep mechanism plays 
 an active role in the deformation of high speed panels in flight.
