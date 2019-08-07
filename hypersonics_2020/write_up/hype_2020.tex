@@ -426,10 +426,6 @@ shown in Figure \ref{fig_touchdown_creep_strain}.
 The estimated thermal strain at the steady state temperature is 1.44\%.
 The prescribed temperature is shown in Figure \ref{fig_full_temperature}.
 
-% TODO:
-% - Add plot of sigma/sigma_0
-% - Add plot of thermal strain
-
 \begin{figure}[H]
   \centering
     \begin{tikzpicture}
@@ -511,7 +507,7 @@ at 25 seconds into the flight.
 This matches the time when the temperature also reaches
 its steady state value.
 The value of the creep strain does not start noticeable increasing
-until approximately 7 seconds into the flight;
+until approximately 6.5 seconds into the flight;
 this corresponds to a temperature of 714 K
 and thermal stress of 463.6 MPa.
 A portion of the creep strain during the cooling and re-heating
@@ -528,7 +524,7 @@ phase of flight is shown in Figure \ref{fig_touchdown_creep_strain}.
         major grid style={line width=.2pt,draw=gray!50},
         xtick={},
         ytick={},
-        yticklabel style={/pgf/number format/.cd, precision=5, zerofill},
+        yticklabel style={/pgf/number format/.cd, precision=4, zerofill},
         minor tick num=5,
         xlabel=Time (s),
         title=Creep Strain During Cooling and Re-Heating,
@@ -543,31 +539,14 @@ phase of flight is shown in Figure \ref{fig_touchdown_creep_strain}.
 \end{figure}
 
 The creep strain steadily continues to increase in magnitude 
-during the cooling and re-heating phases. 
+during the cooling and re-heating phases.
+This is due to the relatively short time spent at lower
+temperatures.
+Figures \ref{fig_full_bar_stress} and 
+\ref{fig_full_bar_nondim_stress} show
+the stress within the bar over the two flights.
 
-% TODO: Update this paragraph
-The creep strain stagnates and decreases during the cooling 
-and reheating phases, as shown in Figure \ref{fig_touchdown_creep_strain}.
-Before cooling begins (575 s), the creep strain steadily increases to 
-match that of the thermally induced strain.
-During the cooling phase (575 s to 600 s), the creep strain
-decreases slightly and stagnates. 
-The initial decrease is due to the thermal contraction of the material.
-The later stagnation due to the temperature dropping below the needed 
-threshold to activate creep, essentially ``freezing'' the material.
-The reheating phase (600 s to 625 s) first shows a decrease then rise in 
-the amount of creep stain.
-The decrease during reheating is due to the temperature surpassing the
-needed temperature to activate creep but causing a thermal strain
-lower than the creep strain.
-The later rise of creep strain in the reheating phase is due
-to the temperature being both great enough to activate creep
-and cause a thermal strain greater than the creep strain.
-After the reheating phase (625 s), the material behavior
-returns to show a creep strain slowly approaching the steady 
-thermal strain.
 
-% TODO: discuss this plot; comment that yield strength is 1.1 GPa (reached on cool down but not heat up)
 \begin{figure}[H]
   \centering
     \begin{tikzpicture}
@@ -588,13 +567,12 @@ thermal strain.
         \addplot[black, thick] table {data/sigma.txt};
       \end{axis}
     \end{tikzpicture}
-  \caption{ Stress within the bar throughout the two repeated flights.
+  \caption{ Stress within the bar throughout the two repeated flights. \\
             Note that the yield stress for Ti6Al4V is 1.1 GPa 
             \cite{boyer_materials_properties_handbook_titanium_alloys}. }
   \label{fig_full_bar_stress}
 \end{figure}
 
-% TODO: Discuss this plot
 \begin{figure}[H]
   \centering
     \begin{tikzpicture}
@@ -616,8 +594,237 @@ thermal strain.
       \end{axis}
     \end{tikzpicture}
   \caption{ Nondimensional stress within the bar throughout the two repeated flights.}
-  \label{fig_full_bar_stress}
+  \label{fig_full_bar_nondim_stress}
 \end{figure}
+
+The stress in Figure \ref{fig_full_bar_stress} reaches a maximum value of 
+1.62 GPa at both 600 s and 1200 s into the flight. 
+These times correspond to the bar returning to its original temperature.
+The yield stress of Ti6Al4V is 1.1 GPa 
+\cite{boyer_materials_properties_handbook_titanium_alloys}
+which means that the bar is expected to yield at these points.
+Notably, the minimum value of the stress is -419 MPa 
+which occurs at 6.5 s into the flight. 
+This corresponds to the same time as when creep is activated,
+as shown in Figure \ref{fig_creep_strain}.
+The magnitude of this minimum is less than the yield 
+stress suggesting that only creep would cause plastic deformation
+at this point.
+During the cruise portions of flight, the stress
+maintains a steady state value near -24.4 MPa.
+
+The above analysis was repeated with a longer heating and cooling 
+steady state time;
+a time of 100 s, four times larger than above, was used.
+This was done to observe the effects of slower
+changes in temperature on creep.
+Additionally, the longer heating and cooling times
+better represent an actual reusable vehicle that requires
+time to take off, accelerate, deccelerate, and land.
+The perscribed temperature with slower
+heating and cooling rates is shown in Figure \ref{fig_slow_bar_temperature}.
+
+\begin{figure}[H]
+  \centering
+    \begin{tikzpicture}
+      \begin{axis}[
+        legend pos=outer north east,
+        legend cell align={left},
+        grid=both,
+        grid style={line width=.1pt, draw=gray!10},
+        major grid style={line width=.2pt,draw=gray!50},
+        xtick={},
+        ytick={},
+        minor tick num=5,
+        xlabel=Time (s),
+        title=Temperature Prescribed over Two Flights,
+        ylabel={Temperature (K)} 
+        ]
+        \addplot[red,thick] table {data/slow_temperature.txt};
+      \end{axis}
+    \end{tikzpicture}
+  \caption{ Prescribed temperature with slower 
+            heating and cooling rates over time of two flight cycles.}
+  \label{fig_slow_bar_temperature}
+\end{figure}
+
+The creep strain from the slower temperature change is shown
+in Figure \ref{fig_slow_full_creep} for the entirety of the two 
+repeated flights.
+Figure \ref{fig_slow_takeoff} shows the creep strain
+during the first heating phase
+and
+Figure \ref{fig_slow_touchdown} shows it
+during the cooling and re-heating phase between flight cruise periods.
+
+\begin{figure}[H]
+  \centering
+    \begin{tikzpicture}
+      \begin{axis}[
+        legend pos=outer north east,
+        legend cell align={left},
+        grid=both,
+        grid style={line width=.1pt, draw=gray!10},
+        major grid style={line width=.2pt,draw=gray!50},
+        xtick={},
+        ytick={},
+        yticklabel style={/pgf/number format/.cd, fixed zerofill},
+        minor tick num=5,
+        xlabel=Time (s),
+        title=Creep Strain from Repeated Flights,
+        ylabel={Creep Strain (\%%
+                )} 
+        ]
+        \addplot[black, thick] table {data/slow_solution.txt};
+      \end{axis}
+    \end{tikzpicture}
+  \caption{ Creep strain over time of two flight cycles of heating, cruise, and cooling.}
+  \label{fig_slow_full_creep}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+    \begin{tikzpicture}
+      \begin{axis}[
+        legend pos=outer north east,
+        legend cell align={left},
+        grid=both,
+        grid style={line width=.1pt, draw=gray!10},
+        major grid style={line width=.2pt,draw=gray!50},
+        xtick={},
+        ytick={},
+        yticklabel style={/pgf/number format/.cd, fixed zerofill},
+        minor tick num=5,
+        xlabel=Time (s),
+        title=Creep Strain over First 200 Seconds of Flight,
+        ylabel={Creep Strain (\%%
+                  ) } 
+        ]
+        \addplot[black, thick] table {data/slow_takeoff_solution.txt};
+      \end{axis}
+    \end{tikzpicture}
+  \caption{ Creep strain during first thermal transient phase.}
+  \label{fig_slow_takeoff}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+    \begin{tikzpicture}
+      \begin{axis}[
+        legend pos=outer north east,
+        legend cell align={left},
+        grid=both,
+        grid style={line width=.1pt, draw=gray!10},
+        major grid style={line width=.2pt,draw=gray!50},
+        xtick={},
+        ytick={},
+        yticklabel style={/pgf/number format/.cd, zerofill},
+        minor tick num=5,
+        xlabel=Time (s),
+        title=Creep Strain During Cooling and Re-Heating,
+        ylabel={Creep Strain (\%%
+                ) } 
+        ]
+        \addplot[black, thick] table {data/slow_touchdown_solution.txt};
+      \end{axis}
+    \end{tikzpicture}
+  \caption{ Creep strain during 400 seconds covering the cooling and reheating phases.}
+  \label{fig_slow_touchdown}
+\end{figure}
+
+The creep strain for the slower heating and cooling rates 
+reaches a similar steady state value.
+It also increases in a similar way during the initial 
+heating phase;
+creep activates at the same temperature of 714 K and
+it reaches steady state at the same time as the prescribed temperature.
+The significant difference between the original and slower temperature
+change occurs durring the cooling and re-heating phase.
+Figure \ref{fig_slow_touchdown} shows the creep strain
+begins at its steady state value before 500 s
+which corresponds to the last portion of the first cruise phase.
+The cooling phases lasts from 500 s to 600 s where
+the creep strain first decreases in magnitude then stagnates.
+The initial decrease is due to the thermal strain reducing and
+the the temperature being high enough to allow creep to remain active.
+The latter stagnation is due to the temperature falling below
+the needed level to active creep. 
+The re-heating phase lasts from 600 s to 700 s where the
+creep strain shows four different behaviors.
+First, it remains steady as the temperature is too low for it to be active.
+Second, creep decreases as the temperature is above the needed threshold
+but the termal strain magnitude is less than that of the creep strain.
+Third, creep stagnates again as the temperature remains 
+above the threshold but the difference
+between the thermal and creep strains is not great enough to cause
+the needed stress to creep. 
+Fourth and lastly, the temperature is above the threshold to activate 
+creep and the difference between thermal and creep strains is 
+great enough to cause the stress needed to induce creeping.
+The stress and nondimensional stress throughot the bar
+over the two flighs are shown in Figures 
+\ref{fig_slow_full_bar_stress} and
+\ref{fig_slow_full_nondim_stress}, respectively.
+
+\begin{figure}[H]
+  \centering
+    \begin{tikzpicture}
+      \begin{axis}[
+        legend pos=outer north east,
+        legend cell align={left},
+        grid=both,
+        grid style={line width=.1pt, draw=gray!10},
+        major grid style={line width=.2pt,draw=gray!50},
+        xtick={},
+        ytick={},
+        yticklabel style={/pgf/number format/.cd, zerofill},
+        minor tick num=5,
+        xlabel=Time (s),
+        title=Stress During Two Flights,
+        ylabel={Stress [GPa] } 
+        ]
+        \addplot[black, thick] table {data/slow_sigma.txt};
+      \end{axis}
+    \end{tikzpicture}
+  \caption{ Stress within the bar throughout the two repeated flights.}
+  \label{fig_slow_full_bar_stress}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+    \begin{tikzpicture}
+      \begin{axis}[
+        legend pos=outer north east,
+        legend cell align={left},
+        grid=both,
+        grid style={line width=.1pt, draw=gray!10},
+        major grid style={line width=.2pt,draw=gray!50},
+        xtick={},
+        ytick={},
+        yticklabel style={/pgf/number format/.cd},
+        minor tick num=5,
+        xlabel=Time (s),
+        title=Nondimensional Stress During Two Flights,
+        ylabel={Nondimensional Stress ($\sigma/\sigma_0$) } 
+        ]
+        \addplot[black, thick] table {data/slow_sig_ratio.txt};
+      \end{axis}
+    \end{tikzpicture}
+  \caption{ Nondimensional stress within the bar throughout the two repeated flights.}
+  \label{fig_slow_full_nondim_stress}
+\end{figure}
+
+The stress within the bar reaches a lower maximum value 
+when the slower heating and cooling rates are used.
+This value is 739.7 MPa, or 45\% of the value
+the maximum stress with the original thermal rates.
+The peak stress still correspond to the times where
+the bar returns to its original temperature.
+As these stresses are below the yield stress of Ti6Al4V, 
+a traditional material model with plasticity based only with the
+von Mises flow rule would not predict permanent deformation 
+in these scenarios.
+
 
 This preliminary work shows that the creep mechanism plays 
 an active role in the deformation of high speed panels in flight.
