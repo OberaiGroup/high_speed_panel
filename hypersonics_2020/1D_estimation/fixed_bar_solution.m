@@ -30,7 +30,7 @@ t_f = t_flight * n_flight;
 % Precompute some values
 stress_ratio   = E/sigma_0;
 
-strain_rate=@(e_c,t) (exp(-Q/(R*temperature(t, T_0, T_f, t_ss, t_flight))) *( stress_ratio*( alpha* (temperature(t, T_0, T_f, t_ss, t_flight) - T_0) - e_c))^n );
+strain_rate=@(e_c,t) (exp(-Q/(R*temperature(t, T_0, T_f, t_ss, t_flight))) *( stress_ratio*abs( alpha* (temperature(t, T_0, T_f, t_ss, t_flight) - T_0) + e_c))^n*sign(-(alpha*(temperature( t, T_0, T_f, t_ss, t_flight)-T_0) + e_c)));
 
 %% Time step:
 %% Use a fine step for transients and course for steady state
@@ -68,16 +68,19 @@ end
 solution = [time', e_c_sol*100];
 
 for i = 1:length(time)
-  T(i) = temperature( time(i), T_0, T_f, t_ss, t_flight);
+  T(i)         = temperature( time(i), T_0, T_f, t_ss, t_flight);
+  sig_ratio(i) = -E * ( alpha* (T(i) - T_0) + e_c_sol(i));
 end
 temp_time = [time', T'];
+sig_time  = [time', sig_ratio'/1E9];
 
-dlmwrite( "data/solution.txt", solution, "delimiter", " ");
+dlmwrite( "data/solution.txt",    solution,  "delimiter", " ");
 dlmwrite( "data/temperature.txt", temp_time, "delimiter", " ");
+dlmwrite( "data/sig_ratio.txt",   sig_time,  "delimiter", " ");
 
 % fudge factor to plot post-steady state results
-ff = 1.5;
-ff_td = 5;
+ff = 2.0;
+ff_td = 2.0;
 j = 1;
 if n_flight == 2
   for i = 1:length(time)
@@ -91,9 +94,9 @@ if n_flight == 2
       j = j+1;
     end
   end
-  takeoff_solution = [t_take_off', e_c_take_off'*100];
-  dlmwrite( "data/takeoff_solution.txt", takeoff_solution, "delimiter", " ");
+  takeoff_solution   = [t_take_off',   e_c_take_off'*100];
   touchdown_solution = [t_touch_down', e_c_touch_down'*100];
+  dlmwrite( "data/takeoff_solution.txt",   takeoff_solution,   "delimiter", " ");
   dlmwrite( "data/touchdown_solution.txt", touchdown_solution, "delimiter", " ");
 end
 
