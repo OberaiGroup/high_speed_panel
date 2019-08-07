@@ -69,14 +69,18 @@ solution = [time', e_c_sol*100];
 
 for i = 1:length(time)
   T(i)         = temperature( time(i), T_0, T_f, t_ss, t_flight);
-  sig_ratio(i) = -E * ( alpha* (T(i) - T_0) + e_c_sol(i));
+  sigma(i)     = -E * ( alpha* (T(i) - T_0) + e_c_sol(i));
+  sig_ratio(i) = sigma(i)/sigma_0;
 end
-temp_time = [time', T'];
-sig_time  = [time', sig_ratio'/1E9];
+temp_time      = [time', T'];
+sig_time       = [time', sigma'/1E9];
+sig_ratio_time = [time', sig_ratio'];
 
-dlmwrite( "data/solution.txt",    solution,  "delimiter", " ");
-dlmwrite( "data/temperature.txt", temp_time, "delimiter", " ");
-dlmwrite( "data/sig_ratio.txt",   sig_time,  "delimiter", " ");
+
+dlmwrite( "data/solution.txt",    solution,        "delimiter", " ");
+dlmwrite( "data/temperature.txt", temp_time,       "delimiter", " ");
+dlmwrite( "data/sigma.txt",       sig_time,        "delimiter", " ");
+dlmwrite( "data/sig_ratio.txt",   sig_ratio_time,  "delimiter", " ");
 
 % fudge factor to plot post-steady state results
 ff = 2.0;
