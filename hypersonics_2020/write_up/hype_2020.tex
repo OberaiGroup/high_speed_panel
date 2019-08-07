@@ -4,7 +4,7 @@
 \usepackage{subfigure}
 \usepackage[justification=centering]{caption}
 \usepackage{multirow} \usepackage{graphicx}
-\graphicspath{ {./images/} }
+  \graphicspath{ {./images/} }
 \usepackage{nameref}
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -12,9 +12,10 @@
 \usepackage[linesnumbered,ruled]{algorithm2e}
 \usepackage{tikz}
 \usetikzlibrary{calc,patterns,decorations.pathmorphing,decorations.markings,positioning,automata,shapes,arrows}
-\tikzstyle{block} = [rectangle, draw, text width=3.5cm]
-\tikzstyle{line} = [draw, -latex']
+  \tikzstyle{block} = [rectangle, draw, text width=3.5cm]
+  \tikzstyle{line} = [draw, -latex']
 \usepackage{pgfplots}
+  \pgfplotsset{compat=1.3}
 \usepgfplotslibrary{colormaps,external}
 \usepackage{ulem}
 \usepackage{verbatim}
@@ -23,7 +24,7 @@
 \usepackage[super]{nth}
 \usepackage{pbox}
 \usepackage{longtable,tabularx}
-\setlength\LTleft{0pt} 
+  \setlength\LTleft{0pt} 
 
 \title{ Deformation of a Panel in Repeated High Speed Flow 
         Modeled with Creep and Multiplicatively-Decomposed Plasticity}
@@ -59,33 +60,33 @@
 \begin{document}
 \maketitle
 
-%TODO: 
-% - lessen `to be` verbs and friends
-% - update results section based on new sigma_0 results
-
 \begin{abstract}
 The surface skin panels of high speed vehicles can reach high 
 temperatures when in flight. 
-These temperatures can be greater than the melting point
-of aluminum alloys and are in the range where
+These temperatures are greater than the solidus temperature
+of aluminum alloys and in the range where
 creep has been observed for titanium alloys.
 Studies have modeled the permanent set and deformation 
 of panels using small strain plasticity.
-They have also accounted for material 
-dependent material properties.
-This work models the creep of a titanium alloy, Ti6Al4V,
-used in the design of high speed vehicles.
-A multiplicatively-decomposed plasticity model
-is included as well to allow for large strains.
-The panel geometry from a high speed concept vehicle is
+They have also accounted for temperature
+dependent material properties in their constitutive models.
+This work models the creep of a stiffened panel
+from a conceptual high speed vehicle.
+A titanium alloy, Ti6Al4V,
+is used as it is common in the design of high speed vehicles.
+Multiplicatively-decomposed plasticity 
+is included in the constitutive law as well to allow for large strains.
+The panel geometry from a high speed concept vehicle will be
 used with boundary conditions to induce thermal buckling
 as opposed to flutter.
 The temperature of the panel is prescribed uniformly 
 and based on recent literature estimates.
 The temperature is cycled to simulate phases of
 heating, cruise, and cooling over multiple flights.
-Preliminary analytical work shows that the creep strain can 
-grow to within 98\% of those induced by thermal strains 
+Preliminary analytical work considered a single strip
+of vehicle paneling under two flight cycles.
+The results show that the creep strain
+grew to within 98\% of those induced by thermal strains 
 over two representative flight cycles.
 \end{abstract}
 
@@ -110,7 +111,7 @@ $\epsilon^e$ & Elastic strain\\
 $\epsilon^c$ & Creep strain\\
 $\sigma$     & Cauchy stress\\
 $\sigma_0$   & Reference stress\\
-$\tau$       & Kirchoff stress\\
+$\tau$       & Kirchhoff stress\\
 $\theta$     & Temperature\\
 $\theta_0$   & Initial temperature
 \end{longtable*}}
@@ -260,48 +261,55 @@ This bar represents one strip of skin paneling from
 a high speed vehicle.
 The bar starts at temperature $\theta_0$ at a stress free state. 
 A uniform temperature $\theta(t)$ is prescribed everywhere.
-The total strain is:
+The total strain within the bar is:
 
 \begin{equation}
-\epsilon^T = \epsilon^e + \epsilon^c
+\epsilon^T = \epsilon^e  + \epsilon^\theta+ \epsilon^c
+\label{eq_total_strain_sum}
 \end{equation}
 
 \noindent
 with $\epsilon^T$ as the total strain,
 $\epsilon^e$ as the elastic strain,
+$\epsilon^\theta$ as the thermal strain,
 and
 $\epsilon^c$ as the creep strain.
-The total deflection (and strain) of the bar must be zero as it 
-is fixed on both ends:
+The total deflection, and strain, of the bar must be zero as it 
+is fixed on both ends.
+Applying this constrain to Eq. \ref{eq_total_strain_sum} gives:
 
 \begin{align}
-\epsilon^T &= \epsilon^e + \epsilon^c = 0 \\
+\epsilon^T &= \epsilon^e + \epsilon^\theta + \epsilon^c = 0 \\
 \Rightarrow
-  \epsilon^e &= -\epsilon^c 
+  \epsilon^e &= -\left( \epsilon^\theta + \epsilon^c \right)  \label{eq_strain_balance}
 \end{align}
 
-The stress from temperature change is approximated by:
+\noindent
+The stress from temperature change is approximated by
+a linear stress-temperature relation. 
+The Cauchy stress is given as:
 
 \begin{equation}
-\sigma = E \left( \epsilon^e + \alpha (\theta(t) - \theta_0) \right)
+\sigma = E  \epsilon^e 
 \end{equation}
 
 \noindent
-with $\sigma$ as the Cauchy stress, 
-$\alpha$ as the Coefficient of Thermal Expansion (CTE),
-and 
-$E$ as Young's modulus of the material.
-Substituting for the strain relation gives:
+with $\sigma$ as the Cauchy stress and $E$ as Young's Modulus.
+Substituting for the strain relation from Eq. \ref{eq_strain_balance} 
+expanding the thermal strain gives:
 
-\begin{equation}
-\sigma = E \left( \alpha (\theta(t) - \theta_0) - \epsilon^c) \right) 
-\label{eq_cauchy_stress_final}
-\end{equation}
+\begin{align}
+\sigma &= -E \left( \epsilon^\theta + \epsilon^c \right)  \\
+\sigma &= -E \left( \alpha (\theta(t) - \theta_0) + \epsilon^c) \right) 
+\label{eq_cauchy_stress_sum}
+\end{align}
 
+\noindent
+where $\alpha$ is the Coefficient of Thermal Expansion (CTE).
 Next, it is assumed that there is no volume change over time.
-This is consistent with the fixed boundary condition at 
+This is consistent with the fixed boundary conditions at 
 each end of the bar.
-This allows the Kirchoff stress to be equivalent to the Cauchy stress:
+This allows the Kirchhoff stress to be equivalent to the Cauchy stress:
 
 \begin{align}
 \tau &= J \sigma \\
@@ -310,7 +318,7 @@ This allows the Kirchoff stress to be equivalent to the Cauchy stress:
 \end{align}
 
 \noindent
-where $\tau$ is the Kirchoff stress,
+where $\tau$ is the Kirchhoff stress,
 $J=\det(F)$,
 and $F$ is the deformation gradient.
 The creep strain rate, as outlined in 
@@ -318,7 +326,7 @@ The creep strain rate, as outlined in
 is:
 
 \begin{equation}
-\dot{\epsilon^c} = \bar{A} e^{\frac{-Q}{R \theta}} \left( \frac{\tau}{\sigma_0} \right)^{c_1}
+\dot{\epsilon^c} = \bar{A} e^{\frac{-Q}{R \theta(t)}} \left( \frac{ ||\tau||}{\sigma_0} \right)^{c_1} \text{sgn}(\tau)
 \end{equation}
 
 \noindent
@@ -326,14 +334,16 @@ with $\bar{A}$ as the relaxation rate,
 $Q$ as the activation energy,
 $R$ is the universal gas constant,
 $\sigma_0$ is a reference stress,
+$c_1$ is the stress exponent,
 and
-$c_1$ is the stress exponent.
-Evaluating for the Kirchoff stress as shown in Eq. \ref{eq_cauchy_stress_final} and \ref{eq_cauchy_to_kirchoff}
+$\text{sgn}(\cdot)$ as the sign operator.
+Evaluating for the Kirchhoff stress as shown in Eq. \ref{eq_cauchy_stress_sum} and \ref{eq_cauchy_to_kirchoff}
 then yields the following ODE.
 
 \begin{equation} \label{eq_creep_ode}
 \dot{\epsilon^c} = \bar{A} e^{\frac{-Q}{R \theta(t)}} 
-    \left( \frac{E ( \alpha (\theta(t) - \theta_0) - \epsilon^c)}{\sigma_0} \right)^{c_1}
+    \left( \frac{E ( \alpha (\theta(t) - \theta_0) + \epsilon^c)}{\sigma_0} \right)^{c_1} 
+    \text{sgn}\left( -E \left( \alpha (\theta(t) - \theta_0) + \epsilon^c) \right) \right)
 \end{equation}
 
 This is the ODE of the creep strain driven by the temperature change.
@@ -396,7 +406,8 @@ This equates to a linear increase in temperature from
 $\theta_0$ at zero seconds to 1783 K at $t_{ss}$;
 this temperature is then held constant until $t_{ss}$ before
 the end of the flight.
-The temperature is then decreased linearly with time back to $\theta_0$.
+The temperature then decreases linearly with time back to $\theta_0$.
+This is equivalent to a set of heating, cruise, and cooling phases of a single flight.
 For reference, a measure of the ``activation temperature'' 
 $\left(\frac{Q}{R}\right)$ of Ti6Al4V is 3019 K.
 
@@ -405,15 +416,19 @@ vehicle's total flight time.
 Based on the X-15, flights with an average of 10 minutes each 
 \cite{ kordes_structureal_heating_experiencs_on_the_x15_airplane}
 were considered.
-A repeated set of 2 flights were considered giving a total time of 1200 seconds.
-The creep strain during these back-to-back flights is shown in Figure
-\ref{fig_creep_strain}.
+A repeated set of two flights were considered giving a total time of 1200 seconds.
+Figure \ref{fig_creep_strain} shows
+the creep strain during these back-to-back flights.
 A focused view on the first 50 seconds of flight is shown 
 in Figure \ref{fig_takeoff_creep_strain}.
 A similar view of 250 seconds centered at the change in flights is 
 shown in Figure \ref{fig_touchdown_creep_strain}.
-The estimated thermal strain is 1.44\%.
+The estimated thermal strain at the steady state temperature is 1.44\%.
 The prescribed temperature is shown in Figure \ref{fig_full_temperature}.
+
+% TODO:
+% - Add plot of sigma/sigma_0
+% - Add plot of thermal strain
 
 \begin{figure}[H]
   \centering
@@ -431,7 +446,7 @@ The prescribed temperature is shown in Figure \ref{fig_full_temperature}.
         title=Temperature Prescribed over Two Flights,
         ylabel={Temperature (K)} 
         ]
-        \addplot[red,mark=*] table {data/temperature.txt};
+        \addplot[red,thick] table {data/temperature.txt};
       \end{axis}
     \end{tikzpicture}
   \caption{ Prescribed temperature over time of two flight cycles.}
@@ -456,7 +471,7 @@ The prescribed temperature is shown in Figure \ref{fig_full_temperature}.
         ylabel={Creep Strain (\%%
                 )} 
         ]
-        \addplot table {data/solution.txt};
+        \addplot[black, thick] table {data/solution.txt};
       \end{axis}
     \end{tikzpicture}
   \caption{ Creep strain over time of two flight cycles of heating, cruise, and cooling.}
@@ -481,7 +496,7 @@ The prescribed temperature is shown in Figure \ref{fig_full_temperature}.
         ylabel={Creep Strain (\%%
                   ) } 
         ]
-        \addplot table {data/takeoff_solution.txt};
+        \addplot[black, thick] table {data/takeoff_solution.txt};
       \end{axis}
     \end{tikzpicture}
   \caption{ Creep strain during first thermal transient phase.}
@@ -499,14 +514,14 @@ The prescribed temperature is shown in Figure \ref{fig_full_temperature}.
         major grid style={line width=.2pt,draw=gray!50},
         xtick={},
         ytick={},
-        yticklabel style={/pgf/number format/.cd, precision=4},
+        yticklabel style={/pgf/number format/.cd, precision=5, zerofill},
         minor tick num=5,
         xlabel=Time (s),
         title=Creep Strain during Cooling and Re-Heating,
         ylabel={Creep Strain (\%%
                 ) } 
         ]
-        \addplot table {data/touchdown_solution.txt};
+        \addplot[black, thick] table {data/touchdown_solution.txt};
       \end{axis}
     \end{tikzpicture}
   \caption{ Creep strain during 250 seconds covering the cooling and reheating phases.}
@@ -522,7 +537,8 @@ This matches the time when the temperature also reaches
 its steady state value.
 The value of the creep strain does not start noticeable increasing
 until approximately 7 seconds into the flight;
-this corresponds to a temperature of 714 K.
+this corresponds to a temperature of 714 K
+and thermal stress of 463.6 MPa.
 
 The creep strain stagnates and decreases during the cooling 
 and reheating phases, as shown in Figure \ref{fig_touchdown_creep_strain}.
@@ -545,15 +561,15 @@ After the reheating phase (625 s), the material behavior
 returns to show a creep strain slowly approaching the steady 
 thermal strain.
 
-This preliminary work shows that the creep mechanism plays an active role in the deformation 
-of high speed panels in flight.
+This preliminary work shows that the creep mechanism plays 
+an active role in the deformation of high speed panels in flight.
 Additional work to be completed includes the following items:
 
 \begin{itemize}
   \item Create a geometric estimation and discreization of a high speed panel.
         A geometry based on the one used in 
         \cite{ culler_impact_of_FTS_coupling_on_response_prediction_hypersonic_skin_panels}
-        will also be used in this study.
+        will be used in this study.
   \item Evaluate the panel using the creep and plasticity model and implementaion presented in
         \cite{ li_simulation_of_finite_strain_inelastic_phenomena_governed_by_creep_and_plasticity}.
         A temperature history from 
@@ -568,10 +584,13 @@ Additional work to be completed includes the following items:
 \end{itemize}
 
 \noindent
-The post-analysis will include plots the maximum creep strain, norms of stress, 
+The post-analysis and results will include plots the maximum creep strain, norms of stress, 
 and deflection throughout the panel and at points of interest over time. 
 Contour plots will also be made showing the total strain, stresses, and deflections
 of the panel at key points in time.
+Following discussions include the importance of creep 
+with respect to other permanent deformation mechanism 
+in the high speed flight environment.
 
 
 % \section{Discussion and Closing Remarks} \label{sec_closing_remarks}
