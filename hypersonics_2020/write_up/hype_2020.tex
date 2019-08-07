@@ -421,7 +421,7 @@ Figure \ref{fig_creep_strain} shows
 the creep strain during these back-to-back flights.
 A focused view on the first 50 seconds of flight is shown 
 in Figure \ref{fig_takeoff_creep_strain}.
-A similar view of 250 seconds centered at the change in flights is 
+A similar view of 100 seconds centered at the change in flights is 
 shown in Figure \ref{fig_touchdown_creep_strain}.
 The estimated thermal strain at the steady state temperature is 1.44\%.
 The prescribed temperature is shown in Figure \ref{fig_full_temperature}.
@@ -503,6 +503,20 @@ The prescribed temperature is shown in Figure \ref{fig_full_temperature}.
   \label{fig_takeoff_creep_strain}
 \end{figure}
 
+As shown in Figures \ref{fig_creep_strain}
+and \ref{fig_takeoff_creep_strain}, the creep strain in the bar 
+grows to match that from the thermal strain. 
+The creep strain reaches an approximate steady state 
+at 25 seconds into the flight. 
+This matches the time when the temperature also reaches
+its steady state value.
+The value of the creep strain does not start noticeable increasing
+until approximately 7 seconds into the flight;
+this corresponds to a temperature of 714 K
+and thermal stress of 463.6 MPa.
+A portion of the creep strain during the cooling and re-heating
+phase of flight is shown in Figure \ref{fig_touchdown_creep_strain}.
+
 \begin{figure}[H]
   \centering
     \begin{tikzpicture}
@@ -517,28 +531,19 @@ The prescribed temperature is shown in Figure \ref{fig_full_temperature}.
         yticklabel style={/pgf/number format/.cd, precision=5, zerofill},
         minor tick num=5,
         xlabel=Time (s),
-        title=Creep Strain during Cooling and Re-Heating,
+        title=Creep Strain During Cooling and Re-Heating,
         ylabel={Creep Strain (\%%
                 ) } 
         ]
         \addplot[black, thick] table {data/touchdown_solution.txt};
       \end{axis}
     \end{tikzpicture}
-  \caption{ Creep strain during 250 seconds covering the cooling and reheating phases.}
+  \caption{ Creep strain during 100 seconds covering the cooling and reheating phases.}
   \label{fig_touchdown_creep_strain}
 \end{figure}
 
-As shown in Figures \ref{fig_creep_strain}
-and \ref{fig_takeoff_creep_strain}, the creep strain in the bar 
-grows to match that from the thermal strain. 
-The creep strain reaches an approximate steady state 
-at 25 seconds into the flight. 
-This matches the time when the temperature also reaches
-its steady state value.
-The value of the creep strain does not start noticeable increasing
-until approximately 7 seconds into the flight;
-this corresponds to a temperature of 714 K
-and thermal stress of 463.6 MPa.
+The creep strain steadily continues to increase in magnitude 
+during the cooling and re-heating phases. 
 
 % TODO: Update this paragraph
 The creep strain stagnates and decreases during the cooling 
@@ -580,10 +585,37 @@ thermal strain.
         title=Stress During Two Flights,
         ylabel={Stress [GPa] } 
         ]
+        \addplot[black, thick] table {data/sigma.txt};
+      \end{axis}
+    \end{tikzpicture}
+  \caption{ Stress within the bar throughout the two repeated flights.
+            Note that the yield stress for Ti6Al4V is 1.1 GPa 
+            \cite{boyer_materials_properties_handbook_titanium_alloys}. }
+  \label{fig_full_bar_stress}
+\end{figure}
+
+% TODO: Discuss this plot
+\begin{figure}[H]
+  \centering
+    \begin{tikzpicture}
+      \begin{axis}[
+        legend pos=outer north east,
+        legend cell align={left},
+        grid=both,
+        grid style={line width=.1pt, draw=gray!10},
+        major grid style={line width=.2pt,draw=gray!50},
+        xtick={},
+        ytick={},
+        yticklabel style={/pgf/number format/.cd},
+        minor tick num=5,
+        xlabel=Time (s),
+        title=Nondimensional Stress During Two Flights,
+        ylabel={Nondimensional Stress ($\sigma/\sigma_0$) } 
+        ]
         \addplot[black, thick] table {data/sig_ratio.txt};
       \end{axis}
     \end{tikzpicture}
-  \caption{ Stress within the bar throughout the two repeated flights.}
+  \caption{ Nondimensional stress within the bar throughout the two repeated flights.}
   \label{fig_full_bar_stress}
 \end{figure}
 
