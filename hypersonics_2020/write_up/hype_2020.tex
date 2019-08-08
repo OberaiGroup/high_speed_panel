@@ -80,8 +80,6 @@ The panel geometry from a high speed concept vehicle is
 used with boundary conditions to induce thermal buckling.
 A uniform temperature is prescribed on the panel
 based on recent measurements.
-The temperature of the panel is prescribed uniformly 
-and based on recent literature estimates.
 The temperature is cycled to simulate phases of
 heating, cruise, and cooling over multiple flights.
 Preliminary analytical work considered a single strip
@@ -159,13 +157,13 @@ by stiffeners
 \cite{
   mcnamara_aeroelastic_and_aerothermoelastic_analysis_in_hypersonic_flow_past_present_and_future}.
 The face plate and stiffeners of the panel 
-can be made of materials on the order
+can be made of materials that are on the order
 of hundredth of an inch thick
 \cite{
   plews_a_two_scale_generalized_finite_element_approach_for_modeling_localized_thermoplasticity,
   zuchowski_AVIATR_Predictive_capability_for_hypersonic_structural_response_and_life_prediction_phase_II}.
 The panels are compliant and can exhibit combinations of
-inertia dominate flapping or thermally dominate buckling
+inertia dominated flapping or thermally induced buckling
 \cite{
   thornton_coupled_flow_thermal_and_structural_analysis_of_aerodynamically_heated_panels,
   mei_review_of_nonlinear_panel_flutter_at_supersonic_and_hypersonic_speeds}.
@@ -229,7 +227,7 @@ where silicon chips undergo a 150 K temperature change
 in 15 minutes
 \cite{ 
   li_simulation_of_finite_strain_inelastic_phenomena_governed_by_creep_and_plasticity}.
-Plasticity through a von Mises yield surface is also modeled;
+In this study, plasticity through a von Mises yield surface is also modeled;
 a multiplicatively decomposed version is used to allow for 
 possible large strains.
 The details of the model and implementation used are
@@ -255,6 +253,14 @@ final manuscript.
 
 The goal of this study is to model the large creep deformation of a canonical acreage
 panel due to the thermal loads experienced from repeated high speed flight.
+In the presentation, and the final manuscript the panel is modeled
+with high-fidelity including its precise geometry as well components 
+like stiffeners. 
+A mechanical theory is also employed that accounts for finite 
+deformation, plasticity and creep. 
+In the analysis below through a simple calculation it is demonstrated
+why it is necessary to include these effects. 
+
 As an approximation of the expected creep strain,
 a bar that is fixed on both ends is considered as it 
 undergoes a relevant temperature history.
@@ -277,7 +283,7 @@ and
 $\epsilon^c$ as the creep strain.
 The total deflection, and strain, of the bar must be zero as it 
 is fixed on both ends.
-Applying this constrain to Eq. \ref{eq_total_strain_sum} gives:
+Applying this constraint to Eq. \ref{eq_total_strain_sum} gives:
 
 \begin{align}
 \epsilon^T &= \epsilon^e + \epsilon^\theta + \epsilon^c = 0 \\
@@ -288,20 +294,20 @@ Applying this constrain to Eq. \ref{eq_total_strain_sum} gives:
 \noindent
 The stress from temperature change is approximated by
 a linear stress-temperature relation. 
-The Cauchy stress is given as:
+The axial component of stress is given as:
 
 \begin{equation}
 \sigma = E  \epsilon^e 
 \end{equation}
 
 \noindent
-with $\sigma$ as the Cauchy stress and $E$ as Young's Modulus.
+where $E$ is Young's Modulus.
 Substituting for the strain relation from Eq. \ref{eq_strain_balance} 
 expanding the thermal strain gives:
 
 \begin{align}
 \sigma &= -E \left( \epsilon^\theta + \epsilon^c \right)  \\
-\sigma &= -E \left( \alpha (\theta(t) - \theta_0) + \epsilon^c) \right) 
+\sigma &= -E \left( \alpha (\theta(t) - \theta_0) + \epsilon^c \right) 
 \label{eq_cauchy_stress_sum}
 \end{align}
 
@@ -338,7 +344,7 @@ $\sigma_0$ is a reference stress,
 $c_1$ is the stress exponent,
 and
 $\text{sgn}(\cdot)$ as the sign operator.
-Evaluating for the Kirchhoff stress as shown in Eq. \ref{eq_cauchy_stress_sum} and \ref{eq_cauchy_to_kirchoff}
+Substituting for the Kirchhoff stress from Eq. \ref{eq_cauchy_stress_sum} and \ref{eq_cauchy_to_kirchoff}
 then yields the following ODE.
 
 \begin{equation} \label{eq_creep_ode}
@@ -347,8 +353,9 @@ then yields the following ODE.
     \text{sgn}\left( -E \left( \alpha (\theta(t) - \theta_0) + \epsilon^c) \right) \right)
 \end{equation}
 
-This is the ODE of the creep strain driven by the temperature change.
-Material properties for titanium alloy Ti6Al4V were then estimated from
+The solution to this ODE provides an expression for the creep strain
+given a temperature history, $\theta(t)$.
+Material properties for titanium alloy Ti6Al4V were estimated from
 Lavina et al. \cite{ lavina_creep_behavior_of_Ti6Al4V_from_450C_to_600C}
 for creep parameters and from \cite{
 boyer_materials_properties_handbook_titanium_alloys}
@@ -387,7 +394,7 @@ The initial temperature is 70 $^{\circ}$F (294 K) and a steady state temperature
 of 2750 $^{\circ}$F (1283 K) is achieved after the first 25 seconds of flight.
 Note that the vehicle is assumed to start at its cruising speed of Mach 12
 as done in \cite{ culler_impact_of_FTS_coupling_on_response_prediction_hypersonic_skin_panels}.
-Incorporating into the bar problem
+Incorporating this into the bar problem
 gives $\theta_0 = 294 K$ and:
 
 \begin{equation}
@@ -420,7 +427,7 @@ were considered.
 A repeated set of two flights were considered giving a total time of 1200 seconds.
 Figure \ref{fig_creep_strain} shows
 the creep strain during these back-to-back flights.
-A focused view on the first 50 seconds of flight is shown 
+A zoomed-in view on the first 50 seconds of flight is shown 
 in Figure \ref{fig_takeoff_creep_strain}.
 A similar view of 100 seconds centered at the change in flights is 
 shown in Figure \ref{fig_touchdown_creep_strain}.
@@ -502,12 +509,12 @@ The prescribed temperature is shown in Figure \ref{fig_full_temperature}.
 
 As shown in Figures \ref{fig_creep_strain}
 and \ref{fig_takeoff_creep_strain}, the creep strain in the bar 
-grows to match that from the thermal strain. 
+grows to match from the thermal strain. 
 The creep strain reaches an approximate steady state 
 at 25 seconds into the flight. 
 This matches the time when the temperature also reaches
 its steady state value.
-The value of the creep strain does not start noticeable increasing
+The value of the creep strain does not start increasing
 until approximately 6.5 seconds into the flight;
 this corresponds to a temperature of 714 K
 and thermal stress of 463.6 MPa.
@@ -754,7 +761,7 @@ The re-heating phase lasts from 600 s to 700 s where the
 creep strain shows four different behaviors.
 First, it remains steady as the temperature is too low for it to be active.
 Second, creep decreases as the temperature is above the needed threshold
-but the termal strain magnitude is less than that of the creep strain.
+but the termal strain magnitude is less than the creep strain.
 Third, creep stagnates again as the temperature remains 
 above the threshold but the difference
 between the thermal and creep strains is not great enough to cause
