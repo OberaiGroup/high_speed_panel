@@ -303,7 +303,7 @@ The axial component of stress is given as:
 \noindent
 where $E$ is Young's Modulus.
 Substituting for the strain relation from Eq. \ref{eq_strain_balance} 
-expanding the thermal strain gives:
+and expanding the thermal strain gives:
 
 \begin{align}
 \sigma &= -E \left( \epsilon^\theta + \epsilon^c \right)  \\
@@ -328,7 +328,7 @@ This allows the Kirchhoff stress to be equivalent to the Cauchy stress:
 where $\tau$ is the Kirchhoff stress,
 $J=\det(F)$,
 and $F$ is the deformation gradient.
-The creep strain rate, as outlined in 
+The creep strain rate in one dimension, as outlined in 
 \cite{ li_simulation_of_finite_strain_inelastic_phenomena_governed_by_creep_and_plasticity},
 is:
 
@@ -432,7 +432,7 @@ in Figure \ref{fig_takeoff_creep_strain}.
 A similar view of 100 seconds centered at the change in flights is 
 shown in Figure \ref{fig_touchdown_creep_strain}.
 The estimated thermal strain at the steady state temperature is 1.44\%.
-The prescribed temperature is shown in Figure \ref{fig_full_temperature}.
+Figure \ref{fig_full_temperature} shows the prescribed temperature of the bar.
 
 \begin{figure}[H]
   \centering
@@ -509,12 +509,12 @@ The prescribed temperature is shown in Figure \ref{fig_full_temperature}.
 
 As shown in Figures \ref{fig_creep_strain}
 and \ref{fig_takeoff_creep_strain}, the creep strain in the bar 
-grows to match from the thermal strain. 
+grows to match the thermal strain. 
 The creep strain reaches an approximate steady state 
 at 25 seconds into the flight. 
 This matches the time when the temperature also reaches
 its steady state value.
-The value of the creep strain does not start increasing
+The magnitude of the creep strain does not start increasing
 until approximately 6.5 seconds into the flight;
 this corresponds to a temperature of 714 K
 and thermal stress of 463.6 MPa.
@@ -542,7 +542,8 @@ phase of flight is shown in Figure \ref{fig_touchdown_creep_strain}.
         \addplot[black, thick] table {data/touchdown_solution.txt};
       \end{axis}
     \end{tikzpicture}
-  \caption{ Creep strain during 100 seconds covering the cooling and reheating phases.}
+  \caption{ Creep strain during 100 seconds covering the cooling and reheating phases.
+            The bar returns to its original temperature at 600 s.}
   \label{fig_touchdown_creep_strain}
 \end{figure}
 
@@ -645,7 +646,7 @@ heating and cooling rates is shown in Figure \ref{fig_slow_bar_temperature}.
         ytick={},
         minor tick num=5,
         xlabel=Time (s),
-        title=Temperature Prescribed over Two Flights,
+        title=Temperature Prescribed over Two Flights with Slow Heating/Cooling,
         ylabel={Temperature (K)} 
         ]
         \addplot[red,thick] table {data/slow_temperature.txt};
@@ -741,7 +742,7 @@ during the cooling and re-heating phase between flight cruise periods.
 \end{figure}
 
 The creep strain for the slower heating and cooling rates 
-reaches a similar steady state value.
+reaches a similar steady state value as the first analysis with faster rates.
 It also increases in a similar way during the initial 
 heating phase;
 creep activates at the same temperature of 714 K and
