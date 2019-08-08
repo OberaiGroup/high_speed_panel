@@ -551,8 +551,7 @@ The creep strain steadily continues to increase in magnitude
 during the cooling and re-heating phases.
 This is due to the relatively short time spent at lower
 temperatures.
-Figures \ref{fig_full_bar_stress} and 
-\ref{fig_full_bar_nondim_stress} show
+Figure \ref{fig_full_bar_stress} shows
 the stress within the bar over the two flights.
 
 
@@ -582,29 +581,29 @@ the stress within the bar over the two flights.
   \label{fig_full_bar_stress}
 \end{figure}
 
-\begin{figure}[H]
-  \centering
-    \begin{tikzpicture}
-      \begin{axis}[
-        legend pos=outer north east,
-        legend cell align={left},
-        grid=both,
-        grid style={line width=.1pt, draw=gray!10},
-        major grid style={line width=.2pt,draw=gray!50},
-        xtick={},
-        ytick={},
-        yticklabel style={/pgf/number format/.cd},
-        minor tick num=5,
-        xlabel=Time (s),
-        title=Nondimensional Stress During Two Flights,
-        ylabel={Nondimensional Stress ($\sigma/\sigma_0$) } 
-        ]
-        \addplot[black, thick] table {data/sig_ratio.txt};
-      \end{axis}
-    \end{tikzpicture}
-  \caption{ Nondimensional stress within the bar throughout the two repeated flights.}
-  \label{fig_full_bar_nondim_stress}
-\end{figure}
+%\begin{figure}[H]
+%  \centering
+%    \begin{tikzpicture}
+%      \begin{axis}[
+%        legend pos=outer north east,
+%        legend cell align={left},
+%        grid=both,
+%        grid style={line width=.1pt, draw=gray!10},
+%        major grid style={line width=.2pt,draw=gray!50},
+%        xtick={},
+%        ytick={},
+%        yticklabel style={/pgf/number format/.cd},
+%        minor tick num=5,
+%        xlabel=Time (s),
+%        title=Nondimensional Stress During Two Flights,
+%        ylabel={Nondimensional Stress ($\sigma/\sigma_0$) } 
+%        ]
+%        \addplot[black, thick] table {data/sig_ratio.txt};
+%      \end{axis}
+%    \end{tikzpicture}
+%  \caption{ Nondimensional stress within the bar throughout the two repeated flights.}
+%  \label{fig_full_bar_nondim_stress}
+%\end{figure}
 
 The stress in Figure \ref{fig_full_bar_stress} reaches a maximum value of 
 1.62 GPa at both 600 s and 1200 s into the flight. 
@@ -770,10 +769,12 @@ the needed stress to creep.
 Fourth and lastly, the temperature is above the threshold to activate 
 creep and the difference between thermal and creep strains is 
 great enough to cause the stress needed to induce creeping.
-The stress and nondimensional stress throughot the bar
+The stress 
+%and nondimensional stress 
+throughout the bar
 over the two flighs are shown in Figures 
-\ref{fig_slow_full_bar_stress} and
-\ref{fig_slow_full_nondim_stress}, respectively.
+\ref{fig_slow_full_bar_stress} 
+% and \ref{fig_slow_full_nondim_stress}, respectively.
 
 \begin{figure}[H]
   \centering
@@ -799,29 +800,29 @@ over the two flighs are shown in Figures
   \label{fig_slow_full_bar_stress}
 \end{figure}
 
-\begin{figure}[H]
-  \centering
-    \begin{tikzpicture}
-      \begin{axis}[
-        legend pos=outer north east,
-        legend cell align={left},
-        grid=both,
-        grid style={line width=.1pt, draw=gray!10},
-        major grid style={line width=.2pt,draw=gray!50},
-        xtick={},
-        ytick={},
-        yticklabel style={/pgf/number format/.cd},
-        minor tick num=5,
-        xlabel=Time (s),
-        title=Nondimensional Stress During Two Flights,
-        ylabel={Nondimensional Stress ($\sigma/\sigma_0$) } 
-        ]
-        \addplot[black, thick] table {data/slow_sig_ratio.txt};
-      \end{axis}
-    \end{tikzpicture}
-  \caption{ Nondimensional stress within the bar throughout the two repeated flights.}
-  \label{fig_slow_full_nondim_stress}
-\end{figure}
+%\begin{figure}[H]
+%  \centering
+%    \begin{tikzpicture}
+%      \begin{axis}[
+%        legend pos=outer north east,
+%        legend cell align={left},
+%        grid=both,
+%        grid style={line width=.1pt, draw=gray!10},
+%        major grid style={line width=.2pt,draw=gray!50},
+%        xtick={},
+%        ytick={},
+%        yticklabel style={/pgf/number format/.cd},
+%        minor tick num=5,
+%        xlabel=Time (s),
+%        title=Nondimensional Stress During Two Flights,
+%        ylabel={Nondimensional Stress ($\sigma/\sigma_0$) } 
+%        ]
+%        \addplot[black, thick] table {data/slow_sig_ratio.txt};
+%      \end{axis}
+%    \end{tikzpicture}
+%  \caption{ Nondimensional stress within the bar throughout the two repeated flights.}
+%  \label{fig_slow_full_nondim_stress}
+%\end{figure}
 
 The stress within the bar reaches a lower maximum value 
 when the slower heating and cooling rates are used.
