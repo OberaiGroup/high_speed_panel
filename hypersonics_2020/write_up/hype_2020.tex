@@ -419,7 +419,7 @@ This is equivalent to a set of heating, cruise, and cooling phases of a single f
 For reference, a measure of the ``activation temperature'' 
 $\left(\frac{Q}{R}\right)$ of Ti6Al4V is 3019 K.
 
-The ODE in Eq \ref{eq_creep_ode} was solved over a time period to represent a
+The ODE in Eq. \ref{eq_creep_ode} was solved over a time period to represent a
 vehicle's total flight time.
 Based on the X-15, flights with an average of 10 minutes each 
 \cite{ kordes_structureal_heating_experiencs_on_the_x15_airplane}
@@ -620,6 +620,10 @@ stress suggesting that only creep would cause plastic deformation
 at this point.
 During the cruise portions of flight, the stress
 maintains a steady state value near -24.4 MPa.
+As the largest stress magnitudes are obtained between the cooling
+and re-heating phases,
+it is concluded that residual stresses while the vehicle is not
+flying will greatly impact the performance of the panel structure.
 
 The above analysis was repeated with a longer heating and cooling 
 steady state time;
@@ -628,8 +632,8 @@ This was done to observe the effects of slower
 changes in temperature on creep.
 Additionally, the longer heating and cooling times
 better represent an actual reusable vehicle that requires
-time to take off, accelerate, deccelerate, and land.
-The perscribed temperature with slower
+time to take off, accelerate, decelerate, and land.
+The prescribed temperature with slower
 heating and cooling rates is shown in Figure \ref{fig_slow_bar_temperature}.
 
 \begin{figure}[H]
@@ -747,21 +751,21 @@ heating phase;
 creep activates at the same temperature of 714 K and
 it reaches steady state at the same time as the prescribed temperature.
 The significant difference between the original and slower temperature
-change occurs durring the cooling and re-heating phase.
+change occurs during the cooling and re-heating phase.
 Figure \ref{fig_slow_touchdown} shows the creep strain
 begins at its steady state value before 500 s
 which corresponds to the last portion of the first cruise phase.
 The cooling phases lasts from 500 s to 600 s where
 the creep strain first decreases in magnitude then stagnates.
 The initial decrease is due to the thermal strain reducing and
-the the temperature being high enough to allow creep to remain active.
+the temperature being high enough to allow creep to remain active.
 The latter stagnation is due to the temperature falling below
 the needed level to active creep. 
 The re-heating phase lasts from 600 s to 700 s where the
 creep strain shows four different behaviors.
 First, it remains steady as the temperature is too low for it to be active.
 Second, creep decreases as the temperature is above the needed threshold
-but the termal strain magnitude is less than the creep strain.
+but the thermal strain magnitude is less than the creep strain.
 Third, creep stagnates again as the temperature remains 
 above the threshold but the difference
 between the thermal and creep strains is not great enough to cause
@@ -772,7 +776,7 @@ great enough to cause the stress needed to induce creeping.
 The stress 
 %and nondimensional stress 
 throughout the bar
-over the two flighs are shown in Figures 
+over the two flights are shown in Figures 
 \ref{fig_slow_full_bar_stress} 
 % and \ref{fig_slow_full_nondim_stress}, respectively.
 
@@ -841,11 +845,11 @@ an active role in the deformation of high speed panels in flight.
 Additional work to be completed includes the following items:
 
 \begin{itemize}
-  \item Create a geometric estimation and discreization of a high speed panel.
+  \item Create a geometric estimation and discretization of a high speed panel.
         A geometry based on the one used in 
         \cite{ culler_impact_of_FTS_coupling_on_response_prediction_hypersonic_skin_panels}
         will be used in this study.
-  \item Evaluate the panel using the creep and plasticity model and implementaion presented in
+  \item Evaluate the panel using the creep and plasticity model and implementation presented in
         \cite{ li_simulation_of_finite_strain_inelastic_phenomena_governed_by_creep_and_plasticity}.
         A temperature history from 
         \cite{ culler_impact_of_FTS_coupling_on_response_prediction_hypersonic_skin_panels}
