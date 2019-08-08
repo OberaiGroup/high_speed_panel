@@ -1,0 +1,30 @@
+%YAML 1.1
+---
+ANONYMOUS:
+  ElementBlocks:
+    Element Block_copper:
+      material: copper
+    Element Block_tin:
+      material: tin
+    Use Composite Tet 10: true
+  Materials:
+    copper:
+      Material Model:
+        Model Name: Linear Elastic
+      Elastic Modulus:
+        Elastic Modulus Type: Constant
+        Value: 8000000.0
+      Poissons Ratio:
+        Poissons Ratio Type: Constant
+        Value: 0.25000000
+      Output Cauchy Stress: true
+    tin:
+      Material Model:
+        Model Name: Linear Elastic
+      Elastic Modulus:
+        Elastic Modulus Type: Constant
+        Value: 800.0
+      Poissons Ratio:
+        Poissons Ratio Type: Constant
+        Value: 0.25000000
+      Output Cauchy Stress: true
