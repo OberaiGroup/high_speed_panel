@@ -20,8 +20,10 @@ dz = 0.1;
 
 Box( 1) = { x, y, z, dx, dy, dz};
 
-Physical Surface("back_face")  = { 1};
-Physical Surface("front_face") = { 2};
+Physical Surface("min_x") = { 1};
+Physical Surface("max_x") = { 2};
+Physical Surface("min_z") = { 3};
+Physical Surface("min_y") = { 5};
 
 
 Mesh.CharacteristicLengthMax = 0.025;
