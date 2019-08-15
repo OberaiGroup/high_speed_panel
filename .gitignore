@@ -36,3 +36,6 @@ fenics_benchmarking/plots
 
 # ESP's port journals
 port*.jrnl
+
+# Gmsh's .msh files
+*.msh
