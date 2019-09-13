@@ -26,7 +26,7 @@ Physical Surface("min_z") = { 3};
 Physical Surface("min_y") = { 5};
 
 
-Mesh.CharacteristicLengthMax = 0.025;
+Mesh.CharacteristicLengthMax = 0.05;
 Mesh.SaveAll=1;
 // Uncomment for vtk files.
 // Leave commented for .msh files
