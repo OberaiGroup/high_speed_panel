@@ -249,23 +249,147 @@ state of the art will be included in the
 final manuscript.
 
 %-----------------------------------------------------------------------------%
-\section{Methods} \label{sec_methods} %TODO: Update from abstract submission to full paper submission
-% outline:
-%  - Panel geometry used
-%  - Explain Creep + Plasticity from Zhen's model
-%  - Loading: Repeated historical temperature
-%  - Compare results to literature
+\section{Methods} \label{sec_methods} 
 
-The goal of this study is to model the large creep deformation of a canonical acreage
+The end goal of this study is to model the large creep deformation of a canonical acreage
 panel due to the thermal loads experienced from repeated high speed flight.
-In the presentation, and the final manuscript the panel is modeled
-with high-fidelity including its precise geometry as well components 
-like stiffeners. 
-A mechanical theory is also employed that accounts for finite 
-deformation, plasticity and creep. 
-In the analysis below through a simple calculation it is demonstrated
-why it is necessary to include these effects. 
+Each flight consisting of heating, cruising, and cooling phases, in that order.
+The full constitutive law used is presented in the next subsection.
+A simplified version of this material model is then used
+is a one dimensional example in subsection after that. 
+First, the balance of linear momentum without inertial terms is taken as:
 
+\begin{equation}
+  \nabla \cdot P + \rho_0 B = 0
+\end{equation}
+
+\noindent
+where $P$ is the first Piola-Kirchhoff stress, 
+$\rho_0$ is the density of the material, 
+and
+$B$ represents all body forces.
+This relation holds for all points in the body $\mathcal{B}$.
+The first Piola-Kirchhoff stress is related to 
+the Cauchy stress, $\sigma$, through:
+
+\begin{equation}
+  P = J \sigma F^{-T}
+\end{equation}
+
+\noindent
+where $F$ is the deformation gradient and
+$J$ is its Jacobian; $J=\det(F)$.
+Additionally, on the boundaries of $\mathcal{B}$:
+
+\begin{align}
+  P \cdot N &= \bar{t^{N}} \text{ on } \partial_t \mathcal{B} \\
+          u &= \bar{u}     \text{ on } \partial_u \mathcal{B} 
+\end{align}
+
+\noindent
+where $N$ is the outward normal on $\partial_t \mathcal{B}$
+and the boundaries of $\mathcal{B}$ meet the conditions 
+that $\partial_t \mathcal{B} \cap \partial_u \mathcal{B} = \emptyset$
+and
+$\partial_t \mathcal{B} \cup \partial_u \mathcal{B} = \partial \mathcal{B}$.
+The deformation gradient is then split into elastic
+and inelastic parts as $F^e$ and $F^i$, respectively.
+
+\begin{equation}
+  F = F^e F^i
+\end{equation}
+
+\noindent
+The Jacobian of the elastic part of the deformation gradient
+is then $J^e = \det{ F^e}$. 
+With this, the elastic part of the left 
+Cauchy-Green tensor is defined as:
+
+\begin{equation}
+  \bar{b^e} = J^{e^{\frac{-2}{3}}} F^e F^{e^T}
+\end{equation}
+
+\subsection{Constitutive Law}
+\noindent
+The constitutive law used was first presented by Li, et al. in 
+\cite{li_simulation_of_finite_strain_inelastic_phenomena_governed_by_creep_and_plasticity}.
+The Kirchhoff stress, $\tau$, which is 
+related to the Cauchy stress through $\tau = J \sigma$,
+is taken as:
+
+\begin{equation}
+  \tau = \left( \frac{\kappa}{2} \left( \frac{J^{e^2} - 1}{J^e} \right) - \beta \Delta \theta \right) + \mu \text{dev}( \bar{b^e})
+\end{equation}
+
+\noindent
+where $\kappa$ is the bulk modulus, 
+$\mu$ is the shear modulus,
+$\beta$ is the Coefficient of Thermal Expansion (CTE),
+and
+$\Delta \theta$ is the change in temperature.
+The bulk and shear modulus are related to 
+Young's modulus, $E$, and Poisson's ratio, $\nu$, through:
+
+\begin{equation}
+  \kappa = \frac{E}{3(1-2\nu)}
+\end{equation}
+
+\begin{equation}
+  \mu = \frac{E}{2(1+\nu)}
+\end{equation}
+
+\noindent
+The CTE is related to the linear CTE, $\alpha_L$ through:
+
+\begin{equation}
+  \beta = \frac{ E}{ 1-2\nu} \alpha_L
+\end{equation}
+
+Next, a yield surface and flow rule are introduced to allow the material 
+to deform plastically.
+The standard von Mises yield function, or $J_2$ flow theory, is used to 
+define the yielding surface:
+
+\begin{equation}
+  f(\tau, \alpha) = || \text{dev}(\tau) || - \sqrt{\frac{2}{3}}( \sigma_Y + K \alpha)
+\end{equation}
+
+\noindent
+where $\alpha$ is the equivalent plastic strain,
+$K$ is the hardening modulus,
+and $\sigma_Y$ is the yield strength.
+Separately, plastic strain rate due to creep is modeled 
+through Norton creep:
+
+
+\begin{equation}
+  \dot{\epsilon^c} = \bar{A} e^{\frac{-Q}{R \theta}} \left( \frac{ || \mu \text{dev}(\bar{b^e})||}{\sigma_0} \right)^{c_1} n
+\label{eq_norton_creep}
+\end{equation}
+
+\noindent
+where $\bar{A}$ is the relaxation rate, 
+$\sigma_0$ is a reference stress,
+$Q$ is the activation energy,
+$R$ is the universal gas constant,
+$c_1$ is the stress exponent,
+and 
+$n$ is the unit vector. 
+The unit vector represents the direction of strain and is
+given by:
+
+\begin{equation}
+  n = \frac{\text{dev}( \bar{b^e}) }{ ||\text{dev}( \bar{b^e})||}
+\end{equation}
+
+\noindent
+Additional support and details are given
+in \cite{li_simulation_of_finite_strain_inelastic_phenomena_governed_by_creep_and_plasticity}
+to show agreement of this constitutive law  with the second law of thermodynamics.
+
+\subsection{One Dimensional Approximation}
+In the analysis below through a simple calculation it is demonstrated
+why it is necessary to include the effects of creep plasticity.
 As an approximation of the expected creep strain,
 a bar that is fixed on both ends is considered as it 
 undergoes a relevant temperature history.
@@ -273,19 +397,19 @@ This bar represents one strip of skin paneling from
 a high speed vehicle.
 The bar starts at temperature $\theta_0$ at a stress free state. 
 A uniform temperature $\theta(t)$ is prescribed everywhere.
-The total strain within the bar is:
+The total strain within the bar is the sum:
 
 \begin{equation}
-\epsilon^T = \epsilon^e  + \epsilon^\theta+ \epsilon^c
+\epsilon^T = \epsilon^e  + \epsilon^\theta + \epsilon^c
 \label{eq_total_strain_sum}
 \end{equation}
 
 \noindent
 with $\epsilon^T$ as the total strain,
 $\epsilon^e$ as the elastic strain,
-$\epsilon^\theta$ as the thermal strain,
-and
-$\epsilon^c$ as the creep strain.
+$\epsilon^\theta$ as the thermal strain.
+A additive decomposition is used here to approximate the multiplicative one 
+used in the full constitutive law.
 The total deflection, and strain, of the bar must be zero as it 
 is fixed on both ends.
 Applying this constraint to Eq. \ref{eq_total_strain_sum} gives:
@@ -312,12 +436,11 @@ and expanding the thermal strain gives:
 
 \begin{align}
 \sigma &= -E \left( \epsilon^\theta + \epsilon^c \right)  \\
-\sigma &= -E \left( \alpha (\theta(t) - \theta_0) + \epsilon^c \right) 
+\sigma &= -E \left( \alpha_L (\theta(t) - \theta_0) + \epsilon^c \right) 
 \label{eq_cauchy_stress_sum}
 \end{align}
 
 \noindent
-where $\alpha$ is the Coefficient of Thermal Expansion (CTE).
 Next, it is assumed that there is no volume change over time.
 This is consistent with the fixed boundary conditions at 
 each end of the bar.
@@ -330,41 +453,37 @@ This allows the Kirchhoff stress to be equivalent to the Cauchy stress:
 \end{align}
 
 \noindent
-where $\tau$ is the Kirchhoff stress,
-$J=\det(F)$,
-and $F$ is the deformation gradient.
+where $J=\det(F)$.
 The creep strain rate in one dimension, as outlined in 
-\cite{ li_simulation_of_finite_strain_inelastic_phenomena_governed_by_creep_and_plasticity},
-is:
+\cite{ li_simulation_of_finite_strain_inelastic_phenomena_governed_by_creep_and_plasticity}
+and shown in Eq. \ref{eq_norton_creep}, is:
 
 \begin{equation}
 \dot{\epsilon^c} = \bar{A} e^{\frac{-Q}{R \theta(t)}} \left( \frac{ ||\tau||}{\sigma_0} \right)^{c_1} \text{sgn}(\tau)
 \end{equation}
 
 \noindent
-with $\bar{A}$ as the relaxation rate,
-$Q$ as the activation energy,
-$R$ is the universal gas constant,
-$\sigma_0$ is a reference stress,
-$c_1$ is the stress exponent,
-and
-$\text{sgn}(\cdot)$ as the sign operator.
+with $\text{sgn}(\cdot)$ as the sign operator to replace the unit vector in the 1D approximation.
 Substituting for the Kirchhoff stress from Eq. \ref{eq_cauchy_stress_sum} and \ref{eq_cauchy_to_kirchoff}
 then yields the following ODE.
 
 \begin{equation} \label{eq_creep_ode}
 \dot{\epsilon^c} = \bar{A} e^{\frac{-Q}{R \theta(t)}} 
-    \left( \frac{E || \alpha (\theta(t) - \theta_0) + \epsilon^c||}{\sigma_0} \right)^{c_1} 
-    \text{sgn}\left( -E \left( \alpha (\theta(t) - \theta_0) + \epsilon^c) \right) \right)
+    \left( \frac{E || \alpha_L (\theta(t) - \theta_0) + \epsilon^c||}{\sigma_0} \right)^{c_1} 
+    \text{sgn}\left( -E \left( \alpha_L (\theta(t) - \theta_0) + \epsilon^c) \right) \right)
 \end{equation}
 
+\noindent
 The solution to this ODE provides an expression for the creep strain
 given a temperature history, $\theta(t)$.
+
+
+\subsection{Material Properties}
 Material properties for titanium alloy Ti6Al4V were estimated from
 Lavina et al. \cite{ lavina_creep_behavior_of_Ti6Al4V_from_450C_to_600C}
 for creep parameters and from \cite{
 boyer_materials_properties_handbook_titanium_alloys}
-for the Young's modulus and the CTE of the material.
+for the Young's modulus and the linear CTE of the material.
 For this unit set the universal gas constant is 8.3145 J/(Mol$\cdot$K)
 and the relaxation parameter, $\bar{A}$, was taken as 1 with units of per second.
 The material parameters used are shown in Table \ref{tab_material_properties}.
@@ -384,13 +503,18 @@ The material parameters used are shown in Table \ref{tab_material_properties}.
     $Q$      & 251     & kJ/Mol \\
     $c_1$    & 12.5    & 1      \\
     $E$      & 113.8   & GPa    \\
-    $\alpha$ & 9.7E-6  & 1/K    \\
+    $\alpha_L$ & 9.7E-6  & 1/K    \\
+    $\nu$    & 0.33    & 1      \\
     \hline
   \end{tabular}
   \label{tab_material_properties}
 \end{table}
 
+\noindent
+For reference, a measure of the ``activation temperature'' 
+$\left(\frac{Q}{R}\right)$ of Ti6Al4V is 3019 K.
 
+\subsection{Problem Set Up}
 The initial and prescribed temperatures are borrowed from 
 \cite{ culler_impact_of_FTS_coupling_on_response_prediction_hypersonic_skin_panels}.
 In this study, the transient thermo mechanical response of a panel from the 
@@ -399,8 +523,10 @@ The initial temperature is 70 $^{\circ}$F (294 K) and a steady state temperature
 of 2750 $^{\circ}$F (1283 K) is achieved after the first 25 seconds of flight.
 Note that the vehicle is assumed to start at its cruising speed of Mach 12
 as done in \cite{ culler_impact_of_FTS_coupling_on_response_prediction_hypersonic_skin_panels}.
-Incorporating this into the bar problem
-gives $\theta_0 = 294 K$ and:
+For the bar approximation, a temperature history with multiple
+heating and cooling stages is used.
+For the full panel, only the heating portion of flight is considered.
+Incorporating this gives $\theta_0 = 294 K$ and:
 
 \begin{equation}
 \theta(t) = \begin{cases}
@@ -421,12 +547,64 @@ this temperature is then held constant until $t_{ss}$ before
 the end of the flight.
 The temperature then decreases linearly with time back to $\theta_0$.
 This is equivalent to a set of heating, cruise, and cooling phases of a single flight.
-For reference, a measure of the ``activation temperature'' 
-$\left(\frac{Q}{R}\right)$ of Ti6Al4V is 3019 K.
+
+The panel geometry is taken from 
+\cite{culler_impact_of_FTS_coupling_on_response_prediction_hypersonic_skin_panels}
+and is shown in Figure \ref{fig_panel_face_mesh}.
+The mesh is unstructured and populated with composite, 10-node tetrahedral elements.
+These elements have been shown to accurately model bending 
+without element locking behavior
+\cite{ostien_10_node_comp_tet_FE_for_solid_mechanics, 
+  clough_automated_wing_internal_structure_placement_guided_by_FEA}.
+At least two elements span the thickness of the panel at all locations. 
+
+
+\begin{figure}[H] 
+  \centering
+    \includegraphics[width=0.35\textwidth, keepaspectratio]
+    {panel_face_mesh}
+  \caption{ Geometry of the panel with discretization. 
+            Panel is approximately 10 in by 12 in and 0.065 in thick
+            \cite{culler_impact_of_FTS_coupling_on_response_prediction_hypersonic_skin_panels}.}
+  \label{fig_panel_face_mesh}
+\end{figure}
+
+\noindent
+The panel is fixed in all directions at the left and right most
+faces. 
+This represents the panel being attached to the substructure of the aircraft
+at these locations.
+The aforementioned linear temperature change over time is prescribed
+uniformly throughout the panel.
+Additionally, a uniform pressure is applied to the face of the panel.
+This pressure approximates the aerodynamic tractions the 
+panel would experience in flight. 
+The pressure increases linearly over time from zero to 85.5 KPa. 
+This value was chosen as it equals the dynamic pressure
+acting on a panel with a $5^{\circ}$ angle of attack
+traveling at Mach 12 at an elevation of 104,000 feet above sea level;
+these values are consistent with those given
+for the conceptual vehicle described in 
+\cite{culler_impact_of_FTS_coupling_on_response_prediction_hypersonic_skin_panels}.
+
+
 
 %-----------------------------------------------------------------------------%
 \section{Results}  %TODO: Update from abstract submission to full paper submission
 
+The results for the 1D bar are first presented in the following 
+subsection.
+Attention is given to the creep strain during the
+first heating phase and the period between the
+first cooling and second heating phase.
+Axial stress fluctuations during these time 
+periods are also plotted and investigated.
+Lastly, the analysis is repeated with a slower 
+$t_ss$ to explore consequences. 
+Results from the full panel are then presented in the
+second subsection.
+
+\subsection{One Dimensional Approximation}
 The ODE in Eq. \ref{eq_creep_ode} was solved over a time period to represent a
 vehicle's total flight time.
 Based on the X-15, flights with an average of 10 minutes each 
@@ -435,7 +613,7 @@ were considered.
 A repeated set of two flights were considered giving a total time of 1200 seconds.
 Figure \ref{fig_creep_strain} shows
 the creep strain during these back-to-back flights.
-A zoomed-in view on the first 50 seconds of flight is shown 
+A focused view on the first 50 seconds of flight is shown 
 in Figure \ref{fig_takeoff_creep_strain}.
 A similar view of 100 seconds centered at the change in flights is 
 shown in Figure \ref{fig_touchdown_creep_strain}.
@@ -723,7 +901,7 @@ during the cooling and re-heating phase between flight cruise periods.
         \addplot[black, thick] table {data/slow_takeoff_solution.txt};
       \end{axis}
     \end{tikzpicture}
-  \caption{ Creep strain during first thermal transient phase.}
+  \caption{ Creep strain during first thermal transient phase with slower heating.}
   \label{fig_slow_takeoff}
 \end{figure}
 
@@ -748,7 +926,8 @@ during the cooling and re-heating phase between flight cruise periods.
         \addplot[black, thick] table {data/slow_touchdown_solution.txt};
       \end{axis}
     \end{tikzpicture}
-  \caption{ Creep strain during 400 seconds covering the cooling and reheating phases.}
+  \caption{ Creep strain during 400 seconds covering the slower 
+            cooling and reheating phases.}
   \label{fig_slow_touchdown}
 \end{figure}
 
@@ -848,6 +1027,16 @@ von Mises flow rule would not predict permanent deformation
 in these scenarios.
 
 
+
+
+%-----------------------------------------------------------------------------%
+\section{Discussion and Closing Remarks} \label{sec_closing_remarks}
+discussion text
+
+%-----------------------------------------------------------------------------%
+\section{Future Work} \label{sec_future}
+future work text
+
 This preliminary work shows that the creep mechanism plays 
 an active role in the deformation of high speed panels in flight.
 Additional work to be completed includes the following items:
@@ -878,15 +1067,6 @@ of the panel at key points in time.
 Following discussions include the importance of creep 
 with respect to other permanent deformation mechanism 
 in the high speed flight environment.
-
-
-%-----------------------------------------------------------------------------%
-\section{Discussion and Closing Remarks} \label{sec_closing_remarks}
-discussion text
-
-%-----------------------------------------------------------------------------%
-\section{Future Work} \label{sec_future}
-future work text
 
 %-----------------------------------------------------------------------------%
 \section*{Acknowledgments}
