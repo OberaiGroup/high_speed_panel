@@ -547,6 +547,10 @@ this temperature is then held constant until $t_{ss}$ before
 the end of the flight.
 The temperature then decreases linearly with time back to $\theta_0$.
 This is equivalent to a set of heating, cruise, and cooling phases of a single flight.
+For both the bar approximation and the full panel, creep is the only
+considered method of plasticity; 
+a sufficiently high yield strength was used to effectively 
+turn off $J_2$ plasticity.
 
 The panel geometry is taken from 
 \cite{culler_impact_of_FTS_coupling_on_response_prediction_hypersonic_skin_panels}
@@ -767,30 +771,6 @@ the stress within the bar over the two flights.
   \label{fig_full_bar_stress}
 \end{figure}
 
-%\begin{figure}[H]
-%  \centering
-%    \begin{tikzpicture}
-%      \begin{axis}[
-%        legend pos=outer north east,
-%        legend cell align={left},
-%        grid=both,
-%        grid style={line width=.1pt, draw=gray!10},
-%        major grid style={line width=.2pt,draw=gray!50},
-%        xtick={},
-%        ytick={},
-%        yticklabel style={/pgf/number format/.cd},
-%        minor tick num=5,
-%        xlabel=Time (s),
-%        title=Nondimensional Stress During Two Flights,
-%        ylabel={Nondimensional Stress ($\sigma/\sigma_0$) } 
-%        ]
-%        \addplot[black, thick] table {data/sig_ratio.txt};
-%      \end{axis}
-%    \end{tikzpicture}
-%  \caption{ Nondimensional stress within the bar throughout the two repeated flights.}
-%  \label{fig_full_bar_nondim_stress}
-%\end{figure}
-
 The stress in Figure \ref{fig_full_bar_stress} reaches a maximum value of 
 1.62 GPa at both 600 s and 1200 s into the flight. 
 These times correspond to the bar returning to its original temperature.
@@ -965,7 +945,6 @@ The stress
 throughout the bar
 over the two flights are shown in Figures 
 \ref{fig_slow_full_bar_stress} 
-% and \ref{fig_slow_full_nondim_stress}, respectively.
 
 \begin{figure}[H]
   \centering
@@ -991,30 +970,6 @@ over the two flights are shown in Figures
   \label{fig_slow_full_bar_stress}
 \end{figure}
 
-%\begin{figure}[H]
-%  \centering
-%    \begin{tikzpicture}
-%      \begin{axis}[
-%        legend pos=outer north east,
-%        legend cell align={left},
-%        grid=both,
-%        grid style={line width=.1pt, draw=gray!10},
-%        major grid style={line width=.2pt,draw=gray!50},
-%        xtick={},
-%        ytick={},
-%        yticklabel style={/pgf/number format/.cd},
-%        minor tick num=5,
-%        xlabel=Time (s),
-%        title=Nondimensional Stress During Two Flights,
-%        ylabel={Nondimensional Stress ($\sigma/\sigma_0$) } 
-%        ]
-%        \addplot[black, thick] table {data/slow_sig_ratio.txt};
-%      \end{axis}
-%    \end{tikzpicture}
-%  \caption{ Nondimensional stress within the bar throughout the two repeated flights.}
-%  \label{fig_slow_full_nondim_stress}
-%\end{figure}
-
 The stress within the bar reaches a lower maximum value 
 when the slower heating and cooling rates are used.
 This value is 739.7 MPa, or 45\% of the value
@@ -1026,12 +981,215 @@ a traditional material model with plasticity based only with the
 von Mises flow rule would not predict permanent deformation 
 in these scenarios.
 
+\subsection{Panel}
+Figure \ref{fig_panel_side_profile_Z_solution} 
+shows a side profile of the final deformed
+state of the panel. Note that deformations are to a 1:1 scale.
+A view of the face of the undeformed panel with coloring based on the 
+out of plane displacement is shown in Figure \ref{fig_panel_top_down_Z_solution}.
+The out of plane component of the displacement at the center point 
+of the panel is plotted against time in Figure \ref{fig_panel_displacement_over_time}.
 
+\begin{figure}[H] 
+  \centering
+    \includegraphics[width=0.85\textwidth, keepaspectratio]
+    {panel_side_profile_Z_solution}
+  \caption{ Side profile of deformed mesh at 25s with out of plane displacement coloring.
+            Deformations are to scale.}
+  \label{fig_panel_side_profile_Z_solution}
+\end{figure}
+
+\begin{figure}[H] 
+  \centering
+    \includegraphics[width=0.85\textwidth, keepaspectratio]
+    {panel_top_down_Z_solution}
+  \caption{ Panel face at 25s with out of plane displacement coloring.}
+  \label{fig_panel_top_down_Z_solution}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+    \begin{tikzpicture}
+      \begin{axis}[
+        legend pos=outer north east,
+        legend cell align={left},
+        grid=both,
+        grid style={line width=.1pt, draw=gray!10},
+        major grid style={line width=.2pt,draw=gray!50},
+        xtick={},
+        ytick={},
+        yticklabel style={/pgf/number format/.cd, zerofill},
+        minor tick num=5,
+        xlabel=Time (s),
+        title=Out of Plane Displacement at Panel Center Point,
+        ylabel={Displacement [in] } 
+        ]
+        \addplot[black, thick] table {data/panel_solution_Z_over_time.txt};
+      \end{axis}
+    \end{tikzpicture}
+  \caption{ Out of plane displacement over time at center point of panel.}
+  \label{fig_panel_displacement_over_time}
+\end{figure}
+
+The 1,1 component of the Cauchy stress is plotted with respect to time
+for the center point on the face of the panel in Figure \ref{fig_panel_stress_over_time}.
+The value of stress is normalized with respect to the reference stress, 
+$\sigma_0 = 22.7 \text{MPa}$.
+
+\begin{figure}[H]
+  \centering
+    \begin{tikzpicture}
+      \begin{axis}[
+        legend pos=outer north east,
+        legend cell align={left},
+        grid=both,
+        grid style={line width=.1pt, draw=gray!10},
+        major grid style={line width=.2pt,draw=gray!50},
+        xtick={},
+        ytick={},
+        yticklabel style={/pgf/number format/.cd, zerofill},
+        minor tick num=5,
+        xlabel=Time (s),
+        title=Stress at Center of Panel Face,
+        ylabel={Stress [$\sigma_0$] } 
+        ]
+        \addplot[black, thick] table {data/panel_stress_over_time.txt};
+      \end{axis}
+    \end{tikzpicture}
+  \caption{ Stress component 1,1 at center point of panel face.}
+  \label{fig_panel_stress_over_time}
+\end{figure}
+
+The curve plotted in Figure \ref{fig_panel_stress_over_time} first 
+shows a sharp increase in compressive stress from zero to 5s.
+This is due to the increasing thermal and pressure loads on the panel.
+At roughly the 5s mark, the stress begins to decrease. 
+This time corresponds to a temperature of 593 K. 
+Although this is only 20\% of the 3019 K activation temperature,
+the built up stress of 6.82 $\sigma_0$ is sufficient to generate 
+inelastic strain through creep.
+During the remaining time, from 5s to 25s, the temperature 
+and pressure continue to increase but the magnitude of stress in the plate
+decreases.
+
+The panel colored with the 1,1 stress component is shown at 5s
+and 25s in Figures \ref{fig_panel_stress_5s} and 
+\ref{fig_panel_stress_25s}, respectively.
+The Frobenius norm at these two times are also shown 
+in Figures \ref{fig_panel_stress_frobenius_5s}
+and \ref{fig_panel_stress_frobenius_25s}.
+
+\begin{figure}[H] 
+  \centering
+    \includegraphics[width=0.85\textwidth, keepaspectratio]
+    {panel_stress_5s}
+  \caption{ Panel with stress component 1,1 coloring at 5s.
+            Stress has units of $\sigma_0$.}
+  \label{fig_panel_stress_5s}
+\end{figure}
+
+\begin{figure}[H] 
+  \centering
+    \includegraphics[width=0.85\textwidth, keepaspectratio]
+    {panel_stress_25s}
+  \caption{ Panel with stress component 1,1 coloring at 25s.
+            Stress has units of $\sigma_0$.}
+  \label{fig_panel_stress_25s}
+\end{figure}
+
+\begin{figure}[H] 
+  \centering
+    \includegraphics[width=0.85\textwidth, keepaspectratio]
+    {panel_stress_frobenius_norm_5s}
+  \caption{ Panel with Frobenius norm of stress coloring at 5s.
+            Stress has units of $\sigma_0$.}
+  \label{fig_panel_stress_frobenius_5s}
+\end{figure}
+
+\begin{figure}[H] 
+  \centering
+    \includegraphics[width=0.85\textwidth, keepaspectratio]
+    {panel_stress_forbenius_norm_25s}
+  \caption{ Panel with Frobenius norm of stress coloring at 25s.
+            Stress has units of $\sigma_0$.}
+  \label{fig_panel_stress_frobenius_25s}
+\end{figure}
+
+\noindent
+The stress contours in Figures \ref{fig_panel_stress_5s} through
+\ref{fig_panel_stress_frobenius_25s} show that stress history 
+shown in Figure \ref{fig_panel_stress_over_time} is not unique to 
+the center point. 
+Points throughout the panel first undergo a sharp increase in
+the magnitude of stress in the first 5 seconds of heating. 
+After that point, the stress reduces even as heating continues to increase.
+The decrease in stress is due to the activation of the creep mechanism.
+After 5s the ratios of temperature and stress to activation temperature
+and reference stress are great enough to cause inelastic strain.
+For example, this is shown by the maximum value of the Frobenius norm 
+decreasing from $67.43\sigma_0$ at 5s to $35.70\sigma_0$ at 25s.
 
 
 %-----------------------------------------------------------------------------%
 \section{Discussion and Closing Remarks} \label{sec_closing_remarks}
-discussion text
+
+This study's goal was to investigate the importance of creep in typical 
+body panels for representative high speed vehicles.
+First, a 1D approximation was made using a bar to represent a strip of
+paneling. 
+The constitutive law was also approximated using an additive strain decomposition
+as opposed to a multiplicative one to allow for an analytical solution.
+Using flight parameters provided by 
+\cite{culler_impact_of_FTS_coupling_on_response_prediction_hypersonic_skin_panels},
+it was found that the change in temperature is great
+enough to cause large stresses in the bar. 
+Those stresses, combined with the high absolute temperature, activated the creep mechanism.
+This allows the magnitude of stress within the bar to decreases as inelastic strain increases. 
+Once held at a steady temperature, the material finishes relaxing and holds 
+its new stress state. 
+When the bar was then cooled, there was less than a 1\% change in the inelastic strain
+whereas the magnitude of stress increased. 
+After a second heating phase, the stress in the bar relaxed again. 
+
+Similar results were found with a slower heating and cooling time.
+However, during the slower cooling phase, the inelastic strain initially decreased in magnitude.
+This is due to the lowering temperature difference causing the bar to contract,
+yet the absolute temperature was still great enough to allow creep to occur. 
+Once the absolute temperature fell below the threshold, creep relaxation 
+stopped; this caused the inelastic strain to stagnate and the stress to increase
+in magnitude. 
+
+The full panel exhibited similar behavior during the investigate heating phase.
+Initially, a sharp increase of the magnitude of stress is observed.
+This is due to the increasing temperature and pressure causing the panel
+to deform into the plane; 
+this large deformation then corresponded to a large stress buildup.
+At 5s, the stress in the panel then begins to relax due to creep.
+This trend holds for the rest of the simulated time as the temperature and 
+pressure continue to increase. 
+Similar behavior during cooling and reheating to the 1D bar approximation 
+is expected from the full panel. 
+Namely, some inelastic strain decrease during cooling and subsequent 
+increase during reheating as well as an increase in stress during cooling
+and decrease during reheating.
+
+The models show two main points:
+\begin{itemize}
+  \item The creep mechanism is active during canonical high speed 
+    vehicle flights. Temperatures and stresses are great enough to 
+    cause stress relaxation through creep.
+  \item Inelastic strain is generated during the heating phase
+    of flight cycles and is not fully eliminated during the cooling phase.
+\end{itemize}
+Together, the above two points also indicate that significant residual 
+stresses remain in the panel after cooling. 
+Although plasticity through the $J_2$ flow rule was not considered 
+in this study, the residual stresses predicted by the 1D bar 
+are greater than the material's yield stress. 
+If modeled, this would also be a source of inelastic strain.
+Both sources of inelastic strain would not appear uniformly
+throughout the panel which could lead to other effects 
+during repeated flights.
 
 %-----------------------------------------------------------------------------%
 \section{Future Work} \label{sec_future}
