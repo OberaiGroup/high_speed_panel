@@ -52,9 +52,8 @@
           Associate Fellow.
           \newline
           \newline
-          Previous version submitted as extended abstract:
-            \sout{DISTRIBUTION A. Approved for public release: distribution unlimited. 
-            Cleared under number 88ABW-2019-4012.}}} 
+            DISTRIBUTION A. Approved for public release: distribution unlimited. 
+            Cleared under number 88ABW-2020-0301.}}
 \affil{Air Force Research Laboratory, Wright-Patterson AFB,
        Dayton, OH, 45433}
 
@@ -62,7 +61,7 @@
 \begin{document}
 \maketitle
 
-\begin{abstract} %TODO: Update from abstract submission to full paper submission
+\begin{abstract} 
 The surface skin panels of high speed vehicles can reach high 
 temperatures when in flight. 
 These temperatures are greater than the solidus temperature
@@ -80,42 +79,65 @@ Multiplicatively-decomposed plasticity
 is included in the constitutive law as well to allow for large strains.
 The panel geometry from a high speed concept vehicle is
 used with boundary conditions to induce thermal buckling.
-A uniform temperature is prescribed on the panel
-based on recent measurements.
+A uniform temperature and pressure is prescribed on the panel
+based on recent estimates of dynamic loads.
 The temperature is cycled to simulate phases of
 heating, cruise, and cooling over multiple flights.
-Preliminary analytical work considered a single strip
+An 1D approximation with an analytical solution considered a single strip
 of vehicle paneling under two flight cycles.
 The results show that the creep strain
 grew to within 98\% of those induced by thermal strains 
 over two representative flight cycles.
+Full panel results also show that the creep mechanism 
+is active in reducing stress through the increase of 
+inelastic strain.
+Overall, permanent set in panels as well as 
+residual stresses after cooling are predicted.
 \end{abstract}
 
 %-----------------------------------------------------------------------------%
-\section{Nomenclature} %TODO: Update from abstract submission to full paper submission
+\section{Nomenclature} 
 
 {\renewcommand\arraystretch{1.0}
 \noindent\begin{longtable*}{@{}l @{\quad=\quad} l@{}}
 $\bar{A}$    & Relaxation rate\\
 $c_1$        & Stress Exponent\\
+$B$          & Body forces \\
+$\mathcal{B}$& Deformable body \\
+$\bar{b^e}$  & Elastic left Cauchy-Green tensor \\
 $E$          & Young's Modulus \\
 $F$          & Deformation gradient\\
+$F^e$        & Elastic deformation gradient\\
+$F^i$        & Inelastic deformation gradient\\
+$I$          & Identity matrix \\
 $J$          & Ratio of volumetric change\\
+$J^e$        & Ratio of elastic volumetric change\\
+$K$          & Hardening modulus \\
 Ma           & Mach number\\
+$n$          & Unit vector \\
+$P$          & First Piola-Kirchhoff stress\\
 $Q$          & Activation energy\\
 $R$          & Universal gas constant\\
 $t$          & Time\\
 $t_{ss}$     & Steady state time\\
 $t_{f}$      & Flight time \\
-$\alpha$     & Coefficient of thermal expansion\\
-$\epsilon^T$ & Total strain\\
-$\epsilon^e$ & Elastic strain\\
+$\alpha$     & Equivalent plastic strain \\
+$\alpha_L$   & Linear coefficient of thermal expansion\\
+$\beta$      & Coefficient of thermal expansion \\
 $\epsilon^c$ & Creep strain\\
+$\epsilon^e$ & Elastic strain\\
+$\epsilon^T$ & Total strain\\
+$\epsilon^\theta$ & Thermal strain\\
+$\kappa$     & Bulk modulus \\
+$\mu$        & Shear modulus \\
 $\sigma$     & Cauchy stress\\
 $\sigma_0$   & Reference stress\\
+$\sigma_Y$   & Yield stress \\
+$\rho_0$     & Density of material\\
 $\tau$       & Kirchhoff stress\\
 $\theta$     & Temperature\\
-$\theta_0$   & Initial temperature
+$\theta_0$   & Initial temperature \\
+$\nu$        & Poisson's Ratio 
 \end{longtable*}}
 
 %-----------------------------------------------------------------------------%
@@ -180,7 +202,43 @@ of panels in high speed flow
   savino_aerothermodynamic_study_of_ultrahigh_termperature_cermaic_winglet_for_atmospheric_reentry_test,
   nydick_hypersonic_panel_flutter_studies_on_cruved_panels,
   lafontaine_effects_of_strain_hardeing_on_response_of_skin_panels_in_hypersonic_flow}.
+This study of the accurate prediction and life assessment of high-performance 
+components of high speed structure is identified by the Air Force Research Laboratory
+Structural Science Center
+\cite{ spottswood_on_the_use_of_reduced_order_models_for_a_shallow_curved_beam_under_combined_loading}.
 
+Cheng and Mei
+\cite{cheng_FEM_formulation_for_hypersonic_panel_flutter_analyis_with_thermal_effects}
+developed a finite element formulation to model the flutter 
+of panels in high speed flows. 
+Their model was based on Von K\'arm\'an large deflection
+plate theory and included temperature dependent terms.
+This allowed for estimations of the modal behavior of their panel 
+of interest. 
+All major panel modes were observed in their model:
+flat and stable, buckled but dynamically stable, limit cycle oscillations,
+periodic motion, and chaotic motion.
+The temperature dependence of their model was based on a prescribed uniform 
+surface temperature with a constant gradient into the thickness of the plate;
+this temperature gradient was then used with thermal expansion coefficients
+to calculate the subsequent thermal stress.
+
+Plews and Duarte
+\cite{plews_a_two_scale_generalized_finite_element_approach_for_modeling_localized_thermoplasticity}
+created a generalized finite element model of localized 
+thermoplasticity using a two-scale approach. 
+Their constitutive law used a additive strain decomposition. 
+They also solved the heat equation through time
+in conjunction with their mechanical model. 
+Temperature dependence of their structural model through 
+a linear relation between thermal strain and temperature change. 
+Plasticity was modeled through a $J_2$ flow rule with 
+non-linear hardening.
+As an application of their model, they considered a canonical 
+hat-stiffened panel from a high speed vehicle. 
+However, instead of aerodynamic heating or traction, 
+they instead investigated the effects of spot-welding 
+the stiffener to the face plate. 
 
 A study by LaFontaine et al.
 \cite{
@@ -205,6 +263,7 @@ Both the elastic and plastic panel originally showed a mix of
 aeroelastic flutter with periods of thermal buckling. 
 After the third cycle, the plastic panel demonstrated only thermal
 buckling behavior.
+
 
 This study further investigates the role creep and plasticity play 
 in the permanent deformation of a panel under repeated high speed flight.
@@ -237,16 +296,6 @@ possible large strains.
 The details of the model and implementation used are
 discussed in 
 \cite{ li_simulation_of_finite_strain_inelastic_phenomena_governed_by_creep_and_plasticity}.
-This extended abstract considers the creep strain of a one dimensional bar
-representing a strip of vehicle paneling.
-A uniform temperature is prescribed with heating rates and saturation 
-temperature based on recent literature estimates.
-\newline
-\newline
-\noindent
-\emph{Note to the reviewers:} A more extensive review of the 
-state of the art will be included in the 
-final manuscript.
 
 %-----------------------------------------------------------------------------%
 \section{Methods} \label{sec_methods} 
@@ -288,10 +337,12 @@ Additionally, on the boundaries of $\mathcal{B}$:
 
 \noindent
 where $N$ is the outward normal on $\partial_t \mathcal{B}$
-and the boundaries of $\mathcal{B}$ meet the conditions 
+and the boundaries of $\mathcal{B}$ satify
 that $\partial_t \mathcal{B} \cap \partial_u \mathcal{B} = \emptyset$
 and
 $\partial_t \mathcal{B} \cup \partial_u \mathcal{B} = \partial \mathcal{B}$.
+Neumann boundary conditions are prescribed on $\partial_t \mathcal{B}$ 
+and Dirichlet boundary conditions on $\partial_u \mathcal{B}$.
 The deformation gradient is then split into elastic
 and inelastic parts as $F^e$ and $F^i$, respectively.
 
@@ -318,12 +369,13 @@ related to the Cauchy stress through $\tau = J \sigma$,
 is taken as:
 
 \begin{equation}
-  \tau = \left( \frac{\kappa}{2} \left( \frac{J^{e^2} - 1}{J^e} \right) - \beta \Delta \theta \right) + \mu \text{dev}( \bar{b^e})
+  \tau = \left( \frac{\kappa}{2} \left( \frac{J^{e^2} - 1}{J^e} \right) - \beta \Delta \theta \right) I + \mu \text{dev}( \bar{b^e})
 \end{equation}
 
 \noindent
 where $\kappa$ is the bulk modulus, 
 $\mu$ is the shear modulus,
+$I$ is the identity matrix,
 $\beta$ is the Coefficient of Thermal Expansion (CTE),
 and
 $\Delta \theta$ is the change in temperature.
@@ -358,7 +410,7 @@ define the yielding surface:
 where $\alpha$ is the equivalent plastic strain,
 $K$ is the hardening modulus,
 and $\sigma_Y$ is the yield strength.
-Separately, plastic strain rate due to creep is modeled 
+Separately, inelastic strain rate due to creep is modeled 
 through Norton creep:
 
 
@@ -374,22 +426,24 @@ $Q$ is the activation energy,
 $R$ is the universal gas constant,
 $c_1$ is the stress exponent,
 and 
-$n$ is the unit vector. 
-The unit vector represents the direction of strain and is
-given by:
+$n$ is a unit tensor in the direction of strain given by:
 
 \begin{equation}
   n = \frac{\text{dev}( \bar{b^e}) }{ ||\text{dev}( \bar{b^e})||}
 \end{equation}
 
 \noindent
-Additional support and details are given
+Additional details are given
 in \cite{li_simulation_of_finite_strain_inelastic_phenomena_governed_by_creep_and_plasticity}
-to show agreement of this constitutive law  with the second law of thermodynamics.
+and include the demonstration that
+this constitutive law is consistent with the second law of thermodynamics.
 
 \subsection{One Dimensional Approximation}
-In the analysis below through a simple calculation it is demonstrated
-why it is necessary to include the effects of creep plasticity.
+In the development below a one-dimensional approximation of 
+the constitutive law is derived under the approximation of small strain. 
+This is used in the results section to demonstrate the 
+effect of inelastic behavior on the response of the structure 
+in the context of a simple problem.
 As an approximation of the expected creep strain,
 a bar that is fixed on both ends is considered as it 
 undergoes a relevant temperature history.
@@ -548,7 +602,7 @@ the end of the flight.
 The temperature then decreases linearly with time back to $\theta_0$.
 This is equivalent to a set of heating, cruise, and cooling phases of a single flight.
 For both the bar approximation and the full panel, creep is the only
-considered method of plasticity; 
+considered method of inelastic behavior; 
 a sufficiently high yield strength was used to effectively 
 turn off $J_2$ plasticity.
 
@@ -565,9 +619,20 @@ At least two elements span the thickness of the panel at all locations.
 
 \begin{figure}[H] 
   \centering
-    \includegraphics[width=0.35\textwidth, keepaspectratio]
-    {panel_face_mesh}
-  \caption{ Geometry of the panel with discretization. 
+  \subfigure[Panel Face.]
+    {
+      \includegraphics[width=0.45\textwidth, keepaspectratio]
+      {panel_face_mesh}
+    }
+  \subfigure[Panel Side.]
+    {
+      \raisebox{30mm}
+      {
+      \includegraphics[width=0.45\textwidth, keepaspectratio]
+      {panel_mesh_side_profile}
+      }
+    }
+  \caption{ Geometry of the panel with the finite element mesh. 
             Panel is approximately 10 in by 12 in and 0.065 in thick
             \cite{culler_impact_of_FTS_coupling_on_response_prediction_hypersonic_skin_panels}.}
   \label{fig_panel_face_mesh}
@@ -594,7 +659,7 @@ for the conceptual vehicle described in
 
 
 %-----------------------------------------------------------------------------%
-\section{Results}  %TODO: Update from abstract submission to full paper submission
+\section{Results}
 
 The results for the 1D bar are first presented in the following 
 subsection.
@@ -604,7 +669,7 @@ first cooling and second heating phase.
 Axial stress fluctuations during these time 
 periods are also plotted and investigated.
 Lastly, the analysis is repeated with a slower 
-$t_ss$ to explore consequences. 
+$t_{ss}$ to explore consequences. 
 Results from the full panel are then presented in the
 second subsection.
 
@@ -982,6 +1047,14 @@ von Mises flow rule would not predict permanent deformation
 in these scenarios.
 
 \subsection{Panel}
+
+The results in the previous section assumed that the structure 
+was rod and was confined to compression or tension. 
+However, most structures on the surface of a high speed vehicle 
+are in the shape of thin panels that would deform in 
+bending, through buckling, even when subjected to axial loads 
+through thermoelastic expansion. 
+This scenario is considered in detail in this section. 
 Figure \ref{fig_panel_side_profile_Z_solution} 
 shows a side profile of the final deformed
 state of the panel. Note that deformations are to a 1:1 scale.
@@ -989,6 +1062,18 @@ A view of the face of the undeformed panel with coloring based on the
 out of plane displacement is shown in Figure \ref{fig_panel_top_down_Z_solution}.
 The out of plane component of the displacement at the center point 
 of the panel is plotted against time in Figure \ref{fig_panel_displacement_over_time}.
+
+
+
+All these results point to the fact that the intial expansion 
+of the panel due to temperature increase causes a compressive 
+load on the panel. 
+The panel responds to this load by bending/buckling in the 
+out of plane direction. 
+The buckling is confined to the first mode primarily
+ by the uniform pressure load this is acting on the panel. 
+The deformation increases with increasing temperature and 
+reaches a maximum at %TODO: Time with max stress.
 
 \begin{figure}[H] 
   \centering
@@ -1065,12 +1150,12 @@ shows a sharp increase in compressive stress from zero to 5s.
 This is due to the increasing thermal and pressure loads on the panel.
 At roughly the 5s mark, the stress begins to decrease. 
 This time corresponds to a temperature of 593 K. 
-Although this is only 20\% of the 3019 K activation temperature,
+Although this is only 20\% of the activation temperature of 3019 K,
 the built up stress of 6.82 $\sigma_0$ is sufficient to generate 
 inelastic strain through creep.
 During the remaining time, from 5s to 25s, the temperature 
 and pressure continue to increase but the magnitude of stress in the plate
-decreases.
+decreases due to increasing creep strain.
 
 The panel colored with the 1,1 stress component is shown at 5s
 and 25s in Figures \ref{fig_panel_stress_5s} and 
@@ -1173,7 +1258,7 @@ Namely, some inelastic strain decrease during cooling and subsequent
 increase during reheating as well as an increase in stress during cooling
 and decrease during reheating.
 
-The models show two main points:
+The models presented illustrate two main points:
 \begin{itemize}
   \item The creep mechanism is active during canonical high speed 
     vehicle flights. Temperatures and stresses are great enough to 
@@ -1193,38 +1278,30 @@ during repeated flights.
 
 %-----------------------------------------------------------------------------%
 \section{Future Work} \label{sec_future}
-future work text
-
 This preliminary work shows that the creep mechanism plays 
 an active role in the deformation of high speed panels in flight.
 Additional work to be completed includes the following items:
 
 \begin{itemize}
-  \item Create a geometric estimation and discretization of a high speed panel.
+  \item Create a geometric estimation and discretization of a high speed panel
+        that includes stiffeners.
         A geometry based on the one used in 
         \cite{ culler_impact_of_FTS_coupling_on_response_prediction_hypersonic_skin_panels}
-        will be used in this study.
-  \item Evaluate the panel using the creep and plasticity model and implementation presented in
-        \cite{ li_simulation_of_finite_strain_inelastic_phenomena_governed_by_creep_and_plasticity}.
-        A temperature history from 
-        \cite{ culler_impact_of_FTS_coupling_on_response_prediction_hypersonic_skin_panels}
-        will be prescribed throughout the panel. 
-        Multiple flight cycles of heating, cruise, and cooling will be used
-        to match historical and conceptual vehicles outlined in
-        \cite{ kordes_structureal_heating_experiencs_on_the_x15_airplane,
-               zuchowski_AVIATR_Predictive_capability_for_hypersonic_structural_response_and_life_prediction_phase_II}.
-  \item Compare the deformation and permanent set of the panel to that 
-        found by \cite{ culler_impact_of_FTS_coupling_on_response_prediction_hypersonic_skin_panels}.
+        will continue to be used.
+  \item Evaluate the panel using both creep and $J_2$ plasticity.
+  \item Investigate the effects of multiple flight cycles of heating and cooling.
 \end{itemize}
 
-\noindent
-The post-analysis and results will include plots the maximum creep strain, norms of stress, 
-and deflection throughout the panel and at points of interest over time. 
-Contour plots will also be made showing the total strain, stresses, and deflections
-of the panel at key points in time.
-Following discussions include the importance of creep 
-with respect to other permanent deformation mechanism 
-in the high speed flight environment.
+The addition of stiffeners and other sub-structure features to the panel
+geometry will benefit the model by more accurately modeling the real panel.
+The additional geometric features will also cause stress concentration points.
+Including $J_2$ plasticity will also increase the fidelity of the model. 
+The large residual stresses predicted during the end of the cooling phase 
+are great enough to cause yielding in the material. 
+Interesting features may arise from the compounding inelastic strains
+due to both creep and yielding. 
+This is especially true for multiple flights cycles that will
+prescribed repetitive heating and cooling phases.
 
 %-----------------------------------------------------------------------------%
 \section*{Acknowledgments}
