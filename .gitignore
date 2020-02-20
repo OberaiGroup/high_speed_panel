@@ -53,3 +53,6 @@ port*.jrnl
 
 # Any csv files
 *.csv
+
+# Any open office presentations
+*.odp
