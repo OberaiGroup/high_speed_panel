@@ -72,38 +72,38 @@ for i = 1:length(time)
   sigma(i)     = -E * ( alpha* (T(i) - T_0) + e_c_sol(i));
   sig_ratio(i) = sigma(i)/sigma_0;
 end
-temp_time      = [time', T'];
-sig_time       = [time', sigma'/1E9];
-sig_ratio_time = [time', sig_ratio'];
-
-
-dlmwrite( "data/solution.txt",    solution,        "delimiter", " ");
-dlmwrite( "data/temperature.txt", temp_time,       "delimiter", " ");
-dlmwrite( "data/sigma.txt",       sig_time,        "delimiter", " ");
-dlmwrite( "data/sig_ratio.txt",   sig_ratio_time,  "delimiter", " ");
-
-% fudge factor to plot post-steady state results
-ff = 2.0;
-ff_td = 2.0;
-j = 1;
-if n_flight == 2
-  for i = 1:length(time)
-
-    if time(i) < ff*t_ss; % takeoff
-      t_take_off(i) = time(i);
-      e_c_take_off(i) = e_c_sol(i);
-    elseif ( t_flight-ff_td*t_ss < time(i)) && (time(i) < t_flight + ff_td*t_ss); %land and take off
-      t_touch_down(j) = time(i);
-      e_c_touch_down(j) = e_c_sol(i);
-      j = j+1;
-    end
-  end
-  takeoff_solution   = [t_take_off',   e_c_take_off'*100];
-  touchdown_solution = [t_touch_down', e_c_touch_down'*100];
-  dlmwrite( "data/takeoff_solution.txt",   takeoff_solution,   "delimiter", " ");
-  dlmwrite( "data/touchdown_solution.txt", touchdown_solution, "delimiter", " ");
-end
-
-
-
-
+%temp_time      = [time', T'];
+%sig_time       = [time', sigma'/1E9];
+%sig_ratio_time = [time', sig_ratio'];
+%
+%
+%dlmwrite( "data/solution.txt",    solution,        "delimiter", " ");
+%dlmwrite( "data/temperature.txt", temp_time,       "delimiter", " ");
+%dlmwrite( "data/sigma.txt",       sig_time,        "delimiter", " ");
+%dlmwrite( "data/sig_ratio.txt",   sig_ratio_time,  "delimiter", " ");
+%
+%% fudge factor to plot post-steady state results
+%ff = 2.0;
+%ff_td = 2.0;
+%j = 1;
+%if n_flight == 2
+%  for i = 1:length(time)
+%
+%    if time(i) < ff*t_ss; % takeoff
+%      t_take_off(i) = time(i);
+%      e_c_take_off(i) = e_c_sol(i);
+%    elseif ( t_flight-ff_td*t_ss < time(i)) && (time(i) < t_flight + ff_td*t_ss); %land and take off
+%      t_touch_down(j) = time(i);
+%      e_c_touch_down(j) = e_c_sol(i);
+%      j = j+1;
+%    end
+%  end
+%  takeoff_solution   = [t_take_off',   e_c_take_off'*100];
+%  touchdown_solution = [t_touch_down', e_c_touch_down'*100];
+%  dlmwrite( "data/takeoff_solution.txt",   takeoff_solution,   "delimiter", " ");
+%  dlmwrite( "data/touchdown_solution.txt", touchdown_solution, "delimiter", " ");
+%end
+%
+%
+%
+%
