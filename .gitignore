@@ -56,3 +56,12 @@ port*.jrnl
 
 # Any open office presentations
 *.odp
+
+# Any vtk file
+*.vtk
+
+# Any step files
+*.stp
+
+# Any stl files
+*.stl
