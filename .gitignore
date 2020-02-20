@@ -39,3 +39,17 @@ port*.jrnl
 
 # Gmsh's .msh files
 *.msh
+
+# Any png pictures
+*.png
+*.PNG
+
+# Any exodus files
+*.exo
+*.exo.*
+
+# Any cubit meshes
+*.g
+
+# Any csv files
+*.csv
