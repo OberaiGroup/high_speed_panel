@@ -1,0 +1,19 @@
+
+# Set beam dimensions
+set beam_length      12.0   # inches
+set beam_thickness    0.065 # inches
+set beam_width        beam_thickness
+
+set beam_origin_x 0.0
+set beam_origin_y 0.0
+set beam_origin_z 0.0
+
+# Create beam
+box beam_origin_x beam_origin_y beam_origin_z \
+    beam_length    beam_width   beam_thickness
+
+
+
+dump beam.stl
+
+dump beam.stp
