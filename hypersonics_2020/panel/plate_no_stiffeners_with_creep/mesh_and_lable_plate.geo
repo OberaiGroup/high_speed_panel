@@ -5,6 +5,8 @@ panel_v() = ShapeFromFile( "plate_no_stiffeners.stp");
 
 Physical Surface("front") = {1};
 Physical Surface("back")  = {2};
+Physical Surface("y_max") = {4};
+Physical Surface("y_min") = {3};
 
 Physical Surface("top")   = {6};
 

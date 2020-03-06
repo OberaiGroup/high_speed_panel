@@ -5,9 +5,12 @@ panel_v() = ShapeFromFile( "plate_no_stiffeners.stp");
 
 Physical Surface("front") = {1};
 Physical Surface("back")  = {2};
+Physical Surface("y_max") = {4};
+Physical Surface("y_min") = {3};
 
 Physical Surface("top")   = {6};
 
+Physical Curve("bottom_edges") = {11,2,9,6};
 
 // Define Mesh Parameters
 // Mesh.CharacteristicLengthMax = 1.0;
