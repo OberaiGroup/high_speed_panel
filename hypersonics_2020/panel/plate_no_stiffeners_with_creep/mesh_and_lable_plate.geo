@@ -8,6 +8,7 @@ Physical Surface("back")  = {2};
 
 Physical Surface("top")   = {6};
 
+Physical Curve("bottom_edges") = {11,2,9,6};
 
 // Define Mesh Parameters
 // Mesh.CharacteristicLengthMax = 1.0;
