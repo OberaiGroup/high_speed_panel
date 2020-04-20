@@ -8,17 +8,24 @@ LCM:
     MaterialDB Filename: material.yaml
     Temperature:
       Variable Type: Time Dependent
-      Time Values:      [  0.0,   25.0] #,  575.0] #, 600.0,  625.0, 1175.0, 1200.0]
-      Dependent Values: [294.0, 1783.0] #, 1783.0] #, 294.0, 1783.0, 1783.0,  294.0]
+      Time Values:      [  0.0,   25.0,   35.0,  60.0] #,  625.0, 1175.0, 1200.0]
+      Dependent Values: [294.0, 1783.0, 1783.0, 294.0] #, 1783.0, 1783.0,  294.0]
         # Extra Temp-time values commented out to focus on first
         # linear heat ramp-up.
     Dirichlet BCs:
-      SDBC on NS BoundaryNodeSet_front for DOF X: 0.00000000e+00
-      SDBC on NS BoundaryNodeSet_front for DOF Y: 0.00000000e+00
-      SDBC on NS BoundaryNodeSet_front for DOF Z: 0.00000000e+00
-      SDBC on NS BoundaryNodeSet_back for DOF X: 0.00000000e+00
-      SDBC on NS BoundaryNodeSet_back for DOF Y: 0.00000000e+00
-      SDBC on NS BoundaryNodeSet_back for DOF Z: 0.00000000e+00
+      SDBC on NS BoundaryNodeSet_x_min for DOF X: 0.00000000e+00
+      SDBC on NS BoundaryNodeSet_x_min for DOF Y: 0.00000000e+00
+      SDBC on NS BoundaryNodeSet_x_max for DOF X: 0.00000000e+00
+      SDBC on NS BoundaryNodeSet_x_max for DOF Y: 0.00000000e+00
+      SDBC on NS BoundaryNodeSet_y_max for DOF X: 0.00000000e+00
+      SDBC on NS BoundaryNodeSet_y_max for DOF Y: 0.00000000e+00
+      SDBC on NS BoundaryNodeSet_y_min for DOF X: 0.00000000e+00
+      SDBC on NS BoundaryNodeSet_y_min for DOF Y: 0.00000000e+00
+      SDBC on NS BoundaryNodeSet_ring for DOF Z: 0.00000000e+00
+    Neumann BCs:
+      Time Dependent NBC on SS BoundarySideSet_top for DOF all set P:
+         Time Values: [0.00000000e+00, 25.0,     35.0,     60.0]
+         BC Values: [[0.00000000e+00], [0.0038], [0.0038], [0.0] ]
     Initial Condition:
       Function: Constant
       Function Data: [0.00000000e+00, 0.00000000e+00, 0.00000000e+00]
@@ -54,10 +61,10 @@ LCM:
     Exodus Output File Name: ./results.exo
   Piro:
     Rythmos:
-      Num Time Steps: 120001
-      Final Time: 1200.0
+      Num Time Steps: 100000
+      Final Time: 61.0
       Max State Error: 0.0001
-      Alpha: 0.00000000e+00
+      Alpha: 0.0
       Rythmos Stepper:
         VerboseObject:
           Verbosity Level: low
@@ -70,14 +77,14 @@ LCM:
       Bifurcation: { }
       Constraints: { }
       Predictor:
-        Method: Constant
+        Method: Tangent
       Stepper:
         Continuation Method: Natural
         Initial Value: 0.0
         Continuation Parameter: Time
-        Max Steps: 120001
-        Max Value: 1200.0
-        Min Value: 0.0e+0
+        Max Steps: 100000
+        Max Value: 61.0
+        Min Value: 0.0
         Compute Eigenvalues: false
         Eigensolver:
           Method: Anasazi
@@ -85,13 +92,15 @@ LCM:
           Num Eigenvalues: 1
       Step Size:
         Initial Step Size: 0.1
-        Method: Constant
+        Method: Adaptive
+        Max Step Size: 0.5
+        Min Step Size: 1.0e-10
+        Failed Step Reduction Factor: 0.5
+        Aggressiveness: 0.1
     NOX:
       Direction:
         Method: Newton
         Newton:
-          Linear Solver:
-            Tolerance: 1.0e-05
           Forcing Term Method: Constant
           Rescue Bad Newton Solve: true
           Stratimikos Linear Solver:
@@ -99,60 +108,50 @@ LCM:
             Stratimikos:
               Linear Solver Type: Belos
               Linear Solver Types:
-                Amesos:
-                  Solver Type: Lapack
-                  Amesos Settings:
-                    Lapack: { }
                 Belos:
                   VerboseObject:
-                    Verbosity Level: medium
-                  Left Preconditioner If Unspecified: true
+                    Verbosity Level: high
+                  # Left Preconditioner If Unspecified: true
                   Solver Type: Block GMRES
                   Solver Types:
                     Block GMRES:
                       Convergence Tolerance: 1.00000000e-05
-                      Implicit Residual Scaling: Norm of Preconditioned Initial Residual
-                      Explicit Residual Scaling: Norm of RHS
+                      ##
+                      # Commenting out below to lines or 
+                      # changing the left-hand values seems 
+                      # to do nothing -jlc
+                      ##
+                      # Implicit Residual Scaling: None
+                      # Explicit Residual Scaling: Norm of Preconditioned Initial Residual
                       Output Frequency: 10
                       Output Style: 1
                       Verbosity: 33
-                      Maximum Iterations: 3000
+                      Maximum Iterations: 10
                       Block Size: 1
-                      Num Blocks: 3000
+                      Num Blocks: 10
                       Orthogonalization: DGKS
-              Preconditioner Type: Ifpack2
+              Preconditioner Type: MueLu
               Preconditioner Types:
+                MueLu:
+                  multigrid algorithm: sa
+                  'max levels': 1
+                  'smoother: type': smoother_type # This line does nothing noticable
+                  'smoother: pre or post': smother_pre_post # This line does nothing noticable
+                  'coarse: type': 'Amesos-KLU'
+                  'coarse: max size': 1000
+                  'repartition: enable': true
+                  'repartition: partitioner': zoltan2
+                  'repartition: max imbalance': 1.3
+                  'repartition: min rows per proc': 100
                 Ifpack2:
                   Prec Type: RILUK
                   Ifpack2 Settings:
                     'fact: drop tolerance': 0.00000000e+00
-                    'fact: iluk level-of-fill': 0
+                    'fact: iluk level-of-fill': 2
                     'fact: ilut level-of-fill': 0.00000000e+00
                     'schwarz: filter singletons': true
                     'schwarz: use reordering': true
                     'schwarz: overlap level': 0
-                MueLu: 
-                  verbosity: extreme
-                  'repartition: enable': true
-                  'repartition: partitioner': zoltan
-                  'repartition: max imbalance': 1.32699999999999996e+00
-                  'repartition: min rows per proc': 600
-                  'repartition: start level': 4
-                  'semicoarsen: number of levels': 2
-                  'semicoarsen: coarsen rate': 14
-                  'linedetection: orientation': coordinates
-                  'smoother: type': LINESMOOTHING_BANDED_RELAXATION
-                  'smoother: params': 
-                    'relaxation: sweeps': 1
-                    'relaxation: type': Jacobi
-                    'relaxation: damping factor': 2.50000000000000000e-01
-                  'coarse: type': RELAXATION
-                  'coarse: params': 
-                    'relaxation: sweeps': 4
-                    'relaxation: type': Jacobi
-                    'relaxation: damping factor': 8.00000000000000044e-01
-                  max levels: 2
-                  number of equations: 3
       Line Search:
         Full Step:
           Full Step: 1.00000000
@@ -184,7 +183,7 @@ LCM:
           Tolerance: 1.00000000e-06
         Test 1:
           Test Type: MaxIters
-          Maximum Iterations: 6
+          Maximum Iterations: 7
         Test 2:
           Test Type: FiniteValue
         Test 3:

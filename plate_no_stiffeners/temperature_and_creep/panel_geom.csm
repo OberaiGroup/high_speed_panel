@@ -11,9 +11,17 @@ set plate_origin_x 0.0
 set plate_origin_y 0.0
 set plate_origin_z 0.0
 
+set ring_thickness plate_thickness
+
 # Create plate
 box plate_origin_x plate_origin_y plate_origin_z \
     plate_length    plate_width   plate_thickness
+
+# Denote a seperate face to make and outside ring along bottom
+box plate_origin_x+ring_thickness plate_origin_y+ring_thickness plate_origin_z \
+    plate_length-2*ring_thickness plate_width-2*ring_thickness  plate_thickness/2.0
+
+union
 
 
 # set stiffener_origin_x 0.0
