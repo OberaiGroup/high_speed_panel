@@ -1,0 +1,47 @@
+
+# Set plate and stiffener dimensions
+set plate_width       10.0   # inches
+set plate_length      12.0   # inches
+set plate_thickness    0.065 # inches
+set stiffener_height   1.25  # inches 
+set stiffener_spacing 10.0   # inches
+set stiffener_thickness plate_thickness
+
+set plate_origin_x 0.0
+set plate_origin_y 0.0
+set plate_origin_z 0.0
+
+# Create plate
+box plate_origin_x plate_origin_y plate_origin_z \
+    plate_length    plate_width   plate_thickness
+
+
+# set stiffener_origin_x 0.0
+# set stiffener_origin_y 0.0
+# set stiffener_origin_z 0.0
+# 
+# # Create first stiffener
+# box stiffener_origin_x stiffener_origin_y  stiffener_origin_z \
+#     plate_length       stiffener_thickness stiffener_height
+# 
+# union
+#     
+# set stiffener_origin_x 0.0
+# set stiffener_origin_y stiffener_spacing-stiffener_thickness
+# set stiffener_origin_z 0.0
+# 
+# # Create first stiffener
+# box stiffener_origin_x stiffener_origin_y  stiffener_origin_z \
+#     plate_length       stiffener_thickness stiffener_height
+# 
+# union
+# 
+# dump plate_with_2_stiffeners.stl
+# 
+# dump plate_with_2_stiffeners.stp
+
+
+
+dump plate_no_stiffeners.stl
+
+dump plate_no_stiffeners.stp
