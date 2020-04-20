@@ -71,3 +71,6 @@ port*.jrnl
 
 # The old run results for hype_2020 conference
 hypersonics_2020/panel/plate_no_stiffeners_with_creep/25s_for_conference
+
+# debug output.txt files
+output.txt
