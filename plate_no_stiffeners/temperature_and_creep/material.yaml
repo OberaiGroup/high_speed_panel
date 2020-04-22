@@ -27,7 +27,7 @@ ANONYMOUS:
       Thermal Expansion Coefficient: 9.7e-6 # 1/K
       Heat Capacity: 526.3 # J/kg-K
       Density: 4430.0 # kg/m^3
-      Thermal Transient Coefficient: 0.0 # set to 1.0 when Temp_dot matters, else->zero
+      Thermal Transient Coefficient: 1.0 # set to 1.0 when Temp_dot matters, else->zero
       Thermal Conductivity:
         Thermal Conductivity Type: Constant
         Value: 6.7 # W/mK
