@@ -7,11 +7,7 @@ LCM:
     Solution Method: Continuation
     MaterialDB Filename: material.yaml
     Temperature:
-      Variable Type: Time Dependent
-      Time Values:      [  0.0,   25.0,   35.0,  60.0] #,  625.0, 1175.0, 1200.0]
-      Dependent Values: [294.0, 1783.0, 1783.0, 294.0] #, 1783.0, 1783.0,  294.0]
-        # Extra Temp-time values commented out to focus on first
-        # linear heat ramp-up.
+      Variable Type: DOF
     Dirichlet BCs:
       SDBC on NS BoundaryNodeSet_x_min for DOF X: 0.00000000e+00
       SDBC on NS BoundaryNodeSet_x_min for DOF Y: 0.00000000e+00
@@ -22,13 +18,47 @@ LCM:
       SDBC on NS BoundaryNodeSet_y_min for DOF X: 0.00000000e+00
       SDBC on NS BoundaryNodeSet_y_min for DOF Y: 0.00000000e+00
       SDBC on NS BoundaryNodeSet_ring for DOF Z: 0.00000000e+00
+      Time Dependent SDBC on NS BoundaryNodeSet_top for DOF T:
+        Number of points: 4
+        Time Values: [  0.0,   25.0,   35.0,  60.0] #,  625.0, 1175.0, 1200.0]
+        BC Values:   [294.0, 1783.0, 1783.0, 294.0] #, 1783.0, 1783.0,  294.0]
+      Time Dependent SDBC on NS BoundaryNodeSet_x_min for DOF T:
+        Number of points: 4
+        Time Values: [  0.0,   25.0,   35.0,  60.0] #,  625.0, 1175.0, 1200.0]
+        BC Values:   [294.0, 1783.0, 1783.0, 294.0] #, 1783.0, 1783.0,  294.0]
+      Time Dependent SDBC on NS BoundaryNodeSet_x_max for DOF T:
+        Number of points: 4
+        Time Values: [  0.0,   25.0,   35.0,  60.0] #,  625.0, 1175.0, 1200.0]
+        BC Values:   [294.0, 1783.0, 1783.0, 294.0] #, 1783.0, 1783.0,  294.0]
+      Time Dependent SDBC on NS BoundaryNodeSet_y_min for DOF T:
+        Number of points: 4
+        Time Values: [  0.0,   25.0,   35.0,  60.0] #,  625.0, 1175.0, 1200.0]
+        BC Values:   [294.0, 1783.0, 1783.0, 294.0] #, 1783.0, 1783.0,  294.0]
+      Time Dependent SDBC on NS BoundaryNodeSet_y_max for DOF T:
+        Number of points: 4
+        Time Values: [  0.0,   25.0,   35.0,  60.0] #,  625.0, 1175.0, 1200.0]
+        BC Values:   [294.0, 1783.0, 1783.0, 294.0] #, 1783.0, 1783.0,  294.0]
+      Time Dependent SDBC on NS BoundaryNodeSet_ring for DOF T:
+        Number of points: 4
+        Time Values: [  0.0,   25.0,   35.0,  60.0] #,  625.0, 1175.0, 1200.0]
+        BC Values:   [294.0, 1783.0, 1783.0, 294.0] #, 1783.0, 1783.0,  294.0]
+      Time Dependent SDBC on NS BoundaryNodeSet_bottom_inside_ring for DOF T:
+        Number of points: 4
+        Time Values: [  0.0,   25.0,   35.0,  60.0] #,  625.0, 1175.0, 1200.0]
+        BC Values:   [294.0, 1783.0, 1783.0, 294.0] #, 1783.0, 1783.0,  294.0]
     Neumann BCs:
-      Time Dependent NBC on SS BoundarySideSet_top for DOF all set P:
-         Time Values: [0.00000000e+00, 25.0,     35.0,     60.0]
-         BC Values: [[0.00000000e+00], [0.0038], [0.0038], [0.0] ]
+      Time Dependent NBC on SS BoundarySideSet_top for DOF sig_x set P:
+         Time Values: [0.0, 25.0,     35.0,     60.0]
+         BC Values: [[0.0], [0.0038], [0.0038], [0.0] ]
+      Time Dependent NBC on SS BoundarySideSet_top for DOF sig_y set P:
+         Time Values: [0.0, 25.0,     35.0,     60.0]
+         BC Values: [[0.0], [0.0038], [0.0038], [0.0] ]
+      Time Dependent NBC on SS BoundarySideSet_top for DOF sig_z set P:
+         Time Values: [0.0, 25.0,     35.0,     60.0]
+         BC Values: [[0.0], [0.0038], [0.0038], [0.0] ]
     Initial Condition:
       Function: Constant
-      Function Data: [0.00000000e+00, 0.00000000e+00, 0.00000000e+00]
+      Function Data: [0.0, 0.0, 0.0, 294.0]
     Parameters:
       Number: 1
       Parameter 0: Time
