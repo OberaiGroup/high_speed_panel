@@ -11,22 +11,28 @@ ANONYMOUS:
         Model Name: Creep
       Elastic Modulus:
         Elastic Modulus Type: Constant
-        Value: 5.0e+3
+        Value: 5.0e+3 # sigma_0
       Poissons Ratio:
         Poissons Ratio Type: Constant
-        Value: 0.33
+        Value: 0.33 # unitless
       Yield Strength:
         Yield Strength Type: Constant
         Value: 1.0e+99 # actual: 1.1E9 Pa 
           # Actual value commented out to not allow yielding
       Hardening Modulus:
         Hardening Modulus Type: Constant
-        Value: 1.0
-      Reference Temperature: 294.0
-      Initial Temperature:   294.0
-      Thermal Expansion Coefficient: 9.7e-6
-      Relaxation Parameter of Material_A: 1.0
-      Activation Parameter of Material_Q/R: 30189.0
+        Value: 1.0  # sigma_0
+      Reference Temperature: 294.0 # K
+      Initial Temperature:   294.0 # K
+      Thermal Expansion Coefficient: 9.7e-6 # 1/K
+      Heat Capacity: 526.3 # J/kg-K
+      Density: 4430.0 # kg/m^3
+      Thermal Transient Coefficient: 0.0 # set to 1.0 when Temp_dot matters, else->zero
+      Thermal Conductivity:
+        Thermal Conductivity Type: Constant
+        Value: 6.7 # W/mK
+      Relaxation Parameter of Material_A: 1.0 # sigma_0
+      Activation Parameter of Material_Q/R: 30189.0 # K
       Strain Rate Exponent: 12.5
       Max Return Mapping Attempts: 25
       Return Mapping Tolerance: 1.0e-10
