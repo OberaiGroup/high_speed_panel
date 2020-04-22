@@ -1,6 +1,8 @@
 %YAML 1.1
 ---
 LCM:
+  Debug Output:
+    Write Jacobian to MatrixMarket: 1
   Build Type: Tpetra
   Problem:
     Name: Mechanics 3D
