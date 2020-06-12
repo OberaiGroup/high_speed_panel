@@ -105,8 +105,8 @@ Volume(1) = {1};
 
 course = 0.9;
 fine   = 0.25;
-smoothness = 0.1;
-border = 0.25;
+smoothness = 0.25;
+border = 0.25+smoothness/2.0;
 
 Field[1] = Box;
 Field[1].Thickness = l*smoothness;
