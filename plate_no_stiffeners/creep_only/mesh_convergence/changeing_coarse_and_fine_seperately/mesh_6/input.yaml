@@ -1,0 +1,193 @@
+%YAML 1.1
+---
+LCM:
+  Build Type: Tpetra
+  Problem:
+    Name: Mechanics 3D
+    Solution Method: Continuation
+    MaterialDB Filename: material.yaml
+    Temperature:
+      Variable Type: Time Dependent
+      Time Values:      [  0.0,   25.0,   35.0,  60.0] #,  625.0, 1175.0, 1200.0]
+      Dependent Values: [294.0, 1783.0, 1783.0, 294.0] #, 1783.0, 1783.0,  294.0]
+        # Extra Temp-time values commented out to focus on first
+        # linear heat ramp-up.
+    Dirichlet BCs:
+      SDBC on NS BoundaryNodeSet_x_min for DOF X: 0.00000000e+00
+      SDBC on NS BoundaryNodeSet_x_min for DOF Y: 0.00000000e+00
+      SDBC on NS BoundaryNodeSet_x_max for DOF X: 0.00000000e+00
+      SDBC on NS BoundaryNodeSet_x_max for DOF Y: 0.00000000e+00
+      SDBC on NS BoundaryNodeSet_y_max for DOF X: 0.00000000e+00
+      SDBC on NS BoundaryNodeSet_y_max for DOF Y: 0.00000000e+00
+      SDBC on NS BoundaryNodeSet_y_min for DOF X: 0.00000000e+00
+      SDBC on NS BoundaryNodeSet_y_min for DOF Y: 0.00000000e+00
+      SDBC on NS BoundaryNodeSet_ring for DOF Z: 0.00000000e+00
+    Neumann BCs:
+      Time Dependent NBC on SS BoundarySideSet_top for DOF all set P:
+         Time Values: [0.00000000e+00, 25.0,     35.0,     60.0]
+         BC Values: [[0.00000000e+00], [0.0038], [0.0038], [0.0] ]
+    Initial Condition:
+      Function: Constant
+      Function Data: [0.00000000e+00, 0.00000000e+00, 0.00000000e+00]
+    Parameters:
+      Number: 1
+      Parameter 0: Time
+    Response Functions:
+      Number: 3
+      Response 0: Solution Average
+      Response 1: IP to Nodal Field
+      Response 2: Project IP to Nodal Field
+      ResponseParams 1:
+        Number of Fields: 2
+        IP Field Name 0: Temperature
+        IP Field Layout 0: Scalar
+        IP Field Name 1: Cauchy_Stress
+        IP Field Layout 1: Tensor
+        Output to File: true
+      ResponseParams 2:
+        Number of Fields: 2
+        IP Field Name 0: Temperature
+        IP Field Layout 0: Scalar
+        IP Field Name 1: Cauchy_Stress
+        IP Field Layout 1: Tensor
+        Output to File: true
+        Mass Matrix Type: Full
+  Discretization:
+    Number Of Time Derivatives: 0
+    Method: Gmsh
+    Cubature Degree: 3
+    Workset Size: 100
+    Gmsh Input Mesh File Name: panel_108357_nodes.msh
+    Exodus Output File Name: ./results.exo
+  Piro:
+    Rythmos:
+      Num Time Steps: 1
+      Final Time: 5.0
+      Max State Error: 0.0001
+      Alpha: 0.0
+      Rythmos Stepper:
+        VerboseObject:
+          Verbosity Level: low
+      Rythmos Integration Control: { }
+      Rythmos Integrator:
+        VerboseObject:
+          Verbosity Level: none
+      Stratimikos: { }
+    LOCA:
+      Bifurcation: { }
+      Constraints: { }
+      Predictor:
+        Method: Tangent
+      Stepper:
+        Continuation Method: Natural
+        Initial Value: 0.0
+        Continuation Parameter: Time
+        Max Steps: 10000000
+        Max Value: 5.0
+        Min Value: 0.0
+        Compute Eigenvalues: false
+        Eigensolver:
+          Method: Anasazi
+          Operator: Jacobian Inverse
+          Num Eigenvalues: 1
+      Step Size:
+        Initial Step Size: 0.0005
+        Method: Adaptive
+        Max Step Size: 0.5
+        Min Step Size: 1.0e-10
+        Failed Step Reduction Factor: 0.5
+        Aggressiveness: 0.1
+    NOX:
+      Direction:
+        Method: Newton
+        Newton:
+          Forcing Term Method: Constant
+          Rescue Bad Newton Solve: true
+          Stratimikos Linear Solver:
+            NOX Stratimikos Options: { }
+            Stratimikos:
+              Linear Solver Type: Belos
+              Linear Solver Types:
+                Belos:
+                  VerboseObject:
+                    Verbosity Level: high
+                  # Left Preconditioner If Unspecified: true
+                  Solver Type: Block GMRES
+                  Solver Types:
+                    Block GMRES:
+                      Convergence Tolerance: 1.00000000e-05
+                      ##
+                      # Commenting out below to lines or 
+                      # changing the left-hand values seems 
+                      # to do nothing -jlc
+                      ##
+                      # Implicit Residual Scaling: None
+                      # Explicit Residual Scaling: Norm of Preconditioned Initial Residual
+                      Output Frequency: 10
+                      Output Style: 1
+                      Verbosity: 33
+                      Maximum Iterations: 10
+                      Block Size: 1
+                      Num Blocks: 10
+                      Orthogonalization: DGKS
+              Preconditioner Type: MueLu
+              Preconditioner Types:
+                MueLu:
+                  multigrid algorithm: sa
+                  'max levels': 1
+                  'smoother: type': smoother_type # This line does nothing noticable
+                  'smoother: pre or post': smother_pre_post # This line does nothing noticable
+                  'coarse: type': 'superludist'
+                  'coarse: max size': 1000
+                  'repartition: enable': true
+                  'repartition: partitioner': zoltan2
+                  'repartition: max imbalance': 1.3
+                  'repartition: min rows per proc': 100
+                Ifpack2:
+                  Prec Type: RILUK
+                  Ifpack2 Settings:
+                    'fact: drop tolerance': 0.00000000e+00
+                    'fact: iluk level-of-fill': 2
+                    'fact: ilut level-of-fill': 0.00000000e+00
+                    'schwarz: filter singletons': true
+                    'schwarz: use reordering': true
+                    'schwarz: overlap level': 0
+      Line Search:
+        Full Step:
+          Full Step: 1.00000000
+        Method: Full Step
+      Nonlinear Solver: Line Search Based
+      Printing:
+        Output Information:
+          Error: true
+          Warning: true
+          Outer Iteration: true
+          Parameters: true
+          Details: true
+          Linear Solver Details: true
+          Stepper Iteration: true
+          Stepper Details: true
+          Stepper Parameters: true
+        Output Precision: 3
+        Output Processor: 0
+      Solver Options:
+        Status Test Check Type: Complete
+      Status Tests:
+        Test Type: Combo
+        Combo Type: OR
+        Number of Tests: 4
+        Test 0:
+          Test Type: NormF
+          Norm Type: Two Norm
+          Scale Type: Unscaled
+          Tolerance: 1.00000000e-06
+        Test 1:
+          Test Type: MaxIters
+          Maximum Iterations: 7
+        Test 2:
+          Test Type: FiniteValue
+        Test 3:
+          Test Type: NormUpdate
+          Scale Type: Unscaled
+          Tolerance: 1.00000000e-11
+...

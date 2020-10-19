@@ -1,6 +1,8 @@
 %YAML 1.1
 ---
 LCM:
+  Debug Output:
+    Write Jacobian to MatrixMarket: -1
   Build Type: Tpetra
   Problem:
     Name: Mechanics 3D
@@ -22,40 +24,19 @@ LCM:
         Number of points: 4
         Time Values: [  0.0,   25.0,   35.0,  60.0] #,  625.0, 1175.0, 1200.0]
         BC Values:   [294.0, 1783.0, 1783.0, 294.0] #, 1783.0, 1783.0,  294.0]
-      Time Dependent SDBC on NS BoundaryNodeSet_x_min for DOF T:
-        Number of points: 4
-        Time Values: [  0.0,   25.0,   35.0,  60.0] #,  625.0, 1175.0, 1200.0]
-        BC Values:   [294.0, 1783.0, 1783.0, 294.0] #, 1783.0, 1783.0,  294.0]
-      Time Dependent SDBC on NS BoundaryNodeSet_x_max for DOF T:
-        Number of points: 4
-        Time Values: [  0.0,   25.0,   35.0,  60.0] #,  625.0, 1175.0, 1200.0]
-        BC Values:   [294.0, 1783.0, 1783.0, 294.0] #, 1783.0, 1783.0,  294.0]
-      Time Dependent SDBC on NS BoundaryNodeSet_y_min for DOF T:
-        Number of points: 4
-        Time Values: [  0.0,   25.0,   35.0,  60.0] #,  625.0, 1175.0, 1200.0]
-        BC Values:   [294.0, 1783.0, 1783.0, 294.0] #, 1783.0, 1783.0,  294.0]
-      Time Dependent SDBC on NS BoundaryNodeSet_y_max for DOF T:
-        Number of points: 4
-        Time Values: [  0.0,   25.0,   35.0,  60.0] #,  625.0, 1175.0, 1200.0]
-        BC Values:   [294.0, 1783.0, 1783.0, 294.0] #, 1783.0, 1783.0,  294.0]
-      Time Dependent SDBC on NS BoundaryNodeSet_ring for DOF T:
-        Number of points: 4
-        Time Values: [  0.0,   25.0,   35.0,  60.0] #,  625.0, 1175.0, 1200.0]
-        BC Values:   [294.0, 1783.0, 1783.0, 294.0] #, 1783.0, 1783.0,  294.0]
-      Time Dependent SDBC on NS BoundaryNodeSet_bottom_inside_ring for DOF T:
-        Number of points: 4
-        Time Values: [  0.0,   25.0,   35.0,  60.0] #,  625.0, 1175.0, 1200.0]
-        BC Values:   [294.0, 1783.0, 1783.0, 294.0] #, 1783.0, 1783.0,  294.0]
     Neumann BCs:
       Time Dependent NBC on SS BoundarySideSet_top for DOF sig_x set P:
          Time Values: [0.0, 25.0,     35.0,     60.0]
-         BC Values: [[0.0], [0.0038], [0.0038], [0.0] ]
+         BC Values: [[0.0], [-0.0038], [-0.0038], [0.0] ]
       Time Dependent NBC on SS BoundarySideSet_top for DOF sig_y set P:
          Time Values: [0.0, 25.0,     35.0,     60.0]
-         BC Values: [[0.0], [0.0038], [0.0038], [0.0] ]
+         BC Values: [[0.0], [-0.0038], [-0.0038], [0.0] ]
       Time Dependent NBC on SS BoundarySideSet_top for DOF sig_z set P:
          Time Values: [0.0, 25.0,     35.0,     60.0]
-         BC Values: [[0.0], [0.0038], [0.0038], [0.0] ]
+         BC Values: [[0.0], [-0.0038], [-0.0038], [0.0] ]
+      Time Dependent NBC on SS BoundarySideSet_top for DOF T set dudn:
+         Time Values: [0.0, 25.0,     35.0,     60.0]
+         BC Values: [[0.0], [1.0], [1.0], [0.0] ]
     Initial Condition:
       Function: Constant
       Function Data: [0.0, 0.0, 0.0, 294.0]
