@@ -1,6 +1,6 @@
-On earth, use:
+On earth and venus, use:
 
-gmsh_4_2 panel.geo -3 -order 2 -save
+gmsh_4_5 panel.geo -3 -order 2 -save
 
 to use gmsh v4.2 to make the panel mesh 
 with 3D elements, 2nd order, and save to 
