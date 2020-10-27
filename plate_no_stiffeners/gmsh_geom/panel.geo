@@ -78,6 +78,7 @@ Physical Surface("y_min") = {7};
 // Create volume
 Surface Loop(1) = {-1, -2, 3, 4, 5, 6, 7};
 Volume(1) = {1};
+Physical Volume("panel") = {1};
 
 ////////////////////////////
 ///Done creating geometry///
@@ -109,7 +110,7 @@ smoothness = 0.25;
 border = 0.25+smoothness/2.0;
 
 Field[1] = Box;
-Field[1].Thickness = l*smoothness;
+//Field[1].Thickness = l*smoothness;
 Field[1].VIn  = course;
 Field[1].VOut = fine;
 Field[1].XMin = l*border;
