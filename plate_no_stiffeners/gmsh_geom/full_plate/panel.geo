@@ -104,14 +104,15 @@ Physical Volume("panel") = {1};
 // 
 // Background Field = 3;
 
-course = 0.9;
-fine   = 0.25;
+global_refinement_level = 0.75;
+coarse = 0.5*global_refinement_level;
+fine   = coarse/5.0;
 smoothness = 0.25;
 border = 0.25+smoothness/2.0;
 
 Field[1] = Box;
-//Field[1].Thickness = l*smoothness;
-Field[1].VIn  = course;
+Field[1].Thickness = l*smoothness;
+Field[1].VIn  = coarse;
 Field[1].VOut = fine;
 Field[1].XMin = l*border;
 Field[1].XMax = l*(1-border);
