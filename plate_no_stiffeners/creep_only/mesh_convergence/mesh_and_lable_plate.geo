@@ -18,12 +18,12 @@ Mesh.SaveAll = 1;
 
 // Set mesh output style: 
 // 1 for .msh, 16 for .vtk (for use with paraview)
-//Mesh.Format = 16;
+// Mesh.Format = 16;
 Mesh.Format = 1;
 Mesh 2;
 Mesh.ElementOrder = 2;
-// Save Sprintf("mesh_1/mesh_1.msh");
-// RefineMesh;
-// Save Sprintf("mesh_2/mesh_2.msh");
-// RefineMesh;
-// Save Sprintf("mesh_3/mesh_3.msh");
+Save Sprintf("tmp.msh");
+RefineMesh;
+Save Sprintf("tmp.msh");
+RefineMesh;
+RefineMesh;

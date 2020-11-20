@@ -58,6 +58,15 @@ LCM:
       Time Dependent NBC on SS BoundarySideSet_top for DOF sig_z set P:
          Time Values: [0.0, 25.0,     35.0,     60.0]
          BC Values: [[0.0], [0.0038], [0.0038], [0.0] ]
+#      Time Dependent NBC on SS BoundarySideSet_top for DOF sig_x set P:
+#         Time Values: [0.0, 25.0,     35.0,     60.0]
+#         BC Values: [[0.0], [0.0038], [0.0038], [0.0] ]
+#      Time Dependent NBC on SS BoundarySideSet_top for DOF sig_y set P:
+#         Time Values: [0.0, 25.0,     35.0,     60.0]
+#         BC Values: [[0.0], [0.0038], [0.0038], [0.0] ]
+#      Time Dependent NBC on SS BoundarySideSet_top for DOF sig_z set P:
+#         Time Values: [0.0, 25.0,     35.0,     60.0]
+#         BC Values: [[0.0], [0.0038], [0.0038], [0.0] ]
     Initial Condition:
       Function: Constant
       Function Data: [0.0, 0.0, 0.0, 294.0]
