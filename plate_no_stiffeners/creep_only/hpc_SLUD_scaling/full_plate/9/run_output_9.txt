@@ -1,0 +1,2327 @@
+Teuchos::GlobalMPISession::GlobalMPISession(): started processor with name d11-43.hpc.usc.edu and rank 2!
+Teuchos::GlobalMPISession::GlobalMPISession(): started processor with name d11-43.hpc.usc.edu and rank 0!
+Teuchos::GlobalMPISession::GlobalMPISession(): started processor with name d11-43.hpc.usc.edu and rank 5!
+Teuchos::GlobalMPISession::GlobalMPISession(): started processor with name d11-43.hpc.usc.edu and rank 6!
+Teuchos::GlobalMPISession::GlobalMPISession(): started processor with name d11-43.hpc.usc.edu and rank 1!
+Teuchos::GlobalMPISession::GlobalMPISession(): started processor with name d11-43.hpc.usc.edu and rank 3!
+Teuchos::GlobalMPISession::GlobalMPISession(): started processor with name d11-43.hpc.usc.edu and rank 4!
+Teuchos::GlobalMPISession::GlobalMPISession(): started processor with name d11-43.hpc.usc.edu and rank 8!
+Teuchos::GlobalMPISession::GlobalMPISession(): started processor with name d11-43.hpc.usc.edu and rank 7!
+***************************************************************
+**  ______   __       ______   ______   __   __   __  __     **
+** /\  __ \ /\ \     /\  == \ /\  __ \ /\ "-.\ \ /\ \_\ \    **
+** \ \  __ \\ \ \____\ \  __< \ \  __ \\ \ \-.  \\ \____ \   **
+**  \ \_\ \_\\ \_____\\ \_____\\ \_\ \_\\ \_\\"\_\\/\_____\  **
+**   \/_/\/_/ \/_____/ \/_____/ \/_/\/_/ \/_/ \/_/ \/_____/  **
+**                                                           **
+***************************************************************
+** Trilinos git commit id - f969561
+** Albany git branch ------ master
+** Albany git commit id --- cec251b
+** Albany cxx compiler ---- GNU 9.2.0
+** Simulation start time -- 2020-10-19 at 16:31:49
+***************************************************************
+Problem Name = Mechanics 3D
+Solution Method = Continuation
+Mechanics problem:
+	Spatial dimension             : 3
+	Mechanics variables           : DOF
+	Temperature variables         : None
+	Dislocation Density variables         : None
+	Pore Pressure variables       : None
+	Transport variables           : None
+	HydroStress variables         : None
+	Damage variables              : None
+	Stabilized Pressure variables : None
+Initializing material database from material.yaml
+The gmsh version is: 4.1
+Num MeshSpecs: 1
+Calling MechanicsProblem::buildEvaluators
+Calling MechanicsProblem::constructDirichletEvaluators
+Calling MechanicsProblem::constructNeumannEvaluators
+Before rebal nelements 0  9906
+Before rebal 0  19741
+Before rebalance: Imbalance threshold is = 9
+ZOLTAN Load balancing method = 3 (RCB)
+After rebalance: Imbalance threshold is = 1.031
+[GenericSTKMeshStruct] Processing field requirements...
+STKDisc: 1101 elements on Proc 0 
+STKDisc: nodeset BoundaryNodeSet1 has size 0  on Proc 0.
+STKDisc: nodeset BoundaryNodeSet2 has size 0  on Proc 0.
+STKDisc: nodeset BoundaryNodeSet3 has size 0  on Proc 0.
+STKDisc: nodeset BoundaryNodeSet4 has size 0  on Proc 0.
+STKDisc: nodeset BoundaryNodeSet5 has size 0  on Proc 0.
+STKDisc: nodeset BoundaryNodeSet6 has size 0  on Proc 0.
+STKDisc: nodeset BoundaryNodeSet7 has size 0  on Proc 0.
+STKDisc: nodeset BoundaryNodeSet_bottom_inside_ring has size 425  on Proc 0.
+STKDisc: nodeset BoundaryNodeSet_ring has size 329  on Proc 0.
+STKDisc: nodeset BoundaryNodeSet_top has size 440  on Proc 0.
+STKDisc: nodeset BoundaryNodeSet_x_max has size 0  on Proc 0.
+STKDisc: nodeset BoundaryNodeSet_x_min has size 138  on Proc 0.
+STKDisc: nodeset BoundaryNodeSet_y_max has size 0  on Proc 0.
+STKDisc: nodeset BoundaryNodeSet_y_min has size 207  on Proc 0.
+STKDisc: nodeset Node has size 2166  on Proc 0.
+STKDisc: sideset BoundarySide has size 712  on Proc 0.
+STKDisc: sideset BoundarySideSet1 has size 0  on Proc 0.
+STKDisc: sideset BoundarySideSet2 has size 0  on Proc 0.
+STKDisc: sideset BoundarySideSet3 has size 0  on Proc 0.
+STKDisc: sideset BoundarySideSet4 has size 0  on Proc 0.
+STKDisc: sideset BoundarySideSet5 has size 0  on Proc 0.
+STKDisc: sideset BoundarySideSet6 has size 0  on Proc 0.
+STKDisc: sideset BoundarySideSet7 has size 0  on Proc 0.
+STKDisc: sideset BoundarySideSet_bottom_inside_ring has size 208  on Proc 0.
+STKDisc: sideset BoundarySideSet_ring has size 145  on Proc 0.
+STKDisc: sideset BoundarySideSet_top has size 211  on Proc 0.
+STKDisc: sideset BoundarySideSet_x_max has size 0  on Proc 0.
+STKDisc: sideset BoundarySideSet_x_min has size 60  on Proc 0.
+STKDisc: sideset BoundarySideSet_y_max has size 0  on Proc 0.
+STKDisc: sideset BoundarySideSet_y_min has size 88  on Proc 0.
+StateManager: initializing state:  Time
+ with initialization type 'scalar' and value: 0
+StateManager: initializing state:  Time_old
+ with initialization type 'scalar' and value: 0
+StateManager: initializing state:  Temperature
+ with initialization type 'scalar' and value: 294
+StateManager: initializing state:  Temperature_old
+ with initialization type 'scalar' and value: 294
+StateManager: initializing state:  Cauchy_Stress
+ with initialization type 'scalar' and value: 0
+StateManager: initializing state:  Fp
+ with initialization type 'identity'
+StateManager: initializing state:  Fp_old
+ with initialization type 'identity'
+StateManager: initializing state:  eqps
+ with initialization type 'scalar' and value: 0
+StateManager: initializing state:  eqps_old
+ with initialization type 'scalar' and value: 0
+StateManager: initializing state:  Mechanical_Source
+ with initialization type 'scalar' and value: 0
+StateManager: initializing state:  F
+ with initialization type 'identity'
+StateManager: initializing state:  F_old
+ with initialization type 'identity'
+StateManager: initializing state:  J
+ with initialization type 'scalar' and value: 1
+StateManager: initializing state:  J_old
+ with initialization type 'scalar' and value: 1
+StateManager: initializing state:  nodal_Temperature
+ with initialization type 'scalar' and value: 0
+StateManager: initializing state:  nodal_Cauchy_Stress
+ with initialization type 'scalar' and value: 0
+StateManager: initializing state:  nw_Temperature
+ with initialization type 'scalar' and value: 0
+StateManager: initializing state:  proj_nodal_Temperature
+ with initialization type 'scalar' and value: 0
+StateManager: initializing state:  proj_nodal_Cauchy_Stress
+ with initialization type 'scalar' and value: 0
+StateManager: initializing state:  proj_nodal_linear
+ with initialization type 'scalar' and value: 0
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ Sacado ParameterLibrary has been initialized:
+ Library of all registered parameters:
+	SDBC on NS BoundaryNodeSet_ring for DOF Z:  Supports AD = 1, Supports_Analytic = 0
+	SDBC on NS BoundaryNodeSet_x_max for DOF X:  Supports AD = 1, Supports_Analytic = 0
+	SDBC on NS BoundaryNodeSet_x_max for DOF Y:  Supports AD = 1, Supports_Analytic = 0
+	SDBC on NS BoundaryNodeSet_x_min for DOF X:  Supports AD = 1, Supports_Analytic = 0
+	SDBC on NS BoundaryNodeSet_x_min for DOF Y:  Supports AD = 1, Supports_Analytic = 0
+	SDBC on NS BoundaryNodeSet_y_max for DOF X:  Supports AD = 1, Supports_Analytic = 0
+	SDBC on NS BoundaryNodeSet_y_max for DOF Y:  Supports AD = 1, Supports_Analytic = 0
+	SDBC on NS BoundaryNodeSet_y_min for DOF X:  Supports AD = 1, Supports_Analytic = 0
+	SDBC on NS BoundaryNodeSet_y_min for DOF Y:  Supports AD = 1, Supports_Analytic = 0
+	Temperature:  Supports AD = 1, Supports_Analytic = 0
+	Time:  Supports AD = 1, Supports_Analytic = 0
+	Time Dependent NBC on SS BoundarySideSet_top for DOF all set P:  Supports AD = 1, Supports_Analytic = 0
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+Number of parameter vectors  = 1
+Number of parameters in parameter vector 0 = 1
+Number of response vectors  = 1
+Number of distributed parameters vectors  = 0
+
+************************************************************************
+
+-- Parameters Passed to Nonlinear Solver --
+
+     Nonlinear Solver = Line Search Based
+     Direction -> 
+      Method = Newton
+      Newton -> 
+       Forcing Term Method = Constant
+       Rescue Bad Newton Solve = 1
+       Stratimikos Linear Solver -> 
+        NOX Stratimikos Options -> 
+         [empty list]
+        Stratimikos -> 
+         Linear Solver Type = Belos
+         Preconditioner Type = MueLu
+         Enable Delayed Solver Construction = 0   [default]
+         Linear Solver Types -> 
+          Belos -> 
+           Solver Type = Block GMRES
+           Convergence Test Frequency = 1   [default]
+           Left Preconditioner If Unspecified = 0   [default]
+           VerboseObject -> 
+            Verbosity Level = high
+            Output File = none   [default]
+           Solver Types -> 
+            Block GMRES -> 
+             Convergence Tolerance = 1e-05   [unused]
+             Output Frequency = 10   [unused]
+             Output Style = 1   [unused]
+             Verbosity = 33   [unused]
+             Maximum Iterations = 10   [unused]
+             Block Size = 1   [unused]
+             Num Blocks = 10   [unused]
+             Orthogonalization = DGKS   [unused]
+            Pseudo Block GMRES -> 
+             Convergence Tolerance = 1e-08   [unused]
+             Maximum Restarts = 20   [unused]
+             Maximum Iterations = 1000   [unused]
+             Num Blocks = 300   [unused]
+             Block Size = 1   [unused]
+             Verbosity = 0   [unused]
+             Output Style = 0   [unused]
+             Output Frequency = -1   [unused]
+             Deflation Quorum = 1   [unused]
+             Output Stream = Teuchos::RCP<std::ostream>{ptr=0x2ad19da7e4a0,node=0x9992620,strong_count=7,weak_count=0}   [unused]
+             Show Maximum Residual Norm Only = 0   [unused]
+             Implicit Residual Scaling = Norm of Preconditioned Initial Residual   [unused]
+             Explicit Residual Scaling = Norm of Initial Residual   [unused]
+             Timer Label = Belos   [unused]
+             Orthogonalization = ICGS   [unused]
+             Orthogonalization Constant = -1   [unused]
+             User Status Tests Combo Type = SEQ   [unused]
+             User Status Tests -> 
+              [empty list]
+            Block CG -> 
+             Convergence Tolerance = 1e-08   [unused]
+             Maximum Iterations = 1000   [unused]
+             Block Size = 1   [unused]
+             Adaptive Block Size = 1   [unused]
+             Verbosity = 0   [unused]
+             Output Style = 0   [unused]
+             Output Frequency = -1   [unused]
+             Output Stream = Teuchos::RCP<std::ostream>{ptr=0x2ad19da7e4a0,node=0x9994af0,strong_count=6,weak_count=0}   [unused]
+             Show Maximum Residual Norm Only = 0   [unused]
+             Use Single Reduction = 0   [unused]
+             Implicit Residual Scaling = Norm of Initial Residual   [unused]
+             Timer Label = Belos   [unused]
+             Orthogonalization = ICGS   [unused]
+             Assert Positive Definiteness = 1   [unused]
+             Orthogonalization Constant = -1   [unused]
+             Residual Norm = TwoNorm   [unused]
+             Fold Convergence Detection Into Allreduce = 0   [unused]
+            Pseudo Block CG -> 
+             Convergence Tolerance = 1e-08   [unused]
+             Maximum Iterations = 1000   [unused]
+             Assert Positive Definiteness = 1   [unused]
+             Verbosity = 0   [unused]
+             Output Style = 0   [unused]
+             Output Frequency = -1   [unused]
+             Deflation Quorum = 1   [unused]
+             Output Stream = Teuchos::RCP<std::ostream>{ptr=0x2ad19da7e4a0,node=0x999d4e0,strong_count=6,weak_count=0}   [unused]
+             Show Maximum Residual Norm Only = 0   [unused]
+             Implicit Residual Scaling = Norm of Initial Residual   [unused]
+             Estimate Condition Number = 0   [unused]
+             Residual Scaling = Norm of Initial Residual   [unused]
+             Timer Label = Belos   [unused]
+             Fold Convergence Detection Into Allreduce = 0   [unused]
+            Pseudo Block Stochastic CG -> 
+             Convergence Tolerance = 1e-08   [unused]
+             Maximum Iterations = 1000   [unused]
+             Assert Positive Definiteness = 1   [unused]
+             Verbosity = 0   [unused]
+             Output Style = 0   [unused]
+             Output Frequency = -1   [unused]
+             Deflation Quorum = 1   [unused]
+             Output Stream = Teuchos::RCP<std::ostream>{ptr=0x2ad19da7e4a0,node=0x999de70,strong_count=6,weak_count=0}   [unused]
+             Show Maximum Residual Norm Only = 0   [unused]
+             Implicit Residual Scaling = Norm of Initial Residual   [unused]
+             Residual Scaling = Norm of Initial Residual   [unused]
+             Timer Label = Belos   [unused]
+            GCRODR -> 
+             Convergence Tolerance = 1e-08   [unused]
+             Maximum Restarts = 100   [unused]
+             Maximum Iterations = 1000   [unused]
+             Block Size = 1   [unused]
+             Num Blocks = 50   [unused]
+             Num Recycled Blocks = 5   [unused]
+             Verbosity = 0   [unused]
+             Output Style = 0   [unused]
+             Output Frequency = -1   [unused]
+             Output Stream = Teuchos::RCP<std::ostream>{ptr=0x2ad19da7e4a0,node=0x999cfc0,strong_count=7,weak_count=0}   [unused]
+             Implicit Residual Scaling = Norm of Preconditioned Initial Residual   [unused]
+             Explicit Residual Scaling = Norm of Initial Residual   [unused]
+             Timer Label = Belos   [unused]
+             Orthogonalization = ICGS   [unused]
+             Orthogonalization Constant = 0   [unused]
+             Orthogonalization Parameters -> 
+              maxNumOrthogPasses = 2   [unused]
+              blkTol = 1.49012e-07   [unused]
+              singTol = 2.22045e-15   [unused]
+            RCG -> 
+             Convergence Tolerance = 1e-08   [unused]
+             Maximum Iterations = 1000   [unused]
+             Block Size = 1   [unused]
+             Num Blocks = 25   [unused]
+             Num Recycled Blocks = 3   [unused]
+             Verbosity = 0   [unused]
+             Output Style = 0   [unused]
+             Output Frequency = -1   [unused]
+             Output Stream = Teuchos::RCP<std::ostream>{ptr=0x2ad19da7e4a0,node=0x999fc00,strong_count=7,weak_count=0}   [unused]
+             Show Maximum Residual Norm Only = 0   [unused]
+             Timer Label = Belos   [unused]
+            MINRES -> 
+             Convergence Tolerance = 1.49012e-08
+             Maximum Iterations = 1000
+             Num Blocks = -1   [unused]
+             Block Size = 1
+             Verbosity = 0   [unused]
+             Output Style = 0   [unused]
+             Output Frequency = -1   [unused]
+             Output Stream = Teuchos::RCP<std::ostream>{ptr=0x2ad19da7e4a0,node=0x99a70a0,strong_count=6,weak_count=0}   [unused]
+             Timer Label = Belos   [unused]
+            TFQMR -> 
+             Convergence Tolerance = 1e-08   [unused]
+             Implicit Tolerance Scale Factor = 10   [unused]
+             Maximum Iterations = 1000   [unused]
+             Verbosity = 0   [unused]
+             Output Style = 0   [unused]
+             Output Frequency = -1   [unused]
+             Output Stream = Teuchos::RCP<std::ostream>{ptr=0x2ad19da7e4a0,node=0x99a7110,strong_count=7,weak_count=0}   [unused]
+             Explicit Residual Test = 0   [unused]
+             Implicit Residual Scaling = Norm of Preconditioned Initial Residual   [unused]
+             Explicit Residual Scaling = Norm of Initial Residual   [unused]
+             Timer Label = Belos   [unused]
+            BiCGStab -> 
+             Convergence Tolerance = 1e-08   [unused]
+             Maximum Iterations = 1000   [unused]
+             Verbosity = 0   [unused]
+             Output Style = 0   [unused]
+             Output Frequency = -1   [unused]
+             Deflation Quorum = 1   [unused]
+             Output Stream = Teuchos::RCP<std::ostream>{ptr=0x2ad19da7e4a0,node=0x99a72d0,strong_count=6,weak_count=0}   [unused]
+             Show Maximum Residual Norm Only = 0   [unused]
+             Implicit Residual Scaling = Norm of Initial Residual   [unused]
+             Residual Scaling = Norm of Initial Residual   [unused]
+             Timer Label = Belos   [unused]
+         Preconditioner Types -> 
+          MueLu -> 
+           multigrid algorithm = sa   [unused]
+           max levels = 1   [unused]
+           smoother: type = smoother_type   [unused]
+           smoother: pre or post = smother_pre_post   [unused]
+           coarse: type = superludist   [unused]
+           coarse: max size = 1000   [unused]
+           repartition: enable = 1   [unused]
+           repartition: partitioner = zoltan2   [unused]
+           repartition: max imbalance = 1.3   [unused]
+           repartition: min rows per proc = 100   [unused]
+           Coordinates = Teuchos::RCP<Tpetra::MultiVector<double, int, long long, Kokkos::Compat::KokkosDeviceWrapperNode<Kokkos::Serial, Kokkos::HostSpace> > >{ptr=0xa057000,node=0xa4df190,strong_count=2,weak_count=0}   [unused]
+           number of equations = 3   [unused]
+           Nullspace = Teuchos::RCP<Tpetra::MultiVector<double, int, long long, Kokkos::Compat::KokkosDeviceWrapperNode<Kokkos::Serial, Kokkos::HostSpace> > >{ptr=0xa109930,node=0x9b1ff90,strong_count=2,weak_count=0}   [unused]
+          Ifpack2 -> 
+           Prec Type = RILUK   [unused]
+           Ifpack2 Settings -> 
+            fact: drop tolerance = 0   [unused]
+            fact: iluk level-of-fill = 2   [unused]
+            fact: ilut level-of-fill = 0   [unused]
+            schwarz: filter singletons = 1   [unused]
+            schwarz: use reordering = 1   [unused]
+            schwarz: overlap level = 0   [unused]
+       Linear Solver -> 
+        Max Iterations = 43   [unused]
+        Tolerance = 0.0001
+     Line Search -> 
+      Method = Full Step
+      Full Step -> 
+       Full Step = 1
+     Printing -> 
+      Output Precision = 3
+      Output Processor = 0
+      MyPID = 0
+      Output Information -> 
+       Error = 1
+       Warning = 1
+       Outer Iteration = 1
+       Parameters = 1
+       Details = 1
+       Linear Solver Details = 1
+       Stepper Iteration = 1
+       Stepper Details = 1
+       Stepper Parameters = 1
+       Debug = 0   [default]
+       Inner Iteration = 0   [default]
+       Outer Iteration StatusTest = 0   [default]
+       Test Details = 0   [default]
+     Solver Options -> 
+      Status Test Check Type = Complete
+      User Defined Pre/Post Operator = Teuchos::RCP<NOX::Observer>{ptr=0xa013030,node=0x96b43e0,strong_count=2,weak_count=0}
+      Observer = Teuchos::RCP<NOX::Observer>{ptr=0,node=0,strong_count=0,weak_count=0}   [default]
+      User Defined Merit Function = Teuchos::RCP<NOX::MeritFunction::Generic>{ptr=0,node=0,strong_count=0,weak_count=0}   [default]
+      Fixed Point Iteration Type = Seidel   [default]
+     Status Tests -> 
+      Test Type = Combo
+      Combo Type = OR
+      Number of Tests = 2
+      Test 0 -> 
+       Test Type = User Defined
+       User Status Test = Teuchos::RCP<NOX::StatusTest::Generic>{ptr=0x969ea10,node=0x968cbf0,strong_count=4,weak_count=0}
+      Test 1 -> 
+       Test Type = Combo
+       Combo Type = OR
+       Number of Tests = 4
+       Test 0 -> 
+        Test Type = NormF
+        Norm Type = Two Norm
+        Scale Type = Unscaled
+        Tolerance = 1e-06
+       Test 1 -> 
+        Test Type = MaxIters
+        Maximum Iterations = 7
+       Test 2 -> 
+        Test Type = FiniteValue
+        Vector Type = F Vector   [default]
+        Norm Type = Two Norm   [default]
+       Test 3 -> 
+        Test Type = NormUpdate
+        Scale Type = Unscaled
+        Tolerance = 1e-11
+        Norm Type = Two Norm   [default]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Beginning Continuation Run 
+Stepper Method:             Natural
+Initial Parameter Value = 0.000e+00
+Maximum Parameter Value = 6.100e+01
+Minimum Parameter Value = 0.000e+00
+Maximum Number of Continuation Steps = 2
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Solver Type = LOCA
+Jacobian Operator = Have Jacobian   [default]
+Write Only Converged Solution = 1   [default]
+Rythmos -> 
+ Num Time Steps = 1   [unused]
+ Final Time = 61   [unused]
+ Max State Error = 0.0001   [unused]
+ Alpha = 0   [unused]
+ Rythmos Stepper -> 
+  VerboseObject -> 
+   Verbosity Level = low   [unused]
+ Rythmos Integration Control -> 
+  [empty list]
+ Rythmos Integrator -> 
+  VerboseObject -> 
+   Verbosity Level = none   [unused]
+ Stratimikos -> 
+  [empty list]
+LOCA -> 
+ Bifurcation -> 
+  Type = None   [default]
+ Constraints -> 
+  [empty list]
+ Predictor -> 
+  Method = Tangent
+  First Step Predictor -> 
+   [empty list]
+  Last Step Predictor -> 
+   [empty list]
+ Stepper -> 
+  Continuation Method = Natural
+  Initial Value = 0
+  Continuation Parameter = Time
+  Max Steps = 2
+  Max Value = 61
+  Min Value = 0
+  Compute Eigenvalues = 0
+  Max Nonlinear Iterations = 15   [default]
+  Enable Tangent Factor Step Size Scaling = 0   [default]
+  Min Tangent Factor = 0.1   [default]
+  Tangent Factor Exponent = 1   [default]
+  Compute Eigenvalues On Target Step = 0   [default]
+  Return Failed on Reaching Max Steps = 1   [default]
+  Eigensolver -> 
+   Method = Anasazi
+   Operator = Jacobian Inverse   [unused]
+   Num Eigenvalues = 1
+   Block Size = 1   [default]
+   Symmetric = 0   [default]
+   Convergence Tolerance = 1e-07   [default]
+   Maximum Restarts = 1   [default]
+   Num Blocks = 30   [default]
+   Step Size = 1   [default]
+   Verbosity = 9   [unused]
+   Save Eigen Data Method = Default   [default]
+ Step Size -> 
+  Initial Step Size = 0.0005
+  Method = Adaptive
+  Max Step Size = 0.5
+  Min Step Size = 1e-10
+  Failed Step Reduction Factor = 0.5
+  Aggressiveness = 0.1
+  Successful Step Increase Factor = 1.26   [default]
+NOX -> 
+ Nonlinear Solver = Line Search Based
+ Direction -> 
+  Method = Newton
+  Newton -> 
+   Forcing Term Method = Constant
+   Rescue Bad Newton Solve = 1
+   Stratimikos Linear Solver -> 
+    NOX Stratimikos Options -> 
+     [empty list]
+    Stratimikos -> 
+     Linear Solver Type = Belos
+     Preconditioner Type = MueLu
+     Enable Delayed Solver Construction = 0   [default]
+     Linear Solver Types -> 
+      Belos -> 
+       Solver Type = Block GMRES
+       Convergence Test Frequency = 1   [default]
+       Left Preconditioner If Unspecified = 0   [default]
+       VerboseObject -> 
+        Verbosity Level = high
+        Output File = none   [default]
+       Solver Types -> 
+        Block GMRES -> 
+         Convergence Tolerance = 1e-05   [unused]
+         Output Frequency = 10   [unused]
+         Output Style = 1   [unused]
+         Verbosity = 33   [unused]
+         Maximum Iterations = 10   [unused]
+         Block Size = 1   [unused]
+         Num Blocks = 10   [unused]
+         Orthogonalization = DGKS   [unused]
+        Pseudo Block GMRES -> 
+         Convergence Tolerance = 1e-08   [unused]
+         Maximum Restarts = 20   [unused]
+         Maximum Iterations = 1000   [unused]
+         Num Blocks = 300   [unused]
+         Block Size = 1   [unused]
+         Verbosity = 0   [unused]
+         Output Style = 0   [unused]
+         Output Frequency = -1   [unused]
+         Deflation Quorum = 1   [unused]
+         Output Stream = Teuchos::RCP<std::ostream>{ptr=0x2ad19da7e4a0,node=0x9992620,strong_count=7,weak_count=0}   [unused]
+         Show Maximum Residual Norm Only = 0   [unused]
+         Implicit Residual Scaling = Norm of Preconditioned Initial Residual   [unused]
+         Explicit Residual Scaling = Norm of Initial Residual   [unused]
+         Timer Label = Belos   [unused]
+         Orthogonalization = ICGS   [unused]
+         Orthogonalization Constant = -1   [unused]
+         User Status Tests Combo Type = SEQ   [unused]
+         User Status Tests -> 
+          [empty list]
+        Block CG -> 
+         Convergence Tolerance = 1e-08   [unused]
+         Maximum Iterations = 1000   [unused]
+         Block Size = 1   [unused]
+         Adaptive Block Size = 1   [unused]
+         Verbosity = 0   [unused]
+         Output Style = 0   [unused]
+         Output Frequency = -1   [unused]
+         Output Stream = Teuchos::RCP<std::ostream>{ptr=0x2ad19da7e4a0,node=0x9994af0,strong_count=6,weak_count=0}   [unused]
+         Show Maximum Residual Norm Only = 0   [unused]
+         Use Single Reduction = 0   [unused]
+         Implicit Residual Scaling = Norm of Initial Residual   [unused]
+         Timer Label = Belos   [unused]
+         Orthogonalization = ICGS   [unused]
+         Assert Positive Definiteness = 1   [unused]
+         Orthogonalization Constant = -1   [unused]
+         Residual Norm = TwoNorm   [unused]
+         Fold Convergence Detection Into Allreduce = 0   [unused]
+        Pseudo Block CG -> 
+         Convergence Tolerance = 1e-08   [unused]
+         Maximum Iterations = 1000   [unused]
+         Assert Positive Definiteness = 1   [unused]
+         Verbosity = 0   [unused]
+         Output Style = 0   [unused]
+         Output Frequency = -1   [unused]
+         Deflation Quorum = 1   [unused]
+         Output Stream = Teuchos::RCP<std::ostream>{ptr=0x2ad19da7e4a0,node=0x999d4e0,strong_count=6,weak_count=0}   [unused]
+         Show Maximum Residual Norm Only = 0   [unused]
+         Implicit Residual Scaling = Norm of Initial Residual   [unused]
+         Estimate Condition Number = 0   [unused]
+         Residual Scaling = Norm of Initial Residual   [unused]
+         Timer Label = Belos   [unused]
+         Fold Convergence Detection Into Allreduce = 0   [unused]
+        Pseudo Block Stochastic CG -> 
+         Convergence Tolerance = 1e-08   [unused]
+         Maximum Iterations = 1000   [unused]
+         Assert Positive Definiteness = 1   [unused]
+         Verbosity = 0   [unused]
+         Output Style = 0   [unused]
+         Output Frequency = -1   [unused]
+         Deflation Quorum = 1   [unused]
+         Output Stream = Teuchos::RCP<std::ostream>{ptr=0x2ad19da7e4a0,node=0x999de70,strong_count=6,weak_count=0}   [unused]
+         Show Maximum Residual Norm Only = 0   [unused]
+         Implicit Residual Scaling = Norm of Initial Residual   [unused]
+         Residual Scaling = Norm of Initial Residual   [unused]
+         Timer Label = Belos   [unused]
+        GCRODR -> 
+         Convergence Tolerance = 1e-08   [unused]
+         Maximum Restarts = 100   [unused]
+         Maximum Iterations = 1000   [unused]
+         Block Size = 1   [unused]
+         Num Blocks = 50   [unused]
+         Num Recycled Blocks = 5   [unused]
+         Verbosity = 0   [unused]
+         Output Style = 0   [unused]
+         Output Frequency = -1   [unused]
+         Output Stream = Teuchos::RCP<std::ostream>{ptr=0x2ad19da7e4a0,node=0x999cfc0,strong_count=7,weak_count=0}   [unused]
+         Implicit Residual Scaling = Norm of Preconditioned Initial Residual   [unused]
+         Explicit Residual Scaling = Norm of Initial Residual   [unused]
+         Timer Label = Belos   [unused]
+         Orthogonalization = ICGS   [unused]
+         Orthogonalization Constant = 0   [unused]
+         Orthogonalization Parameters -> 
+          maxNumOrthogPasses = 2   [unused]
+          blkTol = 1.49012e-07   [unused]
+          singTol = 2.22045e-15   [unused]
+        RCG -> 
+         Convergence Tolerance = 1e-08   [unused]
+         Maximum Iterations = 1000   [unused]
+         Block Size = 1   [unused]
+         Num Blocks = 25   [unused]
+         Num Recycled Blocks = 3   [unused]
+         Verbosity = 0   [unused]
+         Output Style = 0   [unused]
+         Output Frequency = -1   [unused]
+         Output Stream = Teuchos::RCP<std::ostream>{ptr=0x2ad19da7e4a0,node=0x999fc00,strong_count=7,weak_count=0}   [unused]
+         Show Maximum Residual Norm Only = 0   [unused]
+         Timer Label = Belos   [unused]
+        MINRES -> 
+         Convergence Tolerance = 1.49012e-08
+         Maximum Iterations = 1000
+         Num Blocks = -1   [unused]
+         Block Size = 1
+         Verbosity = 0   [unused]
+         Output Style = 0   [unused]
+         Output Frequency = -1   [unused]
+         Output Stream = Teuchos::RCP<std::ostream>{ptr=0x2ad19da7e4a0,node=0x99a70a0,strong_count=6,weak_count=0}   [unused]
+         Timer Label = Belos   [unused]
+        TFQMR -> 
+         Convergence Tolerance = 1e-08   [unused]
+         Implicit Tolerance Scale Factor = 10   [unused]
+         Maximum Iterations = 1000   [unused]
+         Verbosity = 0   [unused]
+         Output Style = 0   [unused]
+         Output Frequency = -1   [unused]
+         Output Stream = Teuchos::RCP<std::ostream>{ptr=0x2ad19da7e4a0,node=0x99a7110,strong_count=7,weak_count=0}   [unused]
+         Explicit Residual Test = 0   [unused]
+         Implicit Residual Scaling = Norm of Preconditioned Initial Residual   [unused]
+         Explicit Residual Scaling = Norm of Initial Residual   [unused]
+         Timer Label = Belos   [unused]
+        BiCGStab -> 
+         Convergence Tolerance = 1e-08   [unused]
+         Maximum Iterations = 1000   [unused]
+         Verbosity = 0   [unused]
+         Output Style = 0   [unused]
+         Output Frequency = -1   [unused]
+         Deflation Quorum = 1   [unused]
+         Output Stream = Teuchos::RCP<std::ostream>{ptr=0x2ad19da7e4a0,node=0x99a72d0,strong_count=6,weak_count=0}   [unused]
+         Show Maximum Residual Norm Only = 0   [unused]
+         Implicit Residual Scaling = Norm of Initial Residual   [unused]
+         Residual Scaling = Norm of Initial Residual   [unused]
+         Timer Label = Belos   [unused]
+     Preconditioner Types -> 
+      MueLu -> 
+       multigrid algorithm = sa   [unused]
+       max levels = 1   [unused]
+       smoother: type = smoother_type   [unused]
+       smoother: pre or post = smother_pre_post   [unused]
+       coarse: type = superludist   [unused]
+       coarse: max size = 1000   [unused]
+       repartition: enable = 1   [unused]
+       repartition: partitioner = zoltan2   [unused]
+       repartition: max imbalance = 1.3   [unused]
+       repartition: min rows per proc = 100   [unused]
+       Coordinates = Teuchos::RCP<Tpetra::MultiVector<double, int, long long, Kokkos::Compat::KokkosDeviceWrapperNode<Kokkos::Serial, Kokkos::HostSpace> > >{ptr=0xa057000,node=0xa4df190,strong_count=2,weak_count=0}   [unused]
+       number of equations = 3   [unused]
+       Nullspace = Teuchos::RCP<Tpetra::MultiVector<double, int, long long, Kokkos::Compat::KokkosDeviceWrapperNode<Kokkos::Serial, Kokkos::HostSpace> > >{ptr=0xa109930,node=0x9b1ff90,strong_count=2,weak_count=0}   [unused]
+      Ifpack2 -> 
+       Prec Type = RILUK   [unused]
+       Ifpack2 Settings -> 
+        fact: drop tolerance = 0   [unused]
+        fact: iluk level-of-fill = 2   [unused]
+        fact: ilut level-of-fill = 0   [unused]
+        schwarz: filter singletons = 1   [unused]
+        schwarz: use reordering = 1   [unused]
+        schwarz: overlap level = 0   [unused]
+   Linear Solver -> 
+    Max Iterations = 43   [unused]
+    Tolerance = 0.0001
+ Line Search -> 
+  Method = Full Step
+  Full Step -> 
+   Full Step = 1
+ Printing -> 
+  Output Precision = 3
+  Output Processor = 0
+  MyPID = 0
+  Output Information -> 
+   Error = 1
+   Warning = 1
+   Outer Iteration = 1
+   Parameters = 1
+   Details = 1
+   Linear Solver Details = 1
+   Stepper Iteration = 1
+   Stepper Details = 1
+   Stepper Parameters = 1
+   Debug = 0   [default]
+   Inner Iteration = 0   [default]
+   Outer Iteration StatusTest = 0   [default]
+   Test Details = 0   [default]
+ Solver Options -> 
+  Status Test Check Type = Complete
+  User Defined Pre/Post Operator = Teuchos::RCP<NOX::Observer>{ptr=0xa013030,node=0x96b43e0,strong_count=2,weak_count=0}
+  Observer = Teuchos::RCP<NOX::Observer>{ptr=0,node=0,strong_count=0,weak_count=0}   [default]
+  User Defined Merit Function = Teuchos::RCP<NOX::MeritFunction::Generic>{ptr=0,node=0,strong_count=0,weak_count=0}   [default]
+  Fixed Point Iteration Type = Seidel   [default]
+ Status Tests -> 
+  Test Type = Combo
+  Combo Type = OR
+  Number of Tests = 2
+  Test 0 -> 
+   Test Type = User Defined
+   User Status Test = Teuchos::RCP<NOX::StatusTest::Generic>{ptr=0x969ea10,node=0x968cbf0,strong_count=4,weak_count=0}
+  Test 1 -> 
+   Test Type = Combo
+   Combo Type = OR
+   Number of Tests = 4
+   Test 0 -> 
+    Test Type = NormF
+    Norm Type = Two Norm
+    Scale Type = Unscaled
+    Tolerance = 1e-06
+   Test 1 -> 
+    Test Type = MaxIters
+    Maximum Iterations = 7
+   Test 2 -> 
+    Test Type = FiniteValue
+    Vector Type = F Vector   [default]
+    Norm Type = Two Norm   [default]
+   Test 3 -> 
+    Test Type = NormUpdate
+    Scale Type = Unscaled
+    Tolerance = 1e-11
+    Norm Type = Two Norm   [default]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Start of Continuation Step 0 : Attempting to converge initial guess at initial parameter values.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Warning: NOX::Solver::LineSearchBased::init() - The solution passed into the solver (either through constructor or reset method) is already converged!  The solver wil not attempt to solve this system since status is flagged as converged.
+
+************************************************************************
+-- Nonlinear Solver Step 0 -- 
+||F|| = 0.000e+00  step = 0.000e+00  dx = 0.000e+00 (Converged!)
+************************************************************************
+
+************************************************************************
+-- Final Status Test Results --
+Converged....OR Combination -> 
+  **...........Model Evaluator Flag: 
+  Converged....OR Combination -> 
+    Converged....F-Norm = 0.000e+00 < 1.000e-06
+                 (Unscaled Two-Norm, Absolute Tolerance)
+    **...........Number of Iterations = 0 < 7
+    **...........Finite Number Check (Two-Norm F) = Finite
+    **...........Absolute Update-Norm = -1.000e+00 < 1.000e-11
+************************************************************************
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+End of Continuation Step 0 : Parameter: Time = 0.000e+00
+--> Step Converged in 0 Nonlinear Solver Iterations!
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+STKDiscretization::writeSolution: writing time 0 to index 1 in file ./results.exo
+Time = 0
+         Response[0] = 0.00000000e+00  0.00000000e+00  0.00000000e+00  
+
+	Calling Predictor with method: Tangent
+Using default factory (AmalgamationFactory[12] ) for building 'UnAmalgamationInfo'.
+multigrid algorithm = sa
+max levels = 1
+smoother: type = smoother_type   [unused]
+smoother: pre or post = smother_pre_post
+coarse: type = superludist
+coarse: max size = 1000
+repartition: enable = 1
+repartition: partitioner = zoltan2
+repartition: max imbalance = 1.3
+repartition: min rows per proc = 100
+number of equations = 3
+rap: algorithm = galerkin   [default]
+repartition: params -> 
+ [empty list]
+
+
+******* WARNING *******
+The following parameters were not used:
+    smoother: type = smoother_type   [unused]
+
+
+******* WARNING *******
+Setting matrix block size to 3 (value of the parameter in the list) instead of 1 (provided matrix).
+You may want to check "number of equations" (or "PDE equations" for factory style list) parameter.
+Clearing old data (if any)
+Replacing coordinate map
+Level 0
+Setup Smoother (MueLu::Amesos2Smoother{type = Superludist})
+
+******* WARNING *******
+Level::Set: unable to store "PostSmoother" generated by factory SmootherFactory[26](0xd1e2b80) on level 0, as it has not been requested and no keep flags were set for it
+keep smoother data = 0   [default]
+PreSmoother data = Teuchos::RCP<MueLu::SmootherPrototype<double, int, long long, Kokkos::Compat::KokkosDeviceWrapperNode<Kokkos::Serial, Kokkos::HostSpace> > >{ptr=0,node=0,strong_count=0,weak_count=0}   [default]
+PostSmoother data = Teuchos::RCP<MueLu::SmootherPrototype<double, int, long long, Kokkos::Compat::KokkosDeviceWrapperNode<Kokkos::Serial, Kokkos::HostSpace> > >{ptr=0,node=0,strong_count=0,weak_count=0}   [default]
+smoother -> 
+ A = Teuchos::RCP<MueLu::FactoryBase const>{ptr=0,node=0,strong_count=0,weak_count=0}   [default]
+ Nullspace = Teuchos::RCP<MueLu::FactoryBase const>{ptr=0,node=0,strong_count=0,weak_count=0}   [default]
+ fix nullspace = 0   [default]
+
+
+--------------------------------------------------------------------------------
+---                            Multigrid Summary                             ---
+--------------------------------------------------------------------------------
+Number of levels    = 1
+Operator complexity = 1.00
+Smoother complexity = 0.00
+Cycle type          = V
+
+level  rows   nnz      nnz/row  c ratio  procs
+  0  59223  4091211  69.08                 9  
+
+Smoother (level 0) pre  : SuperLU_DIST solver interface
+Smoother (level 0) post : no smoother
+
+=====================================================================================================================
+
+                                        TimeMonitor results over 9 processors
+
+Timer Name          Local time (num calls)    MinOverProcs    MeanOverProcs    MaxOverProcs    MeanOverCallCounts    
+---------------------------------------------------------------------------------------------------------------------
+MueLu setup time    0.03063 (1)               0.03052 (1)     0.03054 (1)      0.03063 (1)     0.03054 (1)           
+=====================================================================================================================
+ 
+ Entering Thyra::BelosLinearOpWithSolveFactory<double>::initializeOpImpl(...) ...
+ 
+ Leaving Thyra::BelosLinearOpWithSolveFactory<double>::initializeOpImpl(...) ...
+ 
+ Starting iterations with Belos:
+  Using forward operator = Thyra::TpetraLinearOp<double, int, long long, Kokkos::Compat::KokkosDeviceWrapperNode<Kokkos::Serial, Kokkos::HostSpace> >{rangeDim=59223,domainDim=59223}
+  Using iterative solver = "Belos::BlockGmresSolMgr":
+    Template parameters:
+     ScalarType: double
+     MV: Thyra::MultiVectorBase<double>
+     OP: Thyra::LinearOpBase<double>
+    Flexible: false
+    Num Blocks: 10
+    Maximum Iterations: 10
+    Maximum Restarts: 20
+    Convergence Tolerance: 1.00000000e-05
+  With #Eqns=59223, #RHSs=1 ...
+  
+  *******************************************************
+  ***** Belos Iterative Solver:  Block Gmres 
+  ***** Maximum Iterations: 10
+  ***** Block Size: 1
+  ***** Residual Test: 
+  *****   Test 1 : Belos::StatusTestImpResNorm<>: (2-Norm Res Vec) / (2-Norm Res0), tol = 0.0001
+  *******************************************************
+  Iter  0, [ 1] :    1.000000e+00
+  Iter  1, [ 1] :    4.142675e-05
+ 
+ The Belos solver of type ""Belos::BlockGmresSolMgr": {Flexible: false, Num Blocks: 10, Maximum Iterations: 10, Maximum Restarts: 20, Convergence Tolerance: 0.0001}" returned a solve status of "SOLVE_STATUS_CONVERGED" in 1 iterations with total CPU time of 2.33481 sec
+
+************************************************************************
+
+-- Parameters Passed to Nonlinear Solver --
+
+     Nonlinear Solver = Line Search Based
+     Direction -> 
+      Method = Newton
+      Newton -> 
+       Forcing Term Method = Constant
+       Rescue Bad Newton Solve = 1
+       Stratimikos Linear Solver -> 
+        NOX Stratimikos Options -> 
+         [empty list]
+        Stratimikos -> 
+         Linear Solver Type = Belos
+         Preconditioner Type = MueLu
+         Enable Delayed Solver Construction = 0   [default]
+         Linear Solver Types -> 
+          Belos -> 
+           Solver Type = Block GMRES
+           Convergence Test Frequency = 1   [default]
+           Left Preconditioner If Unspecified = 0   [default]
+           VerboseObject -> 
+            Verbosity Level = high
+            Output File = none   [default]
+           Solver Types -> 
+            Block GMRES -> 
+             Convergence Tolerance = 1e-05
+             Output Frequency = 10
+             Output Style = 1
+             Verbosity = 33
+             Maximum Iterations = 10
+             Block Size = 1
+             Num Blocks = 10
+             Orthogonalization = DGKS
+            Pseudo Block GMRES -> 
+             Convergence Tolerance = 1e-08   [unused]
+             Maximum Restarts = 20   [unused]
+             Maximum Iterations = 1000   [unused]
+             Num Blocks = 300   [unused]
+             Block Size = 1   [unused]
+             Verbosity = 0   [unused]
+             Output Style = 0   [unused]
+             Output Frequency = -1   [unused]
+             Deflation Quorum = 1   [unused]
+             Output Stream = Teuchos::RCP<std::ostream>{ptr=0x2ad19da7e4a0,node=0x9992620,strong_count=7,weak_count=0}   [unused]
+             Show Maximum Residual Norm Only = 0   [unused]
+             Implicit Residual Scaling = Norm of Preconditioned Initial Residual   [unused]
+             Explicit Residual Scaling = Norm of Initial Residual   [unused]
+             Timer Label = Belos   [unused]
+             Orthogonalization = ICGS   [unused]
+             Orthogonalization Constant = -1   [unused]
+             User Status Tests Combo Type = SEQ   [unused]
+             User Status Tests -> 
+              [empty list]
+            Block CG -> 
+             Convergence Tolerance = 1e-08   [unused]
+             Maximum Iterations = 1000   [unused]
+             Block Size = 1   [unused]
+             Adaptive Block Size = 1   [unused]
+             Verbosity = 0   [unused]
+             Output Style = 0   [unused]
+             Output Frequency = -1   [unused]
+             Output Stream = Teuchos::RCP<std::ostream>{ptr=0x2ad19da7e4a0,node=0x9994af0,strong_count=6,weak_count=0}   [unused]
+             Show Maximum Residual Norm Only = 0   [unused]
+             Use Single Reduction = 0   [unused]
+             Implicit Residual Scaling = Norm of Initial Residual   [unused]
+             Timer Label = Belos   [unused]
+             Orthogonalization = ICGS   [unused]
+             Assert Positive Definiteness = 1   [unused]
+             Orthogonalization Constant = -1   [unused]
+             Residual Norm = TwoNorm   [unused]
+             Fold Convergence Detection Into Allreduce = 0   [unused]
+            Pseudo Block CG -> 
+             Convergence Tolerance = 1e-08   [unused]
+             Maximum Iterations = 1000   [unused]
+             Assert Positive Definiteness = 1   [unused]
+             Verbosity = 0   [unused]
+             Output Style = 0   [unused]
+             Output Frequency = -1   [unused]
+             Deflation Quorum = 1   [unused]
+             Output Stream = Teuchos::RCP<std::ostream>{ptr=0x2ad19da7e4a0,node=0x999d4e0,strong_count=6,weak_count=0}   [unused]
+             Show Maximum Residual Norm Only = 0   [unused]
+             Implicit Residual Scaling = Norm of Initial Residual   [unused]
+             Estimate Condition Number = 0   [unused]
+             Residual Scaling = Norm of Initial Residual   [unused]
+             Timer Label = Belos   [unused]
+             Fold Convergence Detection Into Allreduce = 0   [unused]
+            Pseudo Block Stochastic CG -> 
+             Convergence Tolerance = 1e-08   [unused]
+             Maximum Iterations = 1000   [unused]
+             Assert Positive Definiteness = 1   [unused]
+             Verbosity = 0   [unused]
+             Output Style = 0   [unused]
+             Output Frequency = -1   [unused]
+             Deflation Quorum = 1   [unused]
+             Output Stream = Teuchos::RCP<std::ostream>{ptr=0x2ad19da7e4a0,node=0x999de70,strong_count=6,weak_count=0}   [unused]
+             Show Maximum Residual Norm Only = 0   [unused]
+             Implicit Residual Scaling = Norm of Initial Residual   [unused]
+             Residual Scaling = Norm of Initial Residual   [unused]
+             Timer Label = Belos   [unused]
+            GCRODR -> 
+             Convergence Tolerance = 1e-08   [unused]
+             Maximum Restarts = 100   [unused]
+             Maximum Iterations = 1000   [unused]
+             Block Size = 1   [unused]
+             Num Blocks = 50   [unused]
+             Num Recycled Blocks = 5   [unused]
+             Verbosity = 0   [unused]
+             Output Style = 0   [unused]
+             Output Frequency = -1   [unused]
+             Output Stream = Teuchos::RCP<std::ostream>{ptr=0x2ad19da7e4a0,node=0x999cfc0,strong_count=7,weak_count=0}   [unused]
+             Implicit Residual Scaling = Norm of Preconditioned Initial Residual   [unused]
+             Explicit Residual Scaling = Norm of Initial Residual   [unused]
+             Timer Label = Belos   [unused]
+             Orthogonalization = ICGS   [unused]
+             Orthogonalization Constant = 0   [unused]
+             Orthogonalization Parameters -> 
+              maxNumOrthogPasses = 2   [unused]
+              blkTol = 1.49012e-07   [unused]
+              singTol = 2.22045e-15   [unused]
+            RCG -> 
+             Convergence Tolerance = 1e-08   [unused]
+             Maximum Iterations = 1000   [unused]
+             Block Size = 1   [unused]
+             Num Blocks = 25   [unused]
+             Num Recycled Blocks = 3   [unused]
+             Verbosity = 0   [unused]
+             Output Style = 0   [unused]
+             Output Frequency = -1   [unused]
+             Output Stream = Teuchos::RCP<std::ostream>{ptr=0x2ad19da7e4a0,node=0x999fc00,strong_count=7,weak_count=0}   [unused]
+             Show Maximum Residual Norm Only = 0   [unused]
+             Timer Label = Belos   [unused]
+            MINRES -> 
+             Convergence Tolerance = 1.49012e-08
+             Maximum Iterations = 1000
+             Num Blocks = -1   [unused]
+             Block Size = 1
+             Verbosity = 0   [unused]
+             Output Style = 0   [unused]
+             Output Frequency = -1   [unused]
+             Output Stream = Teuchos::RCP<std::ostream>{ptr=0x2ad19da7e4a0,node=0x99a70a0,strong_count=6,weak_count=0}   [unused]
+             Timer Label = Belos   [unused]
+            TFQMR -> 
+             Convergence Tolerance = 1e-08   [unused]
+             Implicit Tolerance Scale Factor = 10   [unused]
+             Maximum Iterations = 1000   [unused]
+             Verbosity = 0   [unused]
+             Output Style = 0   [unused]
+             Output Frequency = -1   [unused]
+             Output Stream = Teuchos::RCP<std::ostream>{ptr=0x2ad19da7e4a0,node=0x99a7110,strong_count=7,weak_count=0}   [unused]
+             Explicit Residual Test = 0   [unused]
+             Implicit Residual Scaling = Norm of Preconditioned Initial Residual   [unused]
+             Explicit Residual Scaling = Norm of Initial Residual   [unused]
+             Timer Label = Belos   [unused]
+            BiCGStab -> 
+             Convergence Tolerance = 1e-08   [unused]
+             Maximum Iterations = 1000   [unused]
+             Verbosity = 0   [unused]
+             Output Style = 0   [unused]
+             Output Frequency = -1   [unused]
+             Deflation Quorum = 1   [unused]
+             Output Stream = Teuchos::RCP<std::ostream>{ptr=0x2ad19da7e4a0,node=0x99a72d0,strong_count=6,weak_count=0}   [unused]
+             Show Maximum Residual Norm Only = 0   [unused]
+             Implicit Residual Scaling = Norm of Initial Residual   [unused]
+             Residual Scaling = Norm of Initial Residual   [unused]
+             Timer Label = Belos   [unused]
+         Preconditioner Types -> 
+          MueLu -> 
+           multigrid algorithm = sa   [unused]
+           max levels = 1   [unused]
+           smoother: type = smoother_type   [unused]
+           smoother: pre or post = smother_pre_post   [unused]
+           coarse: type = superludist   [unused]
+           coarse: max size = 1000   [unused]
+           repartition: enable = 1   [unused]
+           repartition: partitioner = zoltan2   [unused]
+           repartition: max imbalance = 1.3   [unused]
+           repartition: min rows per proc = 100   [unused]
+           Coordinates = Teuchos::RCP<Tpetra::MultiVector<double, int, long long, Kokkos::Compat::KokkosDeviceWrapperNode<Kokkos::Serial, Kokkos::HostSpace> > >{ptr=0xa057000,node=0xa4df190,strong_count=2,weak_count=0}   [unused]
+           number of equations = 3   [unused]
+           Nullspace = Teuchos::RCP<Tpetra::MultiVector<double, int, long long, Kokkos::Compat::KokkosDeviceWrapperNode<Kokkos::Serial, Kokkos::HostSpace> > >{ptr=0xa109930,node=0x9b1ff90,strong_count=3,weak_count=0}   [unused]
+          Ifpack2 -> 
+           Prec Type = RILUK   [unused]
+           Ifpack2 Settings -> 
+            fact: drop tolerance = 0   [unused]
+            fact: iluk level-of-fill = 2   [unused]
+            fact: ilut level-of-fill = 0   [unused]
+            schwarz: filter singletons = 1   [unused]
+            schwarz: use reordering = 1   [unused]
+            schwarz: overlap level = 0   [unused]
+       Linear Solver -> 
+        Max Iterations = 43   [unused]
+        Tolerance = 0.0001
+        Solve Measure Numerator = Norm Residual   [default]
+        Solve Measure Denominator = Norm Initial Residual   [default]
+        Output -> 
+         Cumulative Iteration Count = 1   [unused]
+         Last Iteration Count = 1   [unused]
+     Line Search -> 
+      Method = Full Step
+      Full Step -> 
+       Full Step = 1
+     Printing -> 
+      Output Precision = 3
+      Output Processor = 0
+      MyPID = 0
+      Output Information -> 
+       Error = 1
+       Warning = 1
+       Outer Iteration = 1
+       Parameters = 1
+       Details = 1
+       Linear Solver Details = 1
+       Stepper Iteration = 1
+       Stepper Details = 1
+       Stepper Parameters = 1
+       Debug = 0   [default]
+       Inner Iteration = 0   [default]
+       Outer Iteration StatusTest = 0   [default]
+       Test Details = 0   [default]
+     Solver Options -> 
+      Status Test Check Type = Complete
+      User Defined Pre/Post Operator = Teuchos::RCP<NOX::Observer>{ptr=0xa013030,node=0x96b43e0,strong_count=3,weak_count=0}
+      Observer = Teuchos::RCP<NOX::Observer>{ptr=0,node=0,strong_count=0,weak_count=0}   [default]
+      User Defined Merit Function = Teuchos::RCP<NOX::MeritFunction::Generic>{ptr=0,node=0,strong_count=0,weak_count=0}   [default]
+      Fixed Point Iteration Type = Seidel   [default]
+     Status Tests -> 
+      Test Type = Combo
+      Combo Type = OR
+      Number of Tests = 2
+      Test 0 -> 
+       Test Type = User Defined
+       User Status Test = Teuchos::RCP<NOX::StatusTest::Generic>{ptr=0x969ea10,node=0x968cbf0,strong_count=4,weak_count=0}
+      Test 1 -> 
+       Test Type = Combo
+       Combo Type = OR
+       Number of Tests = 4
+       Test 0 -> 
+        Test Type = NormF
+        Norm Type = Two Norm
+        Scale Type = Unscaled
+        Tolerance = 1e-06
+       Test 1 -> 
+        Test Type = MaxIters
+        Maximum Iterations = 7
+       Test 2 -> 
+        Test Type = FiniteValue
+        Vector Type = F Vector   [default]
+        Norm Type = Two Norm   [default]
+       Test 3 -> 
+        Test Type = NormUpdate
+        Scale Type = Unscaled
+        Tolerance = 1e-11
+        Norm Type = Two Norm   [default]
+     Output -> 
+      Nonlinear Iterations = 0   [unused]
+      2-Norm of Residual = 0   [unused]
+
+************************************************************************
+
+-- Parameters Passed to Nonlinear Solver --
+
+     Nonlinear Solver = Line Search Based
+     Direction -> 
+      Method = Newton
+      Newton -> 
+       Forcing Term Method = Constant
+       Rescue Bad Newton Solve = 1
+       Stratimikos Linear Solver -> 
+        NOX Stratimikos Options -> 
+         [empty list]
+        Stratimikos -> 
+         Linear Solver Type = Belos
+         Preconditioner Type = MueLu
+         Enable Delayed Solver Construction = 0   [default]
+         Linear Solver Types -> 
+          Belos -> 
+           Solver Type = Block GMRES
+           Convergence Test Frequency = 1   [default]
+           Left Preconditioner If Unspecified = 0   [default]
+           VerboseObject -> 
+            Verbosity Level = high
+            Output File = none   [default]
+           Solver Types -> 
+            Block GMRES -> 
+             Convergence Tolerance = 1e-05
+             Output Frequency = 10
+             Output Style = 1
+             Verbosity = 33
+             Maximum Iterations = 10
+             Block Size = 1
+             Num Blocks = 10
+             Orthogonalization = DGKS
+            Pseudo Block GMRES -> 
+             Convergence Tolerance = 1e-08   [unused]
+             Maximum Restarts = 20   [unused]
+             Maximum Iterations = 1000   [unused]
+             Num Blocks = 300   [unused]
+             Block Size = 1   [unused]
+             Verbosity = 0   [unused]
+             Output Style = 0   [unused]
+             Output Frequency = -1   [unused]
+             Deflation Quorum = 1   [unused]
+             Output Stream = Teuchos::RCP<std::ostream>{ptr=0x2ad19da7e4a0,node=0x9992620,strong_count=7,weak_count=0}   [unused]
+             Show Maximum Residual Norm Only = 0   [unused]
+             Implicit Residual Scaling = Norm of Preconditioned Initial Residual   [unused]
+             Explicit Residual Scaling = Norm of Initial Residual   [unused]
+             Timer Label = Belos   [unused]
+             Orthogonalization = ICGS   [unused]
+             Orthogonalization Constant = -1   [unused]
+             User Status Tests Combo Type = SEQ   [unused]
+             User Status Tests -> 
+              [empty list]
+            Block CG -> 
+             Convergence Tolerance = 1e-08   [unused]
+             Maximum Iterations = 1000   [unused]
+             Block Size = 1   [unused]
+             Adaptive Block Size = 1   [unused]
+             Verbosity = 0   [unused]
+             Output Style = 0   [unused]
+             Output Frequency = -1   [unused]
+             Output Stream = Teuchos::RCP<std::ostream>{ptr=0x2ad19da7e4a0,node=0x9994af0,strong_count=6,weak_count=0}   [unused]
+             Show Maximum Residual Norm Only = 0   [unused]
+             Use Single Reduction = 0   [unused]
+             Implicit Residual Scaling = Norm of Initial Residual   [unused]
+             Timer Label = Belos   [unused]
+             Orthogonalization = ICGS   [unused]
+             Assert Positive Definiteness = 1   [unused]
+             Orthogonalization Constant = -1   [unused]
+             Residual Norm = TwoNorm   [unused]
+             Fold Convergence Detection Into Allreduce = 0   [unused]
+            Pseudo Block CG -> 
+             Convergence Tolerance = 1e-08   [unused]
+             Maximum Iterations = 1000   [unused]
+             Assert Positive Definiteness = 1   [unused]
+             Verbosity = 0   [unused]
+             Output Style = 0   [unused]
+             Output Frequency = -1   [unused]
+             Deflation Quorum = 1   [unused]
+             Output Stream = Teuchos::RCP<std::ostream>{ptr=0x2ad19da7e4a0,node=0x999d4e0,strong_count=6,weak_count=0}   [unused]
+             Show Maximum Residual Norm Only = 0   [unused]
+             Implicit Residual Scaling = Norm of Initial Residual   [unused]
+             Estimate Condition Number = 0   [unused]
+             Residual Scaling = Norm of Initial Residual   [unused]
+             Timer Label = Belos   [unused]
+             Fold Convergence Detection Into Allreduce = 0   [unused]
+            Pseudo Block Stochastic CG -> 
+             Convergence Tolerance = 1e-08   [unused]
+             Maximum Iterations = 1000   [unused]
+             Assert Positive Definiteness = 1   [unused]
+             Verbosity = 0   [unused]
+             Output Style = 0   [unused]
+             Output Frequency = -1   [unused]
+             Deflation Quorum = 1   [unused]
+             Output Stream = Teuchos::RCP<std::ostream>{ptr=0x2ad19da7e4a0,node=0x999de70,strong_count=6,weak_count=0}   [unused]
+             Show Maximum Residual Norm Only = 0   [unused]
+             Implicit Residual Scaling = Norm of Initial Residual   [unused]
+             Residual Scaling = Norm of Initial Residual   [unused]
+             Timer Label = Belos   [unused]
+            GCRODR -> 
+             Convergence Tolerance = 1e-08   [unused]
+             Maximum Restarts = 100   [unused]
+             Maximum Iterations = 1000   [unused]
+             Block Size = 1   [unused]
+             Num Blocks = 50   [unused]
+             Num Recycled Blocks = 5   [unused]
+             Verbosity = 0   [unused]
+             Output Style = 0   [unused]
+             Output Frequency = -1   [unused]
+             Output Stream = Teuchos::RCP<std::ostream>{ptr=0x2ad19da7e4a0,node=0x999cfc0,strong_count=7,weak_count=0}   [unused]
+             Implicit Residual Scaling = Norm of Preconditioned Initial Residual   [unused]
+             Explicit Residual Scaling = Norm of Initial Residual   [unused]
+             Timer Label = Belos   [unused]
+             Orthogonalization = ICGS   [unused]
+             Orthogonalization Constant = 0   [unused]
+             Orthogonalization Parameters -> 
+              maxNumOrthogPasses = 2   [unused]
+              blkTol = 1.49012e-07   [unused]
+              singTol = 2.22045e-15   [unused]
+            RCG -> 
+             Convergence Tolerance = 1e-08   [unused]
+             Maximum Iterations = 1000   [unused]
+             Block Size = 1   [unused]
+             Num Blocks = 25   [unused]
+             Num Recycled Blocks = 3   [unused]
+             Verbosity = 0   [unused]
+             Output Style = 0   [unused]
+             Output Frequency = -1   [unused]
+             Output Stream = Teuchos::RCP<std::ostream>{ptr=0x2ad19da7e4a0,node=0x999fc00,strong_count=7,weak_count=0}   [unused]
+             Show Maximum Residual Norm Only = 0   [unused]
+             Timer Label = Belos   [unused]
+            MINRES -> 
+             Convergence Tolerance = 1.49012e-08
+             Maximum Iterations = 1000
+             Num Blocks = -1   [unused]
+             Block Size = 1
+             Verbosity = 0   [unused]
+             Output Style = 0   [unused]
+             Output Frequency = -1   [unused]
+             Output Stream = Teuchos::RCP<std::ostream>{ptr=0x2ad19da7e4a0,node=0x99a70a0,strong_count=6,weak_count=0}   [unused]
+             Timer Label = Belos   [unused]
+            TFQMR -> 
+             Convergence Tolerance = 1e-08   [unused]
+             Implicit Tolerance Scale Factor = 10   [unused]
+             Maximum Iterations = 1000   [unused]
+             Verbosity = 0   [unused]
+             Output Style = 0   [unused]
+             Output Frequency = -1   [unused]
+             Output Stream = Teuchos::RCP<std::ostream>{ptr=0x2ad19da7e4a0,node=0x99a7110,strong_count=7,weak_count=0}   [unused]
+             Explicit Residual Test = 0   [unused]
+             Implicit Residual Scaling = Norm of Preconditioned Initial Residual   [unused]
+             Explicit Residual Scaling = Norm of Initial Residual   [unused]
+             Timer Label = Belos   [unused]
+            BiCGStab -> 
+             Convergence Tolerance = 1e-08   [unused]
+             Maximum Iterations = 1000   [unused]
+             Verbosity = 0   [unused]
+             Output Style = 0   [unused]
+             Output Frequency = -1   [unused]
+             Deflation Quorum = 1   [unused]
+             Output Stream = Teuchos::RCP<std::ostream>{ptr=0x2ad19da7e4a0,node=0x99a72d0,strong_count=6,weak_count=0}   [unused]
+             Show Maximum Residual Norm Only = 0   [unused]
+             Implicit Residual Scaling = Norm of Initial Residual   [unused]
+             Residual Scaling = Norm of Initial Residual   [unused]
+             Timer Label = Belos   [unused]
+         Preconditioner Types -> 
+          MueLu -> 
+           multigrid algorithm = sa   [unused]
+           max levels = 1   [unused]
+           smoother: type = smoother_type   [unused]
+           smoother: pre or post = smother_pre_post   [unused]
+           coarse: type = superludist   [unused]
+           coarse: max size = 1000   [unused]
+           repartition: enable = 1   [unused]
+           repartition: partitioner = zoltan2   [unused]
+           repartition: max imbalance = 1.3   [unused]
+           repartition: min rows per proc = 100   [unused]
+           Coordinates = Teuchos::RCP<Tpetra::MultiVector<double, int, long long, Kokkos::Compat::KokkosDeviceWrapperNode<Kokkos::Serial, Kokkos::HostSpace> > >{ptr=0xa057000,node=0xa4df190,strong_count=2,weak_count=0}   [unused]
+           number of equations = 3   [unused]
+           Nullspace = Teuchos::RCP<Tpetra::MultiVector<double, int, long long, Kokkos::Compat::KokkosDeviceWrapperNode<Kokkos::Serial, Kokkos::HostSpace> > >{ptr=0xa109930,node=0x9b1ff90,strong_count=3,weak_count=0}   [unused]
+          Ifpack2 -> 
+           Prec Type = RILUK   [unused]
+           Ifpack2 Settings -> 
+            fact: drop tolerance = 0   [unused]
+            fact: iluk level-of-fill = 2   [unused]
+            fact: ilut level-of-fill = 0   [unused]
+            schwarz: filter singletons = 1   [unused]
+            schwarz: use reordering = 1   [unused]
+            schwarz: overlap level = 0   [unused]
+       Linear Solver -> 
+        Max Iterations = 43   [unused]
+        Tolerance = 0.0001
+        Solve Measure Numerator = Norm Residual   [default]
+        Solve Measure Denominator = Norm Initial Residual   [default]
+        Output -> 
+         Cumulative Iteration Count = 1   [unused]
+         Last Iteration Count = 1   [unused]
+     Line Search -> 
+      Method = Full Step
+      Full Step -> 
+       Full Step = 1
+     Printing -> 
+      Output Precision = 3
+      Output Processor = 0
+      MyPID = 0
+      Output Information -> 
+       Error = 1
+       Warning = 1
+       Outer Iteration = 1
+       Parameters = 1
+       Details = 1
+       Linear Solver Details = 1
+       Stepper Iteration = 1
+       Stepper Details = 1
+       Stepper Parameters = 1
+       Debug = 0   [default]
+       Inner Iteration = 0   [default]
+       Outer Iteration StatusTest = 0   [default]
+       Test Details = 0   [default]
+     Solver Options -> 
+      Status Test Check Type = Complete
+      User Defined Pre/Post Operator = Teuchos::RCP<NOX::Observer>{ptr=0xa013030,node=0x96b43e0,strong_count=3,weak_count=0}
+      Observer = Teuchos::RCP<NOX::Observer>{ptr=0,node=0,strong_count=0,weak_count=0}   [default]
+      User Defined Merit Function = Teuchos::RCP<NOX::MeritFunction::Generic>{ptr=0,node=0,strong_count=0,weak_count=0}   [default]
+      Fixed Point Iteration Type = Seidel   [default]
+     Status Tests -> 
+      Test Type = Combo
+      Combo Type = OR
+      Number of Tests = 2
+      Test 0 -> 
+       Test Type = User Defined
+       User Status Test = Teuchos::RCP<NOX::StatusTest::Generic>{ptr=0x969ea10,node=0x968cbf0,strong_count=4,weak_count=0}
+      Test 1 -> 
+       Test Type = Combo
+       Combo Type = OR
+       Number of Tests = 4
+       Test 0 -> 
+        Test Type = NormF
+        Norm Type = Two Norm
+        Scale Type = Unscaled
+        Tolerance = 1e-06
+       Test 1 -> 
+        Test Type = MaxIters
+        Maximum Iterations = 7
+       Test 2 -> 
+        Test Type = FiniteValue
+        Vector Type = F Vector   [default]
+        Norm Type = Two Norm   [default]
+       Test 3 -> 
+        Test Type = NormUpdate
+        Scale Type = Unscaled
+        Tolerance = 1e-11
+        Norm Type = Two Norm   [default]
+     Output -> 
+      Nonlinear Iterations = 0   [unused]
+      2-Norm of Residual = 0   [unused]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Start of Continuation Step 1 : Parameter: Time = 5.000e-04 from 0.000e+00
+Continuation Method: Natural
+Current step size  = 5.000e-04   Previous step size = 0.000e+00
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+************************************************************************
+-- Nonlinear Solver Step 0 -- 
+||F|| = 5.060e-06  step = 0.000e+00  dx = 0.000e+00
+************************************************************************
+
+       CALCULATING FORCING TERM
+       Method: Constant
+       Forcing Term: 0.0001
+Using default factory (AmalgamationFactory[59] ) for building 'UnAmalgamationInfo'.
+multigrid algorithm = sa
+max levels = 1
+smoother: type = smoother_type   [unused]
+smoother: pre or post = smother_pre_post
+coarse: type = superludist
+coarse: max size = 1000
+repartition: enable = 1
+repartition: partitioner = zoltan2
+repartition: max imbalance = 1.3
+repartition: min rows per proc = 100
+number of equations = 3
+rap: algorithm = galerkin   [default]
+repartition: params -> 
+ [empty list]
+
+
+******* WARNING *******
+The following parameters were not used:
+    smoother: type = smoother_type   [unused]
+
+
+******* WARNING *******
+Setting matrix block size to 3 (value of the parameter in the list) instead of 1 (provided matrix).
+You may want to check "number of equations" (or "PDE equations" for factory style list) parameter.
+Clearing old data (if any)
+Replacing coordinate map
+Level 0
+Setup Smoother (MueLu::Amesos2Smoother{type = Superludist})
+
+******* WARNING *******
+Level::Set: unable to store "PostSmoother" generated by factory SmootherFactory[73](0xe430ab0) on level 0, as it has not been requested and no keep flags were set for it
+keep smoother data = 0   [default]
+PreSmoother data = Teuchos::RCP<MueLu::SmootherPrototype<double, int, long long, Kokkos::Compat::KokkosDeviceWrapperNode<Kokkos::Serial, Kokkos::HostSpace> > >{ptr=0,node=0,strong_count=0,weak_count=0}   [default]
+PostSmoother data = Teuchos::RCP<MueLu::SmootherPrototype<double, int, long long, Kokkos::Compat::KokkosDeviceWrapperNode<Kokkos::Serial, Kokkos::HostSpace> > >{ptr=0,node=0,strong_count=0,weak_count=0}   [default]
+smoother -> 
+ A = Teuchos::RCP<MueLu::FactoryBase const>{ptr=0,node=0,strong_count=0,weak_count=0}   [default]
+ Nullspace = Teuchos::RCP<MueLu::FactoryBase const>{ptr=0,node=0,strong_count=0,weak_count=0}   [default]
+ fix nullspace = 0   [default]
+
+
+--------------------------------------------------------------------------------
+---                            Multigrid Summary                             ---
+--------------------------------------------------------------------------------
+Number of levels    = 1
+Operator complexity = 1.00
+Smoother complexity = 0.00
+Cycle type          = V
+
+level  rows   nnz      nnz/row  c ratio  procs
+  0  59223  4091211  69.08                 9  
+
+Smoother (level 0) pre  : SuperLU_DIST solver interface
+Smoother (level 0) post : no smoother
+
+=====================================================================================================================
+
+                                        TimeMonitor results over 9 processors
+
+Timer Name          Local time (num calls)    MinOverProcs    MeanOverProcs    MaxOverProcs    MeanOverCallCounts    
+---------------------------------------------------------------------------------------------------------------------
+MueLu setup time    0.005114 (1)              0.004926 (1)    0.005015 (1)     0.005114 (1)    0.005015 (1)          
+=====================================================================================================================
+ 
+ Entering Thyra::BelosLinearOpWithSolveFactory<double>::initializeOpImpl(...) ...
+ 
+ Leaving Thyra::BelosLinearOpWithSolveFactory<double>::initializeOpImpl(...) ...
+ 
+ Starting iterations with Belos:
+  Using forward operator = Thyra::TpetraLinearOp<double, int, long long, Kokkos::Compat::KokkosDeviceWrapperNode<Kokkos::Serial, Kokkos::HostSpace> >{rangeDim=59223,domainDim=59223}
+  Using iterative solver = "Belos::BlockGmresSolMgr":
+    Template parameters:
+     ScalarType: double
+     MV: Thyra::MultiVectorBase<double>
+     OP: Thyra::LinearOpBase<double>
+    Flexible: false
+    Num Blocks: 10
+    Maximum Iterations: 10
+    Maximum Restarts: 20
+    Convergence Tolerance: 1.000000e-05
+  With #Eqns=59223, #RHSs=1 ...
+  
+  *******************************************************
+  ***** Belos Iterative Solver:  Block Gmres 
+  ***** Maximum Iterations: 10
+  ***** Block Size: 1
+  ***** Residual Test: 
+  *****   Test 1 : Belos::StatusTestImpResNorm<>: (2-Norm Res Vec) / (2-Norm Res0), tol = 0.0001
+  *******************************************************
+  Iter  0, [ 1] :    1.000000e+00
+  Iter 10, [ 1] :    8.522044e-02
+ 
+ The Belos solver of type ""Belos::BlockGmresSolMgr": {Flexible: false, Num Blocks: 10, Maximum Iterations: 10, Maximum Restarts: 20, Convergence Tolerance: 0.0001}" returned a solve status of "SOLVE_STATUS_UNCONVERGED" in 10 iterations with total CPU time of 2.5203 sec
+WARNING: LOCA::BorderedSolver::LowerTriangularBlockElimination::solve() - 
+Return Type = NotConverged
+WARNING: LOCA::MultiContinuation::ConstrainedGroup::applyJacobianInverseMultiVector() - 
+Return Type = NotConverged
+WARNING: LOCA::MultiContinuation::ConstrainedGroup::computeNewton() - 
+Return Type = NotConverged
+WARNING: NOX::Direction::Newton::compute() - Linear solve failed to achieve convergence - using the step anyway since "Rescue Bad Newton Solve" is true 
+
+************************************************************************
+-- Nonlinear Solver Step 1 -- 
+||F|| = 4.323e-07  step = 1.000e+00  dx = 3.285e-04 (Converged!)
+************************************************************************
+
+************************************************************************
+-- Final Status Test Results --
+Converged....OR Combination -> 
+  **...........Model Evaluator Flag: 
+  Converged....OR Combination -> 
+    Converged....F-Norm = 4.323e-07 < 1.000e-06
+                 (Unscaled Two-Norm, Absolute Tolerance)
+    **...........Number of Iterations = 1 < 7
+    **...........Finite Number Check (Two-Norm F) = Finite
+    **...........Absolute Update-Norm = 3.285e-04 < 1.000e-11
+************************************************************************
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+End of Continuation Step 1 : Parameter: Time = 5.000e-04 from 0.000e+00
+--> Step Converged in 1 Nonlinear Solver Iterations!
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+	Calling Predictor with method: Tangent
+Using default factory (AmalgamationFactory[105] ) for building 'UnAmalgamationInfo'.
+multigrid algorithm = sa
+max levels = 1
+smoother: type = smoother_type   [unused]
+smoother: pre or post = smother_pre_post
+coarse: type = superludist
+coarse: max size = 1000
+repartition: enable = 1
+repartition: partitioner = zoltan2
+repartition: max imbalance = 1.3
+repartition: min rows per proc = 100
+number of equations = 3
+rap: algorithm = galerkin   [default]
+repartition: params -> 
+ [empty list]
+
+
+******* WARNING *******
+The following parameters were not used:
+    smoother: type = smoother_type   [unused]
+
+
+******* WARNING *******
+Setting matrix block size to 3 (value of the parameter in the list) instead of 1 (provided matrix).
+You may want to check "number of equations" (or "PDE equations" for factory style list) parameter.
+Clearing old data (if any)
+Replacing coordinate map
+Level 0
+Setup Smoother (MueLu::Amesos2Smoother{type = Superludist})
+
+******* WARNING *******
+Level::Set: unable to store "PostSmoother" generated by factory SmootherFactory[119](0xc08fab0) on level 0, as it has not been requested and no keep flags were set for it
+keep smoother data = 0   [default]
+PreSmoother data = Teuchos::RCP<MueLu::SmootherPrototype<double, int, long long, Kokkos::Compat::KokkosDeviceWrapperNode<Kokkos::Serial, Kokkos::HostSpace> > >{ptr=0,node=0,strong_count=0,weak_count=0}   [default]
+PostSmoother data = Teuchos::RCP<MueLu::SmootherPrototype<double, int, long long, Kokkos::Compat::KokkosDeviceWrapperNode<Kokkos::Serial, Kokkos::HostSpace> > >{ptr=0,node=0,strong_count=0,weak_count=0}   [default]
+smoother -> 
+ A = Teuchos::RCP<MueLu::FactoryBase const>{ptr=0,node=0,strong_count=0,weak_count=0}   [default]
+ Nullspace = Teuchos::RCP<MueLu::FactoryBase const>{ptr=0,node=0,strong_count=0,weak_count=0}   [default]
+ fix nullspace = 0   [default]
+
+
+--------------------------------------------------------------------------------
+---                            Multigrid Summary                             ---
+--------------------------------------------------------------------------------
+Number of levels    = 1
+Operator complexity = 1.00
+Smoother complexity = 0.00
+Cycle type          = V
+
+level  rows   nnz      nnz/row  c ratio  procs
+  0  59223  4091211  69.08                 9  
+
+Smoother (level 0) pre  : SuperLU_DIST solver interface
+Smoother (level 0) post : no smoother
+
+=====================================================================================================================
+
+                                        TimeMonitor results over 9 processors
+
+Timer Name          Local time (num calls)    MinOverProcs    MeanOverProcs    MaxOverProcs    MeanOverCallCounts    
+---------------------------------------------------------------------------------------------------------------------
+MueLu setup time    0.004636 (1)              0.004538 (1)    0.004561 (1)     0.004636 (1)    0.004561 (1)          
+=====================================================================================================================
+ 
+ Entering Thyra::BelosLinearOpWithSolveFactory<double>::initializeOpImpl(...) ...
+ 
+ Leaving Thyra::BelosLinearOpWithSolveFactory<double>::initializeOpImpl(...) ...
+ 
+ Starting iterations with Belos:
+  Using forward operator = Thyra::TpetraLinearOp<double, int, long long, Kokkos::Compat::KokkosDeviceWrapperNode<Kokkos::Serial, Kokkos::HostSpace> >{rangeDim=59223,domainDim=59223}
+  Using iterative solver = "Belos::BlockGmresSolMgr":
+    Template parameters:
+     ScalarType: double
+     MV: Thyra::MultiVectorBase<double>
+     OP: Thyra::LinearOpBase<double>
+    Flexible: false
+    Num Blocks: 10
+    Maximum Iterations: 10
+    Maximum Restarts: 20
+    Convergence Tolerance: 1.000000e-05
+  With #Eqns=59223, #RHSs=1 ...
+  
+  *******************************************************
+  ***** Belos Iterative Solver:  Block Gmres 
+  ***** Maximum Iterations: 10
+  ***** Block Size: 1
+  ***** Residual Test: 
+  *****   Test 1 : Belos::StatusTestImpResNorm<>: (2-Norm Res Vec) / (2-Norm Res0), tol = 0.0001
+  *******************************************************
+  Iter  0, [ 1] :    1.000000e+00
+  Iter  1, [ 1] :    4.150851e-05
+ 
+ The Belos solver of type ""Belos::BlockGmresSolMgr": {Flexible: false, Num Blocks: 10, Maximum Iterations: 10, Maximum Restarts: 20, Convergence Tolerance: 0.0001}" returned a solve status of "SOLVE_STATUS_CONVERGED" in 1 iterations with total CPU time of 2.2377 sec
+STKDiscretization::writeSolution: writing time 5.000000e-04 to index 2 in file ./results.exo
+Time = 5.000000e-04
+         Response[0] = -4.71450514e-07 0.00000000e+00  0.00000000e+00  
+
+************************************************************************
+
+-- Parameters Passed to Nonlinear Solver --
+
+     Nonlinear Solver = Line Search Based
+     Direction -> 
+      Method = Newton
+      Newton -> 
+       Forcing Term Method = Constant
+       Rescue Bad Newton Solve = 1
+       Stratimikos Linear Solver -> 
+        NOX Stratimikos Options -> 
+         [empty list]
+        Stratimikos -> 
+         Linear Solver Type = Belos
+         Preconditioner Type = MueLu
+         Enable Delayed Solver Construction = 0   [default]
+         Linear Solver Types -> 
+          Belos -> 
+           Solver Type = Block GMRES
+           Convergence Test Frequency = 1   [default]
+           Left Preconditioner If Unspecified = 0   [default]
+           VerboseObject -> 
+            Verbosity Level = high
+            Output File = none   [default]
+           Solver Types -> 
+            Block GMRES -> 
+             Convergence Tolerance = 1e-05
+             Output Frequency = 10
+             Output Style = 1
+             Verbosity = 33
+             Maximum Iterations = 10
+             Block Size = 1
+             Num Blocks = 10
+             Orthogonalization = DGKS
+            Pseudo Block GMRES -> 
+             Convergence Tolerance = 1e-08   [unused]
+             Maximum Restarts = 20   [unused]
+             Maximum Iterations = 1000   [unused]
+             Num Blocks = 300   [unused]
+             Block Size = 1   [unused]
+             Verbosity = 0   [unused]
+             Output Style = 0   [unused]
+             Output Frequency = -1   [unused]
+             Deflation Quorum = 1   [unused]
+             Output Stream = Teuchos::RCP<std::ostream>{ptr=0x2ad19da7e4a0,node=0x9992620,strong_count=7,weak_count=0}   [unused]
+             Show Maximum Residual Norm Only = 0   [unused]
+             Implicit Residual Scaling = Norm of Preconditioned Initial Residual   [unused]
+             Explicit Residual Scaling = Norm of Initial Residual   [unused]
+             Timer Label = Belos   [unused]
+             Orthogonalization = ICGS   [unused]
+             Orthogonalization Constant = -1   [unused]
+             User Status Tests Combo Type = SEQ   [unused]
+             User Status Tests -> 
+              [empty list]
+            Block CG -> 
+             Convergence Tolerance = 1e-08   [unused]
+             Maximum Iterations = 1000   [unused]
+             Block Size = 1   [unused]
+             Adaptive Block Size = 1   [unused]
+             Verbosity = 0   [unused]
+             Output Style = 0   [unused]
+             Output Frequency = -1   [unused]
+             Output Stream = Teuchos::RCP<std::ostream>{ptr=0x2ad19da7e4a0,node=0x9994af0,strong_count=6,weak_count=0}   [unused]
+             Show Maximum Residual Norm Only = 0   [unused]
+             Use Single Reduction = 0   [unused]
+             Implicit Residual Scaling = Norm of Initial Residual   [unused]
+             Timer Label = Belos   [unused]
+             Orthogonalization = ICGS   [unused]
+             Assert Positive Definiteness = 1   [unused]
+             Orthogonalization Constant = -1   [unused]
+             Residual Norm = TwoNorm   [unused]
+             Fold Convergence Detection Into Allreduce = 0   [unused]
+            Pseudo Block CG -> 
+             Convergence Tolerance = 1e-08   [unused]
+             Maximum Iterations = 1000   [unused]
+             Assert Positive Definiteness = 1   [unused]
+             Verbosity = 0   [unused]
+             Output Style = 0   [unused]
+             Output Frequency = -1   [unused]
+             Deflation Quorum = 1   [unused]
+             Output Stream = Teuchos::RCP<std::ostream>{ptr=0x2ad19da7e4a0,node=0x999d4e0,strong_count=6,weak_count=0}   [unused]
+             Show Maximum Residual Norm Only = 0   [unused]
+             Implicit Residual Scaling = Norm of Initial Residual   [unused]
+             Estimate Condition Number = 0   [unused]
+             Residual Scaling = Norm of Initial Residual   [unused]
+             Timer Label = Belos   [unused]
+             Fold Convergence Detection Into Allreduce = 0   [unused]
+            Pseudo Block Stochastic CG -> 
+             Convergence Tolerance = 1e-08   [unused]
+             Maximum Iterations = 1000   [unused]
+             Assert Positive Definiteness = 1   [unused]
+             Verbosity = 0   [unused]
+             Output Style = 0   [unused]
+             Output Frequency = -1   [unused]
+             Deflation Quorum = 1   [unused]
+             Output Stream = Teuchos::RCP<std::ostream>{ptr=0x2ad19da7e4a0,node=0x999de70,strong_count=6,weak_count=0}   [unused]
+             Show Maximum Residual Norm Only = 0   [unused]
+             Implicit Residual Scaling = Norm of Initial Residual   [unused]
+             Residual Scaling = Norm of Initial Residual   [unused]
+             Timer Label = Belos   [unused]
+            GCRODR -> 
+             Convergence Tolerance = 1e-08   [unused]
+             Maximum Restarts = 100   [unused]
+             Maximum Iterations = 1000   [unused]
+             Block Size = 1   [unused]
+             Num Blocks = 50   [unused]
+             Num Recycled Blocks = 5   [unused]
+             Verbosity = 0   [unused]
+             Output Style = 0   [unused]
+             Output Frequency = -1   [unused]
+             Output Stream = Teuchos::RCP<std::ostream>{ptr=0x2ad19da7e4a0,node=0x999cfc0,strong_count=7,weak_count=0}   [unused]
+             Implicit Residual Scaling = Norm of Preconditioned Initial Residual   [unused]
+             Explicit Residual Scaling = Norm of Initial Residual   [unused]
+             Timer Label = Belos   [unused]
+             Orthogonalization = ICGS   [unused]
+             Orthogonalization Constant = 0   [unused]
+             Orthogonalization Parameters -> 
+              maxNumOrthogPasses = 2   [unused]
+              blkTol = 1.49012e-07   [unused]
+              singTol = 2.22045e-15   [unused]
+            RCG -> 
+             Convergence Tolerance = 1e-08   [unused]
+             Maximum Iterations = 1000   [unused]
+             Block Size = 1   [unused]
+             Num Blocks = 25   [unused]
+             Num Recycled Blocks = 3   [unused]
+             Verbosity = 0   [unused]
+             Output Style = 0   [unused]
+             Output Frequency = -1   [unused]
+             Output Stream = Teuchos::RCP<std::ostream>{ptr=0x2ad19da7e4a0,node=0x999fc00,strong_count=7,weak_count=0}   [unused]
+             Show Maximum Residual Norm Only = 0   [unused]
+             Timer Label = Belos   [unused]
+            MINRES -> 
+             Convergence Tolerance = 1.49012e-08
+             Maximum Iterations = 1000
+             Num Blocks = -1   [unused]
+             Block Size = 1
+             Verbosity = 0   [unused]
+             Output Style = 0   [unused]
+             Output Frequency = -1   [unused]
+             Output Stream = Teuchos::RCP<std::ostream>{ptr=0x2ad19da7e4a0,node=0x99a70a0,strong_count=6,weak_count=0}   [unused]
+             Timer Label = Belos   [unused]
+            TFQMR -> 
+             Convergence Tolerance = 1e-08   [unused]
+             Implicit Tolerance Scale Factor = 10   [unused]
+             Maximum Iterations = 1000   [unused]
+             Verbosity = 0   [unused]
+             Output Style = 0   [unused]
+             Output Frequency = -1   [unused]
+             Output Stream = Teuchos::RCP<std::ostream>{ptr=0x2ad19da7e4a0,node=0x99a7110,strong_count=7,weak_count=0}   [unused]
+             Explicit Residual Test = 0   [unused]
+             Implicit Residual Scaling = Norm of Preconditioned Initial Residual   [unused]
+             Explicit Residual Scaling = Norm of Initial Residual   [unused]
+             Timer Label = Belos   [unused]
+            BiCGStab -> 
+             Convergence Tolerance = 1e-08   [unused]
+             Maximum Iterations = 1000   [unused]
+             Verbosity = 0   [unused]
+             Output Style = 0   [unused]
+             Output Frequency = -1   [unused]
+             Deflation Quorum = 1   [unused]
+             Output Stream = Teuchos::RCP<std::ostream>{ptr=0x2ad19da7e4a0,node=0x99a72d0,strong_count=6,weak_count=0}   [unused]
+             Show Maximum Residual Norm Only = 0   [unused]
+             Implicit Residual Scaling = Norm of Initial Residual   [unused]
+             Residual Scaling = Norm of Initial Residual   [unused]
+             Timer Label = Belos   [unused]
+         Preconditioner Types -> 
+          MueLu -> 
+           multigrid algorithm = sa   [unused]
+           max levels = 1   [unused]
+           smoother: type = smoother_type   [unused]
+           smoother: pre or post = smother_pre_post   [unused]
+           coarse: type = superludist   [unused]
+           coarse: max size = 1000   [unused]
+           repartition: enable = 1   [unused]
+           repartition: partitioner = zoltan2   [unused]
+           repartition: max imbalance = 1.3   [unused]
+           repartition: min rows per proc = 100   [unused]
+           Coordinates = Teuchos::RCP<Tpetra::MultiVector<double, int, long long, Kokkos::Compat::KokkosDeviceWrapperNode<Kokkos::Serial, Kokkos::HostSpace> > >{ptr=0xa057000,node=0xa4df190,strong_count=2,weak_count=0}   [unused]
+           number of equations = 3   [unused]
+           Nullspace = Teuchos::RCP<Tpetra::MultiVector<double, int, long long, Kokkos::Compat::KokkosDeviceWrapperNode<Kokkos::Serial, Kokkos::HostSpace> > >{ptr=0xa109930,node=0x9b1ff90,strong_count=3,weak_count=0}   [unused]
+          Ifpack2 -> 
+           Prec Type = RILUK   [unused]
+           Ifpack2 Settings -> 
+            fact: drop tolerance = 0   [unused]
+            fact: iluk level-of-fill = 2   [unused]
+            fact: ilut level-of-fill = 0   [unused]
+            schwarz: filter singletons = 1   [unused]
+            schwarz: use reordering = 1   [unused]
+            schwarz: overlap level = 0   [unused]
+       Linear Solver -> 
+        Max Iterations = 43   [unused]
+        Tolerance = 0.0001
+        Solve Measure Numerator = Norm Residual   [default]
+        Solve Measure Denominator = Norm Initial Residual   [default]
+        Output -> 
+         Cumulative Iteration Count = 12   [unused]
+         Last Iteration Count = 1   [unused]
+     Line Search -> 
+      Method = Full Step
+      Full Step -> 
+       Full Step = 1
+     Printing -> 
+      Output Precision = 3
+      Output Processor = 0
+      MyPID = 0
+      Output Information -> 
+       Error = 1
+       Warning = 1
+       Outer Iteration = 1
+       Parameters = 1
+       Details = 1
+       Linear Solver Details = 1
+       Stepper Iteration = 1
+       Stepper Details = 1
+       Stepper Parameters = 1
+       Debug = 0   [default]
+       Inner Iteration = 0   [default]
+       Outer Iteration StatusTest = 0   [default]
+       Test Details = 0   [default]
+     Solver Options -> 
+      Status Test Check Type = Complete
+      User Defined Pre/Post Operator = Teuchos::RCP<NOX::Observer>{ptr=0xa013030,node=0x96b43e0,strong_count=3,weak_count=0}
+      Observer = Teuchos::RCP<NOX::Observer>{ptr=0,node=0,strong_count=0,weak_count=0}   [default]
+      User Defined Merit Function = Teuchos::RCP<NOX::MeritFunction::Generic>{ptr=0,node=0,strong_count=0,weak_count=0}   [default]
+      Fixed Point Iteration Type = Seidel   [default]
+     Status Tests -> 
+      Test Type = Combo
+      Combo Type = OR
+      Number of Tests = 2
+      Test 0 -> 
+       Test Type = User Defined
+       User Status Test = Teuchos::RCP<NOX::StatusTest::Generic>{ptr=0x969ea10,node=0x968cbf0,strong_count=4,weak_count=0}
+      Test 1 -> 
+       Test Type = Combo
+       Combo Type = OR
+       Number of Tests = 4
+       Test 0 -> 
+        Test Type = NormF
+        Norm Type = Two Norm
+        Scale Type = Unscaled
+        Tolerance = 1e-06
+       Test 1 -> 
+        Test Type = MaxIters
+        Maximum Iterations = 7
+       Test 2 -> 
+        Test Type = FiniteValue
+        Vector Type = F Vector   [default]
+        Norm Type = Two Norm   [default]
+       Test 3 -> 
+        Test Type = NormUpdate
+        Scale Type = Unscaled
+        Tolerance = 1e-11
+        Norm Type = Two Norm   [default]
+     Output -> 
+      Nonlinear Iterations = 1   [unused]
+      2-Norm of Residual = 4.32344e-07   [unused]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Start of Continuation Step 2 : Parameter: Time = 1.044e-03 from 5.000e-04
+Continuation Method: Natural
+Current step size  = 5.436e-04   Previous step size = 5.000e-04
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+************************************************************************
+-- Nonlinear Solver Step 0 -- 
+||F|| = 1.356e-06  step = 0.000e+00  dx = 0.000e+00
+************************************************************************
+
+       CALCULATING FORCING TERM
+       Method: Constant
+       Forcing Term: 0.0001
+Using default factory (AmalgamationFactory[151] ) for building 'UnAmalgamationInfo'.
+multigrid algorithm = sa
+max levels = 1
+smoother: type = smoother_type   [unused]
+smoother: pre or post = smother_pre_post
+coarse: type = superludist
+coarse: max size = 1000
+repartition: enable = 1
+repartition: partitioner = zoltan2
+repartition: max imbalance = 1.3
+repartition: min rows per proc = 100
+number of equations = 3
+rap: algorithm = galerkin   [default]
+repartition: params -> 
+ [empty list]
+
+
+******* WARNING *******
+The following parameters were not used:
+    smoother: type = smoother_type   [unused]
+
+
+******* WARNING *******
+Setting matrix block size to 3 (value of the parameter in the list) instead of 1 (provided matrix).
+You may want to check "number of equations" (or "PDE equations" for factory style list) parameter.
+Clearing old data (if any)
+Replacing coordinate map
+Level 0
+Setup Smoother (MueLu::Amesos2Smoother{type = Superludist})
+
+******* WARNING *******
+Level::Set: unable to store "PostSmoother" generated by factory SmootherFactory[165](0xc615f00) on level 0, as it has not been requested and no keep flags were set for it
+keep smoother data = 0   [default]
+PreSmoother data = Teuchos::RCP<MueLu::SmootherPrototype<double, int, long long, Kokkos::Compat::KokkosDeviceWrapperNode<Kokkos::Serial, Kokkos::HostSpace> > >{ptr=0,node=0,strong_count=0,weak_count=0}   [default]
+PostSmoother data = Teuchos::RCP<MueLu::SmootherPrototype<double, int, long long, Kokkos::Compat::KokkosDeviceWrapperNode<Kokkos::Serial, Kokkos::HostSpace> > >{ptr=0,node=0,strong_count=0,weak_count=0}   [default]
+smoother -> 
+ A = Teuchos::RCP<MueLu::FactoryBase const>{ptr=0,node=0,strong_count=0,weak_count=0}   [default]
+ Nullspace = Teuchos::RCP<MueLu::FactoryBase const>{ptr=0,node=0,strong_count=0,weak_count=0}   [default]
+ fix nullspace = 0   [default]
+
+
+--------------------------------------------------------------------------------
+---                            Multigrid Summary                             ---
+--------------------------------------------------------------------------------
+Number of levels    = 1
+Operator complexity = 1.00
+Smoother complexity = 0.00
+Cycle type          = V
+
+level  rows   nnz      nnz/row  c ratio  procs
+  0  59223  4091211  69.08                 9  
+
+Smoother (level 0) pre  : SuperLU_DIST solver interface
+Smoother (level 0) post : no smoother
+
+=====================================================================================================================
+
+                                        TimeMonitor results over 9 processors
+
+Timer Name          Local time (num calls)    MinOverProcs    MeanOverProcs    MaxOverProcs    MeanOverCallCounts    
+---------------------------------------------------------------------------------------------------------------------
+MueLu setup time    0.005001 (1)              0.004791 (1)    0.004869 (1)     0.005001 (1)    0.004869 (1)          
+=====================================================================================================================
+ 
+ Entering Thyra::BelosLinearOpWithSolveFactory<double>::initializeOpImpl(...) ...
+ 
+ Leaving Thyra::BelosLinearOpWithSolveFactory<double>::initializeOpImpl(...) ...
+ 
+ Starting iterations with Belos:
+  Using forward operator = Thyra::TpetraLinearOp<double, int, long long, Kokkos::Compat::KokkosDeviceWrapperNode<Kokkos::Serial, Kokkos::HostSpace> >{rangeDim=59223,domainDim=59223}
+  Using iterative solver = "Belos::BlockGmresSolMgr":
+    Template parameters:
+     ScalarType: double
+     MV: Thyra::MultiVectorBase<double>
+     OP: Thyra::LinearOpBase<double>
+    Flexible: false
+    Num Blocks: 10
+    Maximum Iterations: 10
+    Maximum Restarts: 20
+    Convergence Tolerance: 1.00000000e-05
+  With #Eqns=59223, #RHSs=1 ...
+  
+  *******************************************************
+  ***** Belos Iterative Solver:  Block Gmres 
+  ***** Maximum Iterations: 10
+  ***** Block Size: 1
+  ***** Residual Test: 
+  *****   Test 1 : Belos::StatusTestImpResNorm<>: (2-Norm Res Vec) / (2-Norm Res0), tol = 0.0001
+  *******************************************************
+  Iter  0, [ 1] :    1.000000e+00
+  Iter 10, [ 1] :    3.055717e-01
+ 
+ The Belos solver of type ""Belos::BlockGmresSolMgr": {Flexible: false, Num Blocks: 10, Maximum Iterations: 10, Maximum Restarts: 20, Convergence Tolerance: 0.0001}" returned a solve status of "SOLVE_STATUS_UNCONVERGED" in 10 iterations with total CPU time of 2.45927 sec
+WARNING: LOCA::BorderedSolver::LowerTriangularBlockElimination::solve() - 
+Return Type = NotConverged
+WARNING: LOCA::MultiContinuation::ConstrainedGroup::applyJacobianInverseMultiVector() - 
+Return Type = NotConverged
+WARNING: LOCA::MultiContinuation::ConstrainedGroup::computeNewton() - 
+Return Type = NotConverged
+WARNING: NOX::Direction::Newton::compute() - Linear solve failed to achieve convergence - using the step anyway since "Rescue Bad Newton Solve" is true 
+
+************************************************************************
+-- Nonlinear Solver Step 1 -- 
+||F|| = 4.309e-07  step = 1.000e+00  dx = 5.726e-04 (Converged!)
+************************************************************************
+
+************************************************************************
+-- Final Status Test Results --
+Converged....OR Combination -> 
+  **...........Model Evaluator Flag: 
+  Converged....OR Combination -> 
+    Converged....F-Norm = 4.309e-07 < 1.000e-06
+                 (Unscaled Two-Norm, Absolute Tolerance)
+    **...........Number of Iterations = 1 < 7
+    **...........Finite Number Check (Two-Norm F) = Finite
+    **...........Absolute Update-Norm = 5.726e-04 < 1.000e-11
+************************************************************************
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+End of Continuation Step 2 : Parameter: Time = 1.044e-03 from 5.000e-04
+--> Step Converged in 1 Nonlinear Solver Iterations!
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+	Calling Predictor with method: Tangent
+Using default factory (AmalgamationFactory[197] ) for building 'UnAmalgamationInfo'.
+multigrid algorithm = sa
+max levels = 1
+smoother: type = smoother_type   [unused]
+smoother: pre or post = smother_pre_post
+coarse: type = superludist
+coarse: max size = 1000
+repartition: enable = 1
+repartition: partitioner = zoltan2
+repartition: max imbalance = 1.3
+repartition: min rows per proc = 100
+number of equations = 3
+rap: algorithm = galerkin   [default]
+repartition: params -> 
+ [empty list]
+
+
+******* WARNING *******
+The following parameters were not used:
+    smoother: type = smoother_type   [unused]
+
+
+******* WARNING *******
+Setting matrix block size to 3 (value of the parameter in the list) instead of 1 (provided matrix).
+You may want to check "number of equations" (or "PDE equations" for factory style list) parameter.
+Clearing old data (if any)
+Replacing coordinate map
+Level 0
+Setup Smoother (MueLu::Amesos2Smoother{type = Superludist})
+
+******* WARNING *******
+Level::Set: unable to store "PostSmoother" generated by factory SmootherFactory[211](0xa545280) on level 0, as it has not been requested and no keep flags were set for it
+keep smoother data = 0   [default]
+PreSmoother data = Teuchos::RCP<MueLu::SmootherPrototype<double, int, long long, Kokkos::Compat::KokkosDeviceWrapperNode<Kokkos::Serial, Kokkos::HostSpace> > >{ptr=0,node=0,strong_count=0,weak_count=0}   [default]
+PostSmoother data = Teuchos::RCP<MueLu::SmootherPrototype<double, int, long long, Kokkos::Compat::KokkosDeviceWrapperNode<Kokkos::Serial, Kokkos::HostSpace> > >{ptr=0,node=0,strong_count=0,weak_count=0}   [default]
+smoother -> 
+ A = Teuchos::RCP<MueLu::FactoryBase const>{ptr=0,node=0,strong_count=0,weak_count=0}   [default]
+ Nullspace = Teuchos::RCP<MueLu::FactoryBase const>{ptr=0,node=0,strong_count=0,weak_count=0}   [default]
+ fix nullspace = 0   [default]
+
+
+--------------------------------------------------------------------------------
+---                            Multigrid Summary                             ---
+--------------------------------------------------------------------------------
+Number of levels    = 1
+Operator complexity = 1.00
+Smoother complexity = 0.00
+Cycle type          = V
+
+level  rows   nnz      nnz/row  c ratio  procs
+  0  59223  4091211  69.08                 9  
+
+Smoother (level 0) pre  : SuperLU_DIST solver interface
+Smoother (level 0) post : no smoother
+
+=====================================================================================================================
+
+                                        TimeMonitor results over 9 processors
+
+Timer Name          Local time (num calls)    MinOverProcs    MeanOverProcs    MaxOverProcs    MeanOverCallCounts    
+---------------------------------------------------------------------------------------------------------------------
+MueLu setup time    0.004583 (1)              0.004485 (1)    0.004497 (1)     0.004583 (1)    0.004497 (1)          
+=====================================================================================================================
+ 
+ Entering Thyra::BelosLinearOpWithSolveFactory<double>::initializeOpImpl(...) ...
+ 
+ Leaving Thyra::BelosLinearOpWithSolveFactory<double>::initializeOpImpl(...) ...
+ 
+ Starting iterations with Belos:
+  Using forward operator = Thyra::TpetraLinearOp<double, int, long long, Kokkos::Compat::KokkosDeviceWrapperNode<Kokkos::Serial, Kokkos::HostSpace> >{rangeDim=59223,domainDim=59223}
+  Using iterative solver = "Belos::BlockGmresSolMgr":
+    Template parameters:
+     ScalarType: double
+     MV: Thyra::MultiVectorBase<double>
+     OP: Thyra::LinearOpBase<double>
+    Flexible: false
+    Num Blocks: 10
+    Maximum Iterations: 10
+    Maximum Restarts: 20
+    Convergence Tolerance: 1.000000e-05
+  With #Eqns=59223, #RHSs=1 ...
+  
+  *******************************************************
+  ***** Belos Iterative Solver:  Block Gmres 
+  ***** Maximum Iterations: 10
+  ***** Block Size: 1
+  ***** Residual Test: 
+  *****   Test 1 : Belos::StatusTestImpResNorm<>: (2-Norm Res Vec) / (2-Norm Res0), tol = 0.0001
+  *******************************************************
+  Iter  0, [ 1] :    1.000000e+00
+  Iter  1, [ 1] :    4.162882e-05
+ 
+ The Belos solver of type ""Belos::BlockGmresSolMgr": {Flexible: false, Num Blocks: 10, Maximum Iterations: 10, Maximum Restarts: 20, Convergence Tolerance: 0.0001}" returned a solve status of "SOLVE_STATUS_CONVERGED" in 1 iterations with total CPU time of 2.20618 sec
+STKDiscretization::writeSolution: writing time 1.043556e-03 to index 3 in file ./results.exo
+Time = 1.043556e-03
+         Response[0] = -1.27448241e-06 0.00000000e+00  0.00000000e+00  
+
+	Continuation run stopping: reached maximum number of steps 2
+Nonlinear solver failed to converge.
+Finished eval of first model: Params, Responses 
+
+Parameter vector 0:
+
+                    Time	0.000000000000e+00
+
+Response vector 0: {Solution Average, IP to Nodal Field, Project IP to Nodal Field}
+
+                    -1.274482409041e-06
+                    0.000000000000e+00
+                    0.000000000000e+00
+
+CheckTestResults: Number of Comparisons Attempted = 0
+
+Main_Solve: MeanValue of final solution -1.274482409041e-06
+
+Number of Failed Comparisons: 0
+*** Teuchos::StackedTimer::report() - Remainder for a level will be ***
+*** incorrect if a timer in the level does not exist on every rank  ***
+*** of the MPI Communicator.                                        ***
+Albany Total Time: 21.6034 [1] {min=21.6026, max=21.6054, std dev=0.000978215}
+|   Albany: Setup Time: 2.66557 - 12.3387% [1] {min=2.66485, max=2.66927, std dev=0.00141685}
+|   |   Phalanx::SortAndOrderEvaluators: 3.12322e-06 - 0.000117169% [8] {min=2.713e-06, max=3.516e-06, std dev=3.01961e-07}
+|   |   Remainder: 2.66557 - 99.9999%
+|   Thyra::DefaultModelEvaluatorWithSolveFactory<double>::evalModel(...): 6.55582 - 30.3463% [19] {min=6.55463, max=6.55684, std dev=0.000678768}
+|   |   Albany: Total Fill Time: 6.55491 - 99.9861% [19] {min=6.55372, max=6.55595, std dev=0.000685347}
+|   |   |   Albany Fill: Residual: 0.501999 - 7.65837% [11] {min=0.500116, max=0.504034, std dev=0.00120366}
+|   |   |   |   Phalanx::SortAndOrderEvaluators: 9.98556e-07 - 0.000198916% [3] {min=8.96e-07, max=1.059e-06, std dev=6.01646e-08}
+|   |   |   |   Albany Residual Fill: Evaluate: 0.484721 - 96.5581% [11] {min=0.477484, max=0.491274, std dev=0.00482036}
+|   |   |   |   |   Phalanx: Evaluator 1: [<Residual>] Gather Coordinate Vector<Residual>: 0.00187989 - 0.387829% [128] {min=0.00139984, max=0.0025459, std dev=0.000344984}
+|   |   |   |   |   Phalanx: Evaluator 8: [<Residual>] ComputeBasisFunctions<Residual>: 0.0870342 - 17.9555% [128] {min=0.0818638, max=0.0901047, std dev=0.00374793}
+|   |   |   |   |   Phalanx: Evaluator 0: [<Residual>] Gather Solution<Residual>: 0.00145499 - 0.30017% [128] {min=0.00131429, max=0.00169149, std dev=0.000130018}
+|   |   |   |   |   Phalanx: Evaluator 4: [<Residual>] DOFVecInterpolationBase<Residual>: 0.00360024 - 0.742745% [128] {min=0.00358272, max=0.00364258, std dev=1.98498e-05}
+|   |   |   |   |   Phalanx: Evaluator 5: [<Residual>] DOFVecGradInterpolationBase<Residual>: 0.012286 - 2.53465% [128] {min=0.0122001, max=0.0124164, std dev=6.69407e-05}
+|   |   |   |   |   Phalanx: Evaluator 21: [<Residual>] Kinematics<Residual>: 0.00933759 - 1.92638% [128] {min=0.0092626, max=0.00950462, std dev=7.31717e-05}
+|   |   |   |   |   Phalanx: Evaluator 11: [<Residual>] Time<Residual>: 0.000195003 - 0.0402299% [128] {min=0.000160719, max=0.000237206, std dev=2.53979e-05}
+|   |   |   |   |   Phalanx: Evaluator 10: [<Residual>] Temperature: 0.00014443 - 0.0297966% [128] {min=0.000133554, max=0.000154786, std dev=7.06252e-06}
+|   |   |   |   |   Phalanx: Evaluator 15: [<Residual>] Constitutive Model Parameters<Residual>: 0.000936965 - 0.1933% [128] {min=0.00090107, max=0.000971585, std dev=2.74911e-05}
+|   |   |   |   |   Phalanx: Evaluator 16: [<Residual>] ConstitutiveModelInterface<Residual>: 0.321166 - 66.2578% [128] {min=0.318828, max=0.323657, std dev=0.00171771}
+|   |   |   |   |   Phalanx: Evaluator 26: [<Residual>] FirstPK<Residual>: 0.00451613 - 0.931696% [128] {min=0.00443369, max=0.00459982, std dev=5.7425e-05}
+|   |   |   |   |   Phalanx: Evaluator 25: [<Residual>] MechanicsResidual<Residual>: 0.0123824 - 2.55454% [128] {min=0.0123419, max=0.0124306, std dev=4.09705e-05}
+|   |   |   |   |   Phalanx: Evaluator 9: [<Residual>] Scatter<Residual>: 0.00105392 - 0.217428% [128] {min=0.000962809, max=0.00115931, std dev=6.97728e-05}
+|   |   |   |   |   Phalanx: Evaluator 148: [<Residual>] Gather Coordinate Vector<Residual>: 0.00108129 - 0.223074% [128] {min=0.000917636, max=0.0013958, std dev=0.000166275}
+|   |   |   |   |   Phalanx: Evaluator 156: [<Residual>] Time Dependent NBC on SS BoundarySideSet_top for DOF all set P<Residual>: 0.0235477 - 4.85798% [128] {min=0.0198583, max=0.0272758, std dev=0.00263024}
+|   |   |   |   |   Phalanx: Evaluator 160: [<Residual>] Neumann Aggregator<Residual>: 5.12249e-05 - 0.0105679% [128] {min=4.2722e-05, max=5.7964e-05, std dev=4.74053e-06}
+|   |   |   |   |   Remainder: 0.00405374 - 0.836304%
+|   |   |   |   Albany Residual Fill: Export: 0.00762892 - 1.51971% [11] {min=0.00158914, max=0.0154727, std dev=0.0053145}
+|   |   |   |   Phalanx: Evaluator 120: [<Residual>] SDBC on NS BoundaryNodeSet_x_min for DOF X<Residual>: 0.000100748 - 0.0200693% [11] {min=3.1169e-05, max=0.000252849, std dev=9.95236e-05}
+|   |   |   |   Phalanx: Evaluator 124: [<Residual>] SDBC on NS BoundaryNodeSet_x_min for DOF Y<Residual>: 8.8136e-05 - 0.017557% [11] {min=1.4316e-05, max=0.000272924, std dev=0.000110224}
+|   |   |   |   Phalanx: Evaluator 112: [<Residual>] SDBC on NS BoundaryNodeSet_x_max for DOF X<Residual>: 7.39212e-05 - 0.0147254% [11] {min=1.1863e-05, max=0.000293183, std dev=0.000121081}
+|   |   |   |   Phalanx: Evaluator 116: [<Residual>] SDBC on NS BoundaryNodeSet_x_max for DOF Y<Residual>: 7.95006e-05 - 0.0158368% [11] {min=1.0469e-05, max=0.000322168, std dev=0.000135402}
+|   |   |   |   Phalanx: Evaluator 128: [<Residual>] SDBC on NS BoundaryNodeSet_y_max for DOF X<Residual>: 8.33549e-05 - 0.0166046% [11] {min=1.3079e-05, max=0.000232492, std dev=8.72059e-05}
+|   |   |   |   Phalanx: Evaluator 132: [<Residual>] SDBC on NS BoundaryNodeSet_y_max for DOF Y<Residual>: 9.3707e-05 - 0.0186668% [11] {min=1.4433e-05, max=0.000263593, std dev=9.93264e-05}
+|   |   |   |   Phalanx: Evaluator 136: [<Residual>] SDBC on NS BoundaryNodeSet_y_min for DOF X<Residual>: 8.95694e-05 - 0.0178425% [11] {min=1.0206e-05, max=0.000254376, std dev=9.5954e-05}
+|   |   |   |   Phalanx: Evaluator 140: [<Residual>] SDBC on NS BoundaryNodeSet_y_min for DOF Y<Residual>: 8.9929e-05 - 0.0179142% [11] {min=9.576e-06, max=0.000263872, std dev=0.000102514}
+|   |   |   |   Phalanx: Evaluator 108: [<Residual>] SDBC on NS BoundaryNodeSet_ring for DOF Z<Residual>: 0.000325253 - 0.0647915% [11] {min=0.000165833, max=0.000763347, std dev=0.000201326}
+|   |   |   |   Phalanx: Evaluator 144: [<Residual>] Dirichlet Aggregator<Residual>: 8.282e-06 - 0.0016498% [11] {min=6.154e-06, max=1.0563e-05, std dev=1.35257e-06}
+|   |   |   |   Remainder: 0.00861579 - 1.7163%
+|   |   |   Albany Fill: Response: 1.35923 - 20.7361% [6] {min=1.35703, max=1.36057, std dev=0.000942851}
+|   |   |   |   Phalanx: Evaluator 165: [<Residual>] Gather Coordinate Vector<Residual>: 0.000862085 - 0.0634243% [70] {min=0.00072641, max=0.00114334, std dev=0.000132143}
+|   |   |   |   Phalanx: Evaluator 172: [<Residual>] ComputeBasisFunctions<Residual>: 0.0475856 - 3.50091% [70] {min=0.0447797, max=0.04916, std dev=0.00206034}
+|   |   |   |   Phalanx: Evaluator 174: [<Residual>] Temperature: 8.19446e-05 - 0.00602873% [70] {min=7.276e-05, max=9.5878e-05, std dev=6.96543e-06}
+|   |   |   |   Phalanx: Evaluator 164: [<Residual>] Gather Solution<Residual>: 0.000801722 - 0.0589834% [70] {min=0.0007127, max=0.000894147, std dev=6.87958e-05}
+|   |   |   |   Phalanx: Evaluator 169: [<Residual>] DOFVecGradInterpolationBase<Residual>: 0.00668534 - 0.491846% [70] {min=0.006637, max=0.00672741, std dev=3.40879e-05}
+|   |   |   |   Phalanx: Evaluator 185: [<Residual>] Kinematics<Residual>: 0.00510357 - 0.375474% [70] {min=0.00501704, max=0.00524486, std dev=6.96232e-05}
+|   |   |   |   Phalanx: Evaluator 175: [<Residual>] Time<Residual>: 8.27588e-05 - 0.00608863% [70] {min=7.0424e-05, max=9.915e-05, std dev=1.09001e-05}
+|   |   |   |   Phalanx: Evaluator 179: [<Residual>] Constitutive Model Parameters<Residual>: 0.000501648 - 0.0369067% [70] {min=0.000475467, max=0.000534222, std dev=1.97236e-05}
+|   |   |   |   Phalanx: Evaluator 180: [<Residual>] ConstitutiveModelInterface<Residual>: 0.166564 - 12.2542% [70] {min=0.164991, max=0.16825, std dev=0.0009784}
+|   |   |   |   Phalanx: Evaluator 191: [<Residual>] ???: 0.030963 - 2.27797% [70] {min=0.0301504, max=0.031782, std dev=0.000706469}
+|   |   |   |   Phalanx: Evaluator 286: [<Residual>] Temperature: 0.00010369 - 0.00762858% [70] {min=8.937e-05, max=0.000116824, std dev=9.8688e-06}
+|   |   |   |   Phalanx: Evaluator 277: [<Residual>] Gather Coordinate Vector<Residual>: 0.000906108 - 0.0666632% [70] {min=0.000766174, max=0.00121393, std dev=0.000149012}
+|   |   |   |   Phalanx: Evaluator 284: [<Residual>] ComputeBasisFunctions<Residual>: 0.0482268 - 3.54809% [70] {min=0.0450124, max=0.0503855, std dev=0.00220121}
+|   |   |   |   Phalanx: Evaluator 276: [<Residual>] Gather Solution<Residual>: 0.000877506 - 0.0645588% [70] {min=0.000758349, max=0.000993312, std dev=9.54616e-05}
+|   |   |   |   Phalanx: Evaluator 281: [<Residual>] DOFVecGradInterpolationBase<Residual>: 0.00675322 - 0.49684% [70] {min=0.00665392, max=0.00686893, std dev=6.52162e-05}
+|   |   |   |   Phalanx: Evaluator 297: [<Residual>] Kinematics<Residual>: 0.00512537 - 0.377078% [70] {min=0.00501858, max=0.00531366, std dev=8.35573e-05}
+|   |   |   |   Phalanx: Evaluator 287: [<Residual>] Time<Residual>: 9.93888e-05 - 0.00731212% [70] {min=8.5765e-05, max=0.000111177, std dev=8.44146e-06}
+|   |   |   |   Phalanx: Evaluator 291: [<Residual>] Constitutive Model Parameters<Residual>: 0.000548889 - 0.0403823% [70] {min=0.000507195, max=0.000614345, std dev=3.46761e-05}
+|   |   |   |   Phalanx: Evaluator 292: [<Residual>] ConstitutiveModelInterface<Residual>: 0.167098 - 12.2936% [70] {min=0.165321, max=0.168641, std dev=0.000992519}
+|   |   |   |   Phalanx: Evaluator 283: [<Residual>] MapToPhysicalFrame<Residual>: 0.0026604 - 0.195728% [70] {min=0.00243871, max=0.00282439, std dev=0.000142314}
+|   |   |   |   Phalanx: Evaluator 303: [<Residual>] ProjectIPtoNodalField<Residual>: 0.177431 - 13.0538% [70] {min=0.171967, max=0.183053, std dev=0.00370509}
+|   |   |   |   RILUK::initialize: 0.0229522 - 1.68861% [6] {min=0.0210938, max=0.029339, std dev=0.00249516}
+|   |   |   |   RILUK::compute: 0.0320972 - 2.36142% [6] {min=0.0306646, max=0.034471, std dev=0.00120405}
+|   |   |   |   Stratimikos: BelosLOWS: 0.494335 - 36.3687% [6] {min=0.494314, max=0.494366, std dev=1.55638e-05}
+|   |   |   |   |   Belos: Operation Op*x: 0.00645479 - 1.30575% [6] {min=0.00599656, max=0.00732162, std dev=0.000372876}
+|   |   |   |   |   Belos::MVT::MvAddMv: 0.000292537 - 0.0591779% [6] {min=0.00027498, max=0.00031392, std dev=1.35974e-05}
+|   |   |   |   |   Belos: BlockCGSolMgr total solve time: 0.486707 - 98.4568% [6] {min=0.485905, max=0.487055, std dev=0.000348133}
+|   |   |   |   |   |   Belos::MVT::MvAddMv: 0.0160961 - 3.30714% [4374] {min=0.0151136, max=0.0168193, std dev=0.000480911}
+|   |   |   |   |   |   Belos: Operation Prec*x: 0.249464 - 51.2556% [1480] {min=0.239496, max=0.265999, std dev=0.00814702}
+|   |   |   |   |   |   |   RILUK::apply: 0.247731 - 99.3051% [1480] {min=0.237813, max=0.26403, std dev=0.00804503}
+|   |   |   |   |   |   |   Remainder: 0.00173353 - 0.694899%
+|   |   |   |   |   |   Belos::MVT::MvDot: 0.0660189 - 13.5644% [2894] {min=0.0407106, max=0.0775119, std dev=0.0115237}
+|   |   |   |   |   |   Belos::MVT::MvNorm: 0.015625 - 3.21035% [1486] {min=0.0150828, max=0.0158668, std dev=0.000263378}
+|   |   |   |   |   |   Belos: Operation Op*x: 0.130606 - 26.8348% [1414] {min=0.12167, max=0.137783, std dev=0.00463823}
+|   |   |   |   |   |   Remainder: 0.00889588 - 1.82777%
+|   |   |   |   |   Remainder: 0.00088136 - 0.178292%
+|   |   |   |   Remainder: 0.140787 - 10.3578%
+|   |   |   Albany Fill: Jacobian: 4.69319 - 71.5981% [5] {min=4.69216, max=4.69455, std dev=0.00101415}
+|   |   |   |   Phalanx::SortAndOrderEvaluators: 1.15867e-06 - 2.46882e-05% [3] {min=9.65e-07, max=1.437e-06, std dev=1.47573e-07}
+|   |   |   |   Albany Jacobian Fill: Evaluate: 4.0627 - 86.5658% [5] {min=4.02383, max=4.09488, std dev=0.025408}
+|   |   |   |   |   Phalanx: Evaluator 28: [<Jacobian>] Gather Coordinate Vector<Jacobian>: 0.000848775 - 0.0208919% [58] {min=0.000730268, max=0.000966151, std dev=8.29357e-05}
+|   |   |   |   |   Phalanx: Evaluator 35: [<Jacobian>] ComputeBasisFunctions<Jacobian>: 0.0416366 - 1.02485% [58] {min=0.0389277, max=0.0431407, std dev=0.0018898}
+|   |   |   |   |   Phalanx: Evaluator 27: [<Jacobian>] Gather Solution<Jacobian>: 0.0203456 - 0.50079% [58] {min=0.0196578, max=0.0208721, std dev=0.000468305}
+|   |   |   |   |   Phalanx: Evaluator 31: [<Jacobian>] DOFVecInterpolationBase<Jacobian>: 0.0349039 - 0.85913% [58] {min=0.034086, max=0.0356446, std dev=0.000588093}
+|   |   |   |   |   Phalanx: Evaluator 32: [<Jacobian>] DOFVecGradInterpolationBase<Jacobian>: 0.103153 - 2.53902% [58] {min=0.102186, max=0.103807, std dev=0.000592362}
+|   |   |   |   |   Phalanx: Evaluator 48: [<Jacobian>] Kinematics<Jacobian>: 0.0776278 - 1.91074% [58] {min=0.0749917, max=0.079548, std dev=0.00140864}
+|   |   |   |   |   Phalanx: Evaluator 38: [<Jacobian>] Time<Jacobian>: 0.000166764 - 0.00410475% [58] {min=0.000144215, max=0.000201289, std dev=1.64973e-05}
+|   |   |   |   |   Phalanx: Evaluator 37: [<Jacobian>] Temperature: 0.001073 - 0.0264111% [58] {min=0.000997366, max=0.00114322, std dev=4.6569e-05}
+|   |   |   |   |   Phalanx: Evaluator 42: [<Jacobian>] Constitutive Model Parameters<Jacobian>: 0.00799018 - 0.196672% [58] {min=0.0077057, max=0.00822033, std dev=0.000174346}
+|   |   |   |   |   Phalanx: Evaluator 43: [<Jacobian>] ConstitutiveModelInterface<Jacobian>: 3.43066 - 84.4428% [58] {min=3.40091, max=3.468, std dev=0.0226321}
+|   |   |   |   |   Phalanx: Evaluator 53: [<Jacobian>] FirstPK<Jacobian>: 0.153404 - 3.7759% [58] {min=0.15195, max=0.155177, std dev=0.00136697}
+|   |   |   |   |   Phalanx: Evaluator 52: [<Jacobian>] MechanicsResidual<Jacobian>: 0.0853573 - 2.101% [58] {min=0.0848137, max=0.0858977, std dev=0.000364277}
+|   |   |   |   |   Phalanx: Evaluator 36: [<Jacobian>] Scatter<Jacobian>: 0.0885419 - 2.17938% [58] {min=0.085233, max=0.0921207, std dev=0.00245931}
+|   |   |   |   |   Phalanx: Evaluator 149: [<Jacobian>] Gather Coordinate Vector<Jacobian>: 0.00107475 - 0.026454% [58] {min=0.000947932, max=0.00127549, std dev=0.0001099}
+|   |   |   |   |   Phalanx: Evaluator 157: [<Jacobian>] Time Dependent NBC on SS BoundarySideSet_top for DOF all set P<Jacobian>: 0.0136963 - 0.337124% [58] {min=0.0119537, max=0.0159111, std dev=0.00151645}
+|   |   |   |   |   Phalanx: Evaluator 161: [<Jacobian>] Neumann Aggregator<Jacobian>: 4.29896e-05 - 0.00105815% [58] {min=3.5145e-05, max=5.7568e-05, std dev=6.97567e-06}
+|   |   |   |   |   Remainder: 0.00218205 - 0.0537093%
+|   |   |   |   Albany Jacobian Fill: Export: 0.317272 - 6.76027% [5] {min=0.274653, max=0.367294, std dev=0.0331047}
+|   |   |   |   Phalanx: Evaluator 121: [<Jacobian>] SDBC on NS BoundaryNodeSet_x_min for DOF X<Jacobian>: 0.0427747 - 0.91142% [5] {min=0.0316098, max=0.0537179, std dev=0.0100984}
+|   |   |   |   Phalanx: Evaluator 125: [<Jacobian>] SDBC on NS BoundaryNodeSet_x_min for DOF Y<Jacobian>: 0.0309453 - 0.659366% [5] {min=0.0308252, max=0.0312451, std dev=0.000122892}
+|   |   |   |   Phalanx: Evaluator 113: [<Jacobian>] SDBC on NS BoundaryNodeSet_x_max for DOF X<Jacobian>: 0.0308769 - 0.657909% [5] {min=0.0304459, max=0.0313536, std dev=0.00030818}
+|   |   |   |   Phalanx: Evaluator 117: [<Jacobian>] SDBC on NS BoundaryNodeSet_x_max for DOF Y<Jacobian>: 0.0307004 - 0.654148% [5] {min=0.0305921, max=0.0308479, std dev=8.13944e-05}
+|   |   |   |   Phalanx: Evaluator 129: [<Jacobian>] SDBC on NS BoundaryNodeSet_y_max for DOF X<Jacobian>: 0.0308078 - 0.656435% [5] {min=0.0301377, max=0.0311744, std dev=0.000316633}
+|   |   |   |   Phalanx: Evaluator 133: [<Jacobian>] SDBC on NS BoundaryNodeSet_y_max for DOF Y<Jacobian>: 0.0310084 - 0.66071% [5] {min=0.0309363, max=0.0310577, std dev=3.73192e-05}
+|   |   |   |   Phalanx: Evaluator 137: [<Jacobian>] SDBC on NS BoundaryNodeSet_y_min for DOF X<Jacobian>: 0.0309323 - 0.659088% [5] {min=0.0306541, max=0.0312724, std dev=0.000257553}
+|   |   |   |   Phalanx: Evaluator 141: [<Jacobian>] SDBC on NS BoundaryNodeSet_y_min for DOF Y<Jacobian>: 0.0306644 - 0.65338% [5] {min=0.0306106, max=0.030751, std dev=4.20445e-05}
+|   |   |   |   Phalanx: Evaluator 109: [<Jacobian>] SDBC on NS BoundaryNodeSet_ring for DOF Z<Jacobian>: 0.0311983 - 0.664757% [5] {min=0.0308576, max=0.0318223, std dev=0.000278628}
+|   |   |   |   Phalanx: Evaluator 145: [<Jacobian>] Dirichlet Aggregator<Jacobian>: 5.74489e-06 - 0.000122409% [5] {min=5.137e-06, max=6.322e-06, std dev=4.7069e-07}
+|   |   |   |   Remainder: 0.0233029 - 0.496526%
+|   |   |   Remainder: 0.00048472 - 0.00739476%
+|   |   Remainder: 0.000908837 - 0.0138631%
+|   Albany Fill: State Residual: 0.119109 - 0.551346% [3] {min=0.11642, max=0.12232, std dev=0.00168943}
+|   |   Phalanx::SortAndOrderEvaluators: 1.07267e-06 - 0.000900574% [4] {min=9.97e-07, max=1.128e-06, std dev=5.11126e-08}
+|   |   Phalanx: Evaluator 399: [<Residual>] Time<Residual>: 5.95474e-05 - 0.049994% [35] {min=3.8296e-05, max=0.00013522, std dev=2.97119e-05}
+|   |   Phalanx: Evaluator 400: [<Residual>] Save Field Time to State TimeResidual: 3.03523e-05 - 0.0254828% [35] {min=2.5257e-05, max=4.4041e-05, std dev=5.54531e-06}
+|   |   Phalanx: Evaluator 398: [<Residual>] Temperature: 4.52474e-05 - 0.0379882% [35] {min=4.0485e-05, max=5.2346e-05, std dev=3.25907e-06}
+|   |   Phalanx: Evaluator 402: [<Residual>] Save Field Temperature to State TemperatureResidual: 7.79913e-05 - 0.0654788% [35] {min=6.0866e-05, max=9.3078e-05, std dev=1.39239e-05}
+|   |   Phalanx: Evaluator 389: [<Residual>] Gather Coordinate Vector<Residual>: 0.000662498 - 0.55621% [35] {min=0.000451258, max=0.00157312, std dev=0.000353967}
+|   |   Phalanx: Evaluator 396: [<Residual>] ComputeBasisFunctions<Residual>: 0.0239785 - 20.1316% [35] {min=0.0225059, max=0.0249105, std dev=0.00103554}
+|   |   Phalanx: Evaluator 388: [<Residual>] Gather Solution<Residual>: 0.000453107 - 0.380413% [35] {min=0.000423659, max=0.000574435, std dev=4.69042e-05}
+|   |   Phalanx: Evaluator 393: [<Residual>] DOFVecGradInterpolationBase<Residual>: 0.00335069 - 2.81312% [35] {min=0.00333579, max=0.00336661, std dev=1.09726e-05}
+|   |   Phalanx: Evaluator 409: [<Residual>] Kinematics<Residual>: 0.00254476 - 2.13649% [35] {min=0.0025276, max=0.00256186, std dev=1.35973e-05}
+|   |   Phalanx: Evaluator 403: [<Residual>] Constitutive Model Parameters<Residual>: 0.000250176 - 0.210039% [35] {min=0.000232015, max=0.000260834, std dev=7.94054e-06}
+|   |   Phalanx: Evaluator 404: [<Residual>] ConstitutiveModelInterface<Residual>: 0.083465 - 70.0743% [35] {min=0.0828331, max=0.0845566, std dev=0.000544186}
+|   |   Phalanx: Evaluator 405: [<Residual>] Save Field Cauchy_Stress to State Cauchy_StressResidual: 0.000598723 - 0.502667% [35] {min=0.000475415, max=0.000706979, std dev=0.000110027}
+|   |   Phalanx: Evaluator 406: [<Residual>] Save Field Fp to State FpResidual: 0.000517742 - 0.434678% [35] {min=0.000428739, max=0.000589087, std dev=7.88815e-05}
+|   |   Phalanx: Evaluator 407: [<Residual>] Save Field eqps to State eqpsResidual: 4.49542e-05 - 0.037742% [35] {min=3.992e-05, max=5.8443e-05, std dev=5.45257e-06}
+|   |   Phalanx: Evaluator 408: [<Residual>] Save Field Mechanical_Source to State Mechanical_SourceResidual: 7.54758e-05 - 0.0633668% [35] {min=6.0355e-05, max=8.9552e-05, std dev=1.26928e-05}
+|   |   Phalanx: Evaluator 410: [<Residual>] Save Field F to State FResidual: 0.00053761 - 0.451359% [35] {min=0.000446545, max=0.000613101, std dev=7.9964e-05}
+|   |   Phalanx: Evaluator 411: [<Residual>] Save Field J to State JResidual: 9.09499e-05 - 0.0763584% [35] {min=6.7453e-05, max=0.000111164, std dev=1.97855e-05}
+|   |   Remainder: 0.00232482 - 1.95184%
+|   Albany: Output to File: 0.0743687 - 0.344246% [3] {min=0.0721529, max=0.076991, std dev=0.00158567}
+|   NOX Total Preconditioner Construction: 0.0796153 - 0.368532% [5] {min=0.077409, max=0.0859129, std dev=0.00251353}
+|   |   MueLu: ParameterListInterpreter (ParameterList): 0.0239041 - 30.0245% [5] {min=0.0219549, max=0.0374457, std dev=0.00508939}
+|   |   MueLu: Hierarchy: Setup (total): 0.0210941 - 26.4951% [5] {min=0.00832702, max=0.0231341, std dev=0.00482652}
+|   |   |   MueLu: Hierarchy: Setup (total, level=0): 0.0210726 - 99.8979% [5] {min=0.00830607, max=0.0231137, std dev=0.00482627}
+|   |   |   |   MueLu: Amesos2Smoother: Setup Smoother (total): 0.00440011 - 20.8807% [5] {min=0.00428447, max=0.00451166, std dev=7.86558e-05}
+|   |   |   |   Remainder: 0.0166725 - 79.1193%
+|   |   |   Remainder: 2.15291e-05 - 0.102062%
+|   |   Remainder: 0.034617 - 43.4804%
+|   NOX Total Linear Solve: 11.7565 - 54.4196% [5] {min=11.7505, max=11.7586, std dev=0.00243032}
+|   |   Stratimikos: BelosLOWS: 11.7564 - 99.9999% [5] {min=11.7505, max=11.7586, std dev=0.00243107}
+|   |   |   Belos: Operation Op*x: 0.00973171 - 0.0827776% [5] {min=0.00634861, max=0.0139417, std dev=0.00335956}
+|   |   |   Belos::MVT::MvAddMv: 0.000128071 - 0.00108937% [5] {min=0.00010499, max=0.000148539, std dev=1.4491e-05}
+|   |   |   Belos: BlockGmresSolMgr total solve time: 11.7453 - 99.9049% [5] {min=11.7415, max=11.7501, std dev=0.00409491}
+|   |   |   |   Belos: DGKS[2]: Orthogonalization: 0.0232756 - 0.19817% [28] {min=0.0172133, max=0.030517, std dev=0.00505422}
+|   |   |   |   |   Belos: DGKS[2]: Ortho (Norm): 0.0109854 - 47.1969% [74] {min=0.0048839, max=0.0182227, std dev=0.00504991}
+|   |   |   |   |   |   Belos::MVT::MvDot: 0.0108247 - 98.5375% [74] {min=0.00471982, max=0.0180839, std dev=0.0050532}
+|   |   |   |   |   |   Remainder: 0.00016066 - 1.46249%
+|   |   |   |   |   Belos::MVT::MvScale: 0.000176996 - 0.760436% [28] {min=0.000162958, max=0.000184766, std dev=6.50031e-06}
+|   |   |   |   |   Belos: DGKS[2]: Ortho (Inner Product): 0.0104714 - 44.9888% [45] {min=0.0104579, max=0.0104812, std dev=8.69913e-06}
+|   |   |   |   |   |   Belos::MVT::MvTransMv: 0.0103957 - 99.2769% [45] {min=0.0103826, max=0.0104068, std dev=9.88879e-06}
+|   |   |   |   |   |   Remainder: 7.57208e-05 - 0.72312%
+|   |   |   |   |   Belos: DGKS[2]: Ortho (Update): 0.00134362 - 5.77268% [45] {min=0.00130675, max=0.00139146, std dev=2.83579e-05}
+|   |   |   |   |   |   Belos::MVT::MvTimesMatAddMv: 0.00127348 - 94.7793% [45] {min=0.00123443, max=0.00132042, std dev=2.85541e-05}
+|   |   |   |   |   |   Remainder: 7.01468e-05 - 5.22071%
+|   |   |   |   |   Remainder: 0.000298199 - 1.28117%
+|   |   |   |   Belos::MVT::MvAddMv: 0.000383916 - 0.00326869% [16] {min=0.000327359, max=0.000410983, std dev=2.78875e-05}
+|   |   |   |   Belos::MVT::MvNorm: 0.00235181 - 0.0200235% [8] {min=0.000423676, max=0.00273779, std dev=0.000727934}
+|   |   |   |   Belos: Operation Prec*x: 11.6901 - 99.5304% [28] {min=11.6896, max=11.6903, std dev=0.000239709}
+|   |   |   |   |   MueLu: Hierarchy: Solve (total): 11.6892 - 99.9926% [28] {min=11.6887, max=11.6894, std dev=0.000239698}
+|   |   |   |   |   |   MueLu: Hierarchy: Solve (level=0): 11.6891 - 99.9991% [28] {min=11.6886, max=11.6893, std dev=0.000237281}
+|   |   |   |   |   |   |   MueLu: Hierarchy: Solve : coarse (level=0): 11.6889 - 99.9976% [28] {min=11.6884, max=11.6891, std dev=0.000237657}
+|   |   |   |   |   |   |   Remainder: 0.000284085 - 0.00243033%
+|   |   |   |   |   |   Remainder: 0.000100109 - 0.000856423%
+|   |   |   |   |   Remainder: 0.000864708 - 0.00739692%
+|   |   |   |   Belos: Operation Op*x: 0.0259029 - 0.220539% [26] {min=0.0229414, max=0.0283955, std dev=0.00220548}
+|   |   |   |   Belos::MVT::MvTimesMatAddMv: 0.000236972 - 0.0020176% [5] {min=0.000204621, max=0.000428651, std dev=7.22391e-05}
+|   |   |   |   Remainder: 0.00300284 - 0.0255664%
+|   |   |   Remainder: 0.00132144 - 0.0112402%
+|   |   Remainder: 1.30982e-05 - 0.000111413%
+|   Piro::SteadyStateSolver::evalConvergedModelResponsesAndSensitivities::calc g, df/dp, dg/dp, dg/dx: 0.264923 - 1.22631% [1] {min=0.264839, max=0.264969, std dev=4.15538e-05}
+|   |   Thyra::DefaultModelEvaluatorWithSolveFactory<double>::evalModel(...): 0.26488 - 99.9836% [1] {min=0.264795, max=0.26493, std dev=4.19532e-05}
+|   |   |   Albany: Total Fill Time: 0.264836 - 99.9834% [1] {min=0.264754, max=0.264887, std dev=4.1184e-05}
+|   |   |   |   Albany Fill: Response: 0.264817 - 99.993% [1] {min=0.264738, max=0.264869, std dev=4.05342e-05}
+|   |   |   |   |   Phalanx: Evaluator 165: [<Residual>] Gather Coordinate Vector<Residual>: 0.000144159 - 0.0544371% [11] {min=0.000127868, max=0.000190856, std dev=1.9139e-05}
+|   |   |   |   |   Phalanx: Evaluator 172: [<Residual>] ComputeBasisFunctions<Residual>: 0.00790518 - 2.98514% [11] {min=0.00744225, max=0.00818552, std dev=0.00033272}
+|   |   |   |   |   Phalanx: Evaluator 174: [<Residual>] Temperature: 1.3482e-05 - 0.00509105% [11] {min=1.2297e-05, max=1.4429e-05, std dev=6.29737e-07}
+|   |   |   |   |   Phalanx: Evaluator 164: [<Residual>] Gather Solution<Residual>: 0.000128969 - 0.0487011% [11] {min=0.000117182, max=0.000142049, std dev=1.0254e-05}
+|   |   |   |   |   Phalanx: Evaluator 169: [<Residual>] DOFVecGradInterpolationBase<Residual>: 0.00110638 - 0.417788% [11] {min=0.0010981, max=0.00111939, std dev=7.6107e-06}
+|   |   |   |   |   Phalanx: Evaluator 185: [<Residual>] Kinematics<Residual>: 0.000835154 - 0.31537% [11] {min=0.000824736, max=0.000843048, std dev=5.53915e-06}
+|   |   |   |   |   Phalanx: Evaluator 175: [<Residual>] Time<Residual>: 1.32197e-05 - 0.00499199% [11] {min=1.1569e-05, max=1.5439e-05, std dev=1.17226e-06}
+|   |   |   |   |   Phalanx: Evaluator 179: [<Residual>] Constitutive Model Parameters<Residual>: 7.91878e-05 - 0.0299028% [11] {min=7.4109e-05, max=8.3955e-05, std dev=3.37285e-06}
+|   |   |   |   |   Phalanx: Evaluator 180: [<Residual>] ConstitutiveModelInterface<Residual>: 0.0348681 - 13.1668% [11] {min=0.0345884, max=0.0353, std dev=0.000252174}
+|   |   |   |   |   Phalanx: Evaluator 191: [<Residual>] ???: 0.0050949 - 1.92393% [11] {min=0.0049782, max=0.00526446, std dev=9.66818e-05}
+|   |   |   |   |   Phalanx: Evaluator 286: [<Residual>] Temperature: 1.73298e-05 - 0.00654405% [11] {min=1.5665e-05, max=1.8918e-05, std dev=1.23228e-06}
+|   |   |   |   |   Phalanx: Evaluator 277: [<Residual>] Gather Coordinate Vector<Residual>: 0.000162402 - 0.0613259% [11] {min=0.00014533, max=0.000207854, std dev=1.9773e-05}
+|   |   |   |   |   Phalanx: Evaluator 284: [<Residual>] ComputeBasisFunctions<Residual>: 0.00804036 - 3.03619% [11] {min=0.00748643, max=0.00844571, std dev=0.000390431}
+|   |   |   |   |   Phalanx: Evaluator 276: [<Residual>] Gather Solution<Residual>: 0.000156863 - 0.0592343% [11] {min=0.000139666, max=0.000177252, std dev=1.46673e-05}
+|   |   |   |   |   Phalanx: Evaluator 281: [<Residual>] DOFVecGradInterpolationBase<Residual>: 0.00112022 - 0.423016% [11] {min=0.00111049, max=0.00113832, std dev=8.28878e-06}
+|   |   |   |   |   Phalanx: Evaluator 297: [<Residual>] Kinematics<Residual>: 0.000848858 - 0.320545% [11] {min=0.000834741, max=0.000877648, std dev=1.22599e-05}
+|   |   |   |   |   Phalanx: Evaluator 287: [<Residual>] Time<Residual>: 2.26496e-05 - 0.00855289% [11] {min=1.9445e-05, max=2.806e-05, std dev=2.9765e-06}
+|   |   |   |   |   Phalanx: Evaluator 291: [<Residual>] Constitutive Model Parameters<Residual>: 9.35227e-05 - 0.0353159% [11] {min=8.819e-05, max=0.000100924, std dev=3.93985e-06}
+|   |   |   |   |   Phalanx: Evaluator 292: [<Residual>] ConstitutiveModelInterface<Residual>: 0.0350221 - 13.225% [11] {min=0.0347331, max=0.035406, std dev=0.000241394}
+|   |   |   |   |   Phalanx: Evaluator 283: [<Residual>] MapToPhysicalFrame<Residual>: 0.000450344 - 0.170058% [11] {min=0.000405179, max=0.000485064, std dev=2.91156e-05}
+|   |   |   |   |   Phalanx: Evaluator 303: [<Residual>] ProjectIPtoNodalField<Residual>: 0.0298165 - 11.2593% [11] {min=0.0292428, max=0.0305034, std dev=0.000435391}
+|   |   |   |   |   RILUK::initialize: 0.00362387 - 1.36844% [1] {min=0.00340919, max=0.00428374, std dev=0.000272947}
+|   |   |   |   |   RILUK::compute: 0.00537895 - 2.03119% [1] {min=0.00510395, max=0.00572344, std dev=0.000249062}
+|   |   |   |   |   Stratimikos: BelosLOWS: 0.109121 - 41.2061% [1] {min=0.109118, max=0.109124, std dev=1.81116e-06}
+|   |   |   |   |   |   Belos: Operation Op*x: 0.000808271 - 0.740711% [1] {min=0.000724114, max=0.00105351, std dev=0.000103942}
+|   |   |   |   |   |   Belos::MVT::MvAddMv: 4.85942e-05 - 0.0445324% [1] {min=4.4906e-05, max=5.0195e-05, std dev=1.83677e-06}
+|   |   |   |   |   |   Belos: BlockCGSolMgr total solve time: 0.108134 - 99.0952% [1] {min=0.10789, max=0.108209, std dev=0.000103954}
+|   |   |   |   |   |   |   Belos::MVT::MvAddMv: 0.00363762 - 3.36401% [997] {min=0.00340141, max=0.00384655, std dev=0.000124011}
+|   |   |   |   |   |   |   Belos: Operation Prec*x: 0.0561689 - 51.9439% [336] {min=0.0537415, max=0.0602132, std dev=0.00201824}
+|   |   |   |   |   |   |   |   RILUK::apply: 0.055806 - 99.3539% [336] {min=0.0534001, max=0.059756, std dev=0.00198535}
+|   |   |   |   |   |   |   |   Remainder: 0.000362909 - 0.646104%
+|   |   |   |   |   |   |   Belos::MVT::MvDot: 0.0129847 - 12.008% [661] {min=0.00677513, max=0.0178229, std dev=0.00310717}
+|   |   |   |   |   |   |   Belos::MVT::MvNorm: 0.00356831 - 3.29991% [337] {min=0.00334436, max=0.00363486, std dev=9.0617e-05}
+|   |   |   |   |   |   |   Belos: Operation Op*x: 0.0298914 - 27.643% [325] {min=0.0277368, max=0.0317393, std dev=0.00112441}
+|   |   |   |   |   |   |   Remainder: 0.00188279 - 1.74117%
+|   |   |   |   |   |   Remainder: 0.000130469 - 0.119564%
+|   |   |   |   |   Remainder: 0.0207538 - 7.83702%
+|   |   |   |   Remainder: 1.85201e-05 - 0.00699305%
+|   |   |   Remainder: 4.39109e-05 - 0.0165777%
+|   |   Remainder: 4.34004e-05 - 0.0163823%
+|   Remainder: 0.0875022 - 0.405039%
