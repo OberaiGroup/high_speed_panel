@@ -1,15 +1,17 @@
 %YAML 1.1
 ---
 LCM:
-  Debug Output:
-    Write Jacobian to MatrixMarket: -1
   Build Type: Tpetra
   Problem:
     Name: Mechanics 3D
     Solution Method: Continuation
     MaterialDB Filename: material.yaml
     Temperature:
-      Variable Type: DOF
+      Variable Type: Time Dependent
+      Time Values:      [  0.0,   25.0,   35.0,  60.0] #,  625.0, 1175.0, 1200.0]
+      Dependent Values: [294.0, 1783.0, 1783.0, 294.0] #, 1783.0, 1783.0,  294.0]
+        # Extra Temp-time values commented out to focus on first
+        # linear heat ramp-up.
     Dirichlet BCs:
       SDBC on NS BoundaryNodeSet_x_min for DOF X: 0.00000000e+00
       SDBC on NS BoundaryNodeSet_x_min for DOF Y: 0.00000000e+00
@@ -20,76 +22,21 @@ LCM:
       SDBC on NS BoundaryNodeSet_y_min for DOF X: 0.00000000e+00
       SDBC on NS BoundaryNodeSet_y_min for DOF Y: 0.00000000e+00
       SDBC on NS BoundaryNodeSet_ring for DOF Z: 0.00000000e+00
-      Time Dependent SDBC on NS BoundaryNodeSet_top for DOF T:
-        Number of points: 4
-        Time Values: [  0.0,   25.0,   35.0,  60.0] #,  625.0, 1175.0, 1200.0]
-        BC Values:   [294.0, 1783.0, 1783.0, 294.0] #, 1783.0, 1783.0,  294.0]
-      Time Dependent SDBC on NS BoundaryNodeSet_x_min for DOF T:
-        Number of points: 4
-        Time Values: [  0.0,   25.0,   35.0,  60.0] #,  625.0, 1175.0, 1200.0]
-        BC Values:   [294.0, 1783.0, 1783.0, 294.0] #, 1783.0, 1783.0,  294.0]
-      Time Dependent SDBC on NS BoundaryNodeSet_x_max for DOF T:
-        Number of points: 4
-        Time Values: [  0.0,   25.0,   35.0,  60.0] #,  625.0, 1175.0, 1200.0]
-        BC Values:   [294.0, 1783.0, 1783.0, 294.0] #, 1783.0, 1783.0,  294.0]
-      Time Dependent SDBC on NS BoundaryNodeSet_y_min for DOF T:
-        Number of points: 4
-        Time Values: [  0.0,   25.0,   35.0,  60.0] #,  625.0, 1175.0, 1200.0]
-        BC Values:   [294.0, 1783.0, 1783.0, 294.0] #, 1783.0, 1783.0,  294.0]
-      Time Dependent SDBC on NS BoundaryNodeSet_y_max for DOF T:
-        Number of points: 4
-        Time Values: [  0.0,   25.0,   35.0,  60.0] #,  625.0, 1175.0, 1200.0]
-        BC Values:   [294.0, 1783.0, 1783.0, 294.0] #, 1783.0, 1783.0,  294.0]
-      Time Dependent SDBC on NS BoundaryNodeSet_ring for DOF T:
-        Number of points: 4
-        Time Values: [  0.0,   25.0,   35.0,  60.0] #,  625.0, 1175.0, 1200.0]
-        BC Values:   [294.0, 1783.0, 1783.0, 294.0] #, 1783.0, 1783.0,  294.0]
-      Time Dependent SDBC on NS BoundaryNodeSet_bottom_inside_ring for DOF T:
-        Number of points: 4
-        Time Values: [  0.0,   25.0,   35.0,  60.0] #,  625.0, 1175.0, 1200.0]
-        BC Values:   [294.0, 1783.0, 1783.0, 294.0] #, 1783.0, 1783.0,  294.0]
     Neumann BCs:
-      Time Dependent NBC on SS BoundarySideSet_top for DOF sig_x set P:
-         Time Values: [0.0, 25.0,     35.0,     60.0]
-         BC Values: [[0.0], [-0.0038], [-0.0038], [0.0] ]
-      Time Dependent NBC on SS BoundarySideSet_top for DOF sig_y set P:
-         Time Values: [0.0, 25.0,     35.0,     60.0]
-         BC Values: [[0.0], [-0.0038], [-0.0038], [0.0] ]
-      Time Dependent NBC on SS BoundarySideSet_top for DOF sig_z set P:
-         Time Values: [0.0, 25.0,     35.0,     60.0]
-         BC Values: [[0.0], [0.0038], [0.0038], [0.0] ]
-#      Time Dependent NBC on SS BoundarySideSet_top for DOF sig_x set P:
-#         Time Values: [0.0, 25.0,     35.0,     60.0]
-#         BC Values: [[0.0], [0.0038], [0.0038], [0.0] ]
-#      Time Dependent NBC on SS BoundarySideSet_top for DOF sig_y set P:
-#         Time Values: [0.0, 25.0,     35.0,     60.0]
-#         BC Values: [[0.0], [0.0038], [0.0038], [0.0] ]
-#      Time Dependent NBC on SS BoundarySideSet_top for DOF sig_z set P:
-#         Time Values: [0.0, 25.0,     35.0,     60.0]
-#         BC Values: [[0.0], [0.0038], [0.0038], [0.0] ]
-         BC Values: [[0.0], [-0.0038], [-0.0038], [0.0] ]
-      Time Dependent NBC on SS BoundarySideSet_top for DOF T set dudn:
-         Time Values: [0.0, 25.0,     35.0,     60.0]
-         BC Values: [[0.0], [1.0], [1.0], [0.0] ]
+      Time Dependent NBC on SS BoundarySideSet_top for DOF all set P:
+         Time Values: [0.00000000e+00, 25.0,     35.0,     60.0]
+         BC Values: [[0.00000000e+00], [0.0038], [0.0038], [0.0] ]
     Initial Condition:
       Function: Constant
-      Function Data: [0.0, 0.0, 0.0, 294.0]
+      Function Data: [0.00000000e+00, 0.00000000e+00, 0.00000000e+00]
     Parameters:
       Number: 1
       Parameter 0: Time
     Response Functions:
-      Number: 3
+      Number: 2
       Response 0: Solution Average
-      Response 1: IP to Nodal Field
-      Response 2: Project IP to Nodal Field
+      Response 1: Project IP to Nodal Field
       ResponseParams 1:
-        Number of Fields: 2
-        IP Field Name 0: Temperature
-        IP Field Layout 0: Scalar
-        IP Field Name 1: Cauchy_Stress
-        IP Field Layout 1: Tensor
-        Output to File: true
-      ResponseParams 2:
         Number of Fields: 2
         IP Field Name 0: Temperature
         IP Field Layout 0: Scalar
@@ -102,17 +49,17 @@ LCM:
     Method: Gmsh
     Cubature Degree: 3
     Workset Size: 100
-    Gmsh Input Mesh File Name: mesh_and_lable_plate.msh
+    Gmsh Input Mesh File Name: panel_32148_nodes.msh
     Exodus Output File Name: ./results.exo
   Piro:
     Rythmos:
-      Num Time Steps: 100000
-      Final Time: 61.0
+      Num Time Steps: 1
+      Final Time: 5.0
       Max State Error: 0.0001
       Alpha: 0.0
       Rythmos Stepper:
         VerboseObject:
-          Verbosity Level: high
+          Verbosity Level: low
       Rythmos Integration Control: { }
       Rythmos Integrator:
         VerboseObject:
@@ -127,8 +74,8 @@ LCM:
         Continuation Method: Natural
         Initial Value: 0.0
         Continuation Parameter: Time
-        Max Steps: 100000
-        Max Value: 61.0
+        Max Steps: 10000000
+        Max Value: 5.0
         Min Value: 0.0
         Compute Eigenvalues: false
         Eigensolver:
@@ -136,7 +83,7 @@ LCM:
           Operator: Jacobian Inverse
           Num Eigenvalues: 1
       Step Size:
-        Initial Step Size: 0.01
+        Initial Step Size: 0.0005
         Method: Adaptive
         Max Step Size: 0.5
         Min Step Size: 1.0e-10
@@ -182,7 +129,7 @@ LCM:
                   'max levels': 1
                   'smoother: type': smoother_type # This line does nothing noticable
                   'smoother: pre or post': smother_pre_post # This line does nothing noticable
-                  'coarse: type': 'Amesos-KLU'
+                  'coarse: type': 'superludist'
                   'coarse: max size': 1000
                   'repartition: enable': true
                   'repartition: partitioner': zoltan2

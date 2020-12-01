@@ -57,11 +57,11 @@ LCM:
     Method: Gmsh
     Cubature Degree: 3
     Workset Size: 100
-    Gmsh Input Mesh File Name: fine_mesh.msh
+    Gmsh Input Mesh File Name: mesh_3.msh
     Exodus Output File Name: ./results.exo
   Piro:
     Rythmos:
-      Num Time Steps: 1
+      Num Time Steps: 100000
       Final Time: 61.0
       Max State Error: 0.0001
       Alpha: 0.0
@@ -82,7 +82,7 @@ LCM:
         Continuation Method: Natural
         Initial Value: 0.0
         Continuation Parameter: Time
-        Max Steps: 2
+        Max Steps: 100000
         Max Value: 61.0
         Min Value: 0.0
         Compute Eigenvalues: false
@@ -91,7 +91,7 @@ LCM:
           Operator: Jacobian Inverse
           Num Eigenvalues: 1
       Step Size:
-        Initial Step Size: 0.0005
+        Initial Step Size: 0.1
         Method: Adaptive
         Max Step Size: 0.5
         Min Step Size: 1.0e-10
@@ -137,7 +137,7 @@ LCM:
                   'max levels': 1
                   'smoother: type': smoother_type # This line does nothing noticable
                   'smoother: pre or post': smother_pre_post # This line does nothing noticable
-                  'coarse: type': 'superludist'
+                  'coarse: type': 'Amesos-KLU'
                   'coarse: max size': 1000
                   'repartition: enable': true
                   'repartition: partitioner': zoltan2

@@ -17,7 +17,8 @@ ANONYMOUS:
         Value: 0.33
       Yield Strength:
         Yield Strength Type: Constant
-        Value: 1.0e+12 # actual: 1.1E9 Pa
+        Value: 1.0e+99 # actual: 1.1E9 Pa 
+          # Actual value commented out to not allow yielding
       Hardening Modulus:
         Hardening Modulus Type: Constant
         Value: 1.0
