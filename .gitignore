@@ -3,6 +3,9 @@
 # Vim's swap files
 *.sw*
 
+# Any executables
+*.exe
+
 # LaTeX log, aux, and pdf
 **/*write_up/*.log
 **/*write_up/*.aux
