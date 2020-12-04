@@ -2,7 +2,7 @@
 ---
 ANONYMOUS:
   ElementBlocks:
-    Element Block 0:
+    eb_1:
       material: mat
     Use Composite Tet 10: true
   Materials:
