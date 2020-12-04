@@ -13,13 +13,13 @@ LCM:
         # Extra Temp-time values commented out to focus on first
         # linear heat ramp-up.
     Dirichlet BCs:
-      SDBC on NS BoundaryNodeSet_x_min for DOF X: 0.00000000e+00
-      SDBC on NS BoundaryNodeSet_x_max for DOF X: 0.00000000e+00
-      SDBC on NS BoundaryNodeSet_y_max for DOF Y: 0.00000000e+00
-      SDBC on NS BoundaryNodeSet_y_min for DOF Y: 0.00000000e+00
-      SDBC on NS BoundaryNodeSet_ring for DOF Z: 0.00000000e+00
+      SDBC on NS x_min_ns for DOF X: 0.00000000e+00
+      SDBC on NS x_max_ns for DOF X: 0.00000000e+00
+      SDBC on NS y_max_ns for DOF Y: 0.00000000e+00
+      SDBC on NS y_min_ns for DOF Y: 0.00000000e+00
+      SDBC on NS bottom_ring_ns for DOF Z: 0.00000000e+00
     Neumann BCs:
-      Time Dependent NBC on SS BoundarySideSet_top for DOF all set P:
+      Time Dependent NBC on SS top_face_ss for DOF all set P:
          Time Values: [0.00000000e+00, 25.0,     35.0,     60.0]
          BC Values: [[0.00000000e+00], [0.0038], [0.0038], [0.0] ]
     Initial Condition:
@@ -41,12 +41,14 @@ LCM:
         Output to File: true
         Mass Matrix Type: Full
   Discretization:
-    Number Of Time Derivatives: 0
-    Method: Gmsh
-    Cubature Degree: 3
+    Method: PUMI
     Workset Size: 100
-    Gmsh Input Mesh File Name: panel_27238_nodes.msh
-    Exodus Output File Name: ./results.exo
+    Mesh Model Input File Name: quarter_plate.dmg
+    PUMI Input File Name: quarter_plate_.smb
+    PUMI Output File Name: results_out.vtk
+    Model Associations File Name: assoc.txt
+    2nd Order Mesh: true
+    Cubature Degree: 3
   Piro:
     Rythmos:
       Num Time Steps: 1000000
