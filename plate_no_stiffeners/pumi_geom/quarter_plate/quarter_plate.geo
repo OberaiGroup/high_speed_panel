@@ -119,5 +119,3 @@ Background Field = 3;
 // Set mesh algorithm
 Mesh.Algorithm = 7;
 
-// Set elements to be second order
-SetOrder 2;
