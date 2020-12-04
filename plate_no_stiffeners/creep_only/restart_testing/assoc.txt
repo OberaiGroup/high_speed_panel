@@ -1,0 +1,7 @@
+// Bottom Ring, Surface 14
+// Bottom Interior, Surface 18
+// Top Face, Surface 28
+// Y-Min, Surface 34
+// Y-Max, Surface 36
+// X-Max, Surface 38
+// X-Min, Surface 40
