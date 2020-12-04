@@ -1,31 +1,18 @@
-// Plate Volume, Volume 42
 element block eb_1 1
 3 42
-
-// Bottom Ring, Surface 14
 node set bottom_ring_ns 1
 2 14
-
-// Bottom Interior, Surface 18
 node set bottom_interior_ns 1
 2 18
-
-// Top Face, Surface 28
 node set top_face_ns 1
 2 28
-
-// Y-Min, Surface 34
+side set top_face_ss 1
+2 28
 node set y_min_ns 1
 2 34
-
-// Y-Max, Surface 36
 node set y_max_ns 1
 2 36
-
-// X-Max, Surface 38
 node set x_max_ns 1
 2 38
-
-// X-Min, Surface 40
 node set x_min_ns 1
 2 40
