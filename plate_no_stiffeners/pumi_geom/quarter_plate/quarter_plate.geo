@@ -76,3 +76,48 @@ Physical Surface(28) = {28};
 Physical Surface(18) = {18};
 Physical Surface(14) = {14};
 Physical Volume(42) = {42};
+
+//// Added by hand to control meshing
+
+l_full = 12.0; // length in x
+w_full = 10.0; // width in y
+t      = 0.065; // thickness in z
+
+//global_refinement_level = 1.0;
+//coarse = 0.5*global_refinement_level;
+//fine   = coarse/5.0;
+//smoothness = 0.0;
+//border = 0.25+smoothness/2.0;
+//
+//Field[1] = Box;
+//// Field[1].Thickness = l_full*smoothness;
+//// Field[1].VIn  = coarse;
+//Field[1].VIn  = fine*1.5;
+//Field[1].VOut = fine;
+//Field[1].XMin = l_full*border;
+//Field[1].XMax = l_full*(1-border);
+//Field[1].YMin = w_full*border;
+//Field[1].YMax = w_full*(1-border);
+//Field[1].ZMin = -2.0*t;
+//Field[1].ZMax = +2.0*t;
+
+coarse = 0.5;
+fine   = 0.1;
+
+
+Field[1] = MathEval;
+Field[1].F = "((0.5-0.1)/6.0*x+0.1)/1.25";
+
+Field[2] = MathEval;
+Field[2].F = "((0.5-0.1)/5.0*y+0.1)/1.25";
+
+Field[3] = Min;
+Field[3].FieldsList = {1, 2};
+
+Background Field = 3;
+
+// Set mesh algorithm
+Mesh.Algorithm = 7;
+
+// Set elements to be second order
+SetOrder 2;
