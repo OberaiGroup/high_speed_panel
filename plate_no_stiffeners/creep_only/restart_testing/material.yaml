@@ -32,3 +32,5 @@ ANONYMOUS:
       Return Mapping Tolerance: 1.0e-10
       Output Cauchy Stress: true
       Output eqps: true
+      Output Fp: true
+...

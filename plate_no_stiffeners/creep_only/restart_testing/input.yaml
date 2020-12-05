@@ -28,26 +28,14 @@ LCM:
     Parameters:
       Number: 1
       Parameter 0: Time
-    Response Functions:
-      Number: 2
-      Response 0: Solution Average
-      Response 1: Project IP to Nodal Field
-      ResponseParams 1:
-        Number of Fields: 2
-        IP Field Name 0: Temperature
-        IP Field Layout 0: Scalar
-        IP Field Name 1: Cauchy_Stress
-        IP Field Layout 1: Tensor
-        Output to File: true
-        Mass Matrix Type: Full
   Discretization:
     Method: PUMI
-    Workset Size: 100
+    Workset Size: 50
     Mesh Model Input File Name: quarter_plate.dmg
-    PUMI Input File Name: quarter_plate_.smb
+    PUMI Input File Name: quarter_plate_quad.smb
     PUMI Output File Name: results_out.vtk
     Model Associations File Name: assoc.txt
-    2nd Order Mesh: true
+    2nd Order Mesh: false
     Cubature Degree: 3
   Piro:
     Rythmos:
