@@ -37,6 +37,7 @@ LCM:
     Model Associations File Name: assoc.txt
     2nd Order Mesh: false
     Cubature Degree: 3
+    Write Restart File at Step: 5
   Piro:
     Rythmos:
       Num Time Steps: 1000000
