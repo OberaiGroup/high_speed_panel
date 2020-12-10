@@ -32,16 +32,16 @@ LCM:
     Method: PUMI
     Workset Size: 50
     Mesh Model Input File Name: quarter_plate.dmg
-    PUMI Input File Name: quarter_plate_quad.smb
+    PUMI Input File Name: meshes/quarter_plate_quad_16_.smb
     PUMI Output File Name: results_out.vtk
     Model Associations File Name: assoc.txt
     2nd Order Mesh: false
     Cubature Degree: 3
-    Write Restart File at Step: 5
+    Write Restart File at Step: 85
   Piro:
     Rythmos:
       Num Time Steps: 1000000
-      Final Time: 61.0
+      Final Time: 10.0
       Max State Error: 0.0001
       Alpha: 0.0
       Rythmos Stepper:
@@ -62,7 +62,7 @@ LCM:
         Initial Value: 0.0
         Continuation Parameter: Time
         Max Steps: 1000000000
-        Max Value: 61.0
+        Max Value: 10.0
         Min Value: 0.0
         Compute Eigenvalues: false
         Eigensolver:
