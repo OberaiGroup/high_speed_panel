@@ -80,3 +80,10 @@ output.txt
 
 # slurm outputs
 slurm-*.out
+
+# pvd results
+*.pvd
+results_*/
+
+# Restart meshes
+restart_*.smb
