@@ -56,7 +56,7 @@ LCM:
         Method: Tangent
       Stepper:
         Continuation Method: Natural
-        Initial Value: 0.0
+        Initial Value: 4.97604
         Continuation Parameter: Time
         Max Steps: 1000000000
         Max Value: 10.0
