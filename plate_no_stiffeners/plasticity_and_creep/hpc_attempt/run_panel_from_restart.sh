@@ -22,5 +22,5 @@ export dir=/project/aoberai_286/jlclough/high_speed_panel/plate_no_stiffeners/pl
 
 cd $dir
 
-mpirun "-n" 16 $ALBANY_EXE ${dir}/input.yaml 
+mpirun "-n" 16 $ALBANY_EXE ${dir}/input_restart.yaml 
 
