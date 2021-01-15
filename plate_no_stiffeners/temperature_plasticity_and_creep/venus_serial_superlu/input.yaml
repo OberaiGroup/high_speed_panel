@@ -71,7 +71,7 @@ LCM:
           Operator: Jacobian Inverse
           Num Eigenvalues: 1
       Step Size:
-        Initial Step Size: 0.0005
+        Initial Step Size: 0.005
         Method: Adaptive
         Max Step Size: 0.25
         Min Step Size: 1.0e-10
