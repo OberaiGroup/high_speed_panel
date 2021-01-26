@@ -1,7 +1,26 @@
-// Body, Volume 33
-// Bottom (min X), Surface 31
-// Top (max x), Surface 27
-// Y-Min, Surface 25
-// Y-Max, Surface 29
-// Z-Max, Surface 19
-// Z-Min, Surface 9
+element block eb_1 1
+3 33
+node set min_x 1
+2 31
+side set min_x 1
+2 31
+node set max_x 1
+2 27
+side set max_x 1
+2 27
+node set min_y 1
+2 25
+side set min_y 1
+2 25
+node set max_y 1
+2 29
+side set max_y 1
+2 29
+node set min_z 1
+2 9
+side set min_z 1
+2 9
+node set max_z 1
+2 19
+side set max_z 1
+2 19

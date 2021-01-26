@@ -1,0 +1,41 @@
+%YAML 1.1
+---
+ANONYMOUS:
+  ElementBlocks:
+    eb_1:
+      material: mat
+    Use Composite Tet 10: true
+  Materials:
+    mat:
+      Material Model:
+        Model Name: Creep
+      Elastic Modulus:
+        Elastic Modulus Type: Constant
+        Value: 5.0e+3 # sigma_0
+      Poissons Ratio:
+        Poissons Ratio Type: Constant
+        Value: 0.33 # unitless
+      Yield Strength:
+        Yield Strength Type: Constant
+        Value: 52.42 # sigma_0
+      Hardening Modulus:
+        Hardening Modulus Type: Constant
+        Value: 322.47
+      Reference Temperature: 294.0
+      Initial Temperature:   294.0
+      Thermal Expansion Coefficient: 9.7e-6
+      Heat Capacity: 526.3 # J/kg-K
+      Density: 7.2984e-2 # 4430.0 kg/m^3
+      Thermal Transient Coefficient: 0.0 # set to 1.0 when Temp_dot matters, else->zero
+      Thermal Conductivity:
+        Thermal Conductivity Type: Constant
+        Value: 0.17 # W/(inch*K) 6.7 W/mK
+      Relaxation Parameter of Material_A: 1.0
+      Activation Parameter of Material_Q/R: 30189.0
+      Strain Rate Exponent: 12.5
+      Max Return Mapping Attempts: 25
+      Return Mapping Tolerance: 1.0e-10
+      Output Cauchy Stress: true
+      Output eqps: true
+      Output Fp: true
+...
