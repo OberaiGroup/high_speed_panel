@@ -8,7 +8,8 @@ LCM:
     MaterialDB Filename: material.yaml
     Temperature:
       Variable Type: Interpolate From File
-      File Name: data.txt
+      File Name: plate_coeffs_for_interpolation_metric.txt
+      Number of Columns: 3
     Dirichlet BCs:
       SDBC on NS x_min_ns for DOF X: 0.00000000e+00
       SDBC on NS x_max_ns for DOF X: 0.00000000e+00
@@ -17,8 +18,8 @@ LCM:
       SDBC on NS bottom_ring_ns for DOF Z: 0.00000000e+00
     Neumann BCs:
       Time Dependent NBC on SS top_face_ss for DOF all set P:
-         Time Values: [0.00000000e+00, 25.0,     35.0,     60.0]
-         BC Values: [[0.00000000e+00], [0.0038], [0.0038], [0.0] ]
+         Time Values: [0.00000000e+00, 25.0]
+         BC Values: [[0.00000000e+00], [0.0038]]
     Initial Condition:
       Function: Constant
       Function Data: [0.00000000e+00, 0.00000000e+00, 0.00000000e+00]
@@ -29,7 +30,7 @@ LCM:
     Method: PUMI
     Workset Size: 50
     Mesh Model Input File Name: metric_quarter_plate.dmg
-    PUMI Input File Name: metric_quarter_plate_quad_1_.smb
+    PUMI Input File Name: metric_quarter_plate_16_.smb
     PUMI Output File Name: results_out_creep_and_plastic.vtk
     Model Associations File Name: assoc.txt
     2nd Order Mesh: false
@@ -38,7 +39,7 @@ LCM:
   Piro:
     Rythmos:
       Num Time Steps: 1000000
-      Final Time: 60.0
+      Final Time: 25.0
       Max State Error: 0.0001
       Alpha: 0.0
       Rythmos Stepper:
@@ -69,7 +70,7 @@ LCM:
       Step Size:
         Initial Step Size: 0.0005
         Method: Adaptive
-        Max Step Size: 0.25
+        Max Step Size: 1.0e-3
         Min Step Size: 1.0e-10
         Failed Step Reduction Factor: 0.5
         Aggressiveness: 0.1
@@ -140,7 +141,7 @@ LCM:
           Tolerance: 1.00000000e-04
         Test 1:
           Test Type: MaxIters
-          Maximum Iterations: 7
+          Maximum Iterations: 12
         Test 2:
           Test Type: FiniteValue
         Test 3:
